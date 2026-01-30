@@ -5,21 +5,21 @@ sidebar:
   order: 4
 ---
 
-Quick guide to choosing the right model.
+Quick guide to choosing the right model. Data from SWE-bench, Aider Polyglot, and Artificial Analysis (January 2026).
 
 ## By Task
 
-| Task | Recommended | Why |
-|------|-------------|-----|
-| **Agentic coding** | Claude Sonnet 4.5 | Best at multi-step, tool use |
-| **Complex architecture** | Claude Opus 4.5 | Deepest reasoning |
-| **Visual/UI work** | Gemini 3 Pro | Best multimodal, understands screenshots/designs |
-| **Quick completions** | Gemini 3 Flash | Fast, good quality |
-| **Complex debugging** | Claude Opus 4.5 | Deep reasoning |
-| **Large codebase** | Grok 4.1, Gemini 3 Pro | Larger windows (with caveats) |
-| **Code-optimized** | Codex 5 | Built for code, 400k context |
-| **Budget projects** | DeepSeek V3.2 | Best value |
-| **Privacy/local** | Qwen3 Coder 32B | Best open weights |
+| Task | Recommended | Why | Source |
+|------|-------------|-----|--------|
+| **Agentic coding** | Claude Sonnet 4.5 | Best at multi-step, tool use | [Aider Polyglot](https://aider.chat/docs/leaderboards/) |
+| **Complex architecture** | Claude Opus 4.5 | 80.9% SWE-bench, deepest reasoning | [SWE-bench](https://swebench.com) |
+| **Visual/UI work** | Gemini 3 Pro | Best multimodal, screenshot understanding | [Google AI](https://ai.google.dev) |
+| **Quick completions** | Gemini 3 Flash | 200 tok/s, 78% SWE-bench | [Artificial Analysis](https://artificialanalysis.ai) |
+| **Complex debugging** | Claude Opus 4.5 | Extended thinking, deep analysis | [Anthropic](https://anthropic.com) |
+| **Large codebase** | Grok 4.1 | 2M context (practical ~500k) | [xAI](https://x.ai) |
+| **Code-optimized** | Codex 5 | 78% SWE-bench, 400k context | [OpenAI](https://openai.com) |
+| **Budget projects** | DeepSeek V3.2 | 73% SWE-bench at $0.27/$1.10 per M | [DeepSeek](https://deepseek.com) |
+| **Privacy/local** | Qwen3 Coder 32B | Best open weights for consumer GPUs | [Qwen](https://github.com/QwenLM) |
 
 ## By Budget
 
@@ -35,14 +35,14 @@ Quick guide to choosing the right model.
 
 ```
 Need best quality?
-├── Yes → Claude Opus 4.5 (complex) or GPT-5.2 (general)
+├── Yes → Claude Opus 4.5 (80.9% SWE-bench)
 └── No, need speed?
-    ├── Yes → Gemini 3 Flash
+    ├── Yes → Gemini 3 Flash (200 tok/s)
     └── No, need long context?
-        ├── Yes → Grok 4.1 (2M) or Gemini 3 Pro (1M)
+        ├── Yes → Grok 4.1 (2M advertised, ~500k practical)
         └── No, need budget?
-            ├── Yes → DeepSeek V3.2
-            └── No, need local?
+            ├── Yes → DeepSeek V3.2 ($0.27/M input)
+            └── No, need local/private?
                 └── Yes → Qwen3 Coder 32B + Ollama
 ```
 
@@ -76,3 +76,14 @@ It's the best all-around coding model. Once you understand your usage patterns, 
 - Add a fast model for completions (Gemini 3 Flash)
 - Switch to budget model for non-critical work (DeepSeek V3.2)
 - Use local models for sensitive code (Qwen3 Coder 32B)
+
+## Sources
+
+| Benchmark | What It Measures | Link |
+|-----------|------------------|------|
+| **SWE-bench** | Real GitHub issue resolution | [swebench.com](https://swebench.com) |
+| **Aider Polyglot** | Multi-language code editing | [aider.chat/docs/leaderboards](https://aider.chat/docs/leaderboards/) |
+| **Artificial Analysis** | Speed, price, quality | [artificialanalysis.ai](https://artificialanalysis.ai) |
+| **LLM Stats** | Aggregated benchmarks | [llm-stats.com](https://llm-stats.com) |
+
+*Last verified: January 2026*
