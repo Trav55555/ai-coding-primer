@@ -72,3 +72,19 @@ Prompt caching reduces costs for repeated context:
 - [OpenRouter Models](https://openrouter.ai/models) — Side-by-side
 - [LLM PriceCheck](https://llmpricecheck.com) — Calculator
 - [Artificial Analysis](https://artificialanalysis.ai) — Trends
+
+## Sources
+
+Official pricing pages:
+
+| Provider | Link |
+|----------|------|
+| Anthropic (Claude) | [anthropic.com/pricing](https://www.anthropic.com/pricing) |
+| OpenAI (GPT, Codex) | [openai.com/api/pricing](https://openai.com/api/pricing) |
+| Google (Gemini) | [ai.google.dev/pricing](https://ai.google.dev/pricing) |
+| DeepSeek | [platform.deepseek.com](https://platform.deepseek.com) |
+| xAI (Grok) | [x.ai/api](https://x.ai/api) |
+
+*Prices change frequently. Verify on official sites before committing to a model.*
+
+*Last verified: January 2026*
