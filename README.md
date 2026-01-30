@@ -11,7 +11,7 @@
 | **Working Effectively** | [Effective Patterns](#effective-patterns-for-agentic-coding) (Verification, Close the Loop, Subagents), [Common Mistakes](#common-mistakes-and-how-to-avoid-them), [When It's Not Working](#when-its-not-working) |
 | **Practical** | [Good vs Bad Prompts](#good-vs-bad-prompts), [Project Context Files](#project-context-files), [CLAUDE.md Examples](#example-claudemd-file-nodejs) |
 | **Tools** | [IDEs](#ai-native-ides) (Cursor, Zed, Antigravity, Kiro), [Extensions](#vs-code-extensions) (Copilot, Windsurf, Continue.dev), [CLI](#terminalcli-tools) (Claude Code, OpenCode, Gemini, Codex) |
-| **Models** | [Providers](#models-vs-providers), [Capabilities](#capabilities-matrix), [Pricing](#api-pricing-per-million-tokens), [Selection Guide](#model-selection-guide) |
+| **Models** | [Providers](#models-vs-providers), [Capabilities](#capabilities-matrix), [Pricing](#api-pricing-per-million-tokens), [Selection Guide](#model-selection-guide), [Benchmark Resources](#staying-current-benchmark--pricing-resources) |
 | **Security** | [Slopsquatting](#slopsquatting-package-hallucination), [Normalization of Deviance](#normalization-of-deviance), [Privacy Matrix](#quick-comparison-matrix), [Deep Dive](#privacy-deep-dive) |
 
 ---
@@ -1041,7 +1041,7 @@ Available with ChatGPT Plus/Pro/Business/Enterprise. 74.9% SWE-bench.
 
 *Capabilities and pricing for models commonly used in AI coding tools.*
 
-> **Live Benchmarks:** [artificialanalysis.ai](https://artificialanalysis.ai) — Independent benchmarks, speed tests, and pricing comparisons updated in real-time.
+> **Live Benchmarks:** [artificialanalysis.ai](https://artificialanalysis.ai) — Independent benchmarks, speed tests, and pricing comparisons updated in real-time. See [Benchmark & Pricing Resources](#staying-current-benchmark--pricing-resources) for a comprehensive list.
 
 ### Models vs. Providers
 
@@ -1128,6 +1128,41 @@ Available with ChatGPT Plus/Pro/Business/Enterprise. 74.9% SWE-bench.
 | **Long context** | Gemini 3 Pro (1M), Grok 4.1 (2M), Codex 5 (400k) | Entire codebase in context |
 | **Cost-sensitive** | DeepSeek-V3.2, MiniMax M2.1 | 90% quality at 10% cost |
 | **Balanced** | Claude Sonnet 4.5, GPT-5.2 | Best overall quality/speed/cost |
+
+### Staying Current: Benchmark & Pricing Resources
+
+Model capabilities and pricing change frequently. Use these resources to track performance:
+
+**Comprehensive Leaderboards:**
+
+| Resource | URL | Tracks | Update Frequency |
+|----------|-----|--------|------------------|
+| **Artificial Analysis** | [artificialanalysis.ai](https://artificialanalysis.ai) | Intelligence scores, speed, pricing, API provider comparison | Real-time |
+| **Chatbot Arena (LMSYS)** | [lmarena.ai](https://lmarena.ai) | Crowdsourced Elo ratings from human preference votes | Continuous |
+| **Hugging Face Open LLM** | [huggingface.co/spaces/open-llm-leaderboard](https://huggingface.co/spaces/open-llm-leaderboard) | Open-source models, MMLU, GPQA, MATH benchmarks | Weekly |
+| **Vellum AI** | [vellum.ai/llm-leaderboard](https://vellum.ai/llm-leaderboard) | SOTA models, reasoning, context length, cost | Updated on new releases |
+| **LiveBench** | [livebench.ai](https://livebench.ai) | Contamination-free benchmarks, monthly new questions | Monthly |
+
+**Coding-Specific Benchmarks:**
+
+| Resource | URL | Focus |
+|----------|-----|-------|
+| **SWE-bench** | [swebench.com](https://swebench.com) | Real GitHub issue resolution (the gold standard for coding) |
+| **Aider Leaderboard** | [aider.chat/docs/leaderboards](https://aider.chat/docs/leaderboards) | Code editing polyglot benchmark across languages |
+
+**Pricing Trackers:**
+
+| Resource | URL | Features |
+|----------|-----|----------|
+| **Price Per Token** | [pricepertoken.com](https://pricepertoken.com) | 300+ models, historical pricing, weekly newsletter |
+| **LLM PriceCheck** | [llmpricecheck.com](https://llmpricecheck.com) | Real-time calculator, daily updates, smart recommendations |
+| **OpenRouter** | [openrouter.ai/models](https://openrouter.ai/models) | Side-by-side pricing for 200+ models, fallback routing |
+| **YourGPT Calculator** | [yourgpt.ai/tools/llm-api-pricing](https://yourgpt.ai/tools/llm-api-pricing) | Cost estimator for major providers |
+
+**When to Check:**
+- Before starting a new project (model selection)
+- Monthly (pricing often drops 10-20%)
+- When a new model launches (benchmark comparisons stabilize after ~2 weeks)
 
 ---
 
