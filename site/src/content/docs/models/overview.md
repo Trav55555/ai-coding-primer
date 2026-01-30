@@ -61,6 +61,41 @@ One API key for multiple providers:
 | **AWS Bedrock** | Claude, Llama, Mistral | Enterprise, private endpoints |
 | **Azure OpenAI** | GPT, DALL-E | EU regions, compliance |
 
+## Open Weight Models
+
+"Open weight" means the model weights are publicly available — you can download and run them yourself. This is different from open source (weights + training code + data).
+
+| Model | Params | Why It Matters |
+|-------|--------|----------------|
+| **Llama 4** | 405B | Meta's flagship, runs locally or hosted |
+| **DeepSeek V3** | 671B MoE | Best quality/cost ratio |
+| **Qwen 3** | 235B | Strong multilingual, tool use |
+| **Mistral Large** | 123B | EU-based, good reasoning |
+
+### Why Care?
+
+**Self-hosting**: Run on your own hardware. Zero data leaves your network. No API costs after hardware.
+
+**No vendor lock-in**: Switch providers freely. Model weights are yours.
+
+**Fine-tuning**: Train on your codebase for domain-specific improvements.
+
+**Offline**: Works without internet. Air-gapped environments.
+
+### The Tradeoff
+
+Open weight models lag ~6-12 months behind frontier closed models (Claude, GPT). For most coding tasks, this gap is negligible. For cutting-edge agentic workflows, closed models still lead.
+
+### Running Locally
+
+| Tool | What It Does |
+|------|--------------|
+| [Ollama](https://ollama.com) | One-command local inference |
+| [LM Studio](https://lmstudio.ai) | GUI for local models |
+| [vLLM](https://github.com/vllm-project/vllm) | Production-grade serving |
+
+Pair with [Continue.dev](https://continue.dev) for a fully local AI coding setup.
+
 ## Next Steps
 
 - [Capabilities Matrix](/ai-coding-primer/models/capabilities/) — compare what models can do
