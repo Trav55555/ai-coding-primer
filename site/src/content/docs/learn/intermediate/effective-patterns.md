@@ -42,6 +42,10 @@ The most reliable verification approach:
 
 This forces the AI to produce code that demonstrably works.
 
+:::caution[If AI writes the test]
+Review AI-generated tests critically. Ask yourself: "Does this test encode MY requirements, or just the AI's assumptions?" Tests should specify what the code *should* do, not describe what the code *does*. See [Lazy Testing](/ai-coding-primer/learn/intermediate/common-mistakes/#mistake-8-lazy-testing) for the full danger.
+:::
+
 ---
 
 ## Pattern 1: Close the Loop

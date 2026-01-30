@@ -120,6 +120,10 @@ Task 3: Refactor the database layer
 AI writes code → AI writes tests → Tests pass → You feel confident. But you've only validated that the AI is consistent with itself, not that it solved your actual problem.
 :::
 
+:::caution[Coverage is not correctness]
+100% test coverage means nothing if tests aren't connected to ground truth. AI can generate tests that exercise every line of code while verifying nothing meaningful. Coverage measures execution, not validation.
+:::
+
 ---
 
 ## When to Clear Context
