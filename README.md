@@ -6,11 +6,13 @@
 
 | Category | Sections |
 |----------|----------|
-| **Getting Started** | [What is Agentic Coding?](#what-is-agentic-coding), [Your First 5 Minutes](#your-first-5-minutes), [Core Concepts](#core-concepts) |
-| **Working Effectively** | [Effective Patterns](#effective-patterns-for-agentic-coding), [Common Mistakes](#common-mistakes-and-how-to-avoid-them), [When It's Not Working](#when-its-not-working), [Practical Examples](#practical-examples) |
-| **Tools** | [Cursor](#cursor), [Zed](#zed), [Antigravity](#antigravity-google), [Kiro](#kiro-aws), [Copilot](#github-copilot), [Windsurf](#codeiumwindsurf), [Continue.dev](#continuedev), [Amazon Q](#amazon-q-developer), [Claude Code](#claude-code), [OpenCode](#opencode), [Gemini CLI](#gemini-cli), [Codex CLI](#openai-codex-cli), [Kimi](#kimi-k25-cli) |
-| **Models** | [Foundation Models](#foundation-models-january-2026), [Models vs. Providers](#models-vs-providers), [Capabilities](#capabilities-matrix), [API Pricing](#api-pricing-per-million-tokens) |
-| **Privacy & Security** | [Comparison Matrix](#quick-comparison-matrix), [Security Recs](#security-recommendations), [Deep Dive](#privacy-deep-dive) |
+| **Getting Started** | [What is Agentic Coding?](#what-is-agentic-coding), [Step-by-Step Setup](#getting-started), [Core Concepts](#core-concepts) |
+| **Understanding** | [Context Engineering](#context-engineering-beyond-prompt-engineering), [Five Levels of AI Coding](#the-five-levels-of-ai-assisted-coding) |
+| **Working Effectively** | [Effective Patterns](#effective-patterns-for-agentic-coding) (Verification, Close the Loop, Subagents), [Common Mistakes](#common-mistakes-and-how-to-avoid-them), [When It's Not Working](#when-its-not-working) |
+| **Practical** | [Good vs Bad Prompts](#good-vs-bad-prompts), [Project Context Files](#project-context-files), [CLAUDE.md Examples](#example-claudemd-file-nodejs) |
+| **Tools** | [IDEs](#ai-native-ides) (Cursor, Zed, Antigravity, Kiro), [Extensions](#vs-code-extensions) (Copilot, Windsurf, Continue.dev), [CLI](#terminalcli-tools) (Claude Code, OpenCode, Gemini, Codex) |
+| **Models** | [Providers](#models-vs-providers), [Capabilities](#capabilities-matrix), [Pricing](#api-pricing-per-million-tokens), [Selection Guide](#model-selection-guide) |
+| **Security** | [Slopsquatting](#slopsquatting-package-hallucination), [Normalization of Deviance](#normalization-of-deviance), [Privacy Matrix](#quick-comparison-matrix), [Deep Dive](#privacy-deep-dive) |
 
 ---
 
@@ -112,6 +114,24 @@ AI tools read markdown files in your project root to understand context, convent
 [Languages, frameworks, key libraries]
 
 ## Quick Commands
+Use a `justfile` for the most interoperable command interface:
+
+```just
+# justfile
+dev:
+    npm run dev
+
+test:
+    npm test
+
+lint:
+    npm run lint && npm run typecheck
+
+build:
+    npm run build
+```
+
+Or list commands in markdown:
 - `[command]` - [what it does]
 - `[command]` - [what it does]
 
@@ -210,19 +230,156 @@ Look at this codebase and explain:
 | **Provider** | Company hosting the model's API (e.g., OpenAI, Anthropic). Determines pricing and terms |
 | **Agentic** | AI that acts autonomously: reads files, runs commands, iterates on errors |
 | **Context Window** | How much text the AI can "see" at once (measured in tokens). More ≠ better—focused context wins |
+| **40% Rule** | Keep context below 40% of window capacity. Beyond this threshold, model quality degrades measurably. ([Source: Dex Horthy](https://www.dexhorthy.com/blog/no-vibes-allowed)) |
+| **Context Engineering** | Building dynamic systems to provide the right information, tools, and format so the model can plausibly accomplish the task. Supersedes "prompt engineering." ([Source: Harrison Chase](https://blog.langchain.dev/context-engineering/)) |
 | **MCP** | Model Context Protocol. A standard for connecting AI tools to external services (databases, APIs) |
 | **BYOK** | Bring Your Own Key. Use your own API keys instead of the tool's subscription |
 | **Prompt** | Your instruction to the AI. Quality of prompt = quality of output |
 | **Composer/Agent Mode** | Multi-file editing mode (vs. single-file autocomplete) |
-| **Context Rot** | When too much irrelevant context makes the AI "dumber" |
+| **Context Rot** | When too much irrelevant context makes the AI "dumber." Starts around 40% of context window. |
+| **Subagent** | A separate AI instance launched to investigate a question, keeping your main context clean |
+
+---
+
+## Context Engineering (Beyond Prompt Engineering)
+
+> "Context engineering is building **dynamic systems** to provide the right information and tools in the right format such that the LLM can plausibly accomplish the task." — Harrison Chase, LangChain
+
+**Prompt engineering** is crafting a single good instruction. **Context engineering** is designing the entire system that feeds information to the model.
+
+### The Context Engineering Framework
+
+Ask yourself: **"Can the model plausibly accomplish this task with the context I'm providing?"**
+
+If the answer is no, the problem is context, not the model.
+
+| Component | What It Means | Example |
+|-----------|---------------|---------|
+| **Right Information** | Model has what it needs to succeed | Relevant files, not entire codebase |
+| **Right Tools** | Model can look things up and take actions | grep, file read, test runner |
+| **Right Format** | Information is structured for consumption | Short error messages, not raw JSON blobs |
+| **Plausibility Check** | Could a human succeed with this context? | If you couldn't do it, neither can the AI |
+
+### Practical Context Engineering
+
+**1. Static Context (CLAUDE.md, .cursorrules)**
+- Project-specific gotchas
+- Commands to run
+- Architecture overview
+- Keep ruthlessly short
+
+**2. Dynamic Context (Retrieved at Runtime)**
+- Relevant files based on the task
+- Recent git history
+- Test results
+- Error messages
+
+**3. Tool Context (MCP, CLI)**
+- Give the model tools to look things up
+- Better than stuffing everything into the prompt
+- Let it grep, read files, run commands
+
+**4. Memory Context (Across Sessions)**
+- What worked before
+- Decisions made
+- Patterns established
+
+### The 40% Rule in Practice
+
+> "As context usage grows, model quality degrades. Empirically, this begins around 40% of the context window." — Dex Horthy
+
+| Context Window | 40% Threshold | Practical Limit |
+|----------------|---------------|-----------------|
+| 128k tokens | ~51k tokens | ~40 files |
+| 200k tokens | ~80k tokens | ~65 files |
+| 1M tokens | ~400k tokens | ~325 files |
+
+**Stay under 40%.** If you're over, you're in the "Dumb Zone" where quality degrades.
+
+**Compaction strategies when over 40%:**
+1. Summarize what you've learned so far
+2. Clear context and restart with summary
+3. Use subagents for investigation, keep main context focused
+4. Be more selective about which files to include
+
+---
+
+## The Five Levels of AI-Assisted Coding
+
+Understanding where you are helps you know what to learn next. This model is adapted from Dan Shapiro's framework (Jan 2026), inspired by the levels of autonomous driving.
+
+| Level | Name | Description | Your Role | Prerequisites |
+|-------|------|-------------|-----------|---------------|
+| **0** | Spicy Autocomplete | Copy-paste from ChatGPT, basic tab completion | Write most code yourself | None |
+| **1** | The Coding Intern | AI writes boilerplate and unimportant snippets | Full review of every line | Basic prompting |
+| **2** | The Junior Developer | Pair programming with AI, real-time collaboration | Review every line, guide direction | Good prompts, context files |
+| **3** | The Developer | Most code is AI-generated, you're a full-time reviewer | Code review, architecture decisions | Strong verification, TDD |
+| **4** | The Engineering Team | You're the PM/manager—specs and plans, agents do work | Define specs, review outcomes | Robust test suites, CI/CD |
+| **5** | The Dark Factory | No human code review—only system verification | Design verification systems | Mature conformance suites |
+
+### Where to Start
+
+**If you're new to AI coding:** Start at Level 1-2. Use AI for tasks you already know how to solve. Build intuition for when it's right vs. wrong.
+
+**If you're experienced:** Most professionals operate at Level 2-3. Level 4+ requires significant infrastructure investment (test suites, CI, monitoring).
+
+**Level 5 Warning:** 
+> "Nobody reviews AI-produced code, ever. They don't even look at it. The goal of the system is to prove that the system works." — Simon Willison, describing a team doing Level 5
+
+Level 5 is real but rare. It requires:
+- Comprehensive conformance test suites
+- Continuous verification systems
+- 20+ years of engineering experience to design the verification
+- Acceptance that you're trusting the tests, not the code
+
+**Most readers of this document should aim for Level 3** with strong verification practices.
 
 ---
 
 ## Effective Patterns for Agentic Coding
 
+### 0. Verification First (The #1 Pattern)
+
+> "Give Claude a way to verify its work. This is the **single highest-leverage thing** you can do." — Anthropic Claude Code Documentation
+
+**Verification is not optional.** It's the foundation everything else builds on.
+
+**Why verification matters:**
+- AI produces plausible-looking code that may be subtly wrong
+- Without verification, you're trusting output you can't validate
+- Verification closes the loop—the agent can see and fix its own mistakes
+
+**Ways to provide verification:**
+
+| Method | Example | Best For |
+|--------|---------|----------|
+| **Tests** | "Run `pytest` after changes" | Logic correctness |
+| **Type checker** | "Run `pyright` / `tsc`" | Type safety |
+| **Linter** | "Run `eslint` / `ruff`" | Style, common bugs |
+| **Build** | "Run `cargo build`" | Compilation |
+| **Screenshot** | "Take a screenshot of the result" | UI work |
+| **REPL/CLI** | "Run the function with test input" | Quick validation |
+| **Expected output** | "The result should be [X]" | Specific behavior |
+
+**The TDD Pattern** (most reliable):
+```
+1. Write the test first (or have the AI write it)
+2. Commit the test
+3. Prompt: "Make this test pass. Don't modify the test."
+```
+
+This forces the AI to produce code that demonstrably works.
+
+**Treat AI as an Untrusted Junior Developer:**
+- 100% of AI-generated code gets human review
+- Never merge without running tests
+- If you don't understand it, don't ship it
+
+---
+
 ### 1. Close the Loop
 
-> "The big secret is always close the loop. The model needs to be able to debug and test itself."
+> "The big secret is always close the loop. The model needs to be able to debug and test itself." — Peter Steinberger
 
 Design your workflow so the agent can verify its own work:
 
@@ -270,13 +427,67 @@ Never ask the AI to "build the whole app." Break it down:
 - **Do** provide only relevant files
 - **Do** use `CLAUDE.md` or `.cursorrules` for project-specific "gotchas"
 
-> "The more the model knows, the dumber it gets."
+> "The more the model knows, the dumber it gets." — Theo (t3.gg)
 
 ### 5. Human-in-the-Loop Verification
 
 - Run linters immediately after AI edits
 - Use TDD: write the test first, then prompt "make this test pass"
 - Review diffs before accepting—never blindly trust
+
+### 6. Clone and Imitate (For Tests and Patterns)
+
+> "Clone datasette/datasette-enrichments from GitHub to /tmp and imitate the testing patterns it uses." — Simon Willison
+
+The fastest way to get consistent, high-quality output is to show the AI an example.
+
+```
+Clone [repo-url] to /tmp and imitate the testing patterns it uses.
+```
+
+**When to use this:**
+- Setting up test patterns for a new project
+- Adopting a library's conventions
+- Replicating a coding style you admire
+
+**Example prompt:**
+```
+Clone https://github.com/simonw/datasette to /tmp.
+Look at how tests are structured in tests/.
+Now write tests for my new plugin following the same patterns.
+```
+
+This works because:
+- The AI sees real, working examples
+- Patterns are demonstrated, not described
+- You get consistency with established codebases
+
+### 7. Use Subagents for Investigation
+
+**Problem:** Research pollutes your main context. Looking up docs, exploring codebases, and investigating options fills your context window with irrelevant information.
+
+**Solution:** Delegate research to subagents that run in separate contexts.
+
+**In Claude Code:**
+```
+Use subagents to investigate how authentication is implemented 
+in this codebase. Report back with file paths and patterns.
+```
+
+**In Cursor:**
+- Use Background Agents for research tasks
+- Keep your main Composer session focused on implementation
+
+**Benefits:**
+- Main context stays clean and focused
+- Research happens in isolation
+- You get a summary, not raw exploration
+
+**When to use subagents:**
+- Exploring unfamiliar codebases
+- Looking up documentation
+- Investigating multiple approaches
+- Any task that's "read a lot, summarize a little"
 
 ---
 
@@ -343,6 +554,28 @@ MCP (Model Context Protocol) lets AI tools connect to external services—databa
 | **Firecrawl** | Web scraping, content extraction | `npx -y @anthropic/mcp-firecrawl` |
 | **Perplexity** | Real-time web search | `npx -y @anthropic/mcp-perplexity` |
 
+#### Token Consumption Warning
+
+MCP tools can consume massive amounts of your context window. Be aware of costs:
+
+| MCP Tool | Typical Token Cost | Notes |
+|----------|-------------------|-------|
+| **Playwright screenshot** | 15,000+ tokens | A single screenshot can exhaust hours of allocation |
+| **Full DOM snapshot** | 10,000-50,000 tokens | Depends on page complexity |
+| **Accessibility tree** | 5,000-20,000 tokens | Every element with all properties |
+| **File read (large)** | 1,000-10,000 tokens | Scales with file size |
+| **Database query result** | Variable | Large result sets are expensive |
+
+**From Playwright MCP GitHub issues:**
+> "Users report single screenshots consuming over 15,000 tokens. Some exhausted their entire five-hour token allocation in just a few automation steps." — Playwright MCP GitHub Issues
+
+**Mitigation strategies:**
+- Disable verbose output modes where possible
+- Use targeted selectors instead of full page captures
+- Limit result set sizes in database queries
+- Monitor token usage during MCP-heavy workflows
+- Consider whether you need the MCP or if a simpler approach works
+
 #### Security Note
 
 MCP servers run with your permissions. Use container isolation for untrusted servers:
@@ -360,13 +593,32 @@ docker run --rm -it mcp/playwright  # Isolated browser automation
 
 **Mistake**: When AI fails, repeatedly asking "fix it" and appending to the conversation history.
 
-**Why it fails**: The context now contains bad instructions and broken code. Autocomplete is biased by the failed attempts.
+**Why it fails**: The context now contains bad instructions and broken code. Autocomplete is biased by the failed attempts. Each failed attempt pollutes the context further.
+
+**From Anthropic's Claude Code documentation:**
+> "Correcting Over and Over: Failed approaches accumulate → Solution: After 2 corrections, `/clear` and rewrite prompt" — Anthropic Claude Code Documentation
 
 **Fix**:
 
-1. **Revert** the changes (git checkout, undo)
-2. **Edit your original prompt** with better context
-3. Use **Plan Mode** to have the AI ask clarifying questions *before* generating code
+1. **Clear context** (`/clear` in Claude Code, new chat in Cursor, `Cmd+K` in Zed)
+2. **Revert** the changes (`git checkout .` or undo)
+3. **Rewrite your prompt** with better context—don't just append "fix it"
+4. If the same failure happens **more than twice**, stop and rethink your approach entirely
+
+**The Kitchen Sink Anti-Pattern**: Mixing unrelated tasks in one session pollutes context. Clear between tasks:
+```
+Task 1: Fix the auth bug
+/clear
+Task 2: Add the export feature
+/clear
+Task 3: Refactor the database layer
+```
+
+**When to clear context:**
+- Switching to an unrelated task
+- After 2+ failed fix attempts
+- When the AI starts "forgetting" earlier instructions
+- When responses become repetitive or circular
 
 ---
 
@@ -446,6 +698,10 @@ Step 1: Add the database schema for users (just the schema, no logic yet)
 ### Project Context Files
 
 Different tools use different files for project-specific instructions. Create the one(s) that match your tools:
+
+> **Keep it short.** From Anthropic: "For each line, ask: 'Would removing this cause Claude to make mistakes?' If not, cut it."
+>
+> Long context files get ignored. Include only what the agent can't infer from the code itself.
 
 | Tool | Context File | Location |
 |------|--------------|----------|
@@ -971,6 +1227,53 @@ Mitigations:
 - Don't use for client code under NDA
 - Consider Zed for truly sensitive projects
 ```
+
+### Slopsquatting (Package Hallucination)
+
+AI models suggest non-existent packages **5-22% of the time**. Attackers register these hallucinated package names with malware.
+
+| Model Type | Hallucination Rate | Risk |
+|------------|-------------------|------|
+| Commercial (GPT, Claude) | ~5% | Medium |
+| Open-source | ~22% | High |
+
+**How it works:**
+1. AI suggests `npm install fast-json-parser-v2` (doesn't exist)
+2. Attacker registers `fast-json-parser-v2` on npm with malicious code
+3. You run the install command, malware executes
+
+**Mitigation:**
+- **Never blindly run AI-suggested install commands**
+- Use SCA (Software Composition Analysis) tools: Snyk, Dependabot, Socket.dev
+- Verify packages exist and have legitimate maintainers before installing
+- Check download counts and GitHub stars
+
+([Source: Digital Applied Security Research, Jan 2026](https://digitalapplied.com/ai-coding-security))
+
+---
+
+### Normalization of Deviance
+
+**The psychological trap**: Running AI agents with elevated permissions repeatedly without incident leads to false confidence.
+
+> "I think so many people, myself included, are running these coding agents practically as root. And every time I do it, my computer doesn't get wiped. I'm like, 'oh, it's fine'." — Simon Willison, Jan 2026
+
+**The "Lethal Trifecta"** (from Simon Willison):
+When an agent has access to all three, exfiltration becomes possible:
+1. **Private Data** (your files, credentials, code)
+2. **Untrusted Content** (the web, user input, external APIs)
+3. **External Communication** (network access, email, APIs)
+
+**Reality check**: One day, it *will* delete your home directory or exfiltrate secrets. The question is when, not if.
+
+**Mitigations:**
+- Run agents in containers or VMs, not on your host machine
+- Use `--sandbox` flags where available
+- Never run `--dangerously-skip-permissions` outside isolated environments
+- Review tool permissions before granting
+- Assume every agent session could be compromised
+
+---
 
 ### Minimum Security Checklist (Any Tool)
 
