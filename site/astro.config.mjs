@@ -78,7 +78,6 @@ export default defineConfig({
 						{ label: 'Quick Checklist', slug: 'security/checklist' },
 						{ label: 'Security Risks', slug: 'security/risks' },
 						{ label: 'Privacy Comparison', slug: 'security/privacy-comparison' },
-						{ label: 'Enterprise Guide', slug: 'security/enterprise' },
 						{ label: 'Privacy Deep Dive', slug: 'security/deep-dive' },
 					],
 				},

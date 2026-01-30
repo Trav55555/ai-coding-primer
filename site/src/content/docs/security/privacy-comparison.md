@@ -69,5 +69,5 @@ For EU companies: Consider Schrems II implications with US tools.
 
 ## Next Steps
 
-- [Enterprise Guide](/ai-coding-primer/security/enterprise/) — compliance deep dive
 - [Privacy Deep Dive](/ai-coding-primer/security/deep-dive/) — technical details
+- [Security Risks](/ai-coding-primer/security/risks/) — threats and mitigations

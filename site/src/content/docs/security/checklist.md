@@ -76,4 +76,4 @@ data/production/
 ## Next Steps
 
 - [Privacy Comparison](/ai-coding-primer/security/privacy-comparison/) — detailed tool comparison
-- [Enterprise Guide](/ai-coding-primer/security/enterprise/) — compliance requirements
+- [Privacy Deep Dive](/ai-coding-primer/security/deep-dive/) — technical details
