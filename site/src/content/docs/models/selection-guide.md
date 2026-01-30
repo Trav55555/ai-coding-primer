@@ -25,11 +25,15 @@ Quick guide to choosing the right model. Data from SWE-bench, Aider Polyglot, an
 
 | Monthly Budget | Recommendation |
 |----------------|----------------|
-| **$0** | Continue.dev + Ollama (local) |
+| **$0** | Gemini CLI free tier or Cursor free tier |
 | **$10-20** | Zed Pro or Cursor Pro |
-| **$20-50** | Claude API (BYOK) |
-| **$50-100** | Mix models by task |
-| **$100+** | Claude Max or Cursor Ultra |
+| **$20-50** | OpenRouter BYOK (mix models by task) |
+| **$50-100** | Native APIs (OpenAI, Anthropic) + fast model |
+| **$100+** | Cursor Business or Claude Max |
+
+:::tip[BYOK Users]
+[OpenRouter](https://openrouter.ai) gives you one API key for 200+ models. Great for experimenting and mixing models without managing multiple accounts.
+:::
 
 ## Decision Tree
 
@@ -94,14 +98,24 @@ Speed-critical tasks, completions, quick iterations.
 |-------|-------|----------------|-------------|
 | **Gemini 3 Flash** | 200 tok/s | $0.50/$3 | Tab completions, quick edits |
 | **DeepSeek V3.2** | 60 tok/s | $0.27/$1.10 | Budget tasks, exploration |
-| **Qwen3 Coder 32B** | Local | Free | Privacy, offline, sensitive code |
+
+### Local Models
+For privacy, offline work, or air-gapped environments. Always an option, but most developers start with hosted APIs.
+
+| Model | Size | Hardware Needed | When to Use |
+|-------|------|-----------------|-------------|
+| **Qwen3 Coder 32B** | 32B | 24GB+ VRAM | Best local coding quality |
+| **DeepSeek Coder V2** | 16B | 16GB+ VRAM | Good balance |
+| **Qwen3 Coder 8B** | 8B | 8GB+ VRAM | Lighter hardware |
+
+Run with [Ollama](https://ollama.com) or [LM Studio](https://lmstudio.ai). Pair with [Continue.dev](https://continue.dev) for IDE integration.
 
 ### How to Mix
 
-Most developers use 2-3 models:
+Most developers use 2-3 models via OpenRouter or native provider APIs:
 1. **Heavy hitter** for complex tasks (Codex 5.2 or Opus 4.5)
 2. **All-rounder** as daily driver (GPT-5.2 or Sonnet 4.5)
-3. **Fast model** for completions (Gemini Flash or local)
+3. **Fast model** for completions (Gemini Flash or DeepSeek)
 
 ## Sources
 
