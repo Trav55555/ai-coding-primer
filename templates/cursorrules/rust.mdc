@@ -1,0 +1,29 @@
+# Rust Project Rules
+
+## Tech Stack
+- Rust (latest stable)
+- Axum or Actix-web
+- SQLx for database
+- Tokio runtime
+
+## Commands
+- `cargo run` - Start server
+- `cargo test` - Run tests
+- `cargo clippy` - Lint
+- `cargo fmt` - Format
+- `sqlx migrate run` - Migrations
+
+## Code Style
+- No `unsafe` unless absolutely necessary
+- Use `thiserror` for custom errors
+- Prefer `impl Trait` over `dyn Trait`
+- Document public APIs with `///`
+
+## Gotchas
+- [Add your project-specific gotchas]
+
+## File Patterns
+- Entry: `src/main.rs`
+- Routes: `src/routes/[name].rs`
+- Services: `src/services/[name].rs`
+- Models: `src/models/[name].rs`

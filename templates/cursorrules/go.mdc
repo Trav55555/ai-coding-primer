@@ -1,0 +1,28 @@
+# Go Project Rules
+
+## Tech Stack
+- Go 1.22+
+- Chi or Gin router
+- PostgreSQL with sqlc
+
+## Commands
+- `go run ./cmd/server` - Start server
+- `go test ./...` - Run tests
+- `go vet ./...` - Vet code
+- `golangci-lint run` - Lint
+- `sqlc generate` - Generate SQL
+
+## Code Style
+- Follow Go idioms (Effective Go)
+- Return errors, don't panic
+- Use interfaces for dependencies
+- Keep functions small and focused
+
+## Gotchas
+- [Add your project-specific gotchas]
+
+## File Patterns
+- Entry points: `cmd/[app]/main.go`
+- Handlers: `internal/handlers/[name].go`
+- Services: `internal/services/[name].go`
+- Repository: `internal/repository/[name].go`

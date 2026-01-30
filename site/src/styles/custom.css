@@ -1,0 +1,33 @@
+/* AI Coding Primer custom styles */
+
+:root {
+	--sl-color-accent-low: #1a1a2e;
+	--sl-color-accent: #4f46e5;
+	--sl-color-accent-high: #818cf8;
+}
+
+/* Freshness indicator styles */
+.freshness-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.25rem;
+	padding: 0.25rem 0.5rem;
+	border-radius: 0.25rem;
+	font-size: 0.75rem;
+	background: var(--sl-color-gray-6);
+}
+
+.freshness-badge.fresh {
+	background: #dcfce7;
+	color: #166534;
+}
+
+.freshness-badge.stale {
+	background: #fef3c7;
+	color: #92400e;
+}
+
+.freshness-badge.outdated {
+	background: #fee2e2;
+	color: #991b1b;
+}

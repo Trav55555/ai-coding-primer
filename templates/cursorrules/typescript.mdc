@@ -1,0 +1,26 @@
+# TypeScript Project Rules
+
+## Tech Stack
+- TypeScript with strict mode
+- [Framework: React/Next.js/Express/etc.]
+- [Testing: Vitest/Jest]
+
+## Commands
+- `npm run dev` - Development
+- `npm test` - Tests
+- `npm run lint` - Linting
+- `npm run typecheck` - Type checking
+
+## Code Style
+- Use named exports
+- Prefer const arrow functions
+- All functions must have explicit return types
+- No `any` types - use `unknown` and narrow
+
+## Gotchas
+- [Add your project-specific gotchas]
+
+## File Patterns
+- Components: `src/components/[Name]/[Name].tsx`
+- Hooks: `src/hooks/use[Name].ts`
+- Types: `src/types/[name].ts`

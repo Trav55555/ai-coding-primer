@@ -1,0 +1,206 @@
+ides:
+  - id: cursor
+    name: Cursor
+    website: https://cursor.com
+    type: ide
+    open_source: false
+    base: VS Code fork
+    key_features:
+      - Composer Mode (Cmd+I)
+      - Agent Mode
+      - Tab Completions
+      - Background Agents
+      - .cursorrules
+    models:
+      - claude-sonnet-4.5
+      - gpt-5.2
+      - gemini-3-pro
+    pricing:
+      hobby: { price: 0, requests: 50, completions: 2000 }
+      pro: { price: 20, completions: unlimited }
+      pro_plus: { price: 60, note: "3x usage" }
+      ultra: { price: 200, note: "20x usage" }
+      teams: { price: 40, features: [sso, rbac, zero_retention] }
+      enterprise: { price: custom, features: [scim, audit_logs] }
+    privacy:
+      mode: available
+      training: opt_out
+      retention: "30d (non-business)"
+      jurisdiction: US
+    last_verified: 2026-01-29
+
+  - id: zed
+    name: Zed
+    website: https://zed.dev
+    github: https://github.com/zed-industries/zed
+    github_stars: 55000
+    type: ide
+    open_source: true
+    license: GPL-3.0
+    base: Rust native
+    key_features:
+      - Agent Panel
+      - Edit Prediction (Zeta)
+      - ACP/MCP support
+      - Multiplayer
+      - BYOK support
+    models:
+      - claude-sonnet-4.5
+      - gpt-5.2
+      - gemini-3-pro
+      - ollama
+    pricing:
+      personal: { price: 0, note: "Full editor + AI with own keys" }
+      pro: { price: 10, note: "$5 tokens included" }
+      enterprise: { price: contact }
+    privacy:
+      mode: opt_in
+      training: never
+      retention: none
+      jurisdiction: US (mitigated by BYOK)
+    last_verified: 2026-01-29
+
+  - id: windsurf
+    name: Windsurf
+    website: https://windsurf.com
+    type: ide
+    open_source: false
+    base: VS Code fork
+    key_features:
+      - Cascade (multi-file agent)
+      - Flows
+      - Zero-data-retention
+      - EU Cloud option
+    models:
+      - claude-3.5-sonnet
+      - gpt-4o
+    pricing:
+      free: { price: 0, note: "Cloud US" }
+      pro: { price: 15, note: "Cloud US/EU" }
+      teams: { price: 30, features: [hybrid] }
+      enterprise: { price: custom, features: [self_hosted, fedramp] }
+    privacy:
+      mode: default_on
+      training: never
+      retention: zero
+      jurisdiction: US/EU
+    last_verified: 2026-01-29
+
+extensions:
+  - id: github-copilot
+    name: GitHub Copilot
+    website: https://github.com/features/copilot
+    type: extension
+    platforms: [vscode, jetbrains, neovim]
+    key_features:
+      - Tab completions
+      - Chat
+      - Coding agent
+      - Codebase indexing (enterprise)
+    pricing:
+      free: { price: 0, requests: 50, completions: 2000 }
+      pro: { price: 10, note: "Unlimited, coding agent" }
+      business: { price: 19, features: [policy_controls, ip_indemnity] }
+      enterprise: { price: 39, features: [codebase_indexing, audit_logs, scim] }
+    privacy:
+      mode: available
+      training: opt_out
+      retention: varies
+      jurisdiction: US
+    last_verified: 2026-01-29
+
+  - id: continue-dev
+    name: Continue.dev
+    website: https://continue.dev
+    github: https://github.com/continuedev/continue
+    github_stars: 31000
+    type: extension
+    open_source: true
+    license: Apache-2.0
+    platforms: [vscode, jetbrains]
+    key_features:
+      - Tab completions
+      - Chat
+      - Local model support
+      - Ollama integration
+      - 100% local option
+    pricing:
+      free: { price: 0, note: "Full features with own keys/local models" }
+    privacy:
+      mode: full_local
+      training: never
+      retention: none
+      jurisdiction: none
+    last_verified: 2026-01-29
+
+cli:
+  - id: claude-code
+    name: Claude Code
+    website: https://claude.ai/code
+    type: cli
+    install: "curl -fsSL https://claude.ai/install.sh | bash"
+    key_features:
+      - Agentic coding
+      - Multi-file editing
+      - Terminal commands
+      - MCP support
+      - CLAUDE.md
+    pricing:
+      free: { note: "Via Claude Pro subscription" }
+      pro: { note: "Via Claude Pro subscription" }
+      max: { note: "Via Claude Max subscription" }
+      teams: { price: contact }
+      enterprise: { price: contact }
+    privacy:
+      mode: enterprise_only
+      training: "ON by default (consumer)"
+      retention: "30d or 5y if training allowed"
+      jurisdiction: US
+    last_verified: 2026-01-29
+
+  - id: aider
+    name: Aider
+    website: https://aider.chat
+    github: https://github.com/paul-gauthier/aider
+    github_stars: 25000
+    type: cli
+    open_source: true
+    license: Apache-2.0
+    install: "pip install aider-chat"
+    key_features:
+      - Git integration
+      - Multi-file editing
+      - Voice coding
+      - BYOK
+      - Architect mode
+    pricing:
+      free: { price: 0, note: "BYOK" }
+    privacy:
+      mode: byok
+      training: depends_on_provider
+      retention: depends_on_provider
+      jurisdiction: none
+    last_verified: 2026-01-29
+
+  - id: opencode
+    name: OpenCode
+    website: https://opencode.ai
+    github: https://github.com/sst/opencode
+    github_stars: 8000
+    type: cli
+    open_source: true
+    license: MIT
+    install: "npm install -g opencode"
+    key_features:
+      - BYOK
+      - Multi-provider
+      - MCP support
+      - Local models
+    pricing:
+      free: { price: 0, note: "BYOK" }
+    privacy:
+      mode: byok
+      training: depends_on_provider
+      retention: depends_on_provider
+      jurisdiction: none
+    last_verified: 2026-01-29

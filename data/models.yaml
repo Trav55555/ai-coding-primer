@@ -1,0 +1,185 @@
+models:
+  - id: claude-sonnet-4.5
+    name: Claude Sonnet 4.5
+    provider: anthropic
+    context_window: 200000
+    input_price: 3.00
+    output_price: 15.00
+    cached_input_price: 0.30
+    speed_tps: 80
+    benchmarks:
+      swe_bench: 77.0
+    best_for: [agentic_coding, code_review, refactoring]
+    notes: "Best balance of quality and speed for coding"
+    last_verified: 2026-01-29
+
+  - id: claude-opus-4.5
+    name: Claude Opus 4.5
+    provider: anthropic
+    context_window: 200000
+    input_price: 5.00
+    output_price: 25.00
+    cached_input_price: 0.50
+    speed_tps: 45
+    benchmarks:
+      swe_bench: 80.9
+    best_for: [complex_reasoning, architecture, agentic]
+    notes: "Most capable model for complex multi-step tasks"
+    last_verified: 2026-01-29
+
+  - id: gpt-5.2
+    name: GPT-5.2
+    provider: openai
+    context_window: 256000
+    input_price: 1.75
+    output_price: 14.00
+    cached_input_price: 0.175
+    speed_tps: 101
+    benchmarks:
+      swe_bench: 80.0
+    best_for: [general_coding, explanations]
+    last_verified: 2026-01-29
+
+  - id: codex-5
+    name: Codex 5
+    provider: openai
+    context_window: 400000
+    input_price: 1.25
+    output_price: 10.00
+    cached_input_price: 0.125
+    speed_tps: 90
+    benchmarks:
+      swe_bench: 78.0
+    best_for: [code_generation, long_context_code]
+    notes: "Optimized for code, 400k context"
+    last_verified: 2026-01-29
+
+  - id: o3
+    name: o3
+    provider: openai
+    context_window: 200000
+    input_price: 15.00
+    output_price: 60.00
+    speed_tps: 30
+    benchmarks:
+      swe_bench: 71.7
+    best_for: [complex_reasoning, architecture, debugging]
+    notes: "Reasoning model - slower but better for hard problems"
+    last_verified: 2026-01-29
+
+  - id: gemini-3-pro
+    name: Gemini 3 Pro
+    provider: google
+    context_window: 1000000
+    input_price: 2.00
+    output_price: 12.00
+    cached_input_price: 0.50
+    speed_tps: 85
+    benchmarks:
+      swe_bench: 76.2
+    best_for: [long_context, codebase_analysis, visual_ui, multimodal]
+    notes: "1M context, best multimodal - ideal for UI/visual tasks"
+    last_verified: 2026-01-29
+
+  - id: gemini-3-flash
+    name: Gemini 3 Flash
+    provider: google
+    context_window: 1000000
+    input_price: 0.50
+    output_price: 3.00
+    cached_input_price: 0.125
+    speed_tps: 200
+    benchmarks:
+      swe_bench: 78.0
+    best_for: [fast_completions, budget, long_context]
+    last_verified: 2026-01-29
+
+  - id: grok-4.1
+    name: Grok 4.1
+    provider: xai
+    context_window: 2000000
+    input_price: 3.00
+    output_price: 15.00
+    speed_tps: 120
+    benchmarks:
+      swe_bench: 72.0
+    best_for: [long_context, real_time_data]
+    notes: "2M context window"
+    last_verified: 2026-01-29
+
+  - id: deepseek-v3.2
+    name: DeepSeek V3.2
+    provider: deepseek
+    context_window: 128000
+    input_price: 0.27
+    output_price: 1.10
+    cached_input_price: 0.028
+    speed_tps: 60
+    benchmarks:
+      swe_bench: 68.0
+    best_for: [budget, coding, open_weights]
+    notes: "China jurisdiction - use local weights for sensitive work"
+    last_verified: 2026-01-29
+
+  - id: qwen3-coder-32b
+    name: Qwen3 Coder 32B
+    provider: alibaba
+    context_window: 131072
+    input_price: 0.00
+    output_price: 0.00
+    speed_tps: 50
+    benchmarks:
+      swe_bench: 58.0
+    best_for: [local, coding, privacy]
+    notes: "Best open-weights coding model for local deployment"
+    last_verified: 2026-01-29
+
+providers:
+  - id: anthropic
+    name: Anthropic
+    api_url: https://console.anthropic.com
+    jurisdiction: US
+    also_available_via: [aws_bedrock, gcp_vertex]
+
+  - id: openai
+    name: OpenAI
+    api_url: https://platform.openai.com
+    jurisdiction: US
+    also_available_via: [azure_openai]
+
+  - id: google
+    name: Google
+    api_url: https://aistudio.google.com
+    jurisdiction: US
+    also_available_via: [gcp_vertex]
+
+  - id: deepseek
+    name: DeepSeek
+    api_url: https://platform.deepseek.com
+    jurisdiction: China
+    notes: "Open weights available for local deployment"
+
+  - id: alibaba
+    name: Alibaba (Qwen)
+    api_url: https://dashscope.aliyuncs.com
+    jurisdiction: China
+    notes: "Open weights available - recommended for local use"
+
+aggregators:
+  - id: openrouter
+    name: OpenRouter
+    website: https://openrouter.ai
+    models: "200+"
+    why_use: "One API key for all providers. Compare models easily. Fallback routing."
+
+  - id: aws_bedrock
+    name: AWS Bedrock
+    website: https://aws.amazon.com/bedrock/
+    models: [claude, llama, mistral, titan]
+    why_use: "Enterprise. AWS billing. Private endpoints."
+
+  - id: azure_openai
+    name: Azure OpenAI
+    website: https://azure.microsoft.com/en-us/products/ai-services/openai-service
+    models: [gpt, dall-e]
+    why_use: "Enterprise. EU regions. Compliance certifications."

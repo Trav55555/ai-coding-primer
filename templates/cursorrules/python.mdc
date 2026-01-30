@@ -1,0 +1,27 @@
+# Python Project Rules
+
+## Tech Stack
+- Python 3.12+
+- [Framework: FastAPI/Django/Flask]
+- uv for package management
+- Ruff for linting, ty for types (or Pyright)
+
+## Commands
+- `uv run [command]` - Run with uv
+- `uv run pytest` - Tests
+- `uv run ruff check .` - Lint
+- `uv run ty check` - Type check (or `pyright`)
+
+## Code Style
+- Type hints on all functions
+- Use Pydantic for data validation
+- Prefer explicit imports over star imports
+- Docstrings for public functions
+
+## Gotchas
+- [Add your project-specific gotchas]
+
+## File Patterns
+- API routes: `app/api/[resource].py`
+- Services: `app/services/[name].py`
+- Models: `app/models/[name].py`
