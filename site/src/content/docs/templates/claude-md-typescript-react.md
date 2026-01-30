@@ -48,8 +48,9 @@ TypeScript + React 18 + Vite + TailwindCSS
 
 1. Copy the template above
 2. Save as `CLAUDE.md`, `AGENTS.md`, or `.cursorrules` in your project root
-3. Replace `[One sentence describing your project]` with your description
-4. Replace the example gotchas with your project's actual gotchas
+3. Review and update the **Tech Stack** to match your project
+4. Replace `[One sentence describing your project]` with your description
+5. Replace the example gotchas with your project's actual gotchas
 
 ## Customization Tips
 

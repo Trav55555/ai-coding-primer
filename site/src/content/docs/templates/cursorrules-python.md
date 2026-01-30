@@ -43,8 +43,9 @@ A minimal `.cursorrules` template for Python projects in Cursor IDE.
 
 1. Copy the template above
 2. Save as `.cursorrules` in your project root
-3. Replace `[Framework]` placeholder
-4. Add your project-specific gotchas
+3. Review and update the **Tech Stack** to match your project
+4. Replace `[Framework]` placeholder
+5. Add your project-specific gotchas
 
 ## Alternative: Poetry/pip
 

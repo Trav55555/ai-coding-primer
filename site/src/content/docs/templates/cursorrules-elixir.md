@@ -45,5 +45,6 @@ A minimal `.cursorrules` template for Elixir projects in Cursor IDE.
 
 1. Copy the template above
 2. Save as `.cursorrules` in your project root
-3. Replace `app` with your application name
-4. Add your project-specific gotchas
+3. Review and update the **Tech Stack** to match your project
+4. Replace `app` with your application name
+5. Add your project-specific gotchas

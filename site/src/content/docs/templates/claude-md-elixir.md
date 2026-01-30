@@ -49,9 +49,10 @@ Elixir 1.17 + Phoenix 1.7 + Ecto + PostgreSQL
 
 1. Copy the template above
 2. Save as `CLAUDE.md` or `AGENTS.md` in your project root
-3. Replace `[One sentence describing your project]` with your description
-4. Replace `app` with your actual application name
-5. Add your project-specific gotchas
+3. Review and update the **Tech Stack** to match your project
+4. Replace `[One sentence describing your project]` with your description
+5. Replace `app` with your actual application name
+6. Add your project-specific gotchas
 
 ## Customization Tips
 

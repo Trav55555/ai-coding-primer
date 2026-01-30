@@ -43,7 +43,7 @@ A minimal `.cursorrules` template for Bun projects in Cursor IDE.
 
 1. Copy the template above
 2. Save as `.cursorrules` in your project root
-3. Adjust framework references as needed
+3. Review and update the **Tech Stack** to match your project
 4. Add your project-specific gotchas
 
 ## Key Bun APIs to Remember
