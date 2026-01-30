@@ -111,7 +111,13 @@ Speed-critical tasks, completions, quick iterations.
 | **GLM 4.7 Flash** | 180 tok/s | $0.40/$2 | Fast + strong reasoning |
 | **Claude 4.5 Haiku** | 150 tok/s | $1/$5 | Fast Claude, good quality |
 | **MiniMax 2.1** | 160 tok/s | $0.30/$1.50 | Budget speed |
-| **DeepSeek V3.2** | 60 tok/s | $0.27/$1.10 | Budget tasks, exploration |
+
+### Budget
+Maximize value when cost is the primary constraint.
+
+| Model | SWE-bench | Price (in/out) | When to Use |
+|-------|-----------|----------------|-------------|
+| **DeepSeek V3.2** | 73% | $0.27/$1.10 | Best quality per dollar |
 
 ### Local Models
 For privacy, offline work, or air-gapped environments. Always an option, but most developers start with hosted APIs.
