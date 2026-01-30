@@ -901,7 +901,7 @@ Rust-based, GPU-accelerated (120fps), open source. **Key features:** Agent Panel
 
 VS Code fork, launched Nov 2025 (public preview, free). **Key features:** Agent Manager, browser automation, terminal control, artifacts system.
 
-**Models:** Gemini 3 Pro (free tier), Claude Sonnet 4.5, GPT-5.2
+**Models:** Gemini 3 Pro/Flash/Deep Think (free tier), Claude Sonnet/Opus 4.5, GPT-OSS-120B (open-source variant, not OpenAI's GPT-5.2)
 
 > **Note:** Agents get real write/execute permissions. Use Secure Mode for untrusted projects.
 
