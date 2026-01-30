@@ -30,11 +30,17 @@
 |----------------|------------|---------|
 | Closest to VS Code | [Cursor](https://cursor.com) | Download from website |
 | Free + open source | [Zed](https://zed.dev) | Download from website |
+| Free + Google account | [Antigravity](https://antigravity.google) | Download from website |
 | Keep your current editor | [Continue.dev](https://continue.dev) | VS Code/JetBrains extension |
 | Terminal + Anthropic | [Claude Code](https://claude.com/code) | `curl -fsSL https://claude.com/install.sh \| sh` |
 | Terminal + OpenAI | [Codex CLI](https://github.com/openai/codex-cli) | `npm install -g @openai/codex` |
 | Terminal + BYOK | [OpenCode](https://github.com/sst/opencode) | `npm install -g opencode` |
 | 100% local | [Continue.dev](https://continue.dev) + [Ollama](https://ollama.com) | Local install |
+
+**Authentication options**: Some tools offer multiple ways to access AI models:
+- **Subscription/OAuth**: Use your existing subscription (Cursor Pro, Claude Pro, ChatGPT Plus) to authenticate without managing API keys
+- **BYOK (Bring Your Own Key)**: Use API keys from providers directly—you pay per token, but have more control
+- **Local models**: Run models on your own hardware with Ollama or LM Studio—no account needed
 
 ### Step 2: Set Up Your Development Environment
 
@@ -174,6 +180,7 @@ Open the AI panel in your tool:
 |------|----------|
 | Cursor | `Cmd+I` / `Ctrl+I` |
 | Zed | `Cmd+Shift+A` / `Ctrl+Shift+A` |
+| Antigravity | `Cmd+I` / `Ctrl+I` |
 | Continue.dev | `Cmd+L` / `Ctrl+L` |
 | Claude Code | Just type in terminal |
 | Codex CLI | Just type in terminal |
