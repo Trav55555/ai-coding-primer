@@ -14,7 +14,8 @@ There are three categories of AI coding tools: **IDEs**, **Extensions**, and **C
 | Easiest setup | [Cursor](https://cursor.com) | VS Code-based, works out of the box |
 | Free + open source | [Zed](https://zed.dev) | Full-featured, fast, $0 |
 | Keep your current editor | [Continue.dev](https://continue.dev) | VS Code/JetBrains extension |
-| Terminal workflow | [Claude Code](https://claude.ai/code) | Anthropic's official CLI |
+| Terminal workflow | [Claude Code](https://claude.ai/code) or [Codex CLI](https://github.com/openai/codex) | Agentic CLI tools |
+| Free terminal | [Gemini CLI](https://github.com/google-gemini/gemini-cli) | Generous free tier, large context |
 | 100% local/private | [Continue.dev](https://continue.dev) + [Ollama](https://ollama.com) | No data leaves your machine |
 | Enterprise compliance | [Cursor Teams](https://cursor.com) | Zero-retention, SOC 2 |
 
@@ -27,6 +28,8 @@ These are complete editors with AI built in.
 | **[Cursor](https://cursor.com)** | Free / $20+ | Easiest start, most polished |
 | **[Zed](https://zed.dev)** | Free | Speed, open source, BYOK |
 | **[Windsurf](https://windsurf.com)** | Free / $15+ | Privacy, EU hosting option |
+| **[Antigravity](https://antigravity.dev)** | Free (preview) | Free Gemini, visual/UI work |
+| **[Kiro](https://kiro.dev)** | Free (preview) | Spec-driven, AWS integration |
 
 ## Extensions (Add to Existing Editor)
 
@@ -36,6 +39,10 @@ Add AI to VS Code, JetBrains, or Neovim.
 |------|-------|----------|
 | **[GitHub Copilot](https://github.com/features/copilot)** | Free / $10+ | Microsoft ecosystem, enterprise |
 | **[Continue.dev](https://continue.dev)** | Free | Open source, local models |
+| **[Supermaven](https://supermaven.com)** | Free / $10+ | Ultra-fast completions |
+| **[Amazon Q](https://aws.amazon.com/q/developer/)** | Free / $19+ | AWS integration, large context |
+| **[Cody](https://sourcegraph.com/cody)** | Free / $9+ | Multi-repo, code search |
+| **[Tabnine](https://tabnine.com)** | Free / $12+ | Self-hosted, air-gapped |
 
 ## CLI Tools (Terminal)
 
@@ -44,8 +51,10 @@ For developers who prefer working in the terminal.
 | Tool | Price | Best For |
 |------|-------|----------|
 | **[Claude Code](https://claude.ai/code)** | Via subscription | Agentic workflows, MCP |
-| **[Aider](https://aider.chat)** | Free (BYOK) | Git integration, voice coding |
-| **[OpenCode](https://opencode.ai)** | Free (BYOK) | Multi-provider, open source |
+| **[Codex CLI](https://github.com/openai/codex)** | Via subscription | Sandbox mode, open source |
+| **[Gemini CLI](https://github.com/google-gemini/gemini-cli)** | Free tier | Large context, multimodal |
+| **[OpenCode](https://github.com/sst/opencode)** | Free (BYOK) | Multi-provider, MCP support |
+| **[Aider](https://aider.chat)** | Free (BYOK) | Git integration, benchmarks |
 
 ## Authentication Options
 
