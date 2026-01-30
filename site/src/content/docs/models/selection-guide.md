@@ -68,17 +68,40 @@ Most tools support multiple models. Easy to switch:
 - Claude Code: N/A (Claude only)
 - Aider: `--model` flag
 
-## Recommendation
+## Model Tiers (Jan 2026)
 
-**Top tier (Jan 2026):** Codex 5.2 and Claude Opus 4.5 are the current leaders for complex development tasks.
+### Heavy Hitters
+For complex architecture, long agentic sessions, and hard problems.
 
-**Best starting point:** Claude Sonnet 4.5 (via Cursor, Zed, or Claude Code) — best balance of quality, speed, and cost.
+| Model | SWE-bench | Price (in/out) | When to Use |
+|-------|-----------|----------------|-------------|
+| **Codex 5.2** | ~81% | $1.75/$14 | Complex agentic, multi-file refactors |
+| **Claude Opus 4.5** | 80.9% | $5/$25 | Deep reasoning, architecture decisions |
 
-Once you understand your usage patterns, optimize:
-- Upgrade to Codex 5.2 or Opus 4.5 for complex agentic work
-- Add Gemini 3 Flash for fast completions
-- Switch to DeepSeek V3.2 for budget tasks
-- Use Qwen3 Coder 32B for sensitive/local code
+### All-Rounders
+Daily drivers for most development work.
+
+| Model | SWE-bench | Price (in/out) | When to Use |
+|-------|-----------|----------------|-------------|
+| **GPT-5.2** | 80.0% | $1.75/$14 | Best value for general coding |
+| **Claude Sonnet 4.5** | 77.2% | $3/$15 | Good balance, strong tool use |
+| **Gemini 3 Pro** | 76.2% | $2/$12 | Large context, visual/UI work |
+
+### Fast & Lightweight
+Speed-critical tasks, completions, quick iterations.
+
+| Model | Speed | Price (in/out) | When to Use |
+|-------|-------|----------------|-------------|
+| **Gemini 3 Flash** | 200 tok/s | $0.50/$3 | Tab completions, quick edits |
+| **DeepSeek V3.2** | 60 tok/s | $0.27/$1.10 | Budget tasks, exploration |
+| **Qwen3 Coder 32B** | Local | Free | Privacy, offline, sensitive code |
+
+### How to Mix
+
+Most developers use 2-3 models:
+1. **Heavy hitter** for complex tasks (Codex 5.2 or Opus 4.5)
+2. **All-rounder** as daily driver (GPT-5.2 or Sonnet 4.5)
+3. **Fast model** for completions (Gemini Flash or local)
 
 ## Sources
 
