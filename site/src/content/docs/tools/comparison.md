@@ -44,7 +44,7 @@ A quick comparison of the major AI coding tools.
 **Cursor** or **Zed** — Both work out of the box with free tiers.
 
 ### Privacy First
-**Continue.dev + Ollama** — 100% local, no data leaves your machine.
+**Continue.dev + Ollama** — 100% local, no data leaves your machine. (Requires 16GB+ RAM, GPU recommended.)
 
 ### Enterprise/Compliance
 **Cursor Teams** or **Windsurf Enterprise** — Zero retention, SOC 2, audit logs.

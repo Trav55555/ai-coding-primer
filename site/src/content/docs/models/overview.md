@@ -97,7 +97,7 @@ Open weight models lag ~6-12 months behind frontier closed models (Claude, GPT).
 | [LM Studio](https://lmstudio.ai) | GUI for local models |
 | [vLLM](https://github.com/vllm-project/vllm) | Production-grade serving |
 
-Pair with [Continue.dev](https://continue.dev) for a fully local AI coding setup.
+Pair with [Continue.dev](https://continue.dev) for a fully local AI coding setup. Note: "free" local models require capable hardware (16GB+ RAM, GPU with 8GB+ VRAM recommended).
 
 ## Next Steps
 

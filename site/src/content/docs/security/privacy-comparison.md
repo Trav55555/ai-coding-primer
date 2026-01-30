@@ -32,7 +32,7 @@ For maximum privacy, use local models:
 | Zed + Ollama | Maximum | 85-90% |
 | OpenCode + Ollama | Maximum | 85-90% |
 
-No data leaves your machine. Trade-off: requires 24GB+ VRAM for best models.
+No data leaves your machine. Trade-off: requires hardware investment (24GB+ VRAM for best models, ~$500-2000+ for capable GPU).
 
 ## Hidden Gotchas
 

@@ -130,6 +130,10 @@ For privacy, offline work, or air-gapped environments. Always an option, but mos
 
 Run with [Ollama](https://ollama.com) or [LM Studio](https://lmstudio.ai). Pair with [Continue.dev](https://continue.dev) for IDE integration.
 
+:::note[Hardware not included]
+"Free" local models require capable hardware. Budget $500-2000+ for a GPU that runs larger models well. Most laptops can only run 8B models acceptably.
+:::
+
 ### How to Mix
 
 Most developers use 2-3 models via OpenRouter or native provider APIs:

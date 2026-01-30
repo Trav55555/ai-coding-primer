@@ -16,7 +16,7 @@ There are three categories of AI coding tools: **IDEs**, **Extensions**, and **C
 | Keep your current editor | [Continue.dev](https://continue.dev) | VS Code/JetBrains extension |
 | Terminal workflow | [Claude Code](https://claude.ai/code) or [Codex CLI](https://github.com/openai/codex) | Agentic CLI tools |
 | Free terminal | [Gemini CLI](https://github.com/google-gemini/gemini-cli) | Generous free tier, large context |
-| 100% local/private | [Continue.dev](https://continue.dev) + [Ollama](https://ollama.com) | No data leaves your machine |
+| 100% local/private | [Continue.dev](https://continue.dev) + [Ollama](https://ollama.com) | No data leaves your machine* |
 | Enterprise compliance | [Cursor Teams](https://cursor.com) | Zero-retention, SOC 2 |
 
 ## IDEs (Full Environments)
@@ -80,7 +80,7 @@ What's your #1 priority?
 │   └─► BYOK flexibility? → OpenCode or Aider (pay only API costs)
 │
 ├─► 100% local / maximum privacy
-│   └─► Continue.dev + Ollama — nothing leaves your machine
+│   └─► Continue.dev + Ollama (needs 16GB+ RAM, GPU recommended)
 │
 ├─► Terminal-first workflow
 │   ├─► Have Claude subscription? → Claude Code
@@ -99,7 +99,7 @@ What's your #1 priority?
 
 **For most developers:** Start with **Cursor** (easiest) or **Zed** (free + fast). Both have free tiers and work out of the box.
 
-**For privacy-conscious:** **Continue.dev + Ollama** gives you 100% local AI coding with no data leaving your machine.
+**For privacy-conscious:** **Continue.dev + Ollama** gives you 100% local AI coding with no data leaving your machine. (*Requires capable hardware—16GB+ RAM, ideally GPU with 8GB+ VRAM.*)
 
 **For teams:** **Cursor Teams** or **GitHub Copilot Business** offer enterprise features and compliance guarantees.
 
