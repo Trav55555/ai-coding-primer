@@ -40,4 +40,4 @@ This guide is **opinionated**. We make recommendations rather than listing every
 
 Found something outdated? See an error? This guide is open source.
 
-[Edit this page on GitHub](https://github.com/yourusername/ai-coding-primer) or [open an issue](https://github.com/yourusername/ai-coding-primer/issues).
+[Edit this page on GitHub](https://github.com/Trav55555/ai-coding-primer) or [open an issue](https://github.com/Trav55555/ai-coding-primer/issues).
