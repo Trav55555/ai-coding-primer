@@ -11,7 +11,7 @@ Before diving deeper, let's establish shared vocabulary.
 
 | Term | What It Means |
 |------|---------------|
-| **Model** | The AI itself (e.g., GPT-4o, Claude 3.5 Sonnet). Determines capability and quality |
+| **Model** | The AI itself (e.g., GPT-5.2, Claude Sonnet 4.5). Determines capability and quality |
 | **Provider** | Company hosting the model's API (e.g., OpenAI, Anthropic). Determines pricing and terms |
 | **Agentic** | AI that acts autonomously: reads files, runs commands, iterates on errors |
 | **Context Window** | How much text the AI can "see" at once (measured in tokens). More ≠ better |
@@ -55,8 +55,8 @@ Before diving deeper, let's establish shared vocabulary.
 **Providers** determine terms — pricing, privacy policy, legal jurisdiction.
 
 The same model can be available through multiple providers:
-- Claude 3.5 Sonnet is available via Anthropic, AWS Bedrock, and Google Vertex
-- GPT-4o is available via OpenAI and Azure OpenAI
+- Claude Sonnet 4.5 is available via Anthropic, AWS Bedrock, and Google Vertex
+- GPT-5.2 is available via OpenAI and Azure OpenAI
 
 This matters for enterprise (data residency, compliance) and cost optimization.
 
