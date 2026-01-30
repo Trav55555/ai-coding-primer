@@ -28,10 +28,10 @@
 
 | If you want... | Start with | Install |
 |----------------|------------|---------|
-| Easiest setup (VS Code-like) | [Cursor](https://cursor.com) | Download from website |
+| Closest to VS Code | [Cursor](https://cursor.com) | Download from website |
 | Free + open source | [Zed](https://zed.dev) | Download from website |
 | Keep your current editor | [Continue.dev](https://continue.dev) | VS Code/JetBrains extension |
-| Terminal-based | [Claude Code](https://claude.com/code) | `curl -fsSL https://claude.com/install.sh \| sh` |
+| Terminal + Anthropic | [Claude Code](https://claude.com/code) | `curl -fsSL https://claude.com/install.sh \| sh` |
 | Terminal + OpenAI | [Codex CLI](https://github.com/openai/codex-cli) | `npm install -g @openai/codex` |
 | Terminal + BYOK | [OpenCode](https://github.com/sst/opencode) | `npm install -g opencode` |
 | 100% local | [Continue.dev](https://continue.dev) + [Ollama](https://ollama.com) | Local install |
