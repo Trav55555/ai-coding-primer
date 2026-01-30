@@ -27,6 +27,10 @@ Install the LSP for your language:
 | Rust | rust-analyzer | `rustup component add rust-analyzer` |
 | C# | OmniSharp | Included with C# extension |
 
+:::note[Language-Specific IDEs]
+If you use IntelliJ, PyCharm, GoLand, or other JetBrains IDEs, language intelligence is built-in — no LSP setup needed. Same for Visual Studio (not VS Code) with C#/.NET.
+:::
+
 ## Linter Setup
 
 | Language | Linter | Config File |
