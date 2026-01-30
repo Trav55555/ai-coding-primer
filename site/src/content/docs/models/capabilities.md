@@ -18,7 +18,6 @@ Model capabilities for coding tasks, updated January 2026.
 | **Claude Sonnet 4.5** | 77.0% | Agentic coding, balanced |
 | **Gemini 3 Pro** | 76.2% | Long context |
 | **Grok 4.1** | 72.0% | 2M context |
-| **o3** | 71.7% | Complex reasoning |
 | **DeepSeek V3.2** | 68.0% | Budget coding |
 | **Qwen3 Coder 32B** | 58.0% | Local/private |
 
@@ -47,7 +46,6 @@ Model capabilities for coding tasks, updated January 2026.
 | Claude Sonnet 4.5 | 80 | Fast |
 | DeepSeek V3.2 | 60 | Moderate |
 | Claude Opus 4.5 | 45 | Moderate |
-| o3 | 30 | Slow (thinking) |
 
 ## Recommendations
 
@@ -55,7 +53,6 @@ Model capabilities for coding tasks, updated January 2026.
 |----------|------------|-----|
 | **Agentic coding** | Claude Sonnet 4.5 | Best at multi-step, tool use |
 | **Complex architecture** | Claude Opus 4.5 | Deepest reasoning |
-| **Complex reasoning** | o3 | Deep thinking for hard problems |
 | **Visual/UI tasks** | Gemini 3 Pro | Best multimodal, image understanding |
 | **Fast completions** | Gemini 3 Flash | Speed + quality |
 | **Long context** | Grok 4.1 (2M), Gemini 3 (1M) | Entire codebase |

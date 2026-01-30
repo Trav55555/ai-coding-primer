@@ -35,7 +35,6 @@ Pricing per million tokens, updated January 2026.
 
 ### Premium (> $15/M output)
 - Claude Opus 4.5: $25.00/M output
-- o3: $60.00/M output (reasoning intensive)
 
 ## Real-World Costs
 

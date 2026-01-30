@@ -51,7 +51,6 @@ Works with:
 
 - GPT-5.2
 - Codex 5 (400k context, code-optimized)
-- o3 (reasoning)
 
 ## Getting Started
 
@@ -101,4 +100,3 @@ Codex CLI with Codex 5 achieves 74.9% on SWE-bench verified, one of the highest 
 - Use Codex 5 for coding tasks (optimized)
 - Enable sandbox for untrusted projects
 - ChatGPT subscription works — no separate API key needed
-- Use o3 for complex reasoning tasks

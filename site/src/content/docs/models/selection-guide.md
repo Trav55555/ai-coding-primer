@@ -15,7 +15,7 @@ Quick guide to choosing the right model.
 | **Complex architecture** | Claude Opus 4.5 | Deepest reasoning |
 | **Visual/UI work** | Gemini 3 Pro | Best multimodal, understands screenshots/designs |
 | **Quick completions** | Gemini 3 Flash | Fast, good quality |
-| **Complex debugging** | o3 | Deep reasoning |
+| **Complex debugging** | Claude Opus 4.5 | Deep reasoning |
 | **Large codebase** | Grok 4.1, Gemini 3 Pro | 2M/1M context |
 | **Code-optimized** | Codex 5 | Built for code, 400k context |
 | **Budget projects** | DeepSeek V3.2 | Best value |
