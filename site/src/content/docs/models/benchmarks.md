@@ -124,7 +124,7 @@ These test *how* models behave, not just what they can do:
 
 **Why interesting:** Tests model alignment and tendency to "take initiative" on ethical issues. Relevant for autonomous agents with real-world permissions.
 
-**Finding:** Claude 4 models are significantly more likely to report issues to authorities than other models.
+**Finding:** Grok leads, followed by Claude models. Both are significantly more likely to report issues to authorities than other models.
 
 | Link | [snitchbench.com](https://snitchbench.com) |
 
