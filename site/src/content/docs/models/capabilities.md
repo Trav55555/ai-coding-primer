@@ -64,11 +64,9 @@ Advertised context ≠ practical context. Models can technically accept large in
 | **Budget** | DeepSeek V3.2 | 90% quality at 10% cost |
 | **Local/private** | Qwen3 Coder 32B | Best open-weights coding |
 
-## Benchmark Resources
+## Learn More
 
-- [SWE-bench](https://swebench.com) — Real issue resolution
-- [Aider Leaderboard](https://aider.chat/docs/leaderboards) — Code editing
-- [Artificial Analysis](https://artificialanalysis.ai) — Speed, price, quality
-- [Chatbot Arena](https://lmarena.ai) — Human preference
+- [Benchmarks That Matter](/ai-coding-primer/models/benchmarks/) — What each benchmark tests and why
+- [Selection Guide](/ai-coding-primer/models/selection-guide/) — How to choose the right model
 
 *Last verified: January 2026*
