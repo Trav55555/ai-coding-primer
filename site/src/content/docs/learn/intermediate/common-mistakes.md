@@ -98,6 +98,30 @@ Task 3: Refactor the database layer
 
 ---
 
+## Mistake 8: Lazy Testing
+
+**The mistake:** Having AI write both the code AND the tests, then assuming passing tests = working code.
+
+**Why it fails:** AI-generated tests often:
+- Test the implementation, not the requirements (tautological tests)
+- Miss edge cases the AI also missed in the code
+- Assert what the code *does*, not what it *should* do
+- Have the same blind spots as the code they're testing
+
+> "If the same AI writes the code and the tests, and neither understands the requirements correctly, you have two artifacts that agree with each other but not with reality."
+
+**The fix:**
+- Write tests FIRST (or have AI write them), then commit before writing code
+- Review AI-generated tests as critically as AI-generated code
+- Ask: "Would this test fail if the code had [specific bug]?"
+- Tests should encode YOUR understanding of requirements, not the AI's
+
+:::caution[The Circular Validation Trap]
+AI writes code → AI writes tests → Tests pass → You feel confident. But you've only validated that the AI is consistent with itself, not that it solved your actual problem.
+:::
+
+---
+
 ## When to Clear Context
 
 - Switching to an unrelated task
@@ -116,6 +140,7 @@ Task 3: Refactor the database layer
 | Append trap | Repeated "fix it" | Clear and rewrite |
 | Kitchen sink | Mixing tasks | Clear between tasks |
 | Blind trust | No review | Always read diffs |
+| Lazy testing | AI writes code + tests | Write tests first, review critically |
 
 ## Next Steps
 
