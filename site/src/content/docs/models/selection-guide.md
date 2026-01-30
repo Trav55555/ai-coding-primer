@@ -97,6 +97,9 @@ Speed-critical tasks, completions, quick iterations.
 | Model | Speed | Price (in/out) | When to Use |
 |-------|-------|----------------|-------------|
 | **Gemini 3 Flash** | 200 tok/s | $0.50/$3 | Tab completions, quick edits |
+| **GLM 4.7 Flash** | 180 tok/s | $0.40/$2 | Fast + strong reasoning |
+| **Claude 4.5 Haiku** | 150 tok/s | $1/$5 | Fast Claude, good quality |
+| **MiniMax 2.1** | 160 tok/s | $0.30/$1.50 | Budget speed |
 | **DeepSeek V3.2** | 60 tok/s | $0.27/$1.10 | Budget tasks, exploration |
 
 ### Local Models
