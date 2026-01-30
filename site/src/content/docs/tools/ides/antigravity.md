@@ -51,7 +51,7 @@ Antigravity is in public preview (launched Nov 2025). Pricing may change.
 - GPT-OSS-120B (open-source variant)
 
 :::tip[Gemini Advantage]
-Gemini 3 Pro has 1M token context and excels at visual/UI work. Free tier includes generous Gemini access.
+Gemini 3 Pro offers large context (up to 1M tokens, though practical limits are lower) and excels at visual/UI work. Free tier includes generous Gemini access.
 :::
 
 ## Getting Started
@@ -80,7 +80,7 @@ Agents get real write/execute permissions. Use Secure Mode for untrusted project
 
 ## Tips
 
-- Use Gemini 3 Pro for large codebase context (1M tokens)
+- Use Gemini 3 Pro for larger context needs
 - Enable Secure Mode for cloned/untrusted repos
 - Leverage artifacts for UI prototyping
 - Free tier is generous — good for learning

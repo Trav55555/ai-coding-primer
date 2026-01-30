@@ -25,7 +25,7 @@ A quick comparison of the major AI coding tools.
 | [Continue.dev](/ai-coding-primer/tools/extensions/continue-dev/) | Yes | Yes (full) | Local models, privacy |
 | [Amazon Q](/ai-coding-primer/tools/extensions/amazon-q/) | No | Yes | AWS integration, 200k context |
 | [Tabnine](/ai-coding-primer/tools/extensions/tabnine/) | No | Yes | Self-hosted, air-gapped |
-| [Supermaven](/ai-coding-primer/tools/extensions/supermaven/) | No | Yes | Ultra-fast, 1M context |
+| [Supermaven](/ai-coding-primer/tools/extensions/supermaven/) | No | Yes | Ultra-fast completions |
 | [Cody](/ai-coding-primer/tools/extensions/cody/) | Partial | Yes | Code graph, multi-repo |
 
 ## CLI Tools
@@ -36,7 +36,7 @@ A quick comparison of the major AI coding tools.
 | [Codex CLI](/ai-coding-primer/tools/cli/codex-cli/) | Yes | Via subscription | Sandbox mode, ChatGPT integration |
 | [OpenCode](/ai-coding-primer/tools/cli/opencode/) | Yes | Yes (BYOK) | Full BYOK, MCP support |
 | [Aider](/ai-coding-primer/tools/cli/aider/) | Yes | Yes (BYOK) | Git-native, benchmarks |
-| [Gemini CLI](/ai-coding-primer/tools/cli/gemini-cli/) | Yes | Yes (generous) | Free tier, 1M context |
+| [Gemini CLI](/ai-coding-primer/tools/cli/gemini-cli/) | Yes | Yes (generous) | Free tier, large context |
 
 ## By Use Case
 

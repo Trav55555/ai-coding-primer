@@ -16,7 +16,7 @@ Quick guide to choosing the right model.
 | **Visual/UI work** | Gemini 3 Pro | Best multimodal, understands screenshots/designs |
 | **Quick completions** | Gemini 3 Flash | Fast, good quality |
 | **Complex debugging** | Claude Opus 4.5 | Deep reasoning |
-| **Large codebase** | Grok 4.1, Gemini 3 Pro | 2M/1M context |
+| **Large codebase** | Grok 4.1, Gemini 3 Pro | Larger windows (with caveats) |
 | **Code-optimized** | Codex 5 | Built for code, 400k context |
 | **Budget projects** | DeepSeek V3.2 | Best value |
 | **Privacy/local** | Qwen3 Coder 32B | Best open weights |

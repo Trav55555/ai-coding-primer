@@ -26,14 +26,18 @@ Model capabilities for coding tasks, updated January 2026.
 
 ## Context Windows
 
-| Model | Context | Practical Use |
-|-------|---------|---------------|
-| Grok 4.1 | 2M tokens | Entire codebase |
-| Gemini 3 Pro/Flash | 1M tokens | Large projects |
-| Codex 5 | 400k tokens | ~130 files |
-| GPT-5.2 | 256k tokens | ~80 files |
-| Claude Sonnet 4.5 | 200k tokens | ~65 files |
-| DeepSeek V3.2 | 128k tokens | ~40 files |
+| Model | Advertised | Practical Limit | Notes |
+|-------|------------|-----------------|-------|
+| Grok 4.1 | 2M tokens | ~500k reliable | Quality degrades at scale |
+| Gemini 3 Pro/Flash | 1M tokens | ~200k reliable | 128k default on free tier |
+| Codex 5 | 400k tokens | ~300k reliable | |
+| GPT-5.2 | 256k tokens | ~150k reliable | |
+| Claude Sonnet 4.5 | 200k tokens | ~80k reliable | 40% rule applies |
+| DeepSeek V3.2 | 128k tokens | ~80k reliable | |
+
+:::note[Context Reality]
+Advertised context ≠ practical context. Models can technically accept large inputs, but retrieval quality and coherence degrade well before the limit. The "40% rule" suggests staying under 40% of the window for reliable results.
+:::
 
 ## Speed
 
@@ -55,7 +59,7 @@ Model capabilities for coding tasks, updated January 2026.
 | **Complex architecture** | Claude Opus 4.5 | Deepest reasoning |
 | **Visual/UI tasks** | Gemini 3 Pro | Best multimodal, image understanding |
 | **Fast completions** | Gemini 3 Flash | Speed + quality |
-| **Long context** | Grok 4.1 (2M), Gemini 3 (1M) | Entire codebase |
+| **Large context** | Grok 4.1, Gemini 3 Pro | Larger projects (with caveats) |
 | **Code-optimized** | Codex 5 | Built for code, 400k context |
 | **Budget** | DeepSeek V3.2 | 90% quality at 10% cost |
 | **Local/private** | Qwen3 Coder 32B | Best open-weights coding |
