@@ -7,7 +7,7 @@ export default defineConfig({
 	base: '/ai-coding-primer',
 	integrations: [
 		starlight({
-			title: 'AI Coding Primer',
+			title: 'Augmented Coding Primer',
 			description: 'From your first prompt to production: AI-integrated IDEs, terminal tools, and workflows.',
 			social: [
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/Trav55555/ai-coding-primer' },

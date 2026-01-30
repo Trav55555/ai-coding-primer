@@ -1,4 +1,4 @@
-# AI Coding Primer
+# Augmented Coding Primer
 
 **[Live Site →](https://trav55555.github.io/ai-coding-primer/)**
 
