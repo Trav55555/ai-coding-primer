@@ -14,6 +14,7 @@ Model capabilities for coding tasks, updated January 2026.
 | **Claude Opus 4.5** | 80.9% | Complex agentic, architecture |
 | **GPT-5.2** | 80.0% | General coding |
 | **Codex 5** | 78.0% | Code-optimized tasks |
+| **Codex 5.2** | TBD | Early reports of strong agentic performance |
 | **Gemini 3 Flash** | 78.0% | Speed + quality |
 | **Claude Sonnet 4.5** | 77.0% | Agentic coding, balanced |
 | **Gemini 3 Pro** | 76.2% | Long context |
@@ -23,6 +24,10 @@ Model capabilities for coding tasks, updated January 2026.
 
 **SWE-bench**: Real GitHub issue resolution (higher = better)  
 **Aider Polyglot**: Multi-language code editing benchmark
+
+:::tip[Watch: Codex 5.2]
+Early reports from developers suggest Codex 5.2 delivers strong agentic coding performance. Official benchmarks pending, but worth testing if you have OpenAI API access.
+:::
 
 ## Context Windows
 
