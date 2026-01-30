@@ -34,7 +34,8 @@ The same model can be available through multiple providers:
 |-------|-----------------|-------------------|
 | Claude Sonnet 4.5 | Anthropic | AWS Bedrock, Google Vertex |
 | GPT-5.2 | OpenAI | Azure OpenAI |
-| Gemini 3 Pro | Google | Vertex AI |
+| Llama 4 | Meta (weights only) | AWS Bedrock, Azure, Together AI |
+| Mistral Large | Mistral | AWS Bedrock, Azure, Google Vertex |
 
 ## Why This Matters
 
@@ -51,15 +52,15 @@ Different providers have different data policies:
 - Direct providers: Standard pricing
 - Aggregators like OpenRouter: Sometimes cheaper, fallback routing
 
-## Aggregators
+## Aggregators & Cloud Platforms
 
-One API key for multiple providers:
-
-| Aggregator | Models | Why Use It |
-|------------|--------|------------|
-| **OpenRouter** | 200+ | Compare easily, fallback routing |
-| **AWS Bedrock** | Claude, Llama, Mistral | Enterprise, private endpoints |
-| **Azure OpenAI** | GPT, DALL-E | EU regions, compliance |
+| Platform | Type | Models | Why Use It |
+|----------|------|--------|------------|
+| **OpenRouter** | Aggregator | 200+ | One key for all models, fallback routing |
+| **Together AI** | Aggregator | 100+ | Open models, fine-tuning |
+| **AWS Bedrock** | Cloud | Claude, Llama, Mistral | Enterprise, VPC integration |
+| **Azure OpenAI** | Cloud | GPT, DALL-E | EU regions, compliance |
+| **Google Vertex** | Cloud | Gemini, Claude | GCP integration |
 
 ## Open Weight Models
 
