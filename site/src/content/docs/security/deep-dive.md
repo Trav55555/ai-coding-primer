@@ -25,7 +25,7 @@ When you use AI coding tools, they typically send:
 |--------------|-----------------|------------|
 | **US** | CLOUD Act, FISA 702 | Government can compel disclosure |
 | **EU** | GDPR | Stronger user protections |
-| **China** | PIPL, Cybersecurity Law | Potential government access |
+| **China** | PIPL, Cybersecurity Law | Data localization requirements |
 
 ### US CLOUD Act
 Allows US government to compel disclosure of data stored by US companies **anywhere globally**, potentially without user notification.

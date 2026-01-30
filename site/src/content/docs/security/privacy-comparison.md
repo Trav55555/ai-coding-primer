@@ -63,7 +63,7 @@ Any tool is fine. Enable privacy mode if available.
 |----------|-------|
 | **US** | CLOUD Act, FISA 702 |
 | **EU** | Generally stricter protections |
-| **China** | PIPL, potential government access |
+| **China** | PIPL, data localization requirements |
 
 For EU companies: Consider Schrems II implications with US tools.
 
