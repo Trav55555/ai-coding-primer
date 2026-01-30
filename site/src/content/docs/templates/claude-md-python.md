@@ -47,7 +47,7 @@ Python 3.12 + FastAPI + SQLAlchemy + Pydantic
 ## Usage
 
 1. Copy the template above
-2. Save as `CLAUDE.md` in your project root
+2. Save as `CLAUDE.md` or `AGENTS.md` in your project root
 3. Replace `[One sentence describing your project]` with your description
 4. Replace the example gotchas with your project's actual gotchas
 5. Adjust commands if you use pip/poetry instead of uv

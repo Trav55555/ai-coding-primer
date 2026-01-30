@@ -46,7 +46,7 @@ A minimal CLAUDE.md template for C#/.NET projects using ASP.NET Core and Entity 
 ## Usage
 
 1. Copy the template above
-2. Save as `CLAUDE.md` in your project root
+2. Save as `CLAUDE.md` or `AGENTS.md` in your project root
 3. Replace `[One sentence describing your project]` with your description
 4. Add your project-specific gotchas
 
