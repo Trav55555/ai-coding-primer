@@ -1,13 +1,13 @@
 # AI Coding Tools Primer (January 2026)
 
-*From your first prompt to enterprise deployment: AI-integrated IDEs, terminal tools, and best practices.*
+*From your first prompt to enterprise deployment: AI-integrated IDEs, terminal tools, and workflows.*
 
 ## Quick Navigation
 
 | Category | Sections |
 |----------|----------|
 | **Getting Started** | [What is Agentic Coding?](#what-is-agentic-coding), [Your First 5 Minutes](#your-first-5-minutes), [Core Concepts](#core-concepts) |
-| **Working Effectively** | [Best Practices](#best-practices-for-agentic-coding), [Common Mistakes](#common-mistakes-and-how-to-avoid-them), [When It's Not Working](#when-its-not-working), [Practical Examples](#practical-examples) |
+| **Working Effectively** | [Effective Patterns](#effective-patterns-for-agentic-coding), [Common Mistakes](#common-mistakes-and-how-to-avoid-them), [When It's Not Working](#when-its-not-working), [Practical Examples](#practical-examples) |
 | **Tools** | [Cursor](#cursor), [Zed](#zed), [Antigravity](#antigravity-google), [Kiro](#kiro-aws), [Copilot](#github-copilot), [Windsurf](#codeiumwindsurf), [Continue.dev](#continuedev), [Amazon Q](#amazon-q-developer), [Claude Code](#claude-code), [OpenCode](#opencode), [Gemini CLI](#gemini-cli), [Codex CLI](#openai-codex-cli), [Kimi](#kimi-k25-cli) |
 | **Models** | [Foundation Models](#foundation-models-january-2026), [Models vs. Providers](#models-vs-providers), [Capabilities](#capabilities-matrix), [API Pricing](#api-pricing-per-million-tokens) |
 | **Privacy & Security** | [Comparison Matrix](#quick-comparison-matrix), [Security Recs](#security-recommendations), [Deep Dive](#privacy-deep-dive) |
@@ -38,7 +38,7 @@
 
 ### Step 2: Set Up Your Development Environment
 
-AI agents work best when they get immediate feedback. Before you start prompting, ensure your project has:
+AI agents perform better with immediate feedback. Before you start prompting, ensure your project has:
 
 **Language Server (LSP)** — Provides real-time type checking, error detection, go-to-definition.
 
@@ -211,7 +211,7 @@ Look at this codebase and explain:
 
 ---
 
-## Best Practices for Agentic Coding
+## Effective Patterns for Agentic Coding
 
 ### 1. Close the Loop
 
@@ -714,7 +714,7 @@ Available with ChatGPT Plus/Pro/Business/Enterprise. 74.9% SWE-bench.
 
 <https://kimi.com> | <https://huggingface.co/moonshotai/Kimi-K2.5>
 
-> **Jurisdiction Warning:** Moonshot AI is **China-based**, cited for excessive data collection. **Not recommended for sensitive use** — use open weights locally instead.
+> **Jurisdiction Note:** Moonshot AI is China-based. Open weights available for local deployment.
 
 256k context, 1T params (32B active). Strong frontend code generation.
 
@@ -827,7 +827,7 @@ Available with ChatGPT Plus/Pro/Business/Enterprise. 74.9% SWE-bench.
 
 **Cost Tiers:**
 
-- **Budget**: DeepSeek-V3.2, MiniMax M2.1, GLM-4.7 FlashX, Grok Fast — best value
+- **Budget**: DeepSeek-V3.2, MiniMax M2.1, GLM-4.7 FlashX, Grok Fast — lowest cost
 - **Balanced**: GPT-5.2, Codex 5, Gemini Pro/Flash, Claude Sonnet, Kimi K2.5 — quality/cost sweet spot
 - **Premium**: Claude Opus — maximum capability, agentic workflows
 
@@ -848,15 +848,15 @@ Available with ChatGPT Plus/Pro/Business/Enterprise. 74.9% SWE-bench.
 
 ## Security Recommendations
 
-*Opinionated guidance for privacy-conscious developers who need cloud-based tools.*
+*Guidance for privacy-conscious developers who need cloud-based tools.*
 
 ### Best Cloud Options (Non-Self-Hosted)
 
 For developers who can't or don't want to run local models but still care about privacy:
 
-| Rank | Tool | Price | Why It's Recommended |
+| Rank | Tool | Price | Notes |
 |------|------|-------|----------------------|
-| **1** | **Cursor Teams/Enterprise** | $40/user/mo | True zero-retention, SOC 2, org-wide privacy enforcement, best AI quality |
+| **1** | **Cursor Teams/Enterprise** | $40/user/mo | True zero-retention, SOC 2, org-wide privacy enforcement |
 | **2** | **Windsurf EU Cloud** | $30/user/mo | EU data residency, FedRAMP available, zero-data-retention default |
 | **3** | **GitHub Copilot Business** | $19/user/mo | No training, IP indemnity, Microsoft security backing |
 | **4** | **Zed Pro + BYOK** | $10/mo + API | Open source client, auditable, your provider's terms apply |
@@ -875,7 +875,7 @@ For developers who can't or don't want to run local models but still care about 
 | **US Government/FedRAMP** | Windsurf FedRAMP | AWS GovCloud |
 | **Budget enterprise** | Copilot Business ($19) | Amazon Q Pro ($19) |
 
-### What to Avoid for Sensitive Work
+### Privacy Considerations by Tool
 
 | Tool/Tier | Issue | Severity |
 |-----------|-------|----------|
@@ -982,7 +982,7 @@ privacy)    terms)      caveat)     retention)
 
 ## Privacy Deep Dive
 
-*Critical analysis for security-conscious enterprises.*
+*Detailed analysis for security-conscious enterprises.*
 
 ### Jurisdiction Risk Matrix
 
