@@ -84,6 +84,7 @@ What's your #1 priority?
 │
 ├─► Terminal-first workflow
 │   ├─► Have Claude subscription? → Claude Code
+│   ├─► Have OpenAI subscription? → Codex CLI
 │   ├─► Want free tier? → Gemini CLI
 │   └─► Want BYOK flexibility? → OpenCode or Aider
 │
