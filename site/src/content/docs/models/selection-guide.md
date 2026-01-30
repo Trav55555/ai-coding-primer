@@ -135,7 +135,9 @@ Run with [Ollama](https://ollama.com) or [LM Studio](https://lmstudio.ai). Pair 
 Most developers use 2-3 models via OpenRouter or native provider APIs:
 1. **Heavy hitter** for complex tasks (Codex 5.2 or Opus 4.5)
 2. **All-rounder** as daily driver (GPT-5.2 or Sonnet 4.5)
-3. **Fast model** for completions (Gemini Flash or DeepSeek)
+3. **Fast model** for completions (Gemini Flash or Haiku)
+
+Swap the all-rounder for **DeepSeek V3.2** if budget is tight — 73% SWE-bench at 1/10th the cost.
 
 ## Sources
 
