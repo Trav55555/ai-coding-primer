@@ -68,6 +68,7 @@ export default defineConfig({
 					items: [
 						{ label: 'Models vs Providers', slug: 'models/overview' },
 						{ label: 'Capabilities Matrix', slug: 'models/capabilities' },
+						{ label: 'Benchmarks', slug: 'models/benchmarks' },
 						{ label: 'Pricing Guide', slug: 'models/pricing' },
 						{ label: 'Selection Guide', slug: 'models/selection-guide' },
 					],
