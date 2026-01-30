@@ -76,7 +76,7 @@ cd your-project
 opencode
 
 # Or with specific provider
-opencode --provider anthropic --model claude-3-5-sonnet
+opencode --provider anthropic --model claude-sonnet-4-5
 ```
 
 ## Configuration
@@ -86,7 +86,7 @@ Create `opencode.config.json`:
 ```json
 {
   "provider": "anthropic",
-  "model": "claude-3-5-sonnet-20241022",
+  "model": "claude-sonnet-4-5-20250514",
   "mcpServers": {
     "filesystem": {
       "command": "npx",

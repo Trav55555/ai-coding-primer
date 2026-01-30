@@ -62,7 +62,7 @@ These benchmarks best predict real-world coding performance:
 **Current scores (Jan 2026):**
 - Claude Opus 4.5: 89.4%
 - GPT-5 (high): 88.0%
-- Gemini 2.5 Pro: 82.2%
+- Gemini 3 Pro: 82.2%
 
 | Link | [aider.chat/docs/leaderboards](https://aider.chat/docs/leaderboards/) |
 

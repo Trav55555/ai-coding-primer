@@ -98,7 +98,7 @@ Create `.aider.conf.yml` for project settings:
 
 ```yaml
 # .aider.conf.yml
-model: claude-3-5-sonnet-20241022
+model: claude-sonnet-4-5-20250514
 auto-commits: true
 gitignore: true
 

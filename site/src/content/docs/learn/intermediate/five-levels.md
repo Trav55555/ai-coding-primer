@@ -5,7 +5,7 @@ sidebar:
   order: 2
 ---
 
-This model is adapted from Dan Shapiro's framework (January 2025), inspired by the levels of autonomous driving.
+This model is adapted from Dan Shapiro's framework (January 2026), inspired by the levels of autonomous driving.
 
 ## The Levels
 
