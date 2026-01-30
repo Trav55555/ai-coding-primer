@@ -18,6 +18,16 @@ From your first prompt to production: AI-integrated IDEs, terminal tools, and wo
 | [Security Risks](https://trav55555.github.io/ai-coding-primer/security/risks/) | Prompt injection, supply chain attacks |
 | [Templates](https://trav55555.github.io/ai-coding-primer/templates/) | CLAUDE.md and .cursorrules templates |
 
+### Terminal Tools
+
+| Tool | Description |
+|------|-------------|
+| [Codex CLI](https://trav55555.github.io/ai-coding-primer/tools/cli/codex-cli/) | OpenAI's open-source agent with sandbox mode |
+| [OpenCode](https://trav55555.github.io/ai-coding-primer/tools/cli/opencode/) | BYOK terminal agent, full MCP support |
+| [Claude Code](https://trav55555.github.io/ai-coding-primer/tools/cli/claude-code/) | Anthropic's official agentic CLI |
+| [Aider](https://trav55555.github.io/ai-coding-primer/tools/cli/aider/) | Open-source, git-native pair programmer |
+| [Gemini CLI](https://trav55555.github.io/ai-coding-primer/tools/cli/gemini-cli/) | Free tier, 1M context, multimodal |
+
 ## Local Development
 
 ```bash
