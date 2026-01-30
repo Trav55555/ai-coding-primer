@@ -16,6 +16,8 @@ For Claude Code, Zed, Continue.dev, and tools that read `CLAUDE.md`:
 | [Node.js/Express](/ai-coding-primer/templates/claude-md-nodejs/) | 34 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/claude-md/nodejs.md) |
 | [Python/FastAPI](/ai-coding-primer/templates/claude-md-python/) | 33 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/claude-md/python.md) |
 | [TypeScript/React](/ai-coding-primer/templates/claude-md-typescript-react/) | 33 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/claude-md/typescript-react.md) |
+| [Next.js](/ai-coding-primer/templates/claude-md-nextjs/) | 27 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/claude-md/nextjs.md) |
+| [C#/.NET](/ai-coding-primer/templates/claude-md-csharp/) | 28 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/claude-md/csharp.md) |
 | [Go](/ai-coding-primer/templates/claude-md-go/) | 34 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/claude-md/go.md) |
 | [Rust](/ai-coding-primer/templates/claude-md-rust/) | 34 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/claude-md/rust.md) |
 
@@ -28,6 +30,8 @@ For Cursor IDE (save as `.cursorrules` in project root):
 | [TypeScript](/ai-coding-primer/templates/cursorrules-typescript/) | 27 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/cursorrules/typescript.mdc) |
 | [Python](/ai-coding-primer/templates/cursorrules-python/) | 28 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/cursorrules/python.mdc) |
 | [Node.js](/ai-coding-primer/templates/cursorrules-nodejs/) | 27 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/cursorrules/nodejs.mdc) |
+| [Next.js](/ai-coding-primer/templates/cursorrules-nextjs/) | 26 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/cursorrules/nextjs.mdc) |
+| [C#/.NET](/ai-coding-primer/templates/cursorrules-csharp/) | 27 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/cursorrules/csharp.mdc) |
 | [Go](/ai-coding-primer/templates/cursorrules-go/) | 27 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/cursorrules/go.mdc) |
 | [Rust](/ai-coding-primer/templates/cursorrules-rust/) | 27 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/cursorrules/rust.mdc) |
 
