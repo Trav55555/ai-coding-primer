@@ -17,7 +17,7 @@ There are three categories of AI coding tools: **IDEs**, **Extensions**, and **C
 | Terminal workflow | [Claude Code](https://claude.ai/code) or [Codex CLI](https://github.com/openai/codex) | Agentic CLI tools |
 | Free terminal | [Gemini CLI](https://github.com/google-gemini/gemini-cli) | Generous free tier, large context |
 | 100% local/private | [Continue.dev](https://continue.dev) + [Ollama](https://ollama.com) | No data leaves your machine* |
-| Enterprise compliance | [Cursor Teams](https://cursor.com) | Zero-retention, SOC 2 |
+| Enterprise compliance | [GitHub Copilot Business](https://github.com/features/copilot) | IP indemnity, SOC 2, SSO |
 
 ## IDEs (Full Environments)
 
@@ -93,7 +93,11 @@ What's your #1 priority?
 │   └─► JetBrains → Continue.dev
 │
 └─► Enterprise / compliance requirements
-    └─► Cursor Teams, GitHub Copilot Business, or Windsurf Enterprise
+    ├─► Need IP indemnity? → GitHub Copilot Business
+    ├─► Best UX + compliance? → Cursor Teams
+    ├─► EU data residency? → Windsurf Enterprise
+    ├─► Air-gapped / on-prem? → Tabnine Enterprise
+    └─► Large monorepos? → Cody Enterprise
 ```
 
 ## Our Recommendation
@@ -102,7 +106,7 @@ What's your #1 priority?
 
 **For privacy-conscious:** **Continue.dev + Ollama** gives you 100% local AI coding with no data leaving your machine. (*Requires capable hardware—16GB+ RAM, ideally GPU with 8GB+ VRAM.*)
 
-**For teams:** **Cursor Teams** or **GitHub Copilot Business** offer enterprise features and compliance guarantees.
+**For teams:** **GitHub Copilot Business** (IP indemnity), **Cursor Teams** (best UX), or **Windsurf Enterprise** (EU hosting). For air-gapped environments: **Tabnine Enterprise**.
 
 ## Next Steps
 

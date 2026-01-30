@@ -47,7 +47,15 @@ A quick comparison of the major AI coding tools.
 **Continue.dev + Ollama** — 100% local, no data leaves your machine. (Requires 16GB+ RAM, GPU recommended.)
 
 ### Enterprise/Compliance
-**Cursor Teams** or **Windsurf Enterprise** — Zero retention, SOC 2, audit logs.
+
+| Tool | Key Features | Best For |
+|------|--------------|----------|
+| **[GitHub Copilot Business](https://github.com/features/copilot)** | IP indemnity, SOC 2, SAML SSO | Microsoft shops, legal protection |
+| **[Cursor Teams](https://cursor.com)** | Zero retention, SCIM, audit logs | Best UX with compliance |
+| **[Windsurf Enterprise](https://windsurf.com)** | EU hosting, FedRAMP, self-hosted | EU data residency, gov't |
+| **[Tabnine Enterprise](https://tabnine.com)** | Fully air-gapped, on-prem | Regulated industries |
+| **[Cody Enterprise](https://sourcegraph.com/cody)** | Multi-repo search, self-hosted | Large monorepos |
+| **[Amazon Q Pro](https://aws.amazon.com/q/)** | AWS integration, Bedrock | AWS-native orgs |
 
 ### Terminal Workflow
 **Codex CLI** or **OpenCode** — Full agentic capabilities from the command line.
