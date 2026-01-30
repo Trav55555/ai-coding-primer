@@ -11,7 +11,7 @@ Quick guide to choosing the right model. Data from SWE-bench, Aider Polyglot, an
 
 | Task | Recommended | Why | Source |
 |------|-------------|-----|--------|
-| **Agentic coding** | Claude Sonnet 4.5 | Best at multi-step, tool use | [Aider Polyglot](https://aider.chat/docs/leaderboards/) |
+| **Agentic coding** | Codex 5.2, Opus 4.5 | Current top performers for dev tasks | [OpenAI](https://openai.com), [Anthropic](https://anthropic.com) |
 | **Complex architecture** | Claude Opus 4.5 | 80.9% SWE-bench, deepest reasoning | [SWE-bench](https://swebench.com) |
 | **Visual/UI work** | Gemini 3 Pro | Best multimodal, screenshot understanding | [Google AI](https://ai.google.dev) |
 | **Quick completions** | Gemini 3 Flash | 200 tok/s, 78% SWE-bench | [Artificial Analysis](https://artificialanalysis.ai) |
@@ -70,12 +70,15 @@ Most tools support multiple models. Easy to switch:
 
 ## Recommendation
 
-**Start with Claude Sonnet 4.5** (via Cursor, Zed, or Claude Code).
+**Top tier (Jan 2026):** Codex 5.2 and Claude Opus 4.5 are the current leaders for complex development tasks.
 
-It's the best all-around coding model. Once you understand your usage patterns, optimize:
-- Add a fast model for completions (Gemini 3 Flash)
-- Switch to budget model for non-critical work (DeepSeek V3.2)
-- Use local models for sensitive code (Qwen3 Coder 32B)
+**Best starting point:** Claude Sonnet 4.5 (via Cursor, Zed, or Claude Code) — best balance of quality, speed, and cost.
+
+Once you understand your usage patterns, optimize:
+- Upgrade to Codex 5.2 or Opus 4.5 for complex agentic work
+- Add Gemini 3 Flash for fast completions
+- Switch to DeepSeek V3.2 for budget tasks
+- Use Qwen3 Coder 32B for sensitive/local code
 
 ## Sources
 

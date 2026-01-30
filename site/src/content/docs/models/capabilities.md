@@ -25,8 +25,8 @@ Model capabilities for coding tasks, updated January 2026.
 **SWE-bench**: Real GitHub issue resolution (higher = better)  
 **Aider Polyglot**: Multi-language code editing benchmark
 
-:::tip[Watch: Codex 5.2]
-Early reports from developers suggest Codex 5.2 delivers strong agentic coding performance. Official benchmarks pending, but worth testing if you have OpenAI API access.
+:::tip[Current Leaders (Jan 2026)]
+**Codex 5.2** and **Claude Opus 4.5** are emerging as the top two models for development tasks. Both excel at agentic workflows, with Codex 5.2 showing particularly strong performance on complex coding.
 :::
 
 ## Context Windows
