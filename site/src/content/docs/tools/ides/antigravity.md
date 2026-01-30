@@ -80,7 +80,7 @@ Agents get real write/execute permissions. Use Secure Mode for untrusted project
 
 ## Tips
 
-- Use Gemini 3 Pro for large codebase understanding (1M context)
+- Use Gemini 3 Pro for large codebase context (1M tokens)
 - Enable Secure Mode for cloned/untrusted repos
 - Leverage artifacts for UI prototyping
 - Free tier is generous — good for learning

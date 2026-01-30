@@ -81,7 +81,7 @@ gemini
 
 ### Large Codebase Analysis
 
-Gemini's 1M context window makes it ideal for understanding large codebases:
+Gemini's 1M context window makes it ideal for working with large codebases:
 
 ```
 gemini "Analyze this entire codebase and explain the architecture"
@@ -103,7 +103,7 @@ gemini /image error-screenshot.png "What's causing this error?"
 
 ## Tips
 
-- Use Gemini 3 Pro for large codebase understanding
+- Use Gemini 3 Pro for large codebase context (1M tokens)
 - Use Gemini Flash for quick, cheap iterations
 - Leverage multimodal for UI/visual tasks
 - Free tier is enough for most individual use

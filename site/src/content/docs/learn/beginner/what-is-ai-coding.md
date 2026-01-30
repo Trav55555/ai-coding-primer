@@ -5,7 +5,7 @@ sidebar:
   order: 2
 ---
 
-**Agentic coding** uses AI assistants that read, write, and execute code autonomously. Unlike simple autocomplete, these tools understand your project structure, run terminal commands, detect errors in their own output, and iterate until the task is complete.
+**Agentic coding** uses AI assistants that read, write, and execute code autonomously. Unlike simple autocomplete, these tools use your project structure as context, run terminal commands, detect errors in their own output, and iterate until the task is complete.
 
 ## The Core Loop
 
@@ -31,7 +31,7 @@ This is what makes it "agentic" — the AI acts autonomously rather than just su
 
 ## What These Tools Can Do
 
-- Read and understand your codebase
+- Use context from your codebase
 - Write and edit multiple files
 - Run terminal commands (build, test, lint)
 - Fix errors they detect in their output
@@ -39,7 +39,7 @@ This is what makes it "agentic" — the AI acts autonomously rather than just su
 
 ## What They Can't Do (Yet)
 
-- Perfectly understand your intent on the first try
+- Perfectly interpret your intent on the first try
 - Know your organization's conventions without being told
 - Reliably handle very large changes (500+ line diffs)
 - Replace human judgment on architecture and design
