@@ -28,11 +28,11 @@
 
 | If you want... | Start with | Install |
 |----------------|------------|---------|
-| Closest to VS Code | [Cursor](https://cursor.com) | Download from website |
+| Easiest setup (VS Code-like) | [Cursor](https://cursor.com) | Download from website |
 | Free + open source | [Zed](https://zed.dev) | Download from website |
 | Free + Google account | [Antigravity](https://antigravity.google) | Download from website |
 | Keep your current editor | [Continue.dev](https://continue.dev) | VS Code/JetBrains extension |
-| Terminal + Anthropic | [Claude Code](https://claude.com/code) | `curl -fsSL https://claude.com/install.sh \| sh` |
+| Terminal-based | [Claude Code](https://claude.com/code) | `curl -fsSL https://claude.com/install.sh \| sh` |
 | Terminal + OpenAI | [Codex CLI](https://github.com/openai/codex-cli) | `npm install -g @openai/codex` |
 | Terminal + BYOK | [OpenCode](https://github.com/sst/opencode) | `npm install -g opencode` |
 | 100% local | [Continue.dev](https://continue.dev) + [Ollama](https://ollama.com) | Local install |
@@ -320,19 +320,41 @@ MCP (Model Context Protocol) lets AI tools connect to external services—databa
 
 **Fix**: Keep it simple. Stock configurations often outperform "tool maximalist" setups. Start with zero plugins. Add only what you need after hitting a specific limitation.
 
-**If you do need MCP**, these are worth considering:
+**If you do need MCP**, start with these essentials:
 
-| MCP Server | Use Case | Notes |
-|------------|----------|-------|
-| **Playwright** | Browser automation, web scraping, testing | Let AI navigate sites, fill forms, take screenshots |
-| **GitHub** | Repo management, PR automation, issue triage | Manage repos through natural language |
-| **Docker** | Container management, image builds, compose | AI can build, run, and manage containers |
-| **Postgres/SQLite** | Database queries, schema inspection | AI can query and explore your data |
-| **Slack/Notion** | Workspace integration | Access messages, docs, tasks |
-| **Firecrawl** | Web scraping, content extraction | Extract data from any URL |
-| **Perplexity** | Real-time web search | Give AI access to current information |
+#### Tier 1: Essential (Start Here)
 
-**Registry**: [mcp.so](https://mcp.so) — Browse 2000+ community MCP servers
+| MCP Server | Use Case | Install |
+|------------|----------|---------|
+| **Context7** | Documentation injection, prevents hallucination | `npx -y @context7/mcp` |
+| **Filesystem** | Local file access (sandboxed) | `npx -y @anthropic/mcp-filesystem` |
+| **GitHub** | Repo management, PR automation, issue triage | `npx -y @anthropic/mcp-github` |
+| **Playwright** | Browser automation, web scraping, testing | `npx -y @anthropic/mcp-playwright` |
+
+#### Tier 2: Productivity (Add as Needed)
+
+| MCP Server | Use Case | Install |
+|------------|----------|---------|
+| **Docker** | Container management, image builds | `npx -y @anthropic/mcp-docker` |
+| **Postgres/SQLite** | Database queries, schema inspection | `npx -y @anthropic/mcp-postgres` |
+| **Sequential Thinking** | Step-by-step reasoning for complex tasks | `npx -y @anthropic/mcp-sequential-thinking` |
+| **Memory** | Knowledge graph persistence across sessions | `npx -y @anthropic/mcp-memory` |
+| **Slack/Notion** | Workspace integration | Various community servers |
+| **Firecrawl** | Web scraping, content extraction | `npx -y @anthropic/mcp-firecrawl` |
+| **Perplexity** | Real-time web search | `npx -y @anthropic/mcp-perplexity` |
+
+#### Security Note
+
+MCP servers run with your permissions. Use container isolation for untrusted servers:
+
+```bash
+# Docker MCP Toolkit provides sandboxed execution
+docker run --rm -it mcp/playwright  # Isolated browser automation
+```
+
+**Registries**:
+- [Docker MCP Catalog](https://hub.docker.com/mcp) — Verified, containerized servers (recommended)
+- [mcp.so](https://mcp.so) — Community registry (2000+ servers, verify before use)
 
 ### 5. The Append Trap
 
