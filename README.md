@@ -1,5 +1,7 @@
 # AI Coding Primer
 
+**[Live Site →](https://trav55555.github.io/ai-coding-primer/)**
+
 From your first prompt to production: AI-integrated IDEs, terminal tools, and workflows.
 
 ## Documentation
