@@ -34,7 +34,7 @@
 | Free + open source | [Zed](https://zed.dev) | Download from website |
 | Free + Google account | [Antigravity](https://antigravity.google) | Download from website |
 | Keep your current editor | [Continue.dev](https://continue.dev) | VS Code/JetBrains extension |
-| Terminal-based | [Claude Code](https://claude.com/code) | `curl -fsSL https://claude.com/install.sh \| sh` |
+| Terminal-based | [Claude Code](https://claude.ai/code) | `curl -fsSL https://claude.ai/install.sh \| bash` |
 | Terminal + OpenAI | [Codex CLI](https://github.com/openai/codex-cli) | `npm install -g @openai/codex` |
 | Terminal + BYOK | [OpenCode](https://github.com/sst/opencode) | `npm install -g opencode` |
 | 100% local | [Continue.dev](https://continue.dev) + [Ollama](https://ollama.com) | Local install |
@@ -965,7 +965,7 @@ Open source VS Code/JetBrains extension. Supports Ollama, LM Studio, or any Open
 
 ### Claude Code
 
-<https://claude.com/code> | `curl -fsSL https://claude.com/install.sh | sh`
+<https://claude.ai/code> | `curl -fsSL https://claude.ai/install.sh | bash`
 
 Anthropic's official terminal agent. Works with Claude Pro/Max subscription or API key. Enterprise/Team tiers available.
 
@@ -973,7 +973,7 @@ Anthropic's official terminal agent. Works with Claude Pro/Max subscription or A
 
 ### OpenCode
 
-<https://github.com/sst/opencode> (26k+ ⭐) | `npm install -g opencode`
+<https://github.com/anomalyco/opencode> (92k+ ⭐) | `npm install -g opencode`
 
 Open source, BYOK. **Your API keys = your privacy terms.** No data sent to OpenCode.
 
@@ -1078,9 +1078,9 @@ Available with ChatGPT Plus/Pro/Business/Enterprise. 74.9% SWE-bench.
 | **Grok 4.1** | xAI | 2M | 45 | 72% | — | — |
 | **MiniMax M2.1** | MiniMax | 200k | 44 | 74.0% | — | — |
 | **GLM-4.7** | Zhipu | 205k | 44 | 73.8% | 95.7% | 85.7% |
-| **DeepSeek-V3.2** | DeepSeek | 128k | 44 | 70% | 85% | 80% |
-| **Claude Sonnet 4.5** | Anthropic | 200k | 42 | 72% | — | — |
-| **Gemini 3 Flash** | Google | 1M | 38 | 65% | 80% | 78% |
+| **DeepSeek-V3.2** | DeepSeek | 128k | 44 | 68% | 85% | 80% |
+| **Claude Sonnet 4.5** | Anthropic | 200k | 42 | 77% | — | — |
+| **Gemini 3 Flash** | Google | 1M | 38 | 78% | 80% | 90.4% |
 | **GLM-4.7 FlashX** | Zhipu | 200k | 36 | 68% | — | — |
 
 *\* with code execution* | *DeepSeek, Moonshot, Zhipu, MiniMax = China jurisdiction (see [Privacy Deep Dive](#jurisdiction-risk-matrix))*
