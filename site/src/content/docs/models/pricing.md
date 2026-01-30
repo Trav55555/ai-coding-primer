@@ -69,9 +69,8 @@ Prompt caching reduces costs for repeated context:
 
 ## Pricing Trackers
 
-- [OpenRouter Models](https://openrouter.ai/models) — Side-by-side
-- [LLM PriceCheck](https://llmpricecheck.com) — Calculator
-- [Artificial Analysis](https://artificialanalysis.ai) — Trends
+- [OpenRouter Models](https://openrouter.ai/models) — Side-by-side comparison
+- [Artificial Analysis](https://artificialanalysis.ai) — Price, speed, quality trends
 
 ## Sources
 
