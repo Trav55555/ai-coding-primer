@@ -22,7 +22,7 @@ Install the LSP for your language:
 | Language | LSP | Install |
 |----------|-----|---------|
 | TypeScript | typescript-language-server | `npm i -g typescript-language-server typescript` |
-| Python | ty (or Pyright) | `uv tool install ty` or `pip install pyright` |
+| Python | mypy | `uv tool install mypy` or `pip install mypy` |
 | Go | gopls | `go install golang.org/x/tools/gopls@latest` |
 | Rust | rust-analyzer | `rustup component add rust-analyzer` |
 | C# | OmniSharp | Included with C# extension |
@@ -60,7 +60,7 @@ Run these **before** starting an AI session. If they fail, fix them first — ag
 npm run lint && npm run typecheck
 
 # Python
-uv run ruff check . && uv run ty check
+uv run ruff check . && uv run mypy .
 
 # Go
 go vet ./... && golangci-lint run

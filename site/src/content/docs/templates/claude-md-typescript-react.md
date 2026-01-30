@@ -39,7 +39,7 @@ TypeScript + React 18 + Vite + TailwindCSS
 
 ## Code Style
 - Use named exports, not default exports
-- Prefer `const` arrow functions for components
+- Consistent component style (function declarations or arrow functions)
 - TailwindCSS for styling (no CSS modules)
 - React hooks only (no class components)
 ```

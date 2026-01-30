@@ -25,7 +25,7 @@ A minimal `.cursorrules` template for TypeScript projects in Cursor IDE.
 
 ## Code Style
 - Use named exports
-- Prefer const arrow functions
+- Consistent function style (declarations or arrows)
 - All functions must have explicit return types
 - No `any` types - use `unknown` and narrow
 

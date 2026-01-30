@@ -22,7 +22,7 @@ Python 3.12 + FastAPI + SQLAlchemy + Pydantic
 - `uv run uvicorn app.main:app --reload` - Start dev server
 - `uv run pytest` - Run tests
 - `uv run ruff check .` - Lint
-- `uv run ty check` - Type check (or `pyright`)
+- `uv run mypy .` - Type check
 - `uv run alembic upgrade head` - Run migrations
 
 ## Architecture

@@ -16,13 +16,14 @@ A minimal CLAUDE.md template for Go backend projects using Chi router and sqlc.
 [One sentence describing your project]
 
 ## Tech Stack
-Go 1.22 + Chi router + PostgreSQL + sqlc
+Go 1.23 + Chi router + PostgreSQL + sqlc
 
 ## Commands
 - `go run ./cmd/server` - Start dev server
 - `go test ./...` - Run tests
 - `go vet ./...` - Vet code
-- `golangci-lint run` - Lint
+- `go mod tidy` - Clean up dependencies
+- `golangci-lint run` - Lint (install: https://golangci-lint.run)
 - `sqlc generate` - Generate type-safe SQL
 
 ## Architecture

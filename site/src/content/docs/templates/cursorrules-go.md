@@ -13,7 +13,7 @@ A minimal `.cursorrules` template for Go projects in Cursor IDE.
 # Go Project Rules
 
 ## Tech Stack
-- Go 1.22+
+- Go 1.23+
 - Chi or Gin router
 - PostgreSQL with sqlc
 
@@ -21,6 +21,7 @@ A minimal `.cursorrules` template for Go projects in Cursor IDE.
 - `go run ./cmd/server` - Start server
 - `go test ./...` - Run tests
 - `go vet ./...` - Vet code
+- `go mod tidy` - Clean dependencies
 - `golangci-lint run` - Lint
 - `sqlc generate` - Generate SQL
 

@@ -24,7 +24,7 @@ These patterns are the difference between fighting your AI tools and flowing wit
 | Method | Example | Best For |
 |--------|---------|----------|
 | **Tests** | "Run `pytest` after changes" | Logic correctness |
-| **Type checker** | "Run `ty check` / `tsc`" | Type safety |
+| **Type checker** | "Run `mypy` / `tsc`" | Type safety |
 | **Linter** | "Run `eslint` / `ruff`" | Style, common bugs |
 | **Build** | "Run `cargo build`" | Compilation |
 | **Screenshot** | "Take a screenshot" | UI work |

@@ -16,13 +16,13 @@ A minimal `.cursorrules` template for Python projects in Cursor IDE.
 - Python 3.12+
 - [Framework: FastAPI/Django/Flask]
 - uv for package management
-- Ruff for linting, ty for types (or Pyright)
+- Ruff for linting, mypy for type checking
 
 ## Commands
 - `uv run [command]` - Run with uv
 - `uv run pytest` - Tests
 - `uv run ruff check .` - Lint
-- `uv run ty check` - Type check (or `pyright`)
+- `uv run mypy .` - Type check
 
 ## Code Style
 - Type hints on all functions
@@ -54,5 +54,5 @@ If you use Poetry instead of uv:
 ## Commands
 - `poetry run pytest` - Tests
 - `poetry run ruff check .` - Lint
-- `poetry run ty check` - Type check
+- `poetry run mypy .` - Type check
 ```
