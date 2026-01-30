@@ -103,9 +103,10 @@ These provide additional signal but shouldn't be used alone:
 
 **Why interesting:** Exposes reasoning failures that coding benchmarks miss. Tests spatial, social, and adversarial reasoning.
 
-**Current scores:**
+**Current scores (Jan 2026):**
 - Humans: ~85%
-- Best LLMs: ~62%
+- Gemini 3 Pro: 76.4%
+- Other top LLMs: ~62%
 
 **Use for:** Understanding model limitations, not coding selection.
 
