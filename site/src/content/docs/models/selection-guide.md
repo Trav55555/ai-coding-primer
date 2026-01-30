@@ -38,16 +38,27 @@ Quick guide to choosing the right model. Data from SWE-bench, Aider Polyglot, an
 ## Decision Tree
 
 ```
-Need best quality?
-├── Yes → Claude Opus 4.5 (80.9% SWE-bench)
-└── No, need speed?
-    ├── Yes → Gemini 3 Flash (200 tok/s)
-    └── No, need long context?
-        ├── Yes → Grok 4.1 (2M advertised, ~500k practical)
-        └── No, need budget?
-            ├── Yes → DeepSeek V3.2 ($0.27/M input)
-            └── No, need local/private?
-                └── Yes → Qwen3 Coder 32B + Ollama
+What matters most?
+│
+├─► Quality (hard problems, complex refactors)
+│   ├─► Budget okay → Codex 5.2 or Claude Opus 4.5
+│   └─► Cost-conscious → Claude Sonnet 4.5 or GPT-5.2
+│
+├─► Speed (completions, quick iterations)
+│   └─► Gemini 3 Flash or Claude 4.5 Haiku
+│
+├─► Cost (minimize spend)
+│   ├─► Good quality → DeepSeek V3.2 ($0.27/M)
+│   └─► Free tier → Gemini CLI or Cursor free
+│
+├─► Context (huge codebases)
+│   └─► Grok 4.1 (2M) or Gemini 3 Pro (1M)
+│
+├─► Privacy (no cloud)
+│   └─► Qwen3 Coder 32B + Ollama
+│
+└─► "Just pick for me"
+    └─► Claude Sonnet 4.5 or GPT-5.2 (best all-rounders)
 ```
 
 ## Model Combinations

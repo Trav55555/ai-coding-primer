@@ -60,19 +60,30 @@ Most tools offer multiple ways to access AI models:
 ## Decision Flowchart
 
 ```
-Do you have a strong editor preference?
-├── Yes, VS Code → Cursor or Continue.dev
-├── Yes, JetBrains → Continue.dev
-├── Yes, Terminal → Claude Code or Aider
-└── No preference → Cursor (easiest) or Zed (free + fast)
-
-Is privacy critical?
-├── Yes → Continue.dev + Ollama (local)
-└── No → Any of the above
-
-Need enterprise compliance?
-├── Yes → Cursor Teams, Windsurf Enterprise, or Copilot Business
-└── No → Any of the above
+What's your #1 priority?
+│
+├─► "Just works" (easiest setup)
+│   └─► Cursor — works out of the box, free tier
+│
+├─► Free / minimize cost
+│   ├─► Want a GUI editor? → Zed (fully free, open source)
+│   ├─► Terminal workflow? → Gemini CLI (generous free tier)
+│   └─► BYOK flexibility? → OpenCode or Aider (pay only API costs)
+│
+├─► 100% local / maximum privacy
+│   └─► Continue.dev + Ollama — nothing leaves your machine
+│
+├─► Terminal-first workflow
+│   ├─► Have Claude subscription? → Claude Code
+│   ├─► Want free tier? → Gemini CLI
+│   └─► Want BYOK flexibility? → OpenCode or Aider
+│
+├─► Keep my current editor
+│   ├─► VS Code → Continue.dev or GitHub Copilot
+│   └─► JetBrains → Continue.dev
+│
+└─► Enterprise / compliance requirements
+    └─► Cursor Teams, GitHub Copilot Business, or Windsurf Enterprise
 ```
 
 ## Our Recommendation
