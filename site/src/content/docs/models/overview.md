@@ -70,6 +70,8 @@ One API key for multiple providers:
 | **Llama 4** | 405B | Meta's flagship, runs locally or hosted |
 | **DeepSeek V3** | 671B MoE | Best quality/cost ratio |
 | **Qwen 3** | 235B | Strong multilingual, tool use |
+| **Kimi K2.5** | 1T MoE | Moonshot's flagship, massive scale |
+| **GLM 4.7** | 320B | Zhipu's latest, strong reasoning |
 | **Mistral Large** | 123B | EU-based, good reasoning |
 
 ### Why Care?
