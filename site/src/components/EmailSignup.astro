@@ -1,0 +1,151 @@
+---
+// EmailSignup.astro — DynamoDB email capture via API Gateway
+---
+
+<section class="email-signup" aria-label="Newsletter signup">
+  <div class="email-signup__inner">
+    <h2 class="email-signup__heading">Stay sharp with AI coding</h2>
+    <p class="email-signup__description">
+      Weekly tips on AI-assisted development, tool comparisons, and career growth for platform engineers. Free, no spam.
+    </p>
+    <form class="email-signup__form" id="email-signup-form">
+      <input
+        type="email"
+        name="email"
+        required
+        placeholder="you@example.com"
+        aria-label="Email address"
+        class="email-signup__input"
+      />
+      <button type="submit" class="email-signup__button">Subscribe</button>
+    </form>
+    <p class="email-signup__status" id="email-signup-status" aria-live="polite"></p>
+  </div>
+</section>
+
+<style>
+  .email-signup {
+    margin: 2rem 0;
+    padding: 2rem;
+    border: 1px solid var(--sl-color-gray-5, #383838);
+    border-radius: 0.5rem;
+    background: var(--sl-color-black, #0a0a0a);
+    text-align: center;
+  }
+
+  .email-signup__heading {
+    font-size: 1.25rem;
+    margin: 0 0 0.5rem;
+    color: var(--sl-color-white, #fff);
+  }
+
+  .email-signup__description {
+    color: var(--sl-color-gray-2, #c2c2c2);
+    margin: 0 0 1.25rem;
+    font-size: 0.95rem;
+    max-width: 36rem;
+    margin-inline: auto;
+  }
+
+  .email-signup__form {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 28rem;
+    margin: 0 auto;
+  }
+
+  .email-signup__input {
+    flex: 1 1 12rem;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--sl-color-gray-5, #383838);
+    border-radius: 0.25rem;
+    background: var(--sl-color-gray-6, #1a1a1a);
+    color: var(--sl-color-white, #fff);
+    font-size: 0.95rem;
+  }
+
+  .email-signup__input::placeholder {
+    color: var(--sl-color-gray-3, #8b8b8b);
+  }
+
+  .email-signup__input:focus {
+    outline: 2px solid var(--sl-color-accent, #6366f1);
+    outline-offset: -1px;
+    border-color: transparent;
+  }
+
+  .email-signup__button {
+    padding: 0.6rem 1.5rem;
+    border: none;
+    border-radius: 0.25rem;
+    background: var(--sl-color-accent, #6366f1);
+    color: var(--sl-color-black, #fff);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+
+  .email-signup__button:hover {
+    opacity: 0.85;
+  }
+
+  .email-signup__button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .email-signup__status {
+    margin: 0.75rem 0 0;
+    font-size: 0.85rem;
+    min-height: 1.2em;
+  }
+
+  .email-signup__status.success {
+    color: #4ade80;
+  }
+
+  .email-signup__status.error {
+    color: #f87171;
+  }
+</style>
+
+<script>
+  const form = document.getElementById('email-signup-form') as HTMLFormElement;
+  const status = document.getElementById('email-signup-status')!;
+  const API_URL = 'https://3urfpr6eve.execute-api.us-east-1.amazonaws.com/subscribe';
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button') as HTMLButtonElement;
+    const email = new FormData(form).get('email') as string;
+
+    btn.disabled = true;
+    status.textContent = '';
+    status.className = 'email-signup__status';
+
+    try {
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'ai-coding-primer' }),
+      });
+
+      if (res.ok) {
+        status.textContent = "Thanks! You're on the list.";
+        status.classList.add('success');
+        form.reset();
+      } else {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || `Server responded ${res.status}`);
+      }
+    } catch {
+      status.textContent = 'Something went wrong. Please try again.';
+      status.classList.add('error');
+    } finally {
+      btn.disabled = false;
+    }
+  });
+</script>
