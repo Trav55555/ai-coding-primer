@@ -29,7 +29,7 @@ sidebar:
 |------|-------|-------|
 | Free | $0 | Basic completions |
 | Pro | $10/mo | Full features, 1M context |
-| Team | $20/user/mo | Team management, SSO |
+| Team | $10/user/mo | Team management, centralized billing |
 
 ## Privacy
 

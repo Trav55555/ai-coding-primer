@@ -28,8 +28,10 @@ sidebar:
 | Plan | Price | Notes |
 |------|-------|-------|
 | Free | $0 | Limited usage |
-| Pro | $9/user/mo | Unlimited, BYOK |
+| Enterprise Search | $49/user/mo | Public Sourcegraph pricing emphasis |
 | Enterprise | Custom | Self-hosted, SSO, audit |
+
+Sourcegraph's public pricing is enterprise-led. A simple standalone "Cody Pro" table is not clearly published as of Feb 25, 2026.
 
 ## Privacy
 

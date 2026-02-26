@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-[Codex CLI](https://github.com/openai/codex-cli) is OpenAI's open-source terminal coding agent.
+[Codex CLI](https://github.com/openai/codex) is OpenAI's open-source terminal coding agent.
 
 ## Overview
 
@@ -32,12 +32,14 @@ npm install -g @openai/codex
 
 | Option | Cost |
 |--------|------|
-| Codex CLI | Free (open source) |
-| API | OpenAI rates or ChatGPT subscription |
+| Codex CLI | Free (open source client) |
+| Usage | OpenAI API rates or eligible ChatGPT subscription |
 
 Works with:
 - ChatGPT Plus/Pro/Business/Enterprise
 - OpenAI API directly
+
+As of Feb 25, 2026, the `openai/codex` repository is active and regularly released.
 
 ## Privacy
 
@@ -49,8 +51,7 @@ Works with:
 
 ## Models Available
 
-- GPT-5.2
-- Codex 5 (400k context, code-optimized)
+Model availability changes quickly. In practice, Codex CLI uses current GPT-5/Codex model families based on account access.
 
 ## Getting Started
 

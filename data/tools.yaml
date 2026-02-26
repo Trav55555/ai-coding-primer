@@ -16,7 +16,7 @@ ides:
       - gpt-5.2
       - gemini-3-pro
     pricing:
-      hobby: { price: 0, requests: 50, completions: 2000 }
+      hobby: { price: 0, note: "Free tier" }
       pro: { price: 20, completions: unlimited }
       pro_plus: { price: 60, note: "3x usage" }
       ultra: { price: 200, note: "20x usage" }
@@ -27,7 +27,7 @@ ides:
       training: opt_out
       retention: "30d (non-business)"
       jurisdiction: US
-    last_verified: 2026-01-29
+    last_verified: 2026-02-25
 
   - id: zed
     name: Zed
@@ -50,7 +50,7 @@ ides:
       - gemini-3-pro
       - ollama
     pricing:
-      personal: { price: 0, note: "Full editor + AI with own keys" }
+      personal: { price: 0, note: "No hosted AI; includes 2,000 accepted edit predictions" }
       pro: { price: 10, note: "$5 tokens included" }
       enterprise: { price: contact }
     privacy:
@@ -58,7 +58,7 @@ ides:
       training: never
       retention: none
       jurisdiction: US (mitigated by BYOK)
-    last_verified: 2026-01-29
+    last_verified: 2026-02-25
 
   - id: windsurf
     name: Windsurf
@@ -72,19 +72,20 @@ ides:
       - Zero-data-retention
       - EU Cloud option
     models:
-      - claude-3.5-sonnet
-      - gpt-4o
+      - claude-sonnet-4.5
+      - gpt-5.2
+      - gemini-3-pro
     pricing:
-      free: { price: 0, note: "Cloud US" }
-      pro: { price: 15, note: "Cloud US/EU" }
-      teams: { price: 30, features: [hybrid] }
+      free: { price: 0, note: "25 prompt credits/mo" }
+      pro: { price: 15, note: "500 prompt credits/mo" }
+      teams: { price: 30, features: [hybrid, sso] }
       enterprise: { price: custom, features: [self_hosted, fedramp] }
     privacy:
       mode: default_on
       training: never
       retention: zero
       jurisdiction: US/EU
-    last_verified: 2026-01-29
+    last_verified: 2026-02-25
 
 extensions:
   - id: github-copilot
@@ -100,6 +101,7 @@ extensions:
     pricing:
       free: { price: 0, requests: 50, completions: 2000 }
       pro: { price: 10, note: "Unlimited, coding agent" }
+      pro_plus: { price: 39, note: "Higher premium request allowance" }
       business: { price: 19, features: [policy_controls, ip_indemnity] }
       enterprise: { price: 39, features: [codebase_indexing, audit_logs, scim] }
     privacy:
@@ -107,7 +109,7 @@ extensions:
       training: opt_out
       retention: varies
       jurisdiction: US
-    last_verified: 2026-01-29
+    last_verified: 2026-02-25
 
   - id: continue-dev
     name: Continue.dev

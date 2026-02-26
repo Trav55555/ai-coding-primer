@@ -27,9 +27,9 @@ sidebar:
 
 | Plan | Price | Notes |
 |------|-------|-------|
-| Free | $0 | Limited requests |
-| Pro | $15/mo | Unlimited flows |
-| Teams | $30/user/mo | Admin controls, SSO |
+| Free | $0 | 25 prompt credits/mo |
+| Pro | $15/mo | 500 prompt credits/mo |
+| Teams | $30/user/mo | 500 credits/user/mo, admin controls, SSO |
 | Enterprise | Custom | Self-hosted, FedRAMP |
 
 ## Privacy
