@@ -22,7 +22,7 @@ These benchmarks best predict real-world coding performance:
 
 **Why it matters:** Unlike synthetic puzzles, these are actual bugs that humans filed and fixed. Models must understand existing code, locate the problem, and generate correct patches.
 
-**Current scores (Jan 2026):**
+**Current scores (snapshot: Jan 2026):**
 - Claude Opus 4.5: 80.9%
 - GPT-5.2: 80.0%
 - DeepSeek V3.2: 73.1%
@@ -44,7 +44,7 @@ These benchmarks best predict real-world coding performance:
 - Multi-capability: generation, self-repair, test prediction
 - Updated monthly
 
-**Current scores (Jan 2026):**
+**Current scores (snapshot: Jan 2026):**
 - Kimi K2 Thinking: 83.1%
 - Gemini 3 Pro: 79.7%
 - Grok 4: 79.0%
@@ -59,7 +59,7 @@ These benchmarks best predict real-world coding performance:
 
 **Why it matters:** Tests *editing* existing code, not just generating from scratch. Measures if models can follow instructions and make targeted changes without breaking things.
 
-**Current scores (Jan 2026):**
+**Current scores (snapshot: Jan 2026):**
 - Claude Opus 4.5: 89.4%
 - GPT-5 (high): 88.0%
 - Gemini 3 Pro: 82.2%
@@ -103,7 +103,7 @@ These provide additional signal but shouldn't be used alone:
 
 **Why interesting:** Exposes reasoning failures that coding benchmarks miss. Tests spatial, social, and adversarial reasoning.
 
-**Current scores (Jan 2026):**
+**Current scores (snapshot: Jan 2026):**
 - Humans: ~85%
 - Gemini 3 Pro: 76.4%
 - Other top LLMs: ~62%
@@ -153,4 +153,4 @@ These test *how* models behave, not just what they can do:
 | [LLM Stats](https://llm-stats.com) | Multiple benchmark leaderboards |
 | [Chatbot Arena](https://lmarena.ai) | Human preference (blind voting) |
 
-*Last verified: January 2026*
+*Data snapshot: January 2026. Reviewed: February 2026.*

@@ -15,8 +15,8 @@ Models are the AI systems themselves:
 
 | Model | Maker | Strength |
 |-------|-------|----------|
-| Claude Opus 4.5 | Anthropic | Best agentic, complex tasks |
-| Claude Sonnet 4.5 | Anthropic | Best coding quality/speed |
+| Claude Opus 4.6 | Anthropic | Best agentic, complex tasks |
+| Claude Sonnet 4.6 | Anthropic | Best coding quality/speed |
 | GPT-5.2 | OpenAI | General capability |
 | Gemini 3 Pro | Google | Long context (1M), best for visual/UI |
 | Grok 4.1 | xAI | Longest context (2M tokens) |
@@ -32,7 +32,7 @@ The same model can be available through multiple providers:
 
 | Model | Direct Provider | Also Available Via |
 |-------|-----------------|-------------------|
-| Claude Sonnet 4.5 | Anthropic | AWS Bedrock, Google Vertex |
+| Claude Sonnet 4.6 | Anthropic | AWS Bedrock, Google Vertex |
 | GPT-5.2 | OpenAI | Azure OpenAI |
 | Llama 4 | Meta (weights only) | AWS Bedrock, Azure, Together AI |
 | Mistral Large | Mistral | AWS Bedrock, Azure, Google Vertex |

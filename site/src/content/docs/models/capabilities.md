@@ -5,7 +5,7 @@ sidebar:
   order: 2
 ---
 
-Model capabilities for coding tasks, updated January 2026.
+Model capabilities for coding tasks. Data snapshot: January 2026 (reviewed February 2026).
 
 ## Coding Benchmarks
 
@@ -25,7 +25,7 @@ Model capabilities for coding tasks, updated January 2026.
 **SWE-bench**: Real GitHub issue resolution (higher = better)  
 **Aider Polyglot**: Multi-language code editing benchmark
 
-:::tip[Current Leaders (Jan 2026)]
+:::tip[Current Leaders (snapshot: Jan 2026)]
 **Codex 5.2** and **Claude Opus 4.5** are emerging as the top two models for development tasks. Both excel at agentic workflows, with Codex 5.2 showing particularly strong performance on complex coding.
 :::
 
@@ -74,4 +74,4 @@ Advertised context ≠ practical context. Models can technically accept large in
 - [Benchmarks That Matter](/ai-coding-primer/models/benchmarks/) — What each benchmark tests and why
 - [Selection Guide](/ai-coding-primer/models/selection-guide/) — How to choose the right model
 
-*Last verified: January 2026*
+*Data snapshot: January 2026. Reviewed: February 2026.*

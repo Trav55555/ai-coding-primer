@@ -5,7 +5,7 @@ sidebar:
   order: 3
 ---
 
-Pricing per million tokens, updated January 2026.
+Pricing per million tokens. Data snapshot: January 2026 (reviewed February 2026).
 
 ## Quick Comparison
 
@@ -86,4 +86,4 @@ Official pricing pages:
 
 *Prices change frequently. Verify on official sites before committing to a model.*
 
-*Last verified: January 2026*
+*Data snapshot: January 2026. Reviewed: February 2026.*
