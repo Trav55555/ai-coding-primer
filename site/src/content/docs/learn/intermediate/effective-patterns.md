@@ -148,3 +148,4 @@ in this codebase. Report back with file paths and patterns.
 
 - [Learn Common Mistakes](/ai-coding-primer/learn/intermediate/common-mistakes/) — avoid the pitfalls
 - [Troubleshooting](/ai-coding-primer/learn/intermediate/troubleshooting/) — when things go wrong
+- [Research & Evidence](/ai-coding-primer/research/overview/) — empirical studies and caveats

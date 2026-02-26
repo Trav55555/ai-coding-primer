@@ -34,6 +34,7 @@ export default defineConfig({
 						{ label: 'Context Engineering', slug: 'learn/intermediate/context-engineering' },
 						{ label: 'Effective Patterns', slug: 'learn/intermediate/effective-patterns' },
 						{ label: 'Common Mistakes', slug: 'learn/intermediate/common-mistakes' },
+						{ label: 'Learning with AI', slug: 'learn/intermediate/learning-with-ai' },
 						{ label: 'When It\'s Not Working', slug: 'learn/intermediate/troubleshooting' },
 					],
 				},
@@ -80,6 +81,16 @@ export default defineConfig({
 						{ label: 'Security Risks', slug: 'security/risks' },
 						{ label: 'Privacy Comparison', slug: 'security/privacy-comparison' },
 						{ label: 'Privacy Deep Dive', slug: 'security/deep-dive' },
+					],
+				},
+				{
+					label: 'Research & Evidence',
+					items: [
+						{ label: 'Overview', slug: 'research/overview' },
+						{ label: 'Productivity Research', slug: 'research/productivity' },
+						{ label: 'Code Quality & Security', slug: 'research/code-quality-security' },
+						{ label: 'Adoption & Trends', slug: 'research/adoption-trends' },
+						{ label: 'Learning Impacts', slug: 'research/learning-impacts' },
 					],
 				},
 				{
