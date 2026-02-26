@@ -150,3 +150,4 @@ AI writes code → AI writes tests → Tests pass → You feel confident. But yo
 
 - [When It's Not Working](/ai-coding-primer/learn/intermediate/troubleshooting/) — recovery strategies
 - [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/) — what to do instead
+- [Research & Evidence](/ai-coding-primer/research/overview/) — data behind common failure modes

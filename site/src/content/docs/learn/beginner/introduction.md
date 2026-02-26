@@ -19,14 +19,17 @@ This is a practical guide to AI-assisted coding — from your first prompt to pr
 2. **Working Effectively** — Patterns that work, mistakes to avoid, when to give up and code it yourself
 3. **Tools & Models** — Detailed comparisons with real pricing and capabilities
 4. **Security & Privacy** — What data goes where, enterprise considerations
+5. **Research & Evidence** — Separate empirical findings with methodology caveats
 
 ## How to Use This Guide
 
 **If you're new to AI coding:** Start with [What is AI Coding?](/ai-coding-primer/learn/beginner/what-is-ai-coding/) and work through the Getting Started section in order.
 
-**If you're already using AI tools:** Jump to [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/) or the specific tool/model pages you need.
+**If you're already using AI tools:** Jump to [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/) or [Learning with AI](/ai-coding-primer/learn/intermediate/learning-with-ai/) to use AI without undermining your skill growth.
 
 **If you're evaluating for a team:** Start with [Tool Comparison](/ai-coding-primer/tools/comparison/) and [Security & Privacy](/ai-coding-primer/security/checklist/).
+
+Need the data behind the guidance? See [Research & Evidence](/ai-coding-primer/research/overview/).
 
 ## Philosophy
 
