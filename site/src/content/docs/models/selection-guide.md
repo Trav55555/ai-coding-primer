@@ -5,7 +5,7 @@ sidebar:
   order: 4
 ---
 
-Quick guide to choosing the right model. Data from SWE-bench, Aider Polyglot, and Artificial Analysis (January 2026).
+Quick guide to choosing the right model. Data snapshot from SWE-bench, Aider Polyglot, and Artificial Analysis (January 2026), reviewed February 2026.
 
 ## By Task
 
@@ -83,7 +83,7 @@ Most tools support multiple models. Easy to switch:
 - Claude Code: N/A (Claude only)
 - Aider: `--model` flag
 
-## Model Tiers (Jan 2026)
+## Model Tiers (snapshot: Jan 2026)
 
 ### Heavy Hitters
 For complex architecture, long agentic sessions, and hard problems.
@@ -152,4 +152,4 @@ Swap the all-rounder for **DeepSeek V3.2** if budget is tight — 73% SWE-bench 
 | **Artificial Analysis** | Speed, price, quality | [artificialanalysis.ai](https://artificialanalysis.ai) |
 | **LLM Stats** | Aggregated benchmarks | [llm-stats.com](https://llm-stats.com) |
 
-*Last verified: January 2026*
+*Data snapshot: January 2026. Reviewed: February 2026.*
