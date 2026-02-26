@@ -27,12 +27,14 @@ sidebar:
 
 | Plan | Price | Notes |
 |------|-------|-------|
-| Hobby | Free | 50 requests, 2000 completions |
+| Hobby | Free | Free tier |
 | Pro | $20/mo | Unlimited completions |
-| Pro+ | $60/mo | 3x usage |
-| Ultra | $200/mo | 20x usage |
+| Pro+ | $60/mo | Higher usage cap |
+| Ultra | $200/mo | Highest usage cap |
 | Teams | $40/user/mo | SSO, zero-retention |
 | Enterprise | Custom | SCIM, audit logs |
+
+Paid plans use credit-based/metered usage for heavy agent workflows.
 
 ## Privacy
 

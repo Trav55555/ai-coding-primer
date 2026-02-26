@@ -27,7 +27,7 @@ sidebar:
 
 | Plan | Price | Notes |
 |------|-------|-------|
-| Personal | **$0 forever** | Full editor + AI with own keys |
+| Personal | **$0 forever** | No hosted AI, 2,000 accepted edit predictions |
 | Pro | $10/mo | Unlimited predictions, $5 tokens included |
 | Enterprise | Contact | SSO, analytics |
 

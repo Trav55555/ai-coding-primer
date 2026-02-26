@@ -41,7 +41,7 @@ Add AI to VS Code, JetBrains, or Neovim.
 | **[Continue.dev](https://continue.dev)** | Free | Open source, local models |
 | **[Supermaven](https://supermaven.com)** | Free / $10+ | Ultra-fast completions |
 | **[Amazon Q](https://aws.amazon.com/q/developer/)** | Free / $19+ | AWS integration, large context |
-| **[Cody](https://sourcegraph.com/cody)** | Free / $9+ | Multi-repo, code search |
+| **[Cody](https://sourcegraph.com/cody)** | Free / Enterprise-led pricing | Multi-repo, code search |
 | **[Tabnine](https://tabnine.com)** | Free / $12+ | Self-hosted, air-gapped |
 
 ## CLI Tools (Terminal)

@@ -19,7 +19,7 @@ sidebar:
 
 - **Inline Completions** — Tab to accept suggestions
 - **Chat** — Conversational coding assistance
-- **Copilot Edits** — Multi-file editing (preview)
+- **Copilot Edits** — Multi-file editing
 - **Workspace Agent** — `@workspace` for codebase context
 - **CLI Integration** — Terminal command suggestions
 
@@ -29,6 +29,7 @@ sidebar:
 |------|-------|-------|
 | Free | $0 | 50 chat/mo, 2000 completions/mo |
 | Pro | $10/mo | Unlimited |
+| Pro+ | $39/mo | Higher premium request allowance |
 | Business | $19/user/mo | Policy controls, IP indemnity |
 | Enterprise | $39/user/mo | Codebase indexing, SCIM |
 
@@ -47,8 +48,10 @@ Business and Enterprise plans include IP indemnity — Microsoft covers legal co
 
 ## Models Available
 
-- GPT-5.2 (default)
-- Claude Sonnet 4.5
+Model availability is plan-dependent and changes frequently. Common options include:
+
+- GPT-5.x family (including Codex variants)
+- Claude Sonnet/Opus 4.6
 - Gemini 3 Pro
 
 ## Installation
