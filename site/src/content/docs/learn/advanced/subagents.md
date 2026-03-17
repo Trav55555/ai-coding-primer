@@ -8,13 +8,8 @@ sidebar:
 Subagents are separate AI instances that handle scoped tasks while your main agent stays focused on implementation.
 
 :::note[Evidence status]
-The best-supported claim here is about **context isolation**, not about spawning as many agents as possible.
-
-- **Research-backed:** isolating research and exploration can reduce context pollution
-- **Practitioner-backed:** parallel search can help when subtasks are genuinely separate
-- **Research-backed:** multi-agent setups can also add orchestration overhead and confusion
-
-So the right takeaway is: use subagents selectively, for distinct jobs.
+- `Research-backed` - [Productivity Research](/ai-coding-primer/research/productivity/), [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/)
+- `Practitioner-backed` - this page's usage patterns and orchestration guidance
 :::
 
 ## Why Subagents
@@ -41,7 +36,7 @@ They are usually **bad** at owning the whole task indefinitely. Use them to redu
 
 This caveat matters. Research and architecture writeups both suggest multi-agent systems help most when the agents have genuinely different scopes, tools, or capabilities.
 
-**Evidence tags:** `Research-backed` for orchestration overhead and context-isolation tradeoffs; `Practitioner-backed` for the selective-usage rule.
+**Evidence tags:** `Research-backed` ([Productivity Research](/ai-coding-primer/research/productivity/), [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/)); `Practitioner-backed` ([Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/)).
 
 ## Example Usage
 

@@ -8,11 +8,9 @@ sidebar:
 AI tools can make you a better developer faster — or they can silently erode your skills. The difference is not whether you use AI. It is **how much thinking you delegate away**.
 
 :::note[Evidence status]
-This page uses three evidence tags:
-
-- **Research-backed:** controlled studies and empirical learning findings
-- **Practitioner-backed:** durable teaching habits and team guardrails that align with the studies
-- **Synthesis:** practical frameworks built by combining multiple sources rather than quoting one paper's taxonomy
+- `Research-backed` - [Learning Impacts](/ai-coding-primer/research/learning-impacts/)
+- `Practitioner-backed` - [Learning Impacts](/ai-coding-primer/research/learning-impacts/)
+- `Synthesis`
 :::
 
 ---
@@ -27,7 +25,7 @@ The mechanism is straightforward. Learning requires struggle, retrieval, and err
 
 See [Learning Impacts](/ai-coding-primer/research/learning-impacts/) for the full evidence behind this.
 
-**Evidence tags:** `Research-backed` for the comprehension, retention, and productivity tradeoff claims in this section.
+**Evidence tags:** `Research-backed` ([Learning Impacts](/ai-coding-primer/research/learning-impacts/)).
 
 ---
 
@@ -106,13 +104,13 @@ Prompt templates that actually work:
 
 These prompts reframe AI as a thinking partner rather than an answer dispenser. The output is less immediately satisfying. The learning is significantly better.
 
-**Evidence tags:** `Research-backed` for scaffolded-question formats improving learning transfer; `Practitioner-backed` for the prompt patterns shown here.
+**Evidence tags:** `Research-backed` ([Learning Impacts](/ai-coding-primer/research/learning-impacts/)); `Practitioner-backed` ([Learning Impacts](/ai-coding-primer/research/learning-impacts/)).
 
 ## High-Learning vs Low-Learning Use
 
 This table is a synthesis of the studies cited on this page, especially the Anthropic learning RCT, Shen & Tamkin's conceptual-vs-delegated-use distinction, and the broader literature on productive struggle. It is a practical framework, not a direct taxonomy from one paper.
 
-**Evidence tags:** `Synthesis` for the table itself; `Research-backed` for the source findings it combines.
+**Evidence tags:** `Synthesis`; `Research-backed` ([Learning Impacts](/ai-coding-primer/research/learning-impacts/)).
 
 | Pattern | Outcome |
 |---------|---------|

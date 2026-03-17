@@ -18,12 +18,9 @@ If the answer is no, the problem is context, not the model.
 In 2025-2026, this stopped being a prompt-writing trick and became an operational discipline. Teams now treat context like a system design problem: what to include, what to hide, what to retrieve on demand, and what to isolate in subagents.
 
 :::note[Evidence status]
-Context engineering is one of the most practice-heavy parts of AI coding. Some claims on this page come from evals and benchmark-style studies, while others are practitioner rules that have converged across tools.
-
-- **Research-backed:** too much irrelevant context degrades outcomes
-- **Research-backed:** retrieval and tool access beat giant pasted prompts
-- **Practitioner-backed:** explore-the-codebase-first often beats doc-first prompting
-- **Synthesis:** exact token thresholds such as the "40% rule" and any one universal context architecture
+- `Research-backed` - [Productivity Research](/ai-coding-primer/research/productivity/), [Code Quality & Security](/ai-coding-primer/research/code-quality-security/)
+- `Practitioner-backed` - [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/), [Subagent Architectures](/ai-coding-primer/learn/advanced/subagents/)
+- `Synthesis`
 :::
 
 | Component | What It Means | Example |
@@ -61,7 +58,7 @@ Information the AI gathers based on the current task:
 
 Explore the project first, then consult external docs. Recent workflow research and practitioner reports show that reversing that order often anchors the model on generic docs instead of the real codebase in front of it.
 
-**Evidence tags:** `Practitioner-backed` for explore-first ordering; `Research-backed` for selective retrieval over generic preloading.
+**Evidence tags:** `Practitioner-backed` ([Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/)); `Research-backed` ([Productivity Research](/ai-coding-primer/research/productivity/)).
 
 ### 3. Tool Context (MCP, CLI)
 
@@ -91,7 +88,7 @@ Push-based project guidance such as `AGENTS.md`, `CLAUDE.md`, or `.cursorrules` 
 
 This is grounded partly in eval evidence and partly in practitioner convergence. The safest claim is not that push-based context always wins, but that core rules and gotchas should be present without relying on retrieval luck.
 
-**Evidence tags:** `Practitioner-backed` for push-based core guidance; `Synthesis` for the push-vs-pull framing used here.
+**Evidence tags:** `Practitioner-backed` ([Agent Harness](/ai-coding-primer/learn/advanced/agent-harness/)); `Synthesis`.
 
 Why:
 
@@ -149,7 +146,7 @@ The main benefit is not just parallelism. It is protecting the implementation co
 
 That claim is stronger than "multi-agent is always better." In fact, research and tool practice both suggest orchestration overhead can erase gains unless the subagents have clearly separated jobs.
 
-**Evidence tags:** `Research-backed` for context-isolation benefits; `Practitioner-backed` for selective orchestration with clearly separated jobs.
+**Evidence tags:** `Research-backed` ([Productivity Research](/ai-coding-primer/research/productivity/)); `Practitioner-backed` ([Subagent Architectures](/ai-coding-primer/learn/advanced/subagents/)).
 
 ## Practical Tips
 

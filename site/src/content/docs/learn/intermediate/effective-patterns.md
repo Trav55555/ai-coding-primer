@@ -10,11 +10,9 @@ These patterns show up repeatedly in reliable AI-assisted development workflows.
 :::note[How to read this page]
 Not every pattern here has the same evidence level.
 
-- **Research-backed:** verification-first loops, selective context, and keeping humans in the review path
-- **Practitioner-backed:** small iterations, examples-first prompting, and separating research from implementation
-- **Synthesis:** the exact pattern list and how these ideas are grouped on this page
-
-Where the evidence is stronger, this page links to the relevant research sections. Where it is weaker, treat the guidance as high-signal practice rather than settled science.
+- `Research-backed` - [Productivity Research](/ai-coding-primer/research/productivity/), [Code Quality & Security](/ai-coding-primer/research/code-quality-security/)
+- `Practitioner-backed` - [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/), [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/)
+- `Synthesis`
 :::
 
 ## Pattern 0: Verification First
@@ -54,7 +52,7 @@ This forces the AI to produce code that demonstrably works.
 
 See [Code Quality & Security](/ai-coding-primer/research/code-quality-security/) and [Productivity Research](/ai-coding-primer/research/productivity/) for why verification is the consistent lever even when raw productivity results are mixed.
 
-**Evidence tags:** `Research-backed` for explicit verification loops and executable feedback.
+**Evidence tags:** `Research-backed` ([Code Quality & Security](/ai-coding-primer/research/code-quality-security/), [Productivity Research](/ai-coding-primer/research/productivity/)).
 
 :::caution[If AI writes the test]
 Review AI-generated tests critically. Ask yourself: "Does this test encode MY requirements, or just the AI's assumptions?" Tests should specify what the code *should* do, not describe what the code *does*. See [Lazy Testing](/ai-coding-primer/learn/intermediate/common-mistakes/#mistake-8-lazy-testing) for the full danger.
@@ -82,7 +80,7 @@ Design your workflow so the agent can verify its own work:
 
 This prevents premature building and surfaces better solutions.
 
-**Evidence tags:** `Practitioner-backed` for ambiguity reduction and planning-first discussion.
+**Evidence tags:** `Practitioner-backed` ([Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/)).
 
 ---
 
@@ -96,7 +94,7 @@ Never ask the AI to "build the whole app." Break it down:
 
 Each step is verifiable before moving to the next.
 
-**Evidence tags:** `Research-backed` for lower review and rework costs; `Practitioner-backed` for the concrete stepwise pattern shown here.
+**Evidence tags:** `Research-backed` ([Productivity Research](/ai-coding-primer/research/productivity/)); `Practitioner-backed` ([Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/)).
 
 ---
 
@@ -129,7 +127,7 @@ Now write tests for my new plugin following the same patterns.
 - Adopting library conventions
 - Replicating a coding style
 
-**Evidence tags:** `Practitioner-backed` for example-led imitation as a transfer-of-patterns technique.
+**Evidence tags:** `Practitioner-backed` ([Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/)).
 
 ---
 
@@ -155,7 +153,7 @@ in this codebase. Report back with file paths and patterns.
 - Investigating multiple approaches
 - Any task that's "read a lot, summarize a little"
 
-**Evidence tags:** `Research-backed` for context isolation benefits; `Practitioner-backed` for using subagents selectively rather than by default.
+**Evidence tags:** `Research-backed` ([Productivity Research](/ai-coding-primer/research/productivity/)); `Practitioner-backed` ([Subagent Architectures](/ai-coding-primer/learn/advanced/subagents/)).
 
 ---
 
@@ -174,7 +172,7 @@ Then prompt the model to read the spec and discuss the plan before writing code.
 
 This is the simplest upgrade from "vibe coding" to production-ready AI-assisted work.
 
-**Evidence tags:** `Practitioner-backed` for spec-first development; `Synthesis` for positioning it as the default upgrade path from ad hoc prompting.
+**Evidence tags:** `Practitioner-backed` ([Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/)); `Synthesis`.
 
 ---
 
@@ -188,7 +186,7 @@ When work spans multiple sessions, keep a tiny set of persistent artifacts:
 
 This keeps the task stable even when the model's conversational context gets compacted or cleared.
 
-**Evidence tags:** `Practitioner-backed` for persistent artifacts in long-running agent workflows; `Synthesis` for the exact file conventions shown here.
+**Evidence tags:** `Practitioner-backed` ([Agent Harness](/ai-coding-primer/learn/advanced/agent-harness/)); `Synthesis`.
 
 ---
 

@@ -8,17 +8,8 @@ sidebar:
 Long-running AI work fails when the agent loses the task, not when it loses syntax. A harness keeps the task stable.
 
 :::note[Evidence status]
-Harnesses are grounded primarily in practitioner practice and agent-architecture analysis, not in a single definitive controlled study.
-
-What is well-supported:
-- long-running agent work degrades when state lives only in chat history
-- persistent artifacts reduce session-reset and compaction failures
-- verification commands and explicit constraints improve continuity
-
-What is convention rather than law:
-- the exact filenames used here
-- Markdown versus JSON for task state
-- the precise minimal harness for every team
+- `Practitioner-backed` - [Anthropic: Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents), [OpenAI: Harness engineering](https://openai.com/index/harness-engineering/), [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/)
+- `Synthesis`
 :::
 
 ## What a Harness Is
@@ -68,6 +59,13 @@ Without a harness, a long AI session slowly fills with failed attempts, dead end
 
 This matches current harness practice in Anthropic-style long-running agent setups, Codex-style operational harnesses, and open-source agent architecture analyses.
 
+## Examples in the Wild
+
+- **Anthropic long-running agents** - initializer + coding-agent workflow with durable progress artifacts and incremental commits
+- **Codex / AGENTS.md** - project instructions and verification commands discovered from the repo itself
+- **Cline / implementation plans** - structured planning files used before deep execution
+- **GitHub Spec Kit / plan.md** - project metadata and plan artifacts used to keep agent context aligned
+
 ## Example Pattern
 
 ```markdown
@@ -114,6 +112,11 @@ Implement token refresh flow without changing login behavior.
 
 ## Supporting Evidence
 
+- [Anthropic: Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents/)
+- [OpenAI Codex `AGENTS.md` project-doc implementation](https://github.com/openai/codex/blob/main/codex-rs/core/src/project_doc.rs)
+- [Cline deep-planning `implementation_plan.md` prompt](https://github.com/cline/cline/blob/main/src/core/prompts/commands/deep-planning/variants/generic.ts)
+- [GitHub Spec Kit agent-context update script](https://github.com/github/spec-kit/blob/main/scripts/bash/update-agent-context.sh)
 - [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/)
 - [Productivity Research](/ai-coding-primer/research/productivity/)
-- Anthropic-style harness patterns and recent agent architecture analyses
+- `03-resources/ai-ml/harness-engineering-principles.md`
+- `03-resources/ai-ml/agents/agent-harness-systems-software-maintenance.md`

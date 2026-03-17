@@ -8,22 +8,9 @@ sidebar:
 Most AI coding frustration comes from using the wrong workflow for the job. These four cover many of the most common kinds of work.
 
 :::note[Evidence status]
-These workflow names are a practical synthesis, not a controlled taxonomy from a single study.
-
-Evidence tags used on this page:
-- **Research-backed**: explicit verification improves agent outcomes and reduces review risk
-- **Research-backed**: selective context beats giant prompts
-- **Practitioner-backed**: smaller, verifiable steps outperform broad one-shot asks in real workflows
-- **Practitioner-backed**: separating exploration from implementation helps keep context clean
-- **Synthesis**: the exact labels used here, the exact sequence inside each workflow, and the specific `spec.md` / `PLAN.md` / `STATE.md` conventions
-
-In other words:
-- explicit verification improves agent outcomes and reduces review risk
-- selective context beats giant prompts
-- smaller, verifiable steps outperform broad one-shot asks in real workflows
-- separating exploration from implementation helps keep context clean
-
-See [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/), [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/), [Productivity Research](/ai-coding-primer/research/productivity/), and [Code Quality & Security](/ai-coding-primer/research/code-quality-security/).
+- `Research-backed` - [Productivity Research](/ai-coding-primer/research/productivity/), [Code Quality & Security](/ai-coding-primer/research/code-quality-security/)
+- `Practitioner-backed` - [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/), [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/)
+- `Synthesis`
 :::
 
 ## 1. The Bug Hunt
@@ -42,7 +29,7 @@ Use this when the problem is already visible and you need a reliable fix.
 
 Full worked example: [Scenario - Fix a Bug](/ai-coding-primer/learn/intermediate/scenario-bug-fix/)
 
-**Evidence tags:** `Research-backed` for executable feedback and verification loops; `Synthesis` for this exact bug-fix sequence.
+**Evidence tags:** `Research-backed` ([Productivity Research](/ai-coding-primer/research/productivity/), [Code Quality & Security](/ai-coding-primer/research/code-quality-security/)); `Synthesis`.
 
 ## 2. The Feature Build
 
@@ -60,7 +47,7 @@ Use this when you are adding new behavior.
 
 Full worked example: [Scenario - Add a Feature](/ai-coding-primer/learn/intermediate/scenario-feature-build/)
 
-**Evidence tags:** `Practitioner-backed` for spec-first planning; `Synthesis` for the slice order and gating pattern used here.
+**Evidence tags:** `Practitioner-backed` ([Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/)); `Synthesis`.
 
 ## 3. The Refactor
 
@@ -78,7 +65,7 @@ Use this when behavior should stay the same but structure should improve.
 
 Full worked example: [Scenario - Safe Refactor](/ai-coding-primer/learn/intermediate/scenario-safe-refactor/)
 
-**Evidence tags:** `Research-backed` for keeping review and rework costs low; `Practitioner-backed` for characterization-test refactors.
+**Evidence tags:** `Research-backed` ([Productivity Research](/ai-coding-primer/research/productivity/)); `Practitioner-backed` ([Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/)).
 
 ## 4. The Codebase Explorer
 
@@ -92,7 +79,7 @@ Use this when you do not understand the codebase well enough to implement safely
 
 **Best prompt shape:** "Investigate how X works in this repo. Report back with entry points, key files, and patterns. Do not modify anything."
 
-**Evidence tags:** `Research-backed` for scoped retrieval and context hygiene; `Practitioner-backed` for explore-first ordering in real codebase work.
+**Evidence tags:** `Research-backed` ([Code Quality & Security](/ai-coding-primer/research/code-quality-security/)); `Practitioner-backed` ([Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/)).
 
 ## Which Workflow Should You Start With?
 
