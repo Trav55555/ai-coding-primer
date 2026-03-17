@@ -8,7 +8,7 @@ sidebar:
 Subagents are separate AI instances that handle scoped tasks while your main agent stays focused on implementation.
 
 :::note[Evidence status]
-- `Research-backed` - [Productivity Research](/ai-coding-primer/research/productivity/), [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/)
+- `Research-backed` - [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/), [Anthropic: Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents)
 - `Practitioner-backed` - this page's usage patterns and orchestration guidance
 :::
 
@@ -36,7 +36,7 @@ They are usually **bad** at owning the whole task indefinitely. Use them to redu
 
 This caveat matters. Research and architecture writeups both suggest multi-agent systems help most when the agents have genuinely different scopes, tools, or capabilities.
 
-**Evidence tags:** `Research-backed` ([Productivity Research](/ai-coding-primer/research/productivity/), [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/)); `Practitioner-backed` ([Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/)).
+**Evidence tags:** `Research-backed` ([METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/), [Anthropic: Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents)); `Practitioner-backed` ([Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/)).
 
 ## Example Usage
 
@@ -117,3 +117,8 @@ Main Agent ─┬─> Subagent 1: "Explore database layer"
 
 - [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/) — where subagents fit in real workflows
 - [Agent Harness](/ai-coding-primer/learn/advanced/agent-harness/) — keeping long-running work stable
+
+## Bibliography
+
+- [Anthropic: Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents/)
+- [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/)

@@ -8,7 +8,7 @@ sidebar:
 Most AI coding frustration comes from using the wrong workflow for the job. These four cover many of the most common kinds of work.
 
 :::note[Evidence status]
-- `Research-backed` - [Productivity Research](/ai-coding-primer/research/productivity/), [Code Quality & Security](/ai-coding-primer/research/code-quality-security/)
+- `Research-backed` - [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/), [Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/)
 - `Practitioner-backed` - [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/), [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/)
 - `Synthesis`
 :::
@@ -29,7 +29,7 @@ Use this when the problem is already visible and you need a reliable fix.
 
 Full worked example: [Scenario - Fix a Bug](/ai-coding-primer/learn/intermediate/scenario-bug-fix/)
 
-**Evidence tags:** `Research-backed` ([Productivity Research](/ai-coding-primer/research/productivity/), [Code Quality & Security](/ai-coding-primer/research/code-quality-security/)); `Synthesis`.
+**Evidence tags:** `Research-backed` ([METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/), [Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/)); `Synthesis`.
 
 ## 2. The Feature Build
 
@@ -65,7 +65,7 @@ Use this when behavior should stay the same but structure should improve.
 
 Full worked example: [Scenario - Safe Refactor](/ai-coding-primer/learn/intermediate/scenario-safe-refactor/)
 
-**Evidence tags:** `Research-backed` ([Productivity Research](/ai-coding-primer/research/productivity/)); `Practitioner-backed` ([Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/)).
+**Evidence tags:** `Research-backed` ([METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/)); `Practitioner-backed` ([Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/)).
 
 ## 4. The Codebase Explorer
 
@@ -79,7 +79,7 @@ Use this when you do not understand the codebase well enough to implement safely
 
 **Best prompt shape:** "Investigate how X works in this repo. Report back with entry points, key files, and patterns. Do not modify anything."
 
-**Evidence tags:** `Research-backed` ([Code Quality & Security](/ai-coding-primer/research/code-quality-security/)); `Practitioner-backed` ([Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/)).
+**Evidence tags:** `Research-backed` ([Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/)); `Practitioner-backed` ([Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/)).
 
 ## Which Workflow Should You Start With?
 
@@ -117,3 +117,9 @@ Use this when you do not understand the codebase well enough to implement safely
 - [Scenario - Safe Refactor](/ai-coding-primer/learn/intermediate/scenario-safe-refactor/)
 - [When It's Not Working](/ai-coding-primer/learn/intermediate/troubleshooting/)
 - [Agent Harness](/ai-coding-primer/learn/advanced/agent-harness/)
+
+## Bibliography
+
+- [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/)
+- [Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/)
+- [Anthropic: Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents/)

@@ -8,8 +8,8 @@ sidebar:
 AI tools can make you a better developer faster — or they can silently erode your skills. The difference is not whether you use AI. It is **how much thinking you delegate away**.
 
 :::note[Evidence status]
-- `Research-backed` - [Learning Impacts](/ai-coding-primer/research/learning-impacts/)
-- `Practitioner-backed` - [Learning Impacts](/ai-coding-primer/research/learning-impacts/)
+- `Research-backed` - [Anthropic AI coding learning RCT](https://www.anthropic.com/research/ai-coding-learning), [OECD Digital Education Outlook 2026](https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_f6e1d3c0-en.html)
+- `Practitioner-backed` - [Tutor CoPilot RCT](https://arxiv.org/abs/2410.05017), [MIT Media Lab: Your Brain on ChatGPT](https://www.media.mit.edu/publications/your-brain-on-chatgpt/)
 - `Synthesis`
 :::
 
@@ -23,9 +23,9 @@ The Anthropic study found a 17% comprehension gap between developers who used AI
 
 The mechanism is straightforward. Learning requires struggle, retrieval, and error correction. Heavy delegation can short-circuit all three. You get the answer without doing as much of the mental work that makes the answer yours.
 
-See [Learning Impacts](/ai-coding-primer/research/learning-impacts/) for the full evidence behind this.
+See [Anthropic AI coding learning RCT](https://www.anthropic.com/research/ai-coding-learning) and [OECD Digital Education Outlook 2026](https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_f6e1d3c0-en.html) for the strongest primary sources behind this.
 
-**Evidence tags:** `Research-backed` ([Learning Impacts](/ai-coding-primer/research/learning-impacts/)).
+**Evidence tags:** `Research-backed` ([Anthropic AI coding learning RCT](https://www.anthropic.com/research/ai-coding-learning), [OECD Digital Education Outlook 2026](https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_f6e1d3c0-en.html)).
 
 ---
 
@@ -104,13 +104,13 @@ Prompt templates that actually work:
 
 These prompts reframe AI as a thinking partner rather than an answer dispenser. The output is less immediately satisfying. The learning is significantly better.
 
-**Evidence tags:** `Research-backed` ([Learning Impacts](/ai-coding-primer/research/learning-impacts/)); `Practitioner-backed` ([Learning Impacts](/ai-coding-primer/research/learning-impacts/)).
+**Evidence tags:** `Research-backed` ([Tutor CoPilot RCT](https://arxiv.org/abs/2410.05017), [MIT Media Lab: Your Brain on ChatGPT](https://www.media.mit.edu/publications/your-brain-on-chatgpt/)).
 
 ## High-Learning vs Low-Learning Use
 
 This table is a synthesis of the studies cited on this page, especially the Anthropic learning RCT, Shen & Tamkin's conceptual-vs-delegated-use distinction, and the broader literature on productive struggle. It is a practical framework, not a direct taxonomy from one paper.
 
-**Evidence tags:** `Synthesis`; `Research-backed` ([Learning Impacts](/ai-coding-primer/research/learning-impacts/)).
+**Evidence tags:** `Synthesis`; `Research-backed` ([Anthropic AI coding learning RCT](https://www.anthropic.com/research/ai-coding-learning), [Tutor CoPilot RCT](https://arxiv.org/abs/2410.05017)).
 
 | Pattern | Outcome |
 |---------|---------|
@@ -170,3 +170,10 @@ The research is consistent across studies: the developers who grow with AI are t
 The tool doesn't determine the outcome. Your habits do.
 
 See [Learning Impacts](/ai-coding-primer/research/learning-impacts/) for the evidence behind these recommendations.
+
+## Bibliography
+
+- [Anthropic AI coding learning RCT](https://www.anthropic.com/research/ai-coding-learning)
+- [OECD Digital Education Outlook 2026](https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_f6e1d3c0-en.html)
+- [MIT Media Lab: Your Brain on ChatGPT](https://www.media.mit.edu/publications/your-brain-on-chatgpt/)
+- [Tutor CoPilot RCT](https://arxiv.org/abs/2410.05017)

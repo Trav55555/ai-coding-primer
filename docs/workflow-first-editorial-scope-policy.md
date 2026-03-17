@@ -65,6 +65,7 @@ Use for perishable vendor snapshots and implementation specifics that are useful
 3. If a claim is time-sensitive, mark it as a snapshot and link to live trackers.
 4. Keep privacy, jurisdiction, and operational-boundary details when they affect workflow or governance.
 5. Avoid language that implies static market certainty (for example, "best value" or "top model" without context and evidence caveat).
+6. Link to primary sources where possible; use internal synthesis pages as secondary context, not as a substitute for original research, official docs, or maintainer-authored engineering writeups.
 
 ## Core Ownership of Governance Criteria
 
@@ -82,6 +83,7 @@ Vendor-specific pages may reference these criteria, but should not become the ca
 3. If content is perishable, should it live in appendix instead of core?
 4. Are evidence-status cues clear for non-obvious claims?
 5. Does the page avoid pricing-led or budget-led recommendations?
+6. Does the page link to primary sources where those sources are available?
 
 Any "no" answer requires rewrite, re-scope, or relocation.
 

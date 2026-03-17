@@ -203,3 +203,9 @@ TypeScript + React + Express. Tests with Vitest.
 - [Learn Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/) — apply context engineering in practice
 - [Create Project Context Files](/ai-coding-primer/learn/advanced/project-context-files/) — templates for your stack
 - [Agent Harness](/ai-coding-primer/learn/advanced/agent-harness/) — persist state across long-running tasks
+
+## Bibliography
+
+- [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/)
+- [DORA 2025 report](https://dora.dev/research/2025/dora-report/)
+- [Anthropic: Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents/)

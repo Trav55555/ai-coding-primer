@@ -10,7 +10,7 @@ These patterns show up repeatedly in reliable AI-assisted development workflows.
 :::note[How to read this page]
 Not every pattern here has the same evidence level.
 
-- `Research-backed` - [Productivity Research](/ai-coding-primer/research/productivity/), [Code Quality & Security](/ai-coding-primer/research/code-quality-security/)
+- `Research-backed` - [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/), [Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/)
 - `Practitioner-backed` - [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/), [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/)
 - `Synthesis`
 :::
@@ -50,9 +50,9 @@ The most reliable verification approach:
 
 This forces the AI to produce code that demonstrably works.
 
-See [Code Quality & Security](/ai-coding-primer/research/code-quality-security/) and [Productivity Research](/ai-coding-primer/research/productivity/) for why verification is the consistent lever even when raw productivity results are mixed.
+See [Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/) and [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/) for why verification is the consistent lever even when raw productivity results are mixed.
 
-**Evidence tags:** `Research-backed` ([Code Quality & Security](/ai-coding-primer/research/code-quality-security/), [Productivity Research](/ai-coding-primer/research/productivity/)).
+**Evidence tags:** `Research-backed` ([Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/), [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/)).
 
 :::caution[If AI writes the test]
 Review AI-generated tests critically. Ask yourself: "Does this test encode MY requirements, or just the AI's assumptions?" Tests should specify what the code *should* do, not describe what the code *does*. See [Lazy Testing](/ai-coding-primer/learn/intermediate/common-mistakes/#mistake-8-lazy-testing) for the full danger.
@@ -94,7 +94,7 @@ Never ask the AI to "build the whole app." Break it down:
 
 Each step is verifiable before moving to the next.
 
-**Evidence tags:** `Research-backed` ([Productivity Research](/ai-coding-primer/research/productivity/)); `Practitioner-backed` ([Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/)).
+**Evidence tags:** `Research-backed` ([METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/)); `Practitioner-backed` ([Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/)).
 
 ---
 
@@ -153,7 +153,7 @@ in this codebase. Report back with file paths and patterns.
 - Investigating multiple approaches
 - Any task that's "read a lot, summarize a little"
 
-**Evidence tags:** `Research-backed` ([Productivity Research](/ai-coding-primer/research/productivity/)); `Practitioner-backed` ([Subagent Architectures](/ai-coding-primer/learn/advanced/subagents/)).
+**Evidence tags:** `Research-backed` ([METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/)); `Practitioner-backed` ([Subagent Architectures](/ai-coding-primer/learn/advanced/subagents/)).
 
 ---
 
@@ -205,3 +205,9 @@ This keeps the task stable even when the model's conversational context gets com
 - [Learn Common Mistakes](/ai-coding-primer/learn/intermediate/common-mistakes/) — avoid the pitfalls
 - [Troubleshooting](/ai-coding-primer/learn/intermediate/troubleshooting/) — when things go wrong
 - [Research & Evidence](/ai-coding-primer/research/overview/) — empirical studies and caveats
+
+## Bibliography
+
+- [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/)
+- [Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/)
+- [DORA 2025 report](https://dora.dev/research/2025/dora-report/)
