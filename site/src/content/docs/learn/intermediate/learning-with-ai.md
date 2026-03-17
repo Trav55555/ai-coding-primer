@@ -5,7 +5,7 @@ sidebar:
   order: 6
 ---
 
-AI tools can make you a better developer faster — or they can silently erode your skills. The difference is not whether you use AI. It is **how much thinking you delegate away**.
+AI can help you learn faster. It can also make you worse at the parts of programming that matter when things break. The difference is not whether you use it. The difference is how much thinking you hand over.
 
 :::note[Evidence status]
 - `Research-backed` - [Anthropic AI coding learning RCT](https://www.anthropic.com/research/ai-coding-learning), [OECD Digital Education Outlook 2026](https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_f6e1d3c0-en.html)
@@ -17,11 +17,11 @@ AI tools can make you a better developer faster — or they can silently erode y
 
 ## The Core Problem
 
-There's a gap between performing a task and learning from it. When AI writes the code, you may ship faster. You also risk building nothing in your head.
+There is a difference between finishing a task and actually learning from it. AI can close the first gap while widening the second.
 
 The Anthropic study found a 17% comprehension gap between developers who used AI heavily and those who did not, even when output quality looked similar. METR also found experienced open-source developers were slower with AI than they expected to be. The message is consistent: speed gains are real, but they are not automatic, and they do not guarantee learning.
 
-The mechanism is straightforward. Learning requires struggle, retrieval, and error correction. Heavy delegation can short-circuit all three. You get the answer without doing as much of the mental work that makes the answer yours.
+The mechanism is not mysterious. Learning needs struggle, recall, and correction. Heavy delegation short-circuits all three. You get the answer, but less of it sticks.
 
 See [Anthropic AI coding learning RCT](https://www.anthropic.com/research/ai-coding-learning) and [OECD Digital Education Outlook 2026](https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_f6e1d3c0-en.html) for the strongest primary sources behind this.
 
@@ -37,7 +37,7 @@ See [Anthropic AI coding learning RCT](https://www.anthropic.com/research/ai-cod
 
 Or: "I wrote this implementation. What did I get wrong?"
 
-The second framing keeps you in the driver's seat. You're using AI to fill gaps in your mental model, not to skip building one.
+The second framing keeps you in the loop. You are using AI to patch gaps in your mental model, not replace the model entirely.
 
 Shen & Tamkin (2026) found developers who used AI for conceptual questions retained significantly more than those who delegated code generation. The output looked similar. The understanding did not.
 
@@ -102,7 +102,7 @@ Prompt templates that actually work:
 - "Give me a hint, not a solution. I want to figure this out."
 :::
 
-These prompts reframe AI as a thinking partner rather than an answer dispenser. The output is less immediately satisfying. The learning is significantly better.
+These prompts make the tool act more like a tutor and less like a vending machine. The answers feel slower. That is usually a good sign.
 
 **Evidence tags:** `Research-backed` ([Tutor CoPilot RCT](https://arxiv.org/abs/2410.05017), [MIT Media Lab: Your Brain on ChatGPT](https://www.media.mit.edu/publications/your-brain-on-chatgpt/)).
 
@@ -165,7 +165,7 @@ Research-backed practices that don't require banning AI:
 
 Use AI as a thinking partner, not an answer machine.
 
-The research is consistent across studies: the developers who grow with AI are the ones who stay in the loop. They use AI to challenge their thinking, fill specific gaps, and move faster on the parts that don't require learning. They don't use it to avoid the parts that do.
+The broad pattern is pretty clear: the people who benefit most from AI are still doing a lot of the thinking themselves. They use it to move faster on the boring parts and to challenge their understanding. They do not use it to dodge the hard parts entirely.
 
 The tool doesn't determine the outcome. Your habits do.
 

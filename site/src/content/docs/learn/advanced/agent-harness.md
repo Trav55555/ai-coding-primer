@@ -5,7 +5,7 @@ sidebar:
   order: 2
 ---
 
-Long-running AI work fails when the agent loses the task, not when it loses syntax. A harness keeps the task stable.
+Long-running agent work usually falls apart for a boring reason: the system loses the thread. A harness is how you stop that from happening.
 
 :::note[Evidence status]
 - `Practitioner-backed` - [Anthropic: Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents), [OpenAI: Harness engineering](https://openai.com/index/harness-engineering/), [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/)
@@ -14,18 +14,18 @@ Long-running AI work fails when the agent loses the task, not when it loses synt
 
 ## What a Harness Is
 
-A harness is the environment around the model:
+A harness is the small amount of structure around the model that keeps the work legible:
 
 - persistent task files
 - verification commands
 - clear constraints
 - a repeatable review loop
 
-Think of it as the scaffolding that lets the agent keep working even after the chat history gets compacted or reset.
+If the session resets, compacts, or goes sideways, the harness is what lets the next pass pick the work back up without starting from scratch.
 
 ## The Minimal Harness
 
-For most projects, three files are enough:
+You do not need much. For most projects, three files are enough:
 
 ### `spec.md`
 
@@ -55,7 +55,7 @@ The compact memory of what already happened.
 
 ## Why This Matters
 
-Without a harness, a long AI session slowly fills with failed attempts, dead ends, and stale context. With a harness, the agent can restart from a stable state and continue.
+Without a harness, long sessions turn into a pile of stale context, half-finished attempts, and forgotten constraints. With one, the task survives even when the conversation does not.
 
 This matches current harness practice in Anthropic-style long-running agent setups, Codex-style operational harnesses, and open-source agent architecture analyses.
 
@@ -84,7 +84,7 @@ Implement token refresh flow without changing login behavior.
 - `npm run build`
 ```
 
-## Harness Rules That Matter Most
+## Rules That Actually Matter
 
 1. Keep files short enough to reread quickly.
 2. Update the harness when the task changes, not hours later.
@@ -103,7 +103,7 @@ Implement token refresh flow without changing login behavior.
 
 - small one-file edits
 - typo fixes
-- work you can finish before the context gets messy
+- work you will finish before the context gets messy
 
 ## Next Steps
 
@@ -118,8 +118,6 @@ Implement token refresh flow without changing login behavior.
 - [GitHub Spec Kit agent-context update script](https://github.com/github/spec-kit/blob/main/scripts/bash/update-agent-context.sh)
 - [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/)
 - [Productivity Research](/ai-coding-primer/research/productivity/)
-- `03-resources/ai-ml/harness-engineering-principles.md`
-- `03-resources/ai-ml/agents/agent-harness-systems-software-maintenance.md`
 
 ## Bibliography
 

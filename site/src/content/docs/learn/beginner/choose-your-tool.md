@@ -5,7 +5,7 @@ sidebar:
   order: 3
 ---
 
-There are three main categories of AI coding tools: **IDEs**, **Extensions**, and **CLI tools**. Start with the workflow you want, then pick the lightest tool shape that supports it.
+Most people make this harder than it needs to be. There are three tool shapes that matter: **IDEs**, **extensions**, and **CLI tools**. Start with how you like to work, then pick the lightest option that fits.
 
 If you want durable decision criteria first, read [Tool Comparison](/ai-coding-primer/tools/comparison/). If you want vendor-specific details, jump to the [Reference Appendix](/ai-coding-primer/reference/appendix/).
 
@@ -23,7 +23,7 @@ If you want durable decision criteria first, read [Tool Comparison](/ai-coding-p
 
 ### IDEs
 
-Choose an IDE if you want AI woven into navigation, editing, and multi-file work.
+Choose an IDE if you want one place to handle navigation, editing, and AI help.
 
 Best for:
 - integrated chat, edits, and codebase navigation
@@ -35,7 +35,7 @@ Tradeoff:
 
 ### Extensions
 
-Choose an extension if you like your editor already and mostly want completion, chat, or scoped edits.
+Choose an extension if you already like your editor and do not want a new environment just to add AI.
 
 Best for:
 - keeping existing editor habits
@@ -47,7 +47,7 @@ Tradeoff:
 
 ### CLI Tools
 
-Choose a CLI tool if you want deep work in the terminal, explicit verification steps, and easy scripting.
+Choose a CLI tool if you already think in commands, diffs, and test output.
 
 Best for:
 - long-running agentic workflows
@@ -90,13 +90,13 @@ What workflow fits you best right now?
 
 ## Our Recommendation
 
-For most beginners, choose the tool shape that matches how you already like to work:
+For most beginners, the right answer is boring:
 
 - use an **IDE** if you want one integrated environment
 - use an **extension** if you already like your editor
 - use a **CLI** if you already think in commands, tests, and scripts
 
-Do not over-optimize for vendor choice before you know which workflow shape fits you.
+Do not burn time comparing vendors before you know which workflow shape actually fits.
 
 ## What Not to Optimize Too Early
 

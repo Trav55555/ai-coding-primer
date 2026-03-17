@@ -7,7 +7,7 @@ sidebar:
 
 > "Context engineering is building **dynamic systems** to provide the right information and tools in the right format such that the LLM can plausibly accomplish the task." — Harrison Chase, LangChain
 
-**Prompt engineering** is crafting a single good instruction. **Context engineering** is designing the entire system that feeds information to the model.
+**Prompt engineering** is writing a good instruction. **Context engineering** is deciding what the model sees, what tools it gets, and what stays out of view.
 
 ## The Framework
 
@@ -15,7 +15,7 @@ Ask yourself: **"Can the model plausibly accomplish this task with the context I
 
 If the answer is no, the problem is context, not the model.
 
-In 2025-2026, this stopped being a prompt-writing trick and became an operational discipline. Teams now treat context like a system design problem: what to include, what to hide, what to retrieve on demand, and what to isolate in subagents.
+This stopped being a prompt-writing trick a while ago. Good teams now treat context like a systems problem: what to include, what to leave out, what to fetch on demand, and what to isolate in another agent.
 
 :::note[Evidence status]
 - `Research-backed` - [Productivity Research](/ai-coding-primer/research/productivity/), [Code Quality & Security](/ai-coding-primer/research/code-quality-security/)
@@ -56,7 +56,7 @@ Information the AI gathers based on the current task:
 
 **Good AI tools do this automatically.** They read files, grep for patterns, check git status.
 
-Explore the project first, then consult external docs. Recent workflow research and practitioner reports show that reversing that order often anchors the model on generic docs instead of the real codebase in front of it.
+Explore the project first. Then reach for the docs. If you reverse that order, the model often latches onto the clean example from the docs instead of the mess in front of it.
 
 **Evidence tags:** `Practitioner-backed` ([Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/)); `Research-backed` ([Productivity Research](/ai-coding-primer/research/productivity/)).
 
@@ -84,7 +84,7 @@ The more robust version is a small harness: `PLAN.md`, `STATE.md`, and a spec or
 
 ## Push Beats Pull for Core Guidance
 
-Push-based project guidance such as `AGENTS.md`, `CLAUDE.md`, or `.cursorrules` often works better than hoping the model retrieves the right skill or doc at the right moment.
+Push-based project guidance such as `AGENTS.md`, `CLAUDE.md`, or `.cursorrules` often works better than hoping the model remembers to fetch the right rule at the right time.
 
 This is grounded partly in eval evidence and partly in practitioner convergence. The safest claim is not that push-based context always wins, but that core rules and gotchas should be present without relying on retrieval luck.
 
@@ -100,14 +100,14 @@ Use push-based files for rules and gotchas. Use tools and retrieval for everythi
 
 ## Explore-First Ordering
 
-The sequence matters:
+The order matters:
 
 1. **Explore the local project** — files, patterns, tests, commands
 2. **Load only relevant context** — not the whole repo
 3. **Consult external docs if needed** — only after the codebase frame is clear
 4. **Execute with verification**
 
-This avoids a common failure mode where the model applies a clean documentation example that does not match your actual codebase.
+This avoids a common failure mode: the model grabs a neat doc example that does not match your codebase at all.
 
 ## The 40% Rule in Practice
 
@@ -136,7 +136,7 @@ For long logs and large command output, keep the beginning and end, not the full
 
 ## Isolation Beats Contamination
 
-Subagents are not just a convenience feature. They are a context hygiene tool.
+Subagents are not just a convenience feature. They are a way to keep your main context from turning into a junk drawer.
 
 Use them when:
 
