@@ -5,7 +5,7 @@ sidebar:
   order: 1
 ---
 
-AI tools read markdown files in your project root to understand context, conventions, and gotchas. Getting these right is the difference between an AI that "gets" your project and one that fights you.
+AI tools read markdown files in your project root to understand context, conventions, and gotchas. If those files are good, the tool stops fighting you so much.
 
 ## Which File to Use
 
@@ -18,7 +18,7 @@ AI tools read markdown files in your project root to understand context, convent
 | Copilot | `.github/copilot-instructions.md` | GitHub convention |
 | Any tool | `AGENTS.md` | Widely recognized fallback |
 
-## The Golden Rule: Shorter is Better
+## The Golden Rule: Keep Them Short
 
 > "Overly verbose files can lead to Claude ignoring instructions if deemed irrelevant. Aim for under 300 lines." — Anthropic
 
@@ -52,7 +52,7 @@ AI tools read markdown files in your project root to understand context, convent
 
 ## Progressive Disclosure Pattern
 
-**Don't embed everything. Tell the AI where to look.**
+Do not embed everything. Tell the AI where to look.
 
 ```markdown
 ## Architecture
@@ -65,7 +65,7 @@ See `/docs/api-conventions.md` for request/response patterns.
 Schema in `/prisma/schema.prisma`. Migrations in `/prisma/migrations/`.
 ```
 
-This keeps your context file short while giving the AI access to detailed information when needed.
+That keeps the context file short while still giving the AI a path to the details.
 
 ## Modular Hierarchy
 
@@ -84,9 +84,9 @@ project/
     └── api-conventions.md
 ```
 
-**Personal + Project files:**
-- `~/.claude/CLAUDE.md` — Your personal preferences (editor, style)
-- `./CLAUDE.md` — Project-specific context
+**Personal + project files:**
+- `~/.claude/CLAUDE.md`: your personal preferences
+- `./CLAUDE.md`: project-specific context
 
 ## Template Structure
 
@@ -106,7 +106,7 @@ project/
 - [Non-obvious preference]
 ```
 
-That's it. Start minimal, add only what causes mistakes.
+That is enough. Start small and add only what prevents repeated mistakes.
 
 ## Anti-Patterns
 
@@ -138,7 +138,7 @@ That's it. Start minimal, add only what causes mistakes.
 - Prefer arrow functions for components
 ```
 
-**22 lines.** Everything else, the AI can infer from the code.
+**22 lines.** The rest is usually already visible in the code.
 
 ## Example: Minimal Python
 
@@ -165,10 +165,10 @@ That's it. Start minimal, add only what causes mistakes.
 
 Your context file should evolve:
 
-1. **Start minimal** — 10-20 lines
-2. **Add when AI makes mistakes** — "It keeps suggesting moment instead of date-fns" → add gotcha
-3. **Remove when redundant** — If AI consistently gets something right, you don't need to tell it
-4. **Version control** — Track changes, revert if something breaks
+1. **Start minimal**: 10-20 lines
+2. **Add when AI makes mistakes**: "It keeps suggesting moment instead of date-fns" -> add gotcha
+3. **Remove when redundant**: if the tool consistently gets something right, stop spending lines on it
+4. **Version control**: track changes and revert them if they make the file worse
 
 ## Downloadable Templates
 

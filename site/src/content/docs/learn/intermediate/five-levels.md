@@ -5,7 +5,7 @@ sidebar:
   order: 2
 ---
 
-This model is adapted from Dan Shapiro's framework (January 2026), inspired by the levels of autonomous driving.
+This model adapts Dan Shapiro's January 2026 framework. It is a simple way to judge how much of the coding loop the AI is carrying.
 
 ## The Levels
 
@@ -15,8 +15,8 @@ This model is adapted from Dan Shapiro's framework (January 2026), inspired by t
 | **1** | The Coding Intern | AI writes boilerplate and unimportant snippets | Full review of every line |
 | **2** | The Junior Developer | Pair programming with AI, real-time collaboration | Review every line, guide direction |
 | **3** | The Developer | Most code is AI-generated, you're a full-time reviewer | Code review, architecture decisions |
-| **4** | The Engineering Team | You're the PM/manager—specs and plans, agents do work | Define specs, review outcomes |
-| **5** | The Dark Factory | No human code review—only system verification | Design verification systems |
+| **4** | The Engineering Team | You're the PM or manager. Specs and plans drive the work. | Define specs, review outcomes |
+| **5** | The Dark Factory | No human code review. Only system verification. | Design verification systems |
 
 ## Level Details
 
@@ -60,9 +60,9 @@ This model is adapted from Dan Shapiro's framework (January 2026), inspired by t
 
 ## Where to Start
 
-**If you're new to AI coding:** Start at Level 1-2. Use AI for tasks you already know how to solve. Build intuition for when it's right vs. wrong.
+**If you're new to AI coding:** start at Level 1 or 2. Use AI for tasks you already know how to solve. That is how you learn when it is right and when it is not.
 
-**If you're experienced:** Most professionals operate at Level 2-3. Level 4+ requires significant infrastructure investment.
+**If you're experienced:** most professionals still live around Level 2 or 3. Level 4 and beyond needs real infrastructure.
 
 **Most readers should aim for Level 3** with strong verification practices.
 
@@ -95,5 +95,5 @@ Level 4 → Level 5
 
 ## Next Steps
 
-- [Learn Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) — the key skill for Level 2+
-- [Study Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/) — what works at each level
+- [Learn Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/): the key skill for Level 2+
+- [Study Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/): what works at each level
