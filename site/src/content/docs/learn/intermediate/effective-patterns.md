@@ -1,11 +1,21 @@
 ---
 title: Effective Patterns
-description: Proven approaches for AI-assisted development.
+description: High-signal approaches for AI-assisted development.
 sidebar:
   order: 4
 ---
 
-These patterns are the difference between fighting your AI tools and flowing with them.
+These patterns show up repeatedly in reliable AI-assisted development workflows.
+
+:::note[How to read this page]
+Not every pattern here has the same evidence level.
+
+- **Research-backed:** verification-first loops, selective context, and keeping humans in the review path
+- **Practitioner-backed:** small iterations, examples-first prompting, and separating research from implementation
+- **Synthesis:** the exact pattern list and how these ideas are grouped on this page
+
+Where the evidence is stronger, this page links to the relevant research sections. Where it is weaker, treat the guidance as high-signal practice rather than settled science.
+:::
 
 ## Pattern 0: Verification First
 
@@ -42,6 +52,10 @@ The most reliable verification approach:
 
 This forces the AI to produce code that demonstrably works.
 
+See [Code Quality & Security](/ai-coding-primer/research/code-quality-security/) and [Productivity Research](/ai-coding-primer/research/productivity/) for why verification is the consistent lever even when raw productivity results are mixed.
+
+**Evidence tags:** `Research-backed` for explicit verification loops and executable feedback.
+
 :::caution[If AI writes the test]
 Review AI-generated tests critically. Ask yourself: "Does this test encode MY requirements, or just the AI's assumptions?" Tests should specify what the code *should* do, not describe what the code *does*. See [Lazy Testing](/ai-coding-primer/learn/intermediate/common-mistakes/#mistake-8-lazy-testing) for the full danger.
 :::
@@ -68,6 +82,8 @@ Design your workflow so the agent can verify its own work:
 
 This prevents premature building and surfaces better solutions.
 
+**Evidence tags:** `Practitioner-backed` for ambiguity reduction and planning-first discussion.
+
 ---
 
 ## Pattern 3: Small Iterations
@@ -80,6 +96,8 @@ Never ask the AI to "build the whole app." Break it down:
 
 Each step is verifiable before moving to the next.
 
+**Evidence tags:** `Research-backed` for lower review and rework costs; `Practitioner-backed` for the concrete stepwise pattern shown here.
+
 ---
 
 ## Pattern 4: Less Context is More
@@ -89,6 +107,8 @@ Each step is verifiable before moving to the next.
 - **Don't** dump your entire codebase into context
 - **Do** provide only relevant files
 - **Do** give tools to search rather than pre-loading
+
+See [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) for the evidence and caveats behind this claim.
 
 ---
 
@@ -108,6 +128,8 @@ Now write tests for my new plugin following the same patterns.
 - Setting up test patterns
 - Adopting library conventions
 - Replicating a coding style
+
+**Evidence tags:** `Practitioner-backed` for example-led imitation as a transfer-of-patterns technique.
 
 ---
 
@@ -133,6 +155,41 @@ in this codebase. Report back with file paths and patterns.
 - Investigating multiple approaches
 - Any task that's "read a lot, summarize a little"
 
+**Evidence tags:** `Research-backed` for context isolation benefits; `Practitioner-backed` for using subagents selectively rather than by default.
+
+---
+
+## Pattern 7: Start with a Spec
+
+Loose prompts are fine for tiny changes. They break down on real feature work.
+
+Before a larger task, write a small spec with:
+
+- requirements
+- acceptance criteria
+- out-of-scope items
+- constraints or non-negotiables
+
+Then prompt the model to read the spec and discuss the plan before writing code.
+
+This is the simplest upgrade from "vibe coding" to production-ready AI-assisted work.
+
+**Evidence tags:** `Practitioner-backed` for spec-first development; `Synthesis` for positioning it as the default upgrade path from ad hoc prompting.
+
+---
+
+## Pattern 8: Use a Harness for Long Tasks
+
+When work spans multiple sessions, keep a tiny set of persistent artifacts:
+
+- `PLAN.md` — what remains to be done
+- `STATE.md` — current status and decisions
+- `spec.md` or equivalent — the source of truth for intent
+
+This keeps the task stable even when the model's conversational context gets compacted or cleared.
+
+**Evidence tags:** `Practitioner-backed` for persistent artifacts in long-running agent workflows; `Synthesis` for the exact file conventions shown here.
+
 ---
 
 ## Anti-Patterns to Avoid
@@ -146,6 +203,7 @@ in this codebase. Report back with file paths and patterns.
 
 ## Next Steps
 
+- [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/) — common end-to-end workflows
 - [Learn Common Mistakes](/ai-coding-primer/learn/intermediate/common-mistakes/) — avoid the pitfalls
 - [Troubleshooting](/ai-coding-primer/learn/intermediate/troubleshooting/) — when things go wrong
 - [Research & Evidence](/ai-coding-primer/research/overview/) — empirical studies and caveats

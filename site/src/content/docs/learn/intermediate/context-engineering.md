@@ -15,6 +15,17 @@ Ask yourself: **"Can the model plausibly accomplish this task with the context I
 
 If the answer is no, the problem is context, not the model.
 
+In 2025-2026, this stopped being a prompt-writing trick and became an operational discipline. Teams now treat context like a system design problem: what to include, what to hide, what to retrieve on demand, and what to isolate in subagents.
+
+:::note[Evidence status]
+Context engineering is one of the most practice-heavy parts of AI coding. Some claims on this page come from evals and benchmark-style studies, while others are practitioner rules that have converged across tools.
+
+- **Research-backed:** too much irrelevant context degrades outcomes
+- **Research-backed:** retrieval and tool access beat giant pasted prompts
+- **Practitioner-backed:** explore-the-codebase-first often beats doc-first prompting
+- **Synthesis:** exact token thresholds such as the "40% rule" and any one universal context architecture
+:::
+
 | Component | What It Means | Example |
 |-----------|---------------|---------|
 | **Right Information** | Model has what it needs | Relevant files, not entire codebase |
@@ -35,6 +46,8 @@ Project-specific information that doesn't change per-task:
 
 **Keep ruthlessly short.** For each line, ask: "Would removing this cause the AI to make mistakes?" If not, cut it.
 
+The best static context is usually a list of **gotchas**, not a full project handbook.
+
 ### 2. Dynamic Context (Retrieved at Runtime)
 
 Information the AI gathers based on the current task:
@@ -45,6 +58,10 @@ Information the AI gathers based on the current task:
 - Error messages
 
 **Good AI tools do this automatically.** They read files, grep for patterns, check git status.
+
+Explore the project first, then consult external docs. Recent workflow research and practitioner reports show that reversing that order often anchors the model on generic docs instead of the real codebase in front of it.
+
+**Evidence tags:** `Practitioner-backed` for explore-first ordering; `Research-backed` for selective retrieval over generic preloading.
 
 ### 3. Tool Context (MCP, CLI)
 
@@ -66,9 +83,40 @@ What the AI should remember between sessions:
 
 **Most tools don't have this yet.** You simulate it with context files.
 
+The more robust version is a small harness: `PLAN.md`, `STATE.md`, and a spec or scratchpad that can survive session resets and compaction.
+
+## Push Beats Pull for Core Guidance
+
+Push-based project guidance such as `AGENTS.md`, `CLAUDE.md`, or `.cursorrules` often works better than hoping the model retrieves the right skill or doc at the right moment.
+
+This is grounded partly in eval evidence and partly in practitioner convergence. The safest claim is not that push-based context always wins, but that core rules and gotchas should be present without relying on retrieval luck.
+
+**Evidence tags:** `Practitioner-backed` for push-based core guidance; `Synthesis` for the push-vs-pull framing used here.
+
+Why:
+
+- Core rules stay visible every turn
+- The model does not need to remember to ask for the rule
+- You control instruction ordering and reduce retrieval misses
+
+Use push-based files for rules and gotchas. Use tools and retrieval for everything else.
+
+## Explore-First Ordering
+
+The sequence matters:
+
+1. **Explore the local project** — files, patterns, tests, commands
+2. **Load only relevant context** — not the whole repo
+3. **Consult external docs if needed** — only after the codebase frame is clear
+4. **Execute with verification**
+
+This avoids a common failure mode where the model applies a clean documentation example that does not match your actual codebase.
+
 ## The 40% Rule in Practice
 
 > "As context usage grows, model quality degrades. Empirically, this begins around 40% of the context window." — Dex Horthy
+
+Treat this as a heuristic, not a law of nature. The exact threshold varies by model, task, and context quality.
 
 | Context Window | 40% Threshold | Practical Limit |
 |----------------|---------------|-----------------|
@@ -85,6 +133,24 @@ What the AI should remember between sessions:
 3. **Use subagents** — Delegate research to separate AI instances
 4. **Be selective** — Include only files relevant to current task
 
+For long logs and large command output, keep the beginning and end, not the full middle. Many teams now use "head-tail" compaction because it preserves setup and failure context without flooding the model with noise.
+
+## Isolation Beats Contamination
+
+Subagents are not just a convenience feature. They are a context hygiene tool.
+
+Use them when:
+
+- You need to search a large codebase from multiple angles
+- You need external documentation or examples
+- You want one agent exploring while another stays focused on implementation
+
+The main benefit is not just parallelism. It is protecting the implementation context from search noise.
+
+That claim is stronger than "multi-agent is always better." In fact, research and tool practice both suggest orchestration overhead can erase gains unless the subagents have clearly separated jobs.
+
+**Evidence tags:** `Research-backed` for context-isolation benefits; `Practitioner-backed` for selective orchestration with clearly separated jobs.
+
 ## Practical Tips
 
 ### Do
@@ -93,6 +159,8 @@ What the AI should remember between sessions:
 - Keep context files short and focused
 - Include only relevant files for the current task
 - Provide verification methods (run this test, check this file)
+- Put non-obvious repo rules in `AGENTS.md`, `CLAUDE.md`, or equivalent
+- Use a persistent plan file for multi-session work
 
 ### Don't
 
@@ -100,6 +168,8 @@ What the AI should remember between sessions:
 - Include verbose documentation in context files
 - Expect the AI to remember previous sessions
 - Fight over 40% context utilization
+- Start with external docs before the agent has explored your project
+- Mix research and implementation in one giant context when subagents would keep it clean
 
 ## Example: Good vs Bad Context
 
@@ -133,3 +203,4 @@ TypeScript + React + Express. Tests with Vitest.
 
 - [Learn Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/) — apply context engineering in practice
 - [Create Project Context Files](/ai-coding-primer/learn/advanced/project-context-files/) — templates for your stack
+- [Agent Harness](/ai-coding-primer/learn/advanced/agent-harness/) — persist state across long-running tasks

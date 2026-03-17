@@ -5,19 +5,29 @@ sidebar:
   order: 6
 ---
 
-AI tools can make you a better developer faster — or they can silently erode your skills. The difference is how you use them.
+AI tools can make you a better developer faster — or they can silently erode your skills. The difference is not whether you use AI. It is **how much thinking you delegate away**.
+
+:::note[Evidence status]
+This page uses three evidence tags:
+
+- **Research-backed:** controlled studies and empirical learning findings
+- **Practitioner-backed:** durable teaching habits and team guardrails that align with the studies
+- **Synthesis:** practical frameworks built by combining multiple sources rather than quoting one paper's taxonomy
+:::
 
 ---
 
 ## The Core Problem
 
-There's a gap between performing a task and learning from it. When AI writes the code, you ship faster. You also build nothing in your head.
+There's a gap between performing a task and learning from it. When AI writes the code, you may ship faster. You also risk building nothing in your head.
 
-The Anthropic study found a 17% comprehension gap between developers who used AI heavily and those who didn't, even when output quality was similar. The OECD Performance Trap describes the same phenomenon at scale: AI-assisted developers look productive until you test them without the tool.
+The Anthropic study found a 17% comprehension gap between developers who used AI heavily and those who did not, even when output quality looked similar. METR also found experienced open-source developers were slower with AI than they expected to be. The message is consistent: speed gains are real, but they are not automatic, and they do not guarantee learning.
 
-The mechanism is straightforward. Learning requires struggle, retrieval, and error correction. AI short-circuits all three. You get the answer without building the neural pathways that make the answer yours.
+The mechanism is straightforward. Learning requires struggle, retrieval, and error correction. Heavy delegation can short-circuit all three. You get the answer without doing as much of the mental work that makes the answer yours.
 
 See [Learning Impacts](/ai-coding-primer/research/learning-impacts/) for the full evidence behind this.
+
+**Evidence tags:** `Research-backed` for the comprehension, retention, and productivity tradeoff claims in this section.
 
 ---
 
@@ -31,7 +41,20 @@ Or: "I wrote this implementation. What did I get wrong?"
 
 The second framing keeps you in the driver's seat. You're using AI to fill gaps in your mental model, not to skip building one.
 
-Shen & Tamkin (2026) found developers who used AI for conceptual questions retained significantly more than those who delegated code generation. The output looked the same. The learning didn't.
+Shen & Tamkin (2026) found developers who used AI for conceptual questions retained significantly more than those who delegated code generation. The output looked similar. The understanding did not.
+
+## The Debugging Dependency Trap
+
+The biggest gap in the Anthropic coding study was not writing code. It was debugging.
+
+```text
+AI writes code -> you do not build a mental model ->
+the code breaks -> you cannot debug it ->
+you ask AI to debug it -> it fixes the symptom ->
+you still do not have a mental model
+```
+
+This is how developers become dependent on AI for problems they used to be able to reason through themselves.
 
 ---
 
@@ -50,6 +73,8 @@ Treat AI-free sessions like training without a calculator. You're not proving an
 
 Neither mode is better. Both are necessary.
 
+One practical rule: keep at least one regular session each week where AI is off and the job is manual reasoning, debugging, or code reading.
+
 ---
 
 ## Pattern: Verify Before You Trust
@@ -60,11 +85,13 @@ The test: if you can't explain the code without looking at it, you haven't learn
 
 A practical technique: after AI generates code, close the chat. Wait 10 minutes. Try to rewrite it from memory. The gaps in your rewrite are exactly what you need to study. Don't skip this step because it's uncomfortable. That discomfort is the learning.
 
+Another practical test: if you cannot explain why the code works, what assumptions it makes, and how you would debug it when it fails, you have not learned the technique yet.
+
 ---
 
 ## Pattern: Socratic Mode
 
-The strongest finding across the research: AI that asks questions beats AI that gives answers (Park et al., 2024). The format matters as much as the content.
+One of the strongest patterns across the research is that AI helps learning more when it asks questions or scaffolds thinking than when it simply gives answers (Park et al., 2024). The format matters as much as the content.
 
 You can prompt your way into this mode.
 
@@ -79,6 +106,22 @@ Prompt templates that actually work:
 
 These prompts reframe AI as a thinking partner rather than an answer dispenser. The output is less immediately satisfying. The learning is significantly better.
 
+**Evidence tags:** `Research-backed` for scaffolded-question formats improving learning transfer; `Practitioner-backed` for the prompt patterns shown here.
+
+## High-Learning vs Low-Learning Use
+
+This table is a synthesis of the studies cited on this page, especially the Anthropic learning RCT, Shen & Tamkin's conceptual-vs-delegated-use distinction, and the broader literature on productive struggle. It is a practical framework, not a direct taxonomy from one paper.
+
+**Evidence tags:** `Synthesis` for the table itself; `Research-backed` for the source findings it combines.
+
+| Pattern | Outcome |
+|---------|---------|
+| **"Explain this pattern"** | Preserves understanding |
+| **"Review my attempt"** | Improves mental model |
+| **"Give me a hint"** | Keeps productive struggle alive |
+| **"Write this for me"** | Fast output, weak retention |
+| **"Fix it" loops** | Weak debugging skill, high dependence |
+
 ---
 
 ## Anti-Pattern: Skipping the Struggle
@@ -90,7 +133,7 @@ The struggle is the learning. When you hit a wall, the instinct is to immediatel
 If you still need help after that, ask for a hint, not a solution. "What direction should I be looking?" is a better prompt than "Fix this."
 
 :::caution
-Skipping productive struggle doesn't just slow learning. It creates a dependency. Developers who never sit with hard problems lose the ability to do so. The skill atrophies.
+Skipping productive struggle doesn't just slow learning. It can also create dependency. Developers who never sit with hard problems usually become less comfortable handling them unaided.
 :::
 
 ---
