@@ -1,113 +1,115 @@
 ---
 title: Choose Your Tool
-description: Pick the right AI coding tool for your situation.
+description: Pick the right AI coding tool shape for your workflow.
 sidebar:
   order: 3
 ---
 
-There are three categories of AI coding tools: **IDEs**, **Extensions**, and **CLI tools**. Start with one that matches your current workflow.
+There are three main categories of AI coding tools: **IDEs**, **Extensions**, and **CLI tools**. Start with the workflow you want, then pick the lightest tool shape that supports it.
+
+If you want durable decision criteria first, read [Tool Comparison](/ai-coding-primer/tools/comparison/). If you want vendor-specific details, jump to the [Reference Appendix](/ai-coding-primer/reference/appendix/).
 
 ## Quick Recommendations
 
-| If you want... | Start with | Why |
-|----------------|------------|-----|
-| Easiest setup | [Cursor](https://cursor.com) | VS Code-based, works out of the box |
-| Free + open source | [Zed](https://zed.dev) | Full-featured, fast, $0 |
-| Keep your current editor | [Continue.dev](https://continue.dev) | VS Code/JetBrains extension |
-| Terminal workflow | [Claude Code](https://claude.ai/code) or [Codex CLI](https://github.com/openai/codex) | Agentic CLI tools |
-| Free terminal | [Gemini CLI](https://github.com/google-gemini/gemini-cli) | Generous free tier, large context |
-| 100% local/private | [Continue.dev](https://continue.dev) + [Ollama](https://ollama.com) | No data leaves your machine* |
-| Enterprise compliance | [GitHub Copilot Business](https://github.com/features/copilot) | IP indemnity, SOC 2, SSO |
+| If your workflow is... | Start with... | Why |
+|---|---|---|
+| editor-first and multi-file | IDE | strongest integrated workflow for navigation, edits, and chat |
+| existing-editor and lightweight | Extension | adds AI without replacing your current environment |
+| terminal-first and verification-heavy | CLI | best fit for explicit plans, tests, and agentic loops |
+| local-first or privacy-constrained | Extension or CLI with local/BYOK support | easier to control deployment and data boundaries |
+| managed team rollout | IDE or extension with admin controls | easier identity, policy, and compliance integration |
 
-## IDEs (Full Environments)
+## Decide by Workflow, Not Price
 
-These are complete editors with AI built in.
+### IDEs
 
-| Tool | Price | Best For |
-|------|-------|----------|
-| **[Cursor](https://cursor.com)** | Free / $20+ | Easiest start, most polished |
-| **[Zed](https://zed.dev)** | Free | Speed, open source, BYOK |
-| **[Windsurf](https://windsurf.com)** | Free / $15+ | Privacy, EU hosting option |
-| **[Antigravity](https://antigravity.dev)** | Free (preview) | Free Gemini, visual/UI work |
-| **[Kiro](https://kiro.dev)** | Free (preview) | Spec-driven, AWS integration |
+Choose an IDE if you want AI woven into navigation, editing, and multi-file work.
 
-## Extensions (Add to Existing Editor)
+Best for:
+- integrated chat, edits, and codebase navigation
+- editor-first workflows with frequent multi-file changes
+- users who want one environment to handle most tasks
 
-Add AI to VS Code, JetBrains, or Neovim.
+Tradeoff:
+- more opinionated environment and more product churn than simpler tool shapes
 
-| Tool | Price | Best For |
-|------|-------|----------|
-| **[GitHub Copilot](https://github.com/features/copilot)** | Free / $10+ | Microsoft ecosystem, enterprise |
-| **[Continue.dev](https://continue.dev)** | Free | Open source, local models |
-| **[Supermaven](https://supermaven.com)** | Free / $10+ | Ultra-fast completions |
-| **[Amazon Q](https://aws.amazon.com/q/developer/)** | Free / $19+ | AWS integration, large context |
-| **[Cody](https://sourcegraph.com/cody)** | Free / Enterprise-led pricing | Multi-repo, code search |
-| **[Tabnine](https://tabnine.com)** | Free / $12+ | Self-hosted, air-gapped |
+### Extensions
 
-## CLI Tools (Terminal)
+Choose an extension if you like your editor already and mostly want completion, chat, or scoped edits.
 
-For developers who prefer working in the terminal.
+Best for:
+- keeping existing editor habits
+- gradual team rollout
+- mixing hosted, BYOK, or local-model setups
 
-| Tool | Price | Best For |
-|------|-------|----------|
-| **[Claude Code](https://claude.ai/code)** | Via subscription | Agentic workflows, MCP |
-| **[Codex CLI](https://github.com/openai/codex)** | Via subscription | Sandbox mode, open source |
-| **[Gemini CLI](https://github.com/google-gemini/gemini-cli)** | Free tier | Large context, multimodal |
-| **[OpenCode](https://github.com/sst/opencode)** | Free (BYOK) | Multi-provider, MCP support |
-| **[Aider](https://aider.chat)** | Free (BYOK) | Git integration, benchmarks |
+Tradeoff:
+- less integrated than full AI-native IDE workflows
 
-## Authentication Options
+### CLI Tools
 
-Most tools offer multiple ways to access AI models:
+Choose a CLI tool if you want deep work in the terminal, explicit verification steps, and easy scripting.
 
-| Method | How It Works | Best For |
-|--------|--------------|----------|
-| **Subscription** | Pay monthly, unlimited use | Predictable costs |
-| **BYOK** | Bring your own API key, pay per token | Control, flexibility |
-| **Local** | Run models on your hardware | Privacy, offline use |
+Best for:
+- long-running agentic workflows
+- explicit plans, diffs, and verification loops
+- automation-heavy or terminal-native development
 
-## Decision Flowchart
+Tradeoff:
+- steeper learning curve for editor-first users
+
+## Access Models
+
+Most tools offer multiple ways to access models:
+
+| Method | How it works | Best for |
+|---|---|---|
+| Hosted account | the tool manages model access | easiest setup |
+| BYOK | you bring provider credentials | flexibility and provider choice |
+| Local | models run on your hardware or infrastructure | privacy and controlled environments |
+
+## Decision Flow
 
 ```
-What's your #1 priority?
+What workflow fits you best right now?
 │
-├─► "Just works" (easiest setup)
-│   └─► Cursor — works out of the box, free tier
+├─► "I want one integrated editor workflow"
+│   └─► IDE
 │
-├─► Free / minimize cost
-│   ├─► Want a GUI editor? → Zed (fully free, open source)
-│   ├─► Terminal workflow? → Gemini CLI (generous free tier)
-│   └─► BYOK flexibility? → OpenCode or Aider (pay only API costs)
+├─► "I want to keep my editor"
+│   └─► Extension
 │
-├─► 100% local / maximum privacy
-│   └─► Continue.dev + Ollama (needs 16GB+ RAM, GPU recommended)
+├─► "I work in the terminal already"
+│   └─► CLI
 │
-├─► Terminal-first workflow
-│   ├─► Have Claude subscription? → Claude Code
-│   ├─► Have OpenAI subscription? → Codex CLI
-│   ├─► Want free tier? → Gemini CLI
-│   └─► Want BYOK flexibility? → OpenCode or Aider
+├─► "I need local control or tighter privacy"
+│   └─► Extension or CLI with local/BYOK support
 │
-├─► Keep my current editor
-│   ├─► VS Code → Continue.dev or GitHub Copilot
-│   └─► JetBrains → Continue.dev
-│
-└─► Enterprise / compliance requirements
-    ├─► Need IP indemnity? → GitHub Copilot Business
-    ├─► Best UX + compliance? → Cursor Teams
-    ├─► EU data residency? → Windsurf Enterprise
-    ├─► Air-gapped / on-prem? → Tabnine Enterprise
-    └─► Large monorepos? → Cody Enterprise
+└─► "I need enterprise policy and rollout controls"
+    └─► IDE or extension with managed admin features
 ```
 
 ## Our Recommendation
 
-**For most developers:** Start with **Cursor** (easiest) or **Zed** (free + fast). Both have free tiers and work out of the box.
+For most beginners, choose the tool shape that matches how you already like to work:
 
-**For privacy-conscious:** **Continue.dev + Ollama** gives you 100% local AI coding with no data leaving your machine. (*Requires capable hardware—16GB+ RAM, ideally GPU with 8GB+ VRAM.*)
+- use an **IDE** if you want one integrated environment
+- use an **extension** if you already like your editor
+- use a **CLI** if you already think in commands, tests, and scripts
 
-**For teams:** **GitHub Copilot Business** (IP indemnity), **Cursor Teams** (best UX), or **Windsurf Enterprise** (EU hosting). For air-gapped environments: **Tabnine Enterprise**.
+Do not over-optimize for vendor choice before you know which workflow shape fits you.
+
+## What Not to Optimize Too Early
+
+- Do not start with pricing spreadsheets.
+- Do not over-configure MCPs or giant rule files on day one.
+- Do not pick a vendor before you know whether you prefer editor-first, terminal-first, or local-first work.
+
+## Vendor Details Live in the Appendix
+
+Once you know your preferred tool shape, use the [Reference Appendix](/ai-coding-primer/reference/appendix/) for vendor-specific pages.
 
 ## Next Steps
 
-Picked a tool? [Set up your environment →](/ai-coding-primer/learn/beginner/setup-checklist/)
+Picked a tool shape? [Set up your environment ->](/ai-coding-primer/learn/beginner/setup-checklist/)
+
+Then learn the workflows that matter: [Workflow Archetypes ->](/ai-coding-primer/learn/intermediate/workflow-archetypes/)

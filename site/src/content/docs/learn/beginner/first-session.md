@@ -7,16 +7,12 @@ sidebar:
 
 You've picked a tool and set up your environment. Let's write some code.
 
-## Step 1: Open the AI Panel
+## Step 1: Open Your Tool's AI Surface
 
-| Tool | Shortcut |
-|------|----------|
-| Cursor | `Cmd+I` / `Ctrl+I` |
-| Zed | `Cmd+Shift+A` / `Ctrl+Shift+A` |
-| Continue.dev | `Cmd+L` / `Ctrl+L` |
-| Copilot | `Cmd+I` / `Ctrl+I` |
-| Claude Code | Just type in terminal |
-| Aider | Just type in terminal |
+- in an IDE or extension, open the chat, command palette, or edit panel
+- in a CLI tool, start the tool in your terminal and type your prompt directly
+
+If you need product-specific shortcuts, use the vendor pages in the [Reference Appendix](/ai-coding-primer/reference/appendix/).
 
 ## Step 2: Start with Exploration
 

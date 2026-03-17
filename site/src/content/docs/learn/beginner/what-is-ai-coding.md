@@ -7,6 +7,8 @@ sidebar:
 
 **Agentic coding** uses AI assistants that read, write, and execute code autonomously. Unlike simple autocomplete, these tools use your project structure as context, run terminal commands, detect errors in their own output, and iterate until the task is complete.
 
+The important shift is not just "AI writes code." It is that software work is becoming more about **intent, context, and verification** than syntax production.
+
 ## The Core Loop
 
 ```
@@ -28,6 +30,18 @@ This is what makes it "agentic" — the AI acts autonomously rather than just su
 | **Autocomplete** (2021) | Tab to accept suggestions | Write most code yourself |
 | **Chat** (2022) | Copy-paste from ChatGPT | Manually integrate suggestions |
 | **Agentic** (2024+) | AI reads, writes, runs, iterates | Review and guide |
+
+## The New Skill Premium
+
+As tools get better at generating code, the valuable skill moves up a level:
+
+| Old center of gravity | New center of gravity |
+|-----------------------|-----------------------|
+| Writing syntax fast | Designing the workflow and constraints |
+| Knowing every API by memory | Knowing how to verify the result |
+| Manually doing every implementation step | Delegating safely and reviewing well |
+
+This is why strong AI coding workflows always include tests, linters, type checks, or some other feedback loop.
 
 ## What These Tools Can Do
 
@@ -53,3 +67,5 @@ This builds intuition for when the AI is right vs. hallucinating. Once you can s
 ## Next Steps
 
 Ready to try it? [Choose your first tool →](/ai-coding-primer/learn/beginner/choose-your-tool/)
+
+Then learn the workflows that make these tools useful: [Workflow Archetypes →](/ai-coding-primer/learn/intermediate/workflow-archetypes/)
