@@ -1,73 +1,95 @@
 ---
 title: Tool Comparison
-description: Side-by-side comparison of AI coding tools.
-sidebar:
-  order: 1
+description: Durable decision criteria for choosing between IDE, extension, and CLI workflows.
 ---
 
-A quick comparison of the major AI coding tools.
+Use this page to choose a tool category and deployment model. Use the appendix vendor pages only after you know what workflow shape you actually want.
 
-## IDEs
+## Start with Workflow Shape
 
-| Tool | Open Source | Free Tier | Best For |
-|------|-------------|-----------|----------|
-| [Cursor](/ai-coding-primer/tools/ides/cursor/) | No | Yes | Easiest start, polished UX |
-| [Zed](/ai-coding-primer/tools/ides/zed/) | Yes | Yes (full) | Speed, BYOK, open source |
-| [Windsurf](/ai-coding-primer/tools/ides/windsurf/) | No | Yes | Privacy, EU compliance |
-| [Antigravity](/ai-coding-primer/tools/ides/antigravity/) | No | Yes (preview) | Free Gemini, visual/UI work |
-| [Kiro](/ai-coding-primer/tools/ides/kiro/) | No | Yes (preview) | Spec-driven, AWS integration |
+| If you want... | Start with... | Why |
+|---|---|---|
+| one integrated editor workflow | IDE | keeps navigation, edits, and chat in one place |
+| keep your current editor | Extension | adds AI without replacing your main environment |
+| explicit verification and scripting | CLI | best fit for terminal-first, agentic, and automation-heavy work |
+| maximum privacy or local control | Extension or CLI with BYOK/local support | easier to control data flow and deployment boundaries |
+| managed enterprise rollout | IDE or extension with hosted admin controls | easier policy, identity, and compliance integration |
 
-## Extensions
+## Durable Governance Criteria
 
-| Tool | Open Source | Free Tier | Best For |
-|------|-------------|-----------|----------|
-| [GitHub Copilot](/ai-coding-primer/tools/extensions/copilot/) | No | Yes (limited) | Enterprise, IP indemnity |
-| [Continue.dev](/ai-coding-primer/tools/extensions/continue-dev/) | Yes | Yes (full) | Local models, privacy |
-| [Amazon Q](/ai-coding-primer/tools/extensions/amazon-q/) | No | Yes | AWS integration, 200k context |
-| [Tabnine](/ai-coding-primer/tools/extensions/tabnine/) | No | Yes | Self-hosted, air-gapped |
-| [Supermaven](/ai-coding-primer/tools/extensions/supermaven/) | No | Yes | Ultra-fast completions |
-| [Cody](/ai-coding-primer/tools/extensions/cody/) | Partial | Yes | Code graph, multi-repo |
+Keep these questions in the core path even as vendor pages age:
 
-## CLI Tools
+- privacy posture and retention boundaries
+- jurisdiction and compliance constraints
+- deployment model: hosted, BYOK, local, or self-hosted
+- workflow fit for solo work, terminal work, editor work, and team rollout
+- review and verification ergonomics
 
-| Tool | Open Source | Free Tier | Best For |
-|------|-------------|-----------|----------|
-| [Claude Code](/ai-coding-primer/tools/cli/claude-code/) | No | Via subscription | Agentic workflows, MCP |
-| [Codex CLI](/ai-coding-primer/tools/cli/codex-cli/) | Yes | Via subscription | Sandbox mode, ChatGPT integration |
-| [OpenCode](/ai-coding-primer/tools/cli/opencode/) | Yes | Yes (BYOK) | Full BYOK, MCP support |
-| [Aider](/ai-coding-primer/tools/cli/aider/) | Yes | Yes (BYOK) | Git-native, benchmarks |
-| [Gemini CLI](/ai-coding-primer/tools/cli/gemini-cli/) | Yes | Yes (generous) | Free tier, large context |
+## Compare by Tool Category
 
-## By Use Case
+| Category | Strengths | Tradeoffs | Best fit |
+|---|---|---|---|
+| IDE | integrated navigation, multi-file workflows, unified chat/edit experience | more opinionated environment, more platform churn | developers who want AI woven into daily editing |
+| Extension | preserves existing editor habits, flexible rollout, often better local/BYOK options | can feel fragmented compared with full AI-native IDEs | teams or individuals who already like their editor |
+| CLI | explicit commands, scripting, automation, strong verification loops | steeper learning curve for editor-first users | terminal-first and agentic workflows |
 
-### Easiest Start
-**Cursor** or **Zed** — Both work out of the box with free tiers.
+## Compare by Access Model
 
-### Privacy First
-**Continue.dev + Ollama** — 100% local, no data leaves your machine. (Requires 16GB+ RAM, GPU recommended.)
+| Access model | What it means | Best fit | Main caveat |
+|---|---|---|---|
+| Hosted account | tool manages model access for you | easiest setup | less control over provider boundaries and retention details |
+| BYOK | you supply provider credentials | flexible provider choice and cost control | more setup and key management |
+| Local | model runs on your infrastructure | privacy, offline, controlled environments | hardware and capability limits |
+| Self-hosted enterprise | organization controls deployment boundary | regulated environments | operational overhead |
 
-### Enterprise/Compliance
+## Decision Heuristics
 
-| Tool | Key Features | Best For |
-|------|--------------|----------|
-| **[GitHub Copilot Business](https://github.com/features/copilot)** | IP indemnity, SOC 2, SAML SSO | Microsoft shops, legal protection |
-| **[Cursor Teams](https://cursor.com)** | Zero retention, SCIM, audit logs | Best UX with compliance |
-| **[Windsurf Enterprise](https://windsurf.com)** | EU hosting, FedRAMP, self-hosted | EU data residency, gov't |
-| **[Tabnine Enterprise](https://tabnine.com)** | Fully air-gapped, on-prem | Regulated industries |
-| **[Cody Enterprise](https://sourcegraph.com/cody)** | Multi-repo search, self-hosted | Large monorepos |
-| **[Amazon Q Pro](https://aws.amazon.com/q/)** | AWS integration, Bedrock | AWS-native orgs |
+### Choose an IDE when
 
-### Terminal Workflow
-**Codex CLI** or **OpenCode** — Full agentic capabilities from the command line.
+- you value integrated chat, edits, search, and navigation in one place
+- you prefer one environment instead of stitching together multiple tools
+- you are optimizing for ease of use over maximum flexibility
 
-### Self-Hosted / Air-Gapped
-**Tabnine Enterprise** — Run entirely on your infrastructure.
+### Choose an extension when
 
-### AWS Ecosystem
-**Amazon Q + Kiro** — Native AWS integration, Bedrock access.
+- you already like your editor and do not want to switch environments
+- you need gradual rollout for a team
+- you care about BYOK, local-model support, or editor portability
 
-### Budget
-**Gemini CLI** (free tier) or **DeepSeek via OpenCode** — Maximum value.
+### Choose a CLI when
 
-### Speed-Critical
-**Supermaven** — Sub-10ms completions, feels like enhanced autocomplete.
+- you want explicit plans, diffs, verification steps, and scripting
+- you do deep work in the terminal already
+- you expect to use agents for investigation, automation, or long-running tasks
+
+## Compliance and Privacy Filter
+
+Before comparing vendors, answer these first:
+
+1. Can code leave your environment?
+2. Do you need regional hosting or data residency controls?
+3. Do you need audit logs, SSO, or policy controls?
+4. Do you need local or self-hosted inference?
+
+These questions eliminate large parts of the tool market faster than feature tables do.
+
+## What This Page Intentionally Does Not Do
+
+- rank specific products
+- preserve live feature matrices
+- compare plan details or pricing snapshots
+- freeze vendor claims into the core learning path
+
+For product-specific details, use the vendor pages in the [Reference Appendix](/ai-coding-primer/reference/appendix/).
+
+## Evidence Tags
+
+- `Research-backed`: verification ergonomics and review costs matter more than feature-volume claims
+- `Practitioner-backed`: teams usually choose tools by workflow shape and deployment boundary before fine-grained feature comparison
+- `Synthesis`: the exact heuristics and category framing on this page
+
+## Next Steps
+
+- [Choose Your Tool](/ai-coding-primer/learn/beginner/choose-your-tool/) — beginner-oriented starting points
+- [Reference Appendix](/ai-coding-primer/reference/appendix/) — vendor-specific tool pages
+- [Choosing a Model](/ai-coding-primer/models/pricing/) — pick access and model strategy after tool shape

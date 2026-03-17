@@ -1,11 +1,13 @@
 ---
 title: Benchmarks That Matter
 description: Understanding AI coding benchmarks and what they actually test.
-sidebar:
-  order: 5
 ---
 
 Not all benchmarks are equal. Some are saturated, some are contaminated, and some don't reflect real-world coding. Here's what matters.
+
+:::note[Appendix review cadence]
+This page is reference appendix material. Benchmark details and example scores should be reviewed monthly or trimmed when they stop helping real workflow decisions.
+:::
 
 ## The Essential Three
 

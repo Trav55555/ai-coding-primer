@@ -33,6 +33,10 @@ export default defineConfig({
 						{ label: 'The Five Levels', slug: 'learn/intermediate/five-levels' },
 						{ label: 'Context Engineering', slug: 'learn/intermediate/context-engineering' },
 						{ label: 'Effective Patterns', slug: 'learn/intermediate/effective-patterns' },
+						{ label: 'Workflow Archetypes', slug: 'learn/intermediate/workflow-archetypes' },
+						{ label: 'Scenario - Fix a Bug', slug: 'learn/intermediate/scenario-bug-fix' },
+						{ label: 'Scenario - Add a Feature', slug: 'learn/intermediate/scenario-feature-build' },
+						{ label: 'Scenario - Safe Refactor', slug: 'learn/intermediate/scenario-safe-refactor' },
 						{ label: 'Common Mistakes', slug: 'learn/intermediate/common-mistakes' },
 						{ label: 'Learning with AI', slug: 'learn/intermediate/learning-with-ai' },
 						{ label: 'When It\'s Not Working', slug: 'learn/intermediate/troubleshooting' },
@@ -41,6 +45,7 @@ export default defineConfig({
 				{
 					label: 'Advanced',
 					items: [
+						{ label: 'Agent Harness', slug: 'learn/advanced/agent-harness' },
 						{ label: 'Project Context Files', slug: 'learn/advanced/project-context-files' },
 						{ label: 'MCP Deep Dive', slug: 'learn/advanced/mcp-deep-dive' },
 						{ label: 'Subagent Architectures', slug: 'learn/advanced/subagents' },
@@ -50,28 +55,34 @@ export default defineConfig({
 					label: 'Tools',
 					items: [
 						{ label: 'Tool Comparison', slug: 'tools/comparison' },
-						{
-							label: 'IDEs',
-							autogenerate: { directory: 'tools/ides' },
-						},
-						{
-							label: 'Extensions',
-							autogenerate: { directory: 'tools/extensions' },
-						},
-						{
-							label: 'CLI Tools',
-							autogenerate: { directory: 'tools/cli' },
-						},
 					],
 				},
 				{
 					label: 'Models',
 					items: [
 						{ label: 'Models vs Providers', slug: 'models/overview' },
-						{ label: 'Capabilities Matrix', slug: 'models/capabilities' },
-						{ label: 'Benchmarks', slug: 'models/benchmarks' },
-						{ label: 'Pricing Guide', slug: 'models/pricing' },
+						{ label: 'Capability Patterns', slug: 'models/capabilities' },
+						{ label: 'Choosing a Model', slug: 'models/pricing' },
 						{ label: 'Selection Guide', slug: 'models/selection-guide' },
+					],
+				},
+				{
+					label: 'Reference Appendix',
+					items: [
+						{ label: 'Appendix Overview', slug: 'reference/appendix' },
+						{ label: 'Benchmarks That Matter', slug: 'models/benchmarks' },
+						{
+							label: 'IDE References',
+							autogenerate: { directory: 'tools/ides' },
+						},
+						{
+							label: 'Extension References',
+							autogenerate: { directory: 'tools/extensions' },
+						},
+						{
+							label: 'CLI References',
+							autogenerate: { directory: 'tools/cli' },
+						},
 					],
 				},
 				{
