@@ -3,7 +3,7 @@ title: Tool Comparison
 description: Durable decision criteria for choosing between IDE, extension, and CLI workflows.
 ---
 
-Use this page to choose a tool category and deployment model. Use the appendix vendor pages only after you know what workflow shape you actually want.
+Use this page to choose the kind of tool you want first. The appendix vendor pages matter later.
 
 ## Start with Workflow Shape
 
@@ -71,7 +71,7 @@ Before comparing vendors, answer these first:
 3. Do you need audit logs, SSO, or policy controls?
 4. Do you need local or self-hosted inference?
 
-These questions eliminate large parts of the tool market faster than feature tables do.
+These questions narrow the field faster than any feature table will.
 
 ## What This Page Intentionally Does Not Do
 
@@ -90,6 +90,6 @@ For product-specific details, use the vendor pages in the [Reference Appendix](/
 
 ## Next Steps
 
-- [Choose Your Tool](/ai-coding-primer/learn/beginner/choose-your-tool/) — beginner-oriented starting points
-- [Reference Appendix](/ai-coding-primer/reference/appendix/) — vendor-specific tool pages
-- [Choosing a Model](/ai-coding-primer/models/pricing/) — pick access and model strategy after tool shape
+- [Choose Your Tool](/ai-coding-primer/learn/beginner/choose-your-tool/): beginner-oriented starting points
+- [Reference Appendix](/ai-coding-primer/reference/appendix/): vendor-specific tool pages
+- [Choosing a Model](/ai-coding-primer/models/pricing/): pick access and model strategy after tool shape

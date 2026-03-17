@@ -3,7 +3,7 @@ title: Capability Patterns
 description: Durable model capability classes for coding workflows.
 ---
 
-Use this page for durable capability classes, not leaderboard snapshots. Specific model rankings move too quickly to anchor a workflow-first guide.
+Use this page for durable capability classes, not leaderboard snapshots. Specific rankings move too quickly to build the guide around.
 
 ## Capability Classes That Matter
 
@@ -71,7 +71,7 @@ Tradeoff:
 
 ## Context Reality
 
-Advertised context is not the same as reliable context. Once context gets noisy, even very large windows become less useful.
+Advertised context is not the same thing as reliable context. Once the prompt gets noisy, even very large windows help less than people expect.
 
 - prefer selective retrieval over giant prompt dumps
 - treat long context as a tool for breadth, not permission to include everything
@@ -89,12 +89,12 @@ For time-sensitive benchmark details, use [Benchmarks That Matter](/ai-coding-pr
 
 ## Evidence Tags
 
-- `Research-backed`: verification, selective context, and review costs matter more than raw leaderboard chasing
+- `Research-backed`: verification, selective context, and review costs matter more than leaderboard chasing
 - `Practitioner-backed`: capability classes are how many teams actually choose models in daily work
-- `Synthesis`: the exact taxonomy on this page is a workflow-first simplification, not one benchmark's official ontology
+- `Synthesis`: the taxonomy on this page is a workflow-first simplification, not one benchmark's official ontology
 
 ## Next Steps
 
-- [Choosing a Model](/ai-coding-primer/models/pricing/) — workflow-first chooser
-- [Selection Guide](/ai-coding-primer/models/selection-guide/) — practical decision heuristics
-- [Benchmarks That Matter](/ai-coding-primer/models/benchmarks/) — appendix-style benchmark interpretation
+- [Choosing a Model](/ai-coding-primer/models/pricing/): workflow-first chooser
+- [Selection Guide](/ai-coding-primer/models/selection-guide/): practical decision heuristics
+- [Benchmarks That Matter](/ai-coding-primer/models/benchmarks/): appendix-style benchmark interpretation

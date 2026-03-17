@@ -5,13 +5,13 @@ sidebar:
   order: 1
 ---
 
-**Models** determine capability — how smart the AI is, how fast it responds, what it can do.
+**Models** determine capability: how smart the AI is, how fast it responds, and what kinds of work it can do.
 
-**Providers** determine operating constraints — privacy policy, legal jurisdiction, availability, and access model.
+**Providers** determine operating constraints: privacy policy, legal jurisdiction, availability, and access model.
 
 ## Models
 
-Models are the AI systems themselves. In practice, what matters most is the capability class, not memorizing a winner list.
+Models are the AI systems themselves. In practice, it helps more to think in capability classes than in winner lists.
 
 | Model class | What it is best at |
 |-------------|--------------------|
@@ -64,7 +64,7 @@ Different providers have different data policies:
 
 ## Open Weight Models
 
-"Open weight" means the model weights are publicly available — you can download and run them yourself. This is different from open source (weights + training code + data).
+"Open weight" means the model weights are publicly available, so you can download and run them yourself. That is not the same thing as open source, which would also include training code and data.
 
 | Model | Params | Why It Matters |
 |-------|--------|----------------|
@@ -101,5 +101,5 @@ Pair with the editor or terminal workflow you already use. Note: "free" local mo
 
 ## Next Steps
 
-- [Capabilities Matrix](/ai-coding-primer/models/capabilities/) — compare what models can do
-- [Selection Guide](/ai-coding-primer/models/selection-guide/) — choose by workflow, privacy, and capability
+- [Capabilities Matrix](/ai-coding-primer/models/capabilities/): compare what models can do
+- [Selection Guide](/ai-coding-primer/models/selection-guide/): choose by workflow, privacy, and capability
