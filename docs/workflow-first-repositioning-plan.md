@@ -15,7 +15,7 @@ created: '2026-03-15'
 
 ## Goal
 
-Reposition the AI Coding Primer from a price-heavy comparison guide into a workflow-first, research-backed learning resource.
+Reposition the Agentic Engineering Primer from a price-heavy comparison guide into a workflow-first, research-backed learning resource.
 
 ## Why This Change
 

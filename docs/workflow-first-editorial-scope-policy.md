@@ -19,7 +19,7 @@ Define what this project is, what it is not, and how contributors should decide 
 
 ## Product Definition
 
-The AI Coding Primer is a workflow-and-judgment guide.
+The Agentic Engineering Primer is a workflow-and-judgment guide.
 
 Primary job:
 - teach reliable AI-assisted engineering workflows
