@@ -3,7 +3,7 @@ title: AI Coding Primer
 description: From your first prompt to production — AI-integrated IDEs, terminal tools, and workflows.
 template: splash
 hero:
-  tagline: The practical guide to AI-assisted development. Updated February 2026.
+  tagline: The practical guide to AI coding workflows, verification, and durable tool choices. Updated March 2026.
   actions:
     - text: Get Started
       link: /ai-coding-primer/learn/beginner/introduction/
@@ -33,10 +33,10 @@ import EmailSignup from '../../components/EmailSignup.astro';
     Learn the patterns that work: context engineering, verification-first development, and when to use subagents.
   </Card>
   <Card title="Compare Tools" icon="list-format">
-    Side-by-side comparisons of IDEs, extensions, and CLI tools. Find what fits your workflow.
+    Compare tools by workflow fit, privacy posture, and operating model instead of stale price tables.
   </Card>
   <Card title="Understand Models" icon="setting">
-    GPT-5.x vs Claude Sonnet vs Gemini 3 — capabilities, pricing, and when to use each.
+    Choose models by task shape, verification needs, privacy, and context constraints.
   </Card>
   <Card title="Research & Evidence" icon="graph">
     Separate empirical findings on productivity, quality, and adoption trends with scope caveats.
@@ -47,11 +47,24 @@ import EmailSignup from '../../components/EmailSignup.astro';
 
 | Your Situation | Start With |
 |----------------|------------|
-| **New to AI coding** | [Zed](https://zed.dev) or [Cursor](https://cursor.com) — easiest setup |
-| **Privacy-first** | [Continue.dev](https://continue.dev) + [Ollama](https://ollama.com) — 100% local |
-| **Already use VS Code** | [Continue.dev](https://continue.dev) or [GitHub Copilot](https://github.com/features/copilot) |
-| **Terminal workflow** | [Codex CLI](https://github.com/openai/codex) or [OpenCode](https://github.com/opencode-ai/opencode) |
-| **Enterprise/compliance** | [Continue.dev](https://continue.dev) self-hosted or [Cursor Teams](https://cursor.com) |
+| **New to AI coding** | [Choose Your Tool](/ai-coding-primer/learn/beginner/choose-your-tool/) — decide by workflow shape first |
+| **Privacy-first** | local or BYOK extension/CLI workflows — start with deployment boundaries |
+| **Already use an editor you like** | extension workflows — add AI without changing environments |
+| **Terminal workflow** | CLI workflows — explicit verification, scripting, and agent loops |
+| **Enterprise/compliance** | managed IDE or extension workflows — filter by policy and deployment needs |
+
+## What Changed in 2025-2026
+
+- **The bottleneck moved** — writing syntax matters less; harness design, verification, and review matter more.
+- **Context got harder, not easier** — big windows help only when context is selective and well-structured.
+- **Specs beat vibes in production** — durable workflows now start with a spec, acceptance criteria, and a verification loop.
+- **Subagents became normal** — modern workflows isolate search and research so the main implementation context stays clean.
+
+## Start with Workflows
+
+- [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/) — bug fix, feature build, refactor, and codebase exploration
+- [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/) — verification-first, small iterations, and subagent use
+- [Agent Harness](/ai-coding-primer/learn/advanced/agent-harness/) — persistent plan files and long-running tasks
 
 ## The Golden Rule
 
@@ -59,4 +72,4 @@ import EmailSignup from '../../components/EmailSignup.astro';
 
 ---
 
-*Last updated: February 2026*
+*Last updated: March 2026*

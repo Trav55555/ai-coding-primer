@@ -17,6 +17,7 @@ Before diving deeper, let's establish shared vocabulary.
 | **Context Window** | How much text the AI can "see" at once (measured in tokens). More ≠ better |
 | **BYOK** | Bring Your Own Key. Use your own API keys instead of a subscription |
 | **MCP** | Model Context Protocol. A standard for connecting AI tools to external services |
+| **Skill** | A reusable instruction set, playbook, or convention that helps an agent perform a class of tasks more reliably |
 
 ## Context Concepts
 
