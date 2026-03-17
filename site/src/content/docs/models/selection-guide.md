@@ -1,38 +1,33 @@
 ---
 title: Selection Guide
-description: How to choose the right model for your task.
+description: How to choose the right model for your workflow.
 sidebar:
   order: 4
 ---
 
-Quick guide to choosing the right model. Data snapshot from SWE-bench, Aider Polyglot, and Artificial Analysis (January 2026), reviewed February 2026.
+Quick guide to choosing the right model without turning the decision into a pricing spreadsheet. Benchmarks move quickly; workflow fit lasts longer.
 
-## By Task
+## Start with the Workflow
 
-| Task | Recommended | Why | Source |
-|------|-------------|-----|--------|
-| **Agentic coding** | Codex 5.2, Opus 4.5 | Current top performers for dev tasks | [OpenAI](https://openai.com), [Anthropic](https://anthropic.com) |
-| **Complex architecture** | Claude Opus 4.5 | 80.9% SWE-bench, deepest reasoning | [SWE-bench](https://swebench.com) |
-| **Visual/UI work** | Gemini 3 Pro | Best multimodal, screenshot understanding | [Google AI](https://ai.google.dev) |
-| **Quick completions** | Gemini 3 Flash | 200 tok/s, 78% SWE-bench | [Artificial Analysis](https://artificialanalysis.ai) |
-| **Complex debugging** | Claude Opus 4.5 | Extended thinking, deep analysis | [Anthropic](https://anthropic.com) |
-| **Large codebase** | Grok 4.1 | 2M context (practical ~500k) | [xAI](https://x.ai) |
-| **Code-optimized** | Codex 5 | 78% SWE-bench, 400k context | [OpenAI](https://openai.com) |
-| **Budget projects** | DeepSeek V3.2 | 73% SWE-bench at $0.27/$1.10 per M | [DeepSeek](https://deepseek.com) |
-| **Privacy/local** | Qwen3 Coder 32B | Best open weights for consumer GPUs | [Qwen](https://github.com/QwenLM) |
+| Workflow | Start With | Why |
+|----------|------------|-----|
+| **Long-running agentic coding** | frontier reasoning models with reliable tool use | Strong reasoning and tool use matter more than raw speed |
+| **Complex architecture or debugging** | Highest-reasoning model you trust operationally | Deep work benefits from slower, more careful models |
+| **Visual/UI work** | strong multimodal models | Screenshot and layout understanding matter here |
+| **Fast completions and quick edits** | low-latency models | Low latency keeps editing flow intact |
+| **Huge repos or large investigations** | Long-context models, used selectively | Context window size helps only when paired with good context hygiene |
+| **Local/private workflows** | Strong open-weight coding models | Best when data control matters more than frontier performance |
 
-## By Budget
+## Questions That Matter More Than Price
 
-| Monthly Budget | Recommendation |
-|----------------|----------------|
-| **$0** | Gemini CLI free tier or Cursor free tier |
-| **$10-20** | Zed Pro or Cursor Pro |
-| **$20-50** | OpenRouter BYOK (mix models by task) |
-| **$50-100** | Native APIs (OpenAI, Anthropic) + fast model |
-| **$100+** | Cursor Business or Claude Max |
+1. **Does this task need depth or speed?**
+2. **Do I need multimodal input such as screenshots or diagrams?**
+3. **Is the code sensitive enough that provider and jurisdiction matter?**
+4. **Will I be running a long agent loop or making one quick edit?**
+5. **Do I need local execution or is hosted inference acceptable?**
 
 :::tip[BYOK Users]
-[OpenRouter](https://openrouter.ai) gives you one API key for 200+ models. Great for experimenting and mixing models without managing multiple accounts.
+An aggregator gateway can make experimentation easier by giving you one API surface for many models. Useful when you want to compare providers without managing a different integration for each one.
 :::
 
 ## Decision Tree
@@ -41,107 +36,67 @@ Quick guide to choosing the right model. Data snapshot from SWE-bench, Aider Pol
 What matters most?
 │
 ├─► Quality (hard problems, complex refactors)
-│   ├─► Budget okay → Codex 5.2 or Claude Opus 4.5
-│   └─► Cost-conscious → Claude Sonnet 4.5 or GPT-5.2
+│   ├─► Need deepest reasoning → Frontier reasoning model
+│   └─► Need balance → Strong all-rounder model
 │
 ├─► Speed (completions, quick iterations)
-│   └─► Gemini 3 Flash or Claude 4.5 Haiku
-│
-├─► Cost (minimize spend)
-│   ├─► Good quality → DeepSeek V3.2 ($0.27/M)
-│   └─► Free tier → Gemini CLI or Cursor free
+│   └─► Low-latency model
 │
 ├─► Context (huge codebases)
-│   └─► Grok 4.1 (2M) or Gemini 3 Pro (1M)
+│   └─► Long-context model + selective context loading
 │
 ├─► Privacy (no cloud)
-│   └─► Qwen3 Coder 32B + Ollama
+│   └─► Strong open-weight model + local serving stack
 │
 └─► "Just pick for me"
-    └─► Claude Sonnet 4.5 or GPT-5.2 (best all-rounders)
+    └─► Strong general-purpose coding model with reliable tool use
 ```
 
 ## Model Combinations
 
 Many developers use multiple models:
 
-| Model | Use For |
-|-------|---------|
-| Claude Sonnet 4.5 | Complex changes, architecture |
-| Gemini 3 Flash | Tab completions, quick edits |
-| DeepSeek V3.2 | Budget tasks, exploration |
+| Role | Use For |
+|------|---------|
+| **Heavy hitter** | Complex changes, architecture, debugging |
+| **Fast model** | Tab completions, quick edits, iterative loops |
+| **Local/private model** | Sensitive code or offline work |
 
-This optimizes cost while maintaining quality where it matters.
+This keeps the workflow responsive without forcing one model to do every job.
 
 ## Switching Costs
 
-Most tools support multiple models. Easy to switch:
+Switching difficulty depends more on tool architecture than on the model itself:
 
-- Cursor: Settings → Models
-- Zed: Settings → AI
-- Continue.dev: `.continue/config.json`
-- Claude Code: N/A (Claude only)
-- Aider: `--model` flag
+- some tools expose a model picker in the UI
+- some rely on config files or CLI flags
+- some are tied to one provider family
 
-## Model Tiers (snapshot: Jan 2026)
+If model switching matters to you, prefer tools that make provider changes explicit and reversible.
 
-### Heavy Hitters
-For complex architecture, long agentic sessions, and hard problems.
+## Practical Heuristics
 
-| Model | SWE-bench | Price (in/out) | When to Use |
-|-------|-----------|----------------|-------------|
-| **Codex 5.2** | ~81% | $1.75/$14 | Complex agentic, multi-file refactors |
-| **Claude Opus 4.5** | 80.9% | $5/$25 | Deep reasoning, architecture decisions |
+- Use your best reasoning model for tasks that would take a human hours.
+- Use faster models for autocomplete, drafts, and tight feedback loops.
+- Treat long context as a capability, not a permission slip to dump everything in.
+- Prefer local models when privacy constraints are the dominant requirement.
+- Re-check live benchmarks before making strong model claims in team docs or policies.
 
-### All-Rounders
-Daily drivers for most development work.
+## Local Models
 
-| Model | SWE-bench | Price (in/out) | When to Use |
-|-------|-----------|----------------|-------------|
-| **GPT-5.2** | 80.0% | $1.75/$14 | Best value for general coding |
-| **Claude Sonnet 4.5** | 77.2% | $3/$15 | Good balance, strong tool use |
-| **Gemini 3 Pro** | 76.2% | $2/$12 | Large context, visual/UI work |
-
-### Fast & Lightweight
-Speed-critical tasks, completions, quick iterations.
-
-| Model | Speed | Price (in/out) | When to Use |
-|-------|-------|----------------|-------------|
-| **Gemini 3 Flash** | 200 tok/s | $0.50/$3 | Tab completions, quick edits |
-| **GLM 4.7 Flash** | 180 tok/s | $0.40/$2 | Fast + strong reasoning |
-| **Claude 4.5 Haiku** | 150 tok/s | $1/$5 | Fast Claude, good quality |
-| **MiniMax 2.1** | 160 tok/s | $0.30/$1.50 | Budget speed |
-
-### Budget
-Maximize value when cost is the primary constraint.
-
-| Model | SWE-bench | Price (in/out) | When to Use |
-|-------|-----------|----------------|-------------|
-| **DeepSeek V3.2** | 73% | $0.27/$1.10 | Best quality per dollar |
-
-### Local Models
 For privacy, offline work, or air-gapped environments. Always an option, but most developers start with hosted APIs.
 
-| Model | Size | Hardware Needed | When to Use |
-|-------|------|-----------------|-------------|
-| **Qwen3 Coder 32B** | 32B | 24GB+ VRAM | Best local coding quality |
-| **DeepSeek Coder V2** | 16B | 16GB+ VRAM | Good balance |
-| **Qwen3 Coder 8B** | 8B | 8GB+ VRAM | Lighter hardware |
+| Model size class | Hardware Needed | When to Use |
+|------------------|-----------------|-------------|
+| **Large coding model** (roughly 30B+) | 24GB+ VRAM | best local quality if you have the hardware |
+| **Mid-size coding model** (roughly 14B-16B) | 16GB+ VRAM | good balance of quality and practicality |
+| **Small coding model** (roughly 7B-8B) | 8GB+ VRAM | lighter hardware and experimentation |
 
-Run with [Ollama](https://ollama.com) or [LM Studio](https://lmstudio.ai). Pair with [Continue.dev](https://continue.dev) for IDE integration.
+Run with a local serving stack or desktop runtime. Pair with whatever editor or terminal workflow already fits your environment.
 
 :::note[Hardware not included]
-"Free" local models require capable hardware. Budget $500-2000+ for a GPU that runs larger models well. Most laptops can only run 8B models acceptably.
+"Free" local models still require capable hardware. Most laptops can only run smaller models acceptably.
 :::
-
-### How to Mix
-
-Most developers use 2-3 models via OpenRouter or native provider APIs:
-1. **Heavy hitter** for complex tasks (Codex 5.2 or Opus 4.5)
-2. **All-rounder** as daily driver (GPT-5.2 or Sonnet 4.5)
-3. **Fast model** for completions (Gemini Flash or Haiku)
-
-Swap the all-rounder for **DeepSeek V3.2** if budget is tight — 73% SWE-bench at 1/10th the cost.
 
 ## Sources
 
@@ -149,7 +104,7 @@ Swap the all-rounder for **DeepSeek V3.2** if budget is tight — 73% SWE-bench 
 |-----------|------------------|------|
 | **SWE-bench** | Real GitHub issue resolution | [swebench.com](https://swebench.com) |
 | **Aider Polyglot** | Multi-language code editing | [aider.chat/docs/leaderboards](https://aider.chat/docs/leaderboards/) |
-| **Artificial Analysis** | Speed, price, quality | [artificialanalysis.ai](https://artificialanalysis.ai) |
+| **Artificial Analysis** | Speed, quality, model changes over time | [artificialanalysis.ai](https://artificialanalysis.ai) |
 | **LLM Stats** | Aggregated benchmarks | [llm-stats.com](https://llm-stats.com) |
 
-*Data snapshot: January 2026. Reviewed: February 2026.*
+*Use live benchmark trackers for current details. Data moves quickly.*

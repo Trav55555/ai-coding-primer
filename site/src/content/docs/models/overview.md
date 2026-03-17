@@ -7,23 +7,22 @@ sidebar:
 
 **Models** determine capability — how smart the AI is, how fast it responds, what it can do.
 
-**Providers** determine terms — pricing, privacy policy, legal jurisdiction, availability.
+**Providers** determine operating constraints — privacy policy, legal jurisdiction, availability, and access model.
 
 ## Models
 
-Models are the AI systems themselves:
+Models are the AI systems themselves. In practice, what matters most is the capability class, not memorizing a winner list.
 
-| Model | Maker | Strength |
-|-------|-------|----------|
-| Claude Opus 4.6 | Anthropic | Best agentic, complex tasks |
-| Claude Sonnet 4.6 | Anthropic | Best coding quality/speed |
-| GPT-5.2 | OpenAI | General capability |
-| Gemini 3 Pro | Google | Long context (1M), best for visual/UI |
-| Grok 4.1 | xAI | Longest context (2M tokens) |
-| DeepSeek V3.2 | DeepSeek | Best value |
+| Model class | What it is best at |
+|-------------|--------------------|
+| frontier reasoning models | complex agentic work, debugging, and multi-file changes |
+| strong general-purpose coding models | everyday implementation and review loops |
+| multimodal models | screenshots, mockups, diagrams, and visual/UI work |
+| long-context models | large investigations when context is still selective |
+| hosted open-weight models | more control without going fully local |
 
 :::tip[Visual/UI Tasks]
-**Gemini 3 Pro** excels at understanding screenshots, mockups, and design files. Use it for implementing UI from designs, debugging visual issues, or working with component libraries.
+Use a strong multimodal model for screenshots, mockups, and design files. That is usually the right fit for implementing UI from designs, debugging visual issues, or working from component libraries.
 :::
 
 ## Providers
@@ -48,9 +47,10 @@ Different providers have different data policies:
 - Azure OpenAI: EU data residency available
 - AWS Bedrock: Private endpoints, VPC integration
 
-### For Cost
-- Direct providers: Standard pricing
-- Aggregators like OpenRouter: Sometimes cheaper, fallback routing
+### For Workflow
+- Direct providers: best when you want the vendor's native tooling and latest releases
+- Aggregators: useful when you want one key, fallback routing, or easy model switching
+- Cloud platforms: useful when procurement, networking, or compliance requirements matter more than raw convenience
 
 ## Aggregators & Cloud Platforms
 
@@ -69,7 +69,7 @@ Different providers have different data policies:
 | Model | Params | Why It Matters |
 |-------|--------|----------------|
 | **Llama 4** | 405B | Meta's flagship, runs locally or hosted |
-| **DeepSeek V3.2** | 671B MoE | Best quality/cost ratio |
+| **DeepSeek V3.2** | 671B MoE | Strong open-weight coding model |
 | **Qwen 3** | 235B | Strong multilingual, tool use |
 | **Kimi K2.5** | 1T MoE | Moonshot's flagship, massive scale |
 | **GLM 4.7** | 320B | Zhipu's latest, strong reasoning |
@@ -77,7 +77,7 @@ Different providers have different data policies:
 
 ### Why Care?
 
-**Self-hosting**: Run on your own hardware. Zero data leaves your network. No API costs after hardware.
+**Self-hosting**: Run on your own hardware. Zero data leaves your network and provider boundaries stay under your control.
 
 **No vendor lock-in**: Switch providers freely. Model weights are yours.
 
@@ -91,15 +91,15 @@ Open weight models lag ~6-12 months behind frontier closed models (Claude, GPT).
 
 ### Running Locally
 
-| Tool | What It Does |
-|------|--------------|
-| [Ollama](https://ollama.com) | One-command local inference |
-| [LM Studio](https://lmstudio.ai) | GUI for local models |
-| [vLLM](https://github.com/vllm-project/vllm) | Production-grade serving |
+| Tool type | What it does |
+|-----------|--------------|
+| local runner | one-command local inference for individuals |
+| desktop runtime | GUI-based local model management |
+| serving stack | production-grade local or self-hosted inference |
 
-Pair with [Continue.dev](https://continue.dev) for a fully local AI coding setup. Note: "free" local models require capable hardware (16GB+ RAM, GPU with 8GB+ VRAM recommended).
+Pair with the editor or terminal workflow you already use. Note: "free" local models still require capable hardware (16GB+ RAM, GPU with 8GB+ VRAM recommended).
 
 ## Next Steps
 
 - [Capabilities Matrix](/ai-coding-primer/models/capabilities/) — compare what models can do
-- [Pricing Guide](/ai-coding-primer/models/pricing/) — cost comparison
+- [Selection Guide](/ai-coding-primer/models/selection-guide/) — choose by workflow, privacy, and capability

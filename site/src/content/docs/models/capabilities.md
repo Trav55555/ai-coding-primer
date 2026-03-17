@@ -1,77 +1,100 @@
 ---
-title: Capabilities Matrix
-description: Comparing AI model capabilities for coding.
-sidebar:
-  order: 2
+title: Capability Patterns
+description: Durable model capability classes for coding workflows.
 ---
 
-Model capabilities for coding tasks. Data snapshot: January 2026 (reviewed February 2026).
+Use this page for durable capability classes, not leaderboard snapshots. Specific model rankings move too quickly to anchor a workflow-first guide.
 
-## Coding Benchmarks
+## Capability Classes That Matter
 
-| Model | SWE-bench | Best For |
-|-------|-----------|----------|
-| **Claude Opus 4.5** | 80.9% | Complex agentic, architecture |
-| **GPT-5.2** | 80.0% | General coding |
-| **Codex 5** | 78.0% | Code-optimized tasks |
-| **Codex 5.2** | TBD | Early reports of strong agentic performance |
-| **Gemini 3 Flash** | 78.0% | Speed + quality |
-| **Claude Sonnet 4.5** | 77.0% | Agentic coding, balanced |
-| **Gemini 3 Pro** | 76.2% | Long context |
-| **Grok 4.1** | 72.0% | 2M context |
-| **DeepSeek V3.2** | 68.0% | Budget coding |
-| **Qwen3 Coder 32B** | 58.0% | Local/private |
+### Deep reasoning models
 
-**SWE-bench**: Real GitHub issue resolution (higher = better)  
-**Aider Polyglot**: Multi-language code editing benchmark
+Best for:
+- multi-file changes
+- architecture decisions
+- debugging with several interacting causes
+- long agent loops that need to recover from failure
 
-:::tip[Current Leaders (snapshot: Jan 2026)]
-**Codex 5.2** and **Claude Opus 4.5** are emerging as the top two models for development tasks. Both excel at agentic workflows, with Codex 5.2 showing particularly strong performance on complex coding.
-:::
+Tradeoff:
+- slower and often more expensive in time or usage budget
 
-## Context Windows
+### Fast iteration models
 
-| Model | Advertised | Practical Limit | Notes |
-|-------|------------|-----------------|-------|
-| Grok 4.1 | 2M tokens | ~500k reliable | Quality degrades at scale |
-| Gemini 3 Pro/Flash | 1M tokens | ~200k reliable | 128k default on free tier |
-| Codex 5 | 400k tokens | ~300k reliable | |
-| GPT-5.2 | 256k tokens | ~150k reliable | |
-| Claude Sonnet 4.5 | 200k tokens | ~80k reliable | 40% rule applies |
-| DeepSeek V3.2 | 128k tokens | ~80k reliable | |
+Best for:
+- autocomplete and short edits
+- drafting tests or boilerplate
+- quick review loops where latency matters more than depth
 
-:::note[Context Reality]
-Advertised context ≠ practical context. Models can technically accept large inputs, but retrieval quality and coherence degrade well before the limit. The "40% rule" suggests staying under 40% of the window for reliable results.
-:::
+Tradeoff:
+- weaker at holding long plans and resolving ambiguous requirements
 
-## Speed
+### Multimodal models
 
-| Model | Tokens/sec | Latency Feel |
-|-------|------------|--------------|
-| Gemini 3 Flash | 200 | Instant |
-| Grok 4.1 | 120 | Fast |
-| GPT-5.2 | 101 | Fast |
-| Codex 5 | 90 | Fast |
-| Claude Sonnet 4.5 | 80 | Fast |
-| DeepSeek V3.2 | 60 | Moderate |
-| Claude Opus 4.5 | 45 | Moderate |
+Best for:
+- UI implementation from screenshots or mockups
+- debugging visual regressions
+- working from diagrams, design files, or image-based documentation
 
-## Recommendations
+Tradeoff:
+- not every multimodal model is equally strong at coding depth
 
-| Use Case | Best Model | Why |
-|----------|------------|-----|
-| **Agentic coding** | Claude Sonnet 4.5 | Best at multi-step, tool use |
-| **Complex architecture** | Claude Opus 4.5 | Deepest reasoning |
-| **Visual/UI tasks** | Gemini 3 Pro | Best multimodal, image understanding |
-| **Fast completions** | Gemini 3 Flash | Speed + quality |
-| **Large context** | Grok 4.1, Gemini 3 Pro | Larger projects (with caveats) |
-| **Code-optimized** | Codex 5 | Built for code, 400k context |
-| **Budget** | DeepSeek V3.2 | 90% quality at 10% cost |
-| **Local/private** | Qwen3 Coder 32B | Best open-weights coding |
+### Long-context models
 
-## Learn More
+Best for:
+- large investigations
+- broad repository mapping
+- document-heavy workflows
 
-- [Benchmarks That Matter](/ai-coding-primer/models/benchmarks/) — What each benchmark tests and why
-- [Selection Guide](/ai-coding-primer/models/selection-guide/) — How to choose the right model
+Tradeoff:
+- large context windows help only when context is selective and well-structured
 
-*Data snapshot: January 2026. Reviewed: February 2026.*
+### Local or open-weight models
+
+Best for:
+- sensitive code
+- offline or air-gapped environments
+- teams that prioritize control over frontier performance
+
+Tradeoff:
+- capability may lag top hosted models, especially on hard agentic tasks
+
+## How to Choose by Workflow
+
+| Workflow | Start with this capability class | Why |
+|---|---|---|
+| Complex bug fix | Deep reasoning | Root-cause analysis matters more than speed |
+| New feature with many moving parts | Deep reasoning | Planning and recovery matter |
+| UI build from design references | Multimodal | Visual understanding changes the result |
+| Tight edit loop | Fast iteration | Lower latency keeps the workflow moving |
+| Large codebase exploration | Long-context | Breadth helps when paired with context hygiene |
+| Sensitive or regulated work | Local or open-weight | Operational boundaries may matter more than peak capability |
+
+## Context Reality
+
+Advertised context is not the same as reliable context. Once context gets noisy, even very large windows become less useful.
+
+- prefer selective retrieval over giant prompt dumps
+- treat long context as a tool for breadth, not permission to include everything
+- keep core rules pushed into project context files and retrieve the rest on demand
+
+See [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) for the workflow implications.
+
+## What This Page Intentionally Does Not Do
+
+- maintain live model rankings
+- promise a single "best model"
+- freeze benchmark snapshots into durable guidance
+
+For time-sensitive benchmark details, use [Benchmarks That Matter](/ai-coding-primer/models/benchmarks/) and confirm current data before making team-level decisions.
+
+## Evidence Tags
+
+- `Research-backed`: verification, selective context, and review costs matter more than raw leaderboard chasing
+- `Practitioner-backed`: capability classes are how many teams actually choose models in daily work
+- `Synthesis`: the exact taxonomy on this page is a workflow-first simplification, not one benchmark's official ontology
+
+## Next Steps
+
+- [Choosing a Model](/ai-coding-primer/models/pricing/) — workflow-first chooser
+- [Selection Guide](/ai-coding-primer/models/selection-guide/) — practical decision heuristics
+- [Benchmarks That Matter](/ai-coding-primer/models/benchmarks/) — appendix-style benchmark interpretation

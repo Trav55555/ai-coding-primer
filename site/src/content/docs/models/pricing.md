@@ -1,89 +1,60 @@
 ---
-title: Pricing Guide
-description: API pricing for AI models used in coding.
+title: Choosing a Model
+description: How to choose a model without relying on stale pricing tables.
 sidebar:
   order: 3
 ---
 
-Pricing per million tokens. Data snapshot: January 2026 (reviewed February 2026).
+Pricing changes faster than most documentation gets updated. Use this page for decision logic, not static dollar figures.
 
-## Quick Comparison
+## What to Optimize For
 
-| Model | Input | Output | Speed |
-|-------|-------|--------|-------|
-| **Claude Opus 4.5** | $5.00 | $25.00 | 45 tok/s |
-| **Grok 4.1** | $3.00 | $15.00 | 120 tok/s |
-| **Claude Sonnet 4.5** | $3.00 | $15.00 | 80 tok/s |
-| **Gemini 3 Pro** | $2.00 | $12.00 | 85 tok/s |
-| **GPT-5.2** | $1.75 | $14.00 | 101 tok/s |
-| **Codex 5** | $1.25 | $10.00 | 90 tok/s |
-| **Gemini 3 Flash** | $0.50 | $3.00 | 200 tok/s |
-| **DeepSeek V3.2** | $0.27 | $1.10 | 60 tok/s |
+| If your main need is... | Optimize for... |
+|-------------------------|-----------------|
+| Long-running agent loops | reasoning quality and tool use |
+| Quick edits and completions | latency |
+| Visual/UI implementation | multimodal strength |
+| Sensitive code | local execution or trusted provider boundaries |
+| Large investigations | long context plus strong context hygiene |
 
-## Cost Tiers
+## Workflow-Fit Rules
 
-### Budget (< $3/M output)
-- DeepSeek V3.2: $1.10/M output
-- Gemini 3 Flash: $3.00/M output
+### Use a frontier reasoning model when:
 
-### Balanced ($3-15/M output)
-- Codex 5: $10.00/M output
-- Gemini 3 Pro: $12.00/M output
-- GPT-5.2: $14.00/M output
-- Claude Sonnet 4.5: $15.00/M output
-- Grok 4.1: $15.00/M output
+- the task spans many files
+- the change has architectural consequences
+- you need the model to recover from failures and keep a plan straight
 
-### Premium (> $15/M output)
-- Claude Opus 4.5: $25.00/M output
+### Use a fast model when:
 
-## Real-World Costs
+- you are iterating quickly
+- the task is local and well-scoped
+- autocomplete quality matters more than deep planning
 
-Typical coding session costs:
+### Use a local model when:
 
-| Activity | Tokens | Model | Cost |
-|----------|--------|-------|------|
-| Small refactor | ~10k | Claude Sonnet 4.5 | ~$0.15 |
-| Feature implementation | ~50k | Claude Sonnet 4.5 | ~$0.75 |
-| Large exploration | ~200k | Claude Sonnet 4.5 | ~$3.00 |
+- your data cannot leave your environment
+- you need predictable operational boundaries
+- you can accept some capability tradeoffs for control
 
-## Caching
+## Keep One Eye on Access Models
 
-Prompt caching reduces costs for repeated context:
+Two tools can expose the same model through very different operating constraints.
 
-| Model | Cached Input Price |
-|-------|-------------------|
-| Claude Sonnet 4.5 | $0.30 (90% off) |
-| GPT-5.2 | $0.175 (90% off) |
-| Gemini 3 Pro | $0.50 (75% off) |
-| DeepSeek V3.2 | $0.028 (90% off) |
+- direct provider access
+- aggregator access such as OpenRouter
+- cloud-platform access such as Bedrock, Vertex, or Azure OpenAI
+- local model serving via Ollama, LM Studio, or vLLM
 
-## Subscription vs API
+This matters because provider choice changes retention policy, logging surface, and enterprise deployment options.
 
-| Tool | Subscription | API (BYOK) |
-|------|--------------|------------|
-| Cursor Pro | $20/mo flat | Variable |
-| Claude Max | $100/mo flat | Variable |
-| Zed Pro | $10/mo + $5 credits | Your API costs |
+## Where to Check Live Data
 
-**Rule of thumb**: If you use < $50/mo in API, BYOK is cheaper. Heavy users benefit from subscriptions.
+- [Artificial Analysis](https://artificialanalysis.ai)
+- [SWE-bench](https://swebench.com)
+- [Aider Leaderboards](https://aider.chat/docs/leaderboards/)
+- official provider docs for current access details
 
-## Pricing Trackers
+## Bottom Line
 
-- [OpenRouter Models](https://openrouter.ai/models) — Side-by-side comparison
-- [Artificial Analysis](https://artificialanalysis.ai) — Price, speed, quality trends
-
-## Sources
-
-Official pricing pages:
-
-| Provider | Link |
-|----------|------|
-| Anthropic (Claude) | [anthropic.com/pricing](https://www.anthropic.com/pricing) |
-| OpenAI (GPT, Codex) | [openai.com/api/pricing](https://openai.com/api/pricing) |
-| Google (Gemini) | [ai.google.dev/pricing](https://ai.google.dev/pricing) |
-| DeepSeek | [platform.deepseek.com](https://platform.deepseek.com) |
-| xAI (Grok) | [x.ai/api](https://x.ai/api) |
-
-*Prices change frequently. Verify on official sites before committing to a model.*
-
-*Data snapshot: January 2026. Reviewed: February 2026.*
+Do not choose a model from a stale table. Choose it from the workflow you need to support, then verify the live benchmark and access details before committing.
