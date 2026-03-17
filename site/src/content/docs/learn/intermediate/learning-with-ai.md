@@ -7,15 +7,13 @@ sidebar:
 
 AI can help you learn faster. It can also make you worse at the parts of programming that matter when things break. The difference is not whether you use it. The difference is how much thinking you hand over.
 
-:::note[Evidence status]
+:::note[Evidence guide]
 - `Research-backed` - [Anthropic AI coding learning RCT](https://www.anthropic.com/research/ai-coding-learning), [OECD Digital Education Outlook 2026](https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_f6e1d3c0-en.html)
 - `Practitioner-backed` - [Tutor CoPilot RCT](https://arxiv.org/abs/2410.05017), [MIT Media Lab: Your Brain on ChatGPT](https://www.media.mit.edu/publications/your-brain-on-chatgpt/)
 - `Synthesis`
 :::
 
----
-
-## The Core Problem
+## The Problem
 
 There is a difference between finishing a task and actually learning from it. AI can close the first gap while widening the second.
 
@@ -25,11 +23,8 @@ The mechanism is not mysterious. Learning needs struggle, recall, and correction
 
 See [Anthropic AI coding learning RCT](https://www.anthropic.com/research/ai-coding-learning) and [OECD Digital Education Outlook 2026](https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_f6e1d3c0-en.html) for the strongest primary sources behind this.
 
-**Evidence tags:** `Research-backed` ([Anthropic AI coding learning RCT](https://www.anthropic.com/research/ai-coding-learning), [OECD Digital Education Outlook 2026](https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_f6e1d3c0-en.html)).
 
----
-
-## Pattern: Explain, Don't Generate
+## Explain, Don't Generate
 
 **Instead of:** "Write a function that parses this JSON and returns only active users."
 
@@ -56,7 +51,7 @@ This is how developers become dependent on AI for problems they used to be able 
 
 ---
 
-## Pattern: Code Without AI Regularly
+## Code Without AI Regularly
 
 The Anthropic study's biggest skill gap wasn't in writing code. It was in debugging. That's a skill you only develop by getting stuck and finding your own way out.
 
@@ -73,9 +68,7 @@ Neither mode is better. Both are necessary.
 
 One practical rule: keep at least one regular session each week where AI is off and the job is manual reasoning, debugging, or code reading.
 
----
-
-## Pattern: Verify Before You Trust
+## Verify Before You Trust
 
 The "illusion of competence" (IJRSI 2025) is subtle. AI's fluent, confident output feels like your own understanding. It isn't.
 
@@ -85,9 +78,7 @@ A practical technique: after AI generates code, close the chat. Wait 10 minutes.
 
 Another practical test: if you cannot explain why the code works, what assumptions it makes, and how you would debug it when it fails, you have not learned the technique yet.
 
----
-
-## Pattern: Socratic Mode
+## Use AI Like a Tutor
 
 One of the strongest patterns across the research is that AI helps learning more when it asks questions or scaffolds thinking than when it simply gives answers (Park et al., 2024). The format matters as much as the content.
 
@@ -104,13 +95,10 @@ Prompt templates that actually work:
 
 These prompts make the tool act more like a tutor and less like a vending machine. The answers feel slower. That is usually a good sign.
 
-**Evidence tags:** `Research-backed` ([Tutor CoPilot RCT](https://arxiv.org/abs/2410.05017), [MIT Media Lab: Your Brain on ChatGPT](https://www.media.mit.edu/publications/your-brain-on-chatgpt/)).
 
-## High-Learning vs Low-Learning Use
+## What Good Use Looks Like
 
 This table is a synthesis of the studies cited on this page, especially the Anthropic learning RCT, Shen & Tamkin's conceptual-vs-delegated-use distinction, and the broader literature on productive struggle. It is a practical framework, not a direct taxonomy from one paper.
-
-**Evidence tags:** `Synthesis`; `Research-backed` ([Anthropic AI coding learning RCT](https://www.anthropic.com/research/ai-coding-learning), [Tutor CoPilot RCT](https://arxiv.org/abs/2410.05017)).
 
 | Pattern | Outcome |
 |---------|---------|
@@ -120,9 +108,7 @@ This table is a synthesis of the studies cited on this page, especially the Anth
 | **"Write this for me"** | Fast output, weak retention |
 | **"Fix it" loops** | Weak debugging skill, high dependence |
 
----
-
-## Anti-Pattern: Skipping the Struggle
+## Do Not Skip the Struggle
 
 > "Novice programmers using AI often skip the 'productive struggle' phase of learning." — Prather et al. (2024)
 
@@ -134,9 +120,7 @@ If you still need help after that, ask for a hint, not a solution. "What directi
 Skipping productive struggle doesn't just slow learning. It can also create dependency. Developers who never sit with hard problems usually become less comfortable handling them unaided.
 :::
 
----
-
-## Anti-Pattern: Copy-Paste Learning
+## Copy-Paste Is Not Learning
 
 Copying AI code and moving on teaches nothing. PNAS (2025) found students using AI without guardrails performed worse on assessments than those who learned traditionally, even though their submitted work looked better.
 
@@ -147,8 +131,6 @@ If you copy AI-generated code, you owe yourself three things before moving on:
 3. Break it deliberately and debug it
 
 If you can't do all three, you don't understand it. You just have it.
-
----
 
 ## For Team Leads: Guardrails That Work
 

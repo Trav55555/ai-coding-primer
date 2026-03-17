@@ -7,7 +7,7 @@ sidebar:
 
 Most AI coding frustration is not about model quality. It is about using the wrong workflow for the job. These four patterns cover most of the work people actually do.
 
-:::note[Evidence status]
+:::note[Evidence guide]
 - `Research-backed` - [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/), [Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/)
 - `Practitioner-backed` - [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/), [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/)
 - `Synthesis`
@@ -23,13 +23,11 @@ Use this when the problem is already visible and you want the smallest safe fix.
 4. Make the smallest fix that resolves the failure.
 5. Re-run the verification signal.
 
-**Best prompt shape:** "Here is the failing test and the relevant files. Explain the root cause, then fix it without changing unrelated behavior."
+A good prompt sounds like: "Here is the failing test and the relevant files. Explain the root cause, then fix it without changing unrelated behavior."
 
-**Failure mode to avoid:** throwing the whole repo at the model and hoping it guesses right.
+The usual mistake is throwing the whole repo at the model and hoping it guesses right.
 
 Full worked example: [Scenario - Fix a Bug](/ai-coding-primer/learn/intermediate/scenario-bug-fix/)
-
-**Evidence tags:** `Research-backed` ([METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/), [Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/)); `Synthesis`.
 
 ## 2. The Feature Build
 
@@ -41,13 +39,11 @@ Use this when you are adding new behavior and the shape of the work is still eas
 4. Verify each slice before moving on.
 5. Update the spec when scope changes.
 
-**Best prompt shape:** "Read `spec.md`. Tell me what questions you have and propose the implementation plan before writing code."
+A good opening prompt is: "Read `spec.md`. Tell me what questions you have and propose the implementation plan before writing code."
 
 **Why it works:** it turns vague intent into a sequence the model can follow and you can check.
 
 Full worked example: [Scenario - Add a Feature](/ai-coding-primer/learn/intermediate/scenario-feature-build/)
-
-**Evidence tags:** `Practitioner-backed` ([Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/)); `Synthesis`.
 
 ## 3. The Refactor
 
@@ -59,13 +55,11 @@ Use this when the code works, but living with it is getting expensive.
 4. Re-run tests after every small step.
 5. Stop when readability or maintainability improves enough.
 
-**Best prompt shape:** "This is a refactor. Preserve behavior. Do not change public interfaces unless the test or spec requires it."
+A good prompt is: "This is a refactor. Preserve behavior. Do not change public interfaces unless the test or spec requires it."
 
-**Failure mode to avoid:** mixing bug fixing, cleanup, and feature work into one large edit.
+The trap here is mixing bug fixing, cleanup, and feature work into one big edit.
 
 Full worked example: [Scenario - Safe Refactor](/ai-coding-primer/learn/intermediate/scenario-safe-refactor/)
-
-**Evidence tags:** `Research-backed` ([METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/)); `Practitioner-backed` ([Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/)).
 
 ## 4. The Codebase Explorer
 
@@ -77,9 +71,7 @@ Use this when you do not understand the codebase well enough to touch it confide
 4. Write down the useful findings.
 5. Only then move into a bug, feature, or refactor workflow.
 
-**Best prompt shape:** "Investigate how X works in this repo. Report back with entry points, key files, and patterns. Do not modify anything."
-
-**Evidence tags:** `Research-backed` ([Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/)); `Practitioner-backed` ([Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/)).
+A good prompt is: "Investigate how X works in this repo. Report back with entry points, key files, and patterns. Do not modify anything."
 
 ## Which Workflow Should You Start With?
 
@@ -96,18 +88,6 @@ Use this when you do not understand the codebase well enough to touch it confide
 - smaller steps are easier to review than giant prompts
 - selective context works better than maximal context
 - when the model gets stuck, a fresh session usually beats another long rescue attempt
-
-## Sources and Provenance
-
-**Empirical support:**
-- [Productivity Research](/ai-coding-primer/research/productivity/)
-- [Code Quality & Security](/ai-coding-primer/research/code-quality-security/)
-- [Learning Impacts](/ai-coding-primer/research/learning-impacts/)
-
-**Practitioner and architecture support:**
-- [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/)
-- Mitchell Hashimoto's always-on agent workflow
-- Anthropic and open-source coding-agent harness patterns
 
 ## Next Steps
 
