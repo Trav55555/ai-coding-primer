@@ -29,12 +29,11 @@ sidebar:
 curl -fsSL https://claude.ai/install.sh | bash
 ```
 
-## Pricing
+## Access Model
 
-Requires Claude subscription:
-- **Pro** — $20/mo
-- **Max** — $100/mo (more usage)
-- **Teams/Enterprise** — Contact sales
+Claude Code uses Anthropic account access. Availability and plan details change frequently, so treat the vendor docs as the source of truth.
+
+**Workflow fit:** best when you want a strong hosted terminal agent and are comfortable with Anthropic's account and policy model.
 
 ## Privacy
 

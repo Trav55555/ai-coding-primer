@@ -23,14 +23,9 @@ sidebar:
 - **Command Mode** — Natural language commands
 - **Hybrid Deployment** — Cloud, on-prem, or mixed
 
-## Pricing
+## Access Model
 
-| Plan | Price | Notes |
-|------|-------|-------|
-| Free | $0 | 25 prompt credits/mo |
-| Pro | $15/mo | 500 prompt credits/mo |
-| Teams | $30/user/mo | 500 credits/user/mo, admin controls, SSO |
-| Enterprise | Custom | Self-hosted, FedRAMP |
+Windsurf offers both managed and enterprise deployment paths. For most teams, the practical distinction is not price but whether you need hosted convenience, stronger compliance controls, or self-hosted options.
 
 ## Privacy
 

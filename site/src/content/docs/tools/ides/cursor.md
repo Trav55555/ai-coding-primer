@@ -23,18 +23,9 @@ sidebar:
 - **Background Agents** — Parallel research
 - **`.cursorrules`** — Project-specific context
 
-## Pricing
+## Access Model
 
-| Plan | Price | Notes |
-|------|-------|-------|
-| Hobby | Free | Free tier |
-| Pro | $20/mo | Unlimited completions |
-| Pro+ | $60/mo | Higher usage cap |
-| Ultra | $200/mo | Highest usage cap |
-| Teams | $40/user/mo | SSO, zero-retention |
-| Enterprise | Custom | SCIM, audit logs |
-
-Paid plans use credit-based/metered usage for heavy agent workflows.
+Cursor offers hosted access with several account tiers. Specific plan details change often, but the important distinction is between individual use and business or enterprise use with stronger administrative and privacy controls.
 
 ## Privacy
 

@@ -23,13 +23,9 @@ sidebar:
 - **Whole-Line Completion** — Context-aware suggestions
 - **Chat** — Conversational coding assistance
 
-## Pricing
+## Access Model
 
-| Plan | Price | Notes |
-|------|-------|-------|
-| Basic | Free | Limited completions |
-| Pro | $12/user/mo | Full features, cloud |
-| Enterprise | Custom | Self-hosted, SSO, audit |
+Tabnine offers both hosted and enterprise self-hosted paths. The real choice is whether you need normal cloud convenience or infrastructure-level control.
 
 ## Privacy
 

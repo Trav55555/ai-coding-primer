@@ -32,7 +32,7 @@ For maximum privacy, use local models:
 | Zed + Ollama | Maximum | 85-90% |
 | OpenCode + Ollama | Maximum | 85-90% |
 
-No data leaves your machine. Trade-off: requires hardware investment (24GB+ VRAM for best models, ~$500-2000+ for capable GPU).
+No data leaves your machine. Trade-off: requires capable local hardware (24GB+ VRAM for the best local coding models).
 
 ## Hidden Gotchas
 

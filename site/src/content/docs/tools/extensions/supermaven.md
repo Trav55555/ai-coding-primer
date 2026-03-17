@@ -23,13 +23,9 @@ sidebar:
 - **Chat** — Conversational assistance
 - **Repository Understanding** — Deep codebase awareness
 
-## Pricing
+## Access Model
 
-| Plan | Price | Notes |
-|------|-------|-------|
-| Free | $0 | Basic completions |
-| Pro | $10/mo | Full features, 1M context |
-| Team | $10/user/mo | Team management, centralized billing |
+Supermaven offers individual and team access paths. The important question is whether your workflow is completion-first enough to justify a specialized speed tool.
 
 ## Privacy
 
@@ -99,5 +95,5 @@ When context matters:
 
 - Best for pure code completion (not chat-heavy workflows)
 - Pairs well with agentic tools (use Supermaven for speed, Claude Code for complex tasks)
-- Free tier is usable for evaluation
-- Pro is excellent value at $10/mo
+- Use it when completion speed matters more than agent autonomy
+- Treat Supermaven as a specialized speed tool, not a general-purpose agent platform

@@ -33,14 +33,9 @@ npm install -g opencode
 npx opencode
 ```
 
-## Pricing
+## Access Model
 
-| Option | Cost |
-|--------|------|
-| OpenCode | Free (open source) |
-| API | Your provider's rates |
-
-No subscription — you only pay your API provider.
+OpenCode is open source and BYOK. There is no vendor subscription layer; your access terms come from whichever provider or local runtime you connect.
 
 ## Privacy
 

@@ -23,13 +23,9 @@ sidebar:
 - **Multiplayer** — Real-time collaboration
 - **BYOK** — Bring your own API keys
 
-## Pricing
+## Access Model
 
-| Plan | Price | Notes |
-|------|-------|-------|
-| Personal | **$0 forever** | No hosted AI, 2,000 accepted edit predictions |
-| Pro | $10/mo | Unlimited predictions, $5 tokens included |
-| Enterprise | Contact | SSO, analytics |
+Zed supports both hosted AI and BYOK workflows. That makes it useful for developers who want a native editor today without locking themselves into one provider model later.
 
 ## Privacy
 

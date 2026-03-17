@@ -28,15 +28,12 @@ sidebar:
 npm install -g @openai/codex
 ```
 
-## Pricing
+## Access Model
 
-| Option | Cost |
-|--------|------|
-| Codex CLI | Free (open source client) |
-| Usage | OpenAI API rates or eligible ChatGPT subscription |
+The Codex CLI client is open source. Usage depends on your OpenAI account access, either through API usage or eligible ChatGPT plans.
 
 Works with:
-- ChatGPT Plus/Pro/Business/Enterprise
+- ChatGPT account access
 - OpenAI API directly
 
 As of Feb 25, 2026, the `openai/codex` repository is active and regularly released.

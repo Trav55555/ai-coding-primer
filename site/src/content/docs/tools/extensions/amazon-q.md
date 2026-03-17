@@ -23,13 +23,9 @@ sidebar:
 - **Security Scanning** — Built-in vulnerability detection
 - **CLI Support** — `q` command for terminal
 
-## Pricing
+## Access Model
 
-| Plan | Price | Notes |
-|------|-------|-------|
-| Free | $0 | 50 chat/mo, security scans |
-| Pro | $19/user/mo | Unlimited, admin controls |
-| Enterprise | Custom | SSO, audit logs, private models |
+Amazon Q has individual and enterprise-oriented access paths. The durable decision is whether you want AWS-native workflows, Bedrock alignment, and centralized AWS governance.
 
 ## Privacy
 
@@ -101,6 +97,6 @@ Q: "How do I set up an S3 bucket with versioning?"
 ## Tips
 
 - Use with AWS Toolkit extension for full integration
-- Free tier is generous for individual developers
+- Verify current access terms separately if you depend on usage limits
 - Code transformation saves days on Java upgrades
 - Security scanning catches issues before PR

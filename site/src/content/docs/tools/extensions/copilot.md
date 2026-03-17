@@ -23,15 +23,9 @@ sidebar:
 - **Workspace Agent** — `@workspace` for codebase context
 - **CLI Integration** — Terminal command suggestions
 
-## Pricing
+## Access Model
 
-| Plan | Price | Notes |
-|------|-------|-------|
-| Free | $0 | 50 chat/mo, 2000 completions/mo |
-| Pro | $10/mo | Unlimited |
-| Pro+ | $39/mo | Higher premium request allowance |
-| Business | $19/user/mo | Policy controls, IP indemnity |
-| Enterprise | $39/user/mo | Codebase indexing, SCIM |
+Copilot has individual and enterprise-oriented access paths. The durable distinction is not the exact plan table, but whether you need personal convenience or centralized policy, governance, and codebase controls.
 
 ## Privacy
 

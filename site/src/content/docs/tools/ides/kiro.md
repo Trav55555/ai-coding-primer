@@ -23,15 +23,12 @@ sidebar:
 - **Q Developer CLI** — AWS tooling integration
 - **MCP Support** — External tool connections
 
-## Pricing
+## Access Model
 
-| Plan | Price | Notes |
-|------|-------|-------|
-| Free | $0 | Preview (launched July 2025) |
-| Pro | TBD | Coming with GA |
+Kiro is a preview product. The exact access model will evolve, but its real differentiator is the spec-first workflow, not the launch-stage commercial details.
 
 :::note[Preview Status]
-Kiro is in free preview. GA and pricing expected 2026.
+Kiro is in preview, so availability and policy details may change with general release.
 :::
 
 ## Privacy

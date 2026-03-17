@@ -24,9 +24,9 @@ sidebar:
 - **100% Local Option** — No data leaves your machine
 - **BYOK** — Any OpenAI-compatible endpoint
 
-## Pricing
+## Access Model
 
-**Free** — Full features with your own keys or local models.
+Continue.dev is open source. You can run it with your own provider keys or pair it with a local model stack, which makes it one of the clearest choices for teams that want explicit infrastructure control.
 
 ## Privacy
 

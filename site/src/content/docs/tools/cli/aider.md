@@ -36,14 +36,9 @@ pipx install aider-chat
 brew install aider
 ```
 
-## Pricing
+## Access Model
 
-| Option | Cost |
-|--------|------|
-| Aider | Free (open source) |
-| API | Your provider's rates |
-
-You bring your own API key — no subscription to Aider itself.
+Aider is open source and BYOK. You connect it to the provider you want to use, which makes it a strong fit for developers who want explicit control over model choice and privacy boundaries.
 
 ## Privacy
 
