@@ -5,9 +5,9 @@ sidebar:
   order: 4
 ---
 
-AI agents perform better with immediate feedback. Before you start prompting, ensure your project has proper tooling configured.
+AI agents work better when the environment answers back quickly. Before you start prompting, make sure the project can actually surface errors.
 
-## The Three Pillars
+## What You Need Before You Start
 
 | Tool | Purpose | Why It Matters |
 |------|---------|----------------|
@@ -28,7 +28,7 @@ Install the LSP for your language:
 | C# | OmniSharp | Included with C# extension |
 
 :::note[Language-Specific IDEs]
-If you use IntelliJ, PyCharm, GoLand, or other JetBrains IDEs, language intelligence is built-in — no LSP setup needed. Same for Visual Studio (not VS Code) with C#/.NET.
+If you use IntelliJ, PyCharm, GoLand, or other JetBrains IDEs, language intelligence is already built in. Same for Visual Studio (not VS Code) with C#/.NET.
 :::
 
 ## Linter Setup
@@ -53,7 +53,7 @@ If you use IntelliJ, PyCharm, GoLand, or other JetBrains IDEs, language intellig
 
 ## Verification Commands
 
-Run these **before** starting an AI session. If they fail, fix them first — agents struggle with pre-existing broken environments.
+Run these **before** starting an AI session. If they fail, fix them first. Agents are bad at distinguishing their own mistakes from the ones you handed them.
 
 ```bash
 # TypeScript
@@ -76,7 +76,7 @@ dotnet build
 
 > "Agents have no long-term memory. They rediscover 'ghost errors' every session, try to fix them, fail, and get confused."
 
-A broken environment before you start = a confused AI that wastes your time.
+If the environment is already broken, the agent usually wastes time chasing ghosts.
 
 ## Quick Checklist
 

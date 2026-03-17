@@ -16,7 +16,7 @@ If you need product-specific shortcuts, use the vendor pages in the [Reference A
 
 ## Step 2: Start with Exploration
 
-Don't command — explore. Your first prompt should be something you can verify:
+Do not start by commanding. Start by exploring. Your first prompt should be something you can verify:
 
 ```
 Look at this codebase and explain:
@@ -25,7 +25,7 @@ Look at this codebase and explain:
 3. What patterns and conventions are used?
 ```
 
-**Why this works:** You're asking about something you already know (or can quickly verify). This builds intuition for when the AI is right vs. hallucinating.
+**Why this works:** you are asking about something you already know, or can check quickly. That is how you learn when the AI is helping and when it is bluffing.
 
 ## Step 3: Ask for a Small Change
 
@@ -51,10 +51,10 @@ Use the same style as the other functions in that file.
 
 Before accepting any changes:
 
-1. **Read the diff** — Understand what changed
-2. **Check for errors** — Does the LSP show problems?
-3. **Run tests** — Do existing tests still pass?
-4. **Verify behavior** — Does it do what you asked?
+1. **Read the diff**: understand what changed
+2. **Check for errors**: does the LSP show problems?
+3. **Run tests**: do existing tests still pass?
+4. **Verify behavior**: does it do what you asked?
 
 :::caution[Never blindly accept]
 If you don't understand the code, don't ship it. Ask the AI to explain, or reject the change.
@@ -90,7 +90,7 @@ Once you can reliably spot mistakes on familiar tasks, you're ready for unfamili
 
 | Mistake | Fix |
 |---------|-----|
-| Too big a first ask | Start smaller — one function, not a feature |
+| Too big a first ask | Start smaller, one function, not a feature |
 | Accepting without reading | Always review diffs before accepting |
 | No verification | Run linter/tests after every change |
 | Giving up too fast | Try 2-3 iterations before abandoning |
@@ -99,6 +99,6 @@ Once you can reliably spot mistakes on familiar tasks, you're ready for unfamili
 
 You've completed your first AI-assisted coding session. To work more effectively:
 
-- [Learn the core concepts](/ai-coding-primer/learn/intermediate/core-concepts/) — terminology and mental models
-- [Study effective patterns](/ai-coding-primer/learn/intermediate/effective-patterns/) — what actually works
-- [Avoid common mistakes](/ai-coding-primer/learn/intermediate/common-mistakes/) — save yourself pain
+- [Learn the core concepts](/ai-coding-primer/learn/intermediate/core-concepts/): terminology and mental models
+- [Study effective patterns](/ai-coding-primer/learn/intermediate/effective-patterns/): what actually works
+- [Avoid common mistakes](/ai-coding-primer/learn/intermediate/common-mistakes/): save yourself pain

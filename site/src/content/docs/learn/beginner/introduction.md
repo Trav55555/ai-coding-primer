@@ -5,7 +5,7 @@ sidebar:
   order: 1
 ---
 
-This is a practical guide to AI coding workflows — from your first prompt to production-grade verification and long-running agent work.
+This guide shows how to get useful work out of AI coding tools without turning your process into a mess.
 
 ## Who This Is For
 
@@ -15,11 +15,11 @@ This is a practical guide to AI coding workflows — from your first prompt to p
 
 ## What You'll Learn
 
-1. **Getting Started** — Choose a tool, set up your environment, and run a first verified session
-2. **Working Effectively** — Use repeatable workflows for bugs, features, refactors, and research
-3. **Tools & Models** — Choose based on workflow fit, privacy posture, and capability
-4. **Security & Privacy** — Understand where your code goes and where the real risks are
-5. **Research & Evidence** — See what recent studies say about productivity, quality, and learning tradeoffs
+1. **Getting Started**: Choose a tool, set up your environment, and run a first verified session
+2. **Working Effectively**: Use repeatable workflows for bugs, features, refactors, and research
+3. **Tools & Models**: Choose based on workflow fit, privacy posture, and capability
+4. **Security & Privacy**: Understand where your code goes and where the real risks are
+5. **Research & Evidence**: See what recent studies say about productivity, quality, and learning tradeoffs
 
 ## How to Use This Guide
 
@@ -33,12 +33,12 @@ Need the data behind the guidance? See [Research & Evidence](/ai-coding-primer/r
 
 ## Philosophy
 
-This guide is **opinionated**. We optimize for durable advice rather than exhaustive vendor tracking. We prioritize:
+This guide is opinionated. It tries to stay useful longer than a tool roundup.
 
-- **Workflow over shopping** — Good habits outlast tool pricing pages
-- **Verification over vibes** — The system should prove the work, not merely sound plausible
-- **Fresh over complete** — Fewer accurate pages beat many stale ones
-- **Honest about limitations** — AI coding has real failure modes; we cover them
+- Good habits matter more than shopping advice.
+- Verification matters more than confidence.
+- A smaller accurate guide beats a big stale one.
+- AI coding has real failure modes, so this guide names them.
 
 ## Contributing
 
