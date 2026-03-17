@@ -111,9 +111,11 @@ This avoids a common failure mode where the model applies a clean documentation 
 
 ## The 40% Rule in Practice
 
-> "As context usage grows, model quality degrades. Empirically, this begins around 40% of the context window." — Dex Horthy
+There does not appear to be a strong primary-source citation for an exact `40%` threshold. Treat it as a practitioner heuristic, not a measured law.
 
-Treat this as a heuristic, not a law of nature. The exact threshold varies by model, task, and context quality.
+The better-supported point is broader: context quality degrades before the window is "full," and long-running agents need compaction, selective retrieval, and persistent artifacts rather than giant prompt dumps.
+
+If you want a more defensible working rule, think in terms of budget discipline rather than a magic cutoff. For example, the local context-engineering playbook uses a practical target range of roughly `60-85%` utilization depending on model size and task shape.
 
 | Context Window | 40% Threshold | Practical Limit |
 |----------------|---------------|-----------------|
