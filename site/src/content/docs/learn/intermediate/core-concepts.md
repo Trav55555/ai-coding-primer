@@ -25,7 +25,7 @@ Before diving deeper, let's establish shared vocabulary.
 |------|---------------|
 | **Context Engineering** | Building systems to provide the right information and tools to the model |
 | **Context Rot** | When too much irrelevant context makes the AI "dumber" |
-| **40% Rule** | Keep context below 40% of window capacity to maintain quality |
+| **Context Budget** | A practical limit for how much context to load before quality starts to degrade |
 | **Subagent** | A separate AI instance launched for investigation, keeping main context clean |
 
 ## Workflow Concepts
@@ -37,17 +37,13 @@ Before diving deeper, let's establish shared vocabulary.
 | **Verification** | Having the AI check its own work (tests, linter, type checker) |
 | **Close the Loop** | Design workflow so the agent can verify its own output |
 
-## The 40% Rule
+## Context Budget
 
-> "As context usage grows, model quality degrades. Empirically, this begins around 40% of the context window." — Dex Horthy
+There is no strong primary-source basis for a universal `40%` threshold. Treat hard percentages as heuristics, not laws.
 
-| Context Window | 40% Threshold | Practical Limit |
-|----------------|---------------|-----------------|
-| 128k tokens | ~51k tokens | ~40 files |
-| 200k tokens | ~80k tokens | ~65 files |
-| 1M tokens | ~400k tokens | ~325 files |
+The safer idea is simpler: quality drops before the window is full, especially when context is noisy. Use selective retrieval, compaction, and project context files instead of stuffing everything into one prompt.
 
-**Stay under 40%.** Beyond this, you're in the "Dumb Zone" where quality measurably degrades.
+If you want a working rule, think in ranges rather than one magic number. The practical target depends on the model, the task, and how clean the context is.
 
 ## Models vs Providers
 
@@ -65,3 +61,5 @@ This matters for enterprise (data residency, compliance) and cost optimization.
 
 - [Understand the Five Levels](/ai-coding-primer/learn/intermediate/five-levels/) — where you are and where to aim
 - [Learn Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) — the key skill
+- [MCP Deep Dive](/ai-coding-primer/learn/advanced/mcp-deep-dive/) — the connectivity layer
+- [Skills Deep Dive](/ai-coding-primer/learn/advanced/skills/) — reusable instructions and playbooks
