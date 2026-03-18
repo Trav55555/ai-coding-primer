@@ -23,6 +23,11 @@ AI-assisted code can increase output volume and review burden at the same time.
 - Require human review for all AI-authored diffs
 - Add security scanning to the default AI coding loop
 
+## Next Steps
+
+- [Governance and Rollout](/ai-coding-primer/team/governance/) - turn these findings into review policy and rollout rules
+- [Security Risks](/ai-coding-primer/team/security-risks/) - understand the failure modes behind the guardrails
+
 ## Sources
 
 - Sonar survey summary: https://www.sonarsource.com/blog/state-of-code-developer-survey-report-the-current-reality-of-ai-coding/
