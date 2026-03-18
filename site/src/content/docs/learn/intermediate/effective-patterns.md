@@ -170,7 +170,7 @@ This keeps the task stable even when the model's conversational context gets com
 - [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/): common end-to-end workflows
 - [Learn Common Mistakes](/ai-coding-primer/learn/intermediate/common-mistakes/): avoid the pitfalls
 - [Troubleshooting](/ai-coding-primer/learn/intermediate/troubleshooting/): when things go wrong
-- [Research & Evidence](/ai-coding-primer/research/overview/): empirical studies and caveats
+- [Research Overview](/ai-coding-primer/research/overview/): empirical studies and caveats
 
 ## Bibliography
 
