@@ -66,6 +66,6 @@ This helps you learn when the AI is right and when it is only sounding right. On
 
 ## Next Steps
 
-Ready to try it? [Choose your first tool →](/ai-coding-primer/learn/beginner/choose-your-tool/)
+Ready to try it? [Choose a workflow and stack ->](/ai-coding-primer/learn/beginner/choose-your-tool/)
 
 Then learn the workflows that make these tools useful: [Workflow Archetypes →](/ai-coding-primer/learn/intermediate/workflow-archetypes/)

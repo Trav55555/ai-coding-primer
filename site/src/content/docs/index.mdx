@@ -1,21 +1,20 @@
 ---
 title: Agentic Engineering Primer
-description: From your first prompt to production — AI-integrated IDEs, terminal tools, and workflows.
+description: Start safely, choose a workflow and stack that fit how you work, and learn the patterns that make AI-assisted engineering reliable.
 template: splash
 hero:
-  tagline: A practical guide to AI coding that stays useful after the tool rankings change.
+  tagline: A practical guide to AI-assisted engineering that stays useful after the tool rankings change.
   actions:
-    - text: Get Started
+    - text: Start Safely
       link: /ai-coding-primer/learn/beginner/introduction/
       icon: right-arrow
       variant: primary
-    - text: Choose a Tool
+    - text: Work Reliably
+      link: /ai-coding-primer/learn/intermediate/workflow-archetypes/
+      icon: list-format
+    - text: Choose a Workflow
       link: /ai-coding-primer/learn/beginner/choose-your-tool/
       icon: rocket
-    - text: View on GitHub
-      link: https://github.com/Trav55555/ai-coding-primer
-      icon: external
-      variant: minimal
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
@@ -23,23 +22,33 @@ import EmailSignup from '../../components/EmailSignup.astro';
 
 <EmailSignup />
 
-## What You'll Learn
+## What This Primer Is
+
+This guide helps you do three things well:
+
+1. start safely with AI coding tools
+2. choose a workflow and stack that fit how you already work
+3. learn the patterns that make AI-assisted engineering reliable instead of sloppy
+
+It is opinionated on purpose. It does not try to be a giant AI tools database.
+
+## Start Here
 
 <CardGrid stagger>
-  <Card title="Getting Started" icon="rocket">
-    New to AI coding? Start here. Choose a tool, set up your environment, and write your first AI-assisted code.
+  <Card title="Start Safely" icon="shield-check">
+    Get your environment, feedback loops, and first session right before you trust a tool with real work.
   </Card>
-  <Card title="Work Effectively" icon="puzzle">
-    Learn how people actually get useful work out of these tools: tighter context, explicit verification, and cleaner task splits.
+  <Card title="Work Reliably" icon="puzzle">
+    Learn bug-fix, feature, and refactor workflows that stay verifiable under real engineering constraints.
   </Card>
-  <Card title="Compare Tools" icon="list-format">
-    Compare tool shapes by workflow, privacy, and deployment model instead of shopping from a stale matrix.
+  <Card title="Choose a Workflow and Stack" icon="rocket">
+    Choose by workflow shape first, then narrow to current stack options without drowning in vendor trivia.
   </Card>
-  <Card title="Understand Models" icon="setting">
-    Choose models by the job in front of you, not by leaderboard vibes.
+  <Card title="Control Context" icon="setting">
+    Learn how to manage context, context files, and agent scaffolding so the model stays useful.
   </Card>
-  <Card title="Research & Evidence" icon="graph">
-    See where the evidence is solid, where it is thin, and where this guide is making a judgment call.
+  <Card title="Learning and Judgment" icon="graph">
+    Use AI to move faster without outsourcing the thinking that keeps your skills sharp.
   </Card>
 </CardGrid>
 
@@ -47,24 +56,38 @@ import EmailSignup from '../../components/EmailSignup.astro';
 
 | Your Situation | Start With |
 |----------------|------------|
-| **New to AI coding** | [Choose Your Tool](/ai-coding-primer/learn/beginner/choose-your-tool/) — decide by workflow shape first |
-| **Privacy-first** | local or BYOK extension/CLI workflows — start with deployment boundaries |
-| **Already use an editor you like** | extension workflows — add AI without changing environments |
-| **Terminal workflow** | CLI workflows — explicit verification, scripting, and agent loops |
-| **Enterprise/compliance** | managed IDE or extension workflows — filter by policy and deployment needs |
+| **New to AI coding** | [Introduction](/ai-coding-primer/learn/beginner/introduction/) -> [Choose a Workflow and Stack](/ai-coding-primer/learn/beginner/choose-your-tool/) |
+| **Already using AI tools** | [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/) -> [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) |
+| **Terminal-first workflow** | [Choose a Workflow and Stack](/ai-coding-primer/learn/beginner/choose-your-tool/) -> [Workflow and Stack Criteria](/ai-coding-primer/tools/comparison/) |
+| **Privacy or compliance constraint** | [Quick Security Checklist](/ai-coding-primer/security/checklist/) -> [Governance and Rollout](/ai-coding-primer/team/governance/) |
+| **Team evaluator** | [Governance and Rollout](/ai-coding-primer/team/governance/) -> [Security Risks](/ai-coding-primer/team/security-risks/) |
 
-## What Changed in 2025-2026
+## What Makes AI Coding Go Well
 
-- Syntax is less of a bottleneck now. Review, verification, and context discipline matter more.
-- Bigger context windows did not make sloppy context safe. They mostly made it easier to hide bad habits.
-- Teams that get reliable results usually start with a spec, a narrow task, and a way to check the output.
-- Subagents are now normal, but mostly as a way to keep research noise out of the main execution loop.
+- verification matters more than confidence
+- workflow fit matters more than vendor hype
+- selective context works better than giant prompt dumps
+- reliable habits matter more than the latest ranking
+- the hard part is not getting code generated, it is getting good judgment preserved
 
-## Start with Workflows
+## What Stays Current and What Doesn't
 
-- [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/) — bug fix, feature build, refactor, and codebase exploration
-- [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/) — verification-first, small iterations, and subagent use
-- [Agent Harness](/ai-coding-primer/learn/advanced/agent-harness/) — persistent plan files and long-running tasks
+The core of this guide is designed to age slowly:
+
+- workflow patterns
+- verification loops
+- context control
+- security boundaries
+- learning discipline
+
+The fast-moving material does not belong at the center:
+
+- vendor snapshots
+- privacy detail by product tier
+- benchmark tables
+- exact feature comparisons
+
+That material belongs in the reference layer.
 
 ## The Golden Rule
 
