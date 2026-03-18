@@ -20,7 +20,8 @@ This stopped being a prompt-writing trick a while ago. Good teams now treat cont
 :::note[Evidence status]
 - `Research-backed` - [Productivity Research](/ai-coding-primer/research/productivity/), [Code Quality & Security](/ai-coding-primer/research/code-quality-security/)
 - `Practitioner-backed` - [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/), [Subagent Architectures](/ai-coding-primer/learn/advanced/subagents/)
-- `Synthesis`
+
+The framework on this page is an editorial working model built from those sources and recurring practice.
 :::
 
 | Component | What It Means | Example |
@@ -88,7 +89,7 @@ Push-based project guidance such as `AGENTS.md`, `CLAUDE.md`, or `.cursorrules` 
 
 This is grounded partly in eval evidence and partly in practitioner convergence. The safest claim is not that push-based context always wins, but that core rules and gotchas should be present without relying on retrieval luck.
 
-**Evidence tags:** `Practitioner-backed` ([Agent Harness](/ai-coding-primer/learn/advanced/agent-harness/)); `Synthesis`.
+**Evidence tags:** `Practitioner-backed` ([Agent Harness](/ai-coding-primer/learn/advanced/agent-harness/)). The push-vs-pull framing here is an editorial judgment built on those patterns.
 
 Why:
 

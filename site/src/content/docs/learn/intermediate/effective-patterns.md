@@ -12,7 +12,8 @@ Not every pattern here has the same evidence level.
 
 - `Research-backed` - [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/), [Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/)
 - `Practitioner-backed` - [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/), [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/)
-- `Synthesis`
+
+The exact pattern framing on this page is editorial guidance drawn from those sources and practitioner convergence.
 :::
 
 ## Verification First

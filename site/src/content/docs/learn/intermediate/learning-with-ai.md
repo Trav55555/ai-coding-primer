@@ -10,7 +10,8 @@ AI can help you learn faster. It can also make you worse at the parts of program
 :::note[Evidence guide]
 - `Research-backed` - [Anthropic AI coding learning RCT](https://www.anthropic.com/research/ai-coding-learning), [OECD Digital Education Outlook 2026](https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_f6e1d3c0-en.html)
 - `Practitioner-backed` - [Tutor CoPilot RCT](https://arxiv.org/abs/2410.05017), [MIT Media Lab: Your Brain on ChatGPT](https://www.media.mit.edu/publications/your-brain-on-chatgpt/)
-- `Synthesis`
+
+The practical framing on this page combines the cited studies with recurring tutoring-style usage patterns; it is not a single paper's taxonomy.
 :::
 
 ## The Problem
@@ -98,7 +99,7 @@ These prompts make the tool act more like a tutor and less like a vending machin
 
 ## What Good Use Looks Like
 
-This table is a synthesis of the studies cited on this page, especially the Anthropic learning RCT, Shen & Tamkin's conceptual-vs-delegated-use distinction, and the broader literature on productive struggle. It is a practical framework, not a direct taxonomy from one paper.
+This table draws on the studies cited on this page, especially the Anthropic learning RCT, Shen and Tamkin's conceptual-vs-delegated-use distinction, and the broader literature on productive struggle. It is a practical framework, not a direct taxonomy from one paper.
 
 | Pattern | Outcome |
 |---------|---------|

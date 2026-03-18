@@ -10,7 +10,8 @@ Most AI coding frustration is not about model quality. It is about using the wro
 :::note[Evidence guide]
 - `Research-backed` - [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/), [Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/)
 - `Practitioner-backed` - [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/), [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/)
-- `Synthesis`
+
+The four archetypes on this page are an editorial simplification of recurring workflow patterns, not a formal taxonomy from one source.
 :::
 
 ## 1. The Bug Hunt
