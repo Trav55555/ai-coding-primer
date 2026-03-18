@@ -91,7 +91,8 @@ For time-sensitive benchmark details, use [Benchmarks That Matter](/ai-coding-pr
 
 - `Research-backed`: verification, selective context, and review costs matter more than leaderboard chasing
 - `Practitioner-backed`: capability classes are how many teams actually choose models in daily work
-- `Synthesis`: the taxonomy on this page is a workflow-first simplification, not one benchmark's official ontology
+
+The taxonomy on this page is a workflow-first simplification, not one benchmark's official ontology.
 
 ## Next Steps
 
