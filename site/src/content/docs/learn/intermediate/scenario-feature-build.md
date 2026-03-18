@@ -71,7 +71,8 @@ Exclude:
 
 - **Research-backed:** verification and human review loops improve downstream quality.
 - **Practitioner-backed:** spec-first workflow reduces ambiguity and drift on larger tasks.
-- **Synthesis:** this slice sequence and gating pattern.
+
+This slice sequence and gating pattern are editorial guidance based on those patterns.
 
 ## Next Scenario
 

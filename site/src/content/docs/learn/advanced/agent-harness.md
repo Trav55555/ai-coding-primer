@@ -9,7 +9,8 @@ Long-running agent work usually falls apart for a boring reason: the system lose
 
 :::note[Evidence status]
 - `Practitioner-backed` - [Anthropic: Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents), [OpenAI: Harness engineering](https://openai.com/index/harness-engineering/), [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/)
-- `Synthesis`
+
+The exact file set and harness shape here are editorial guidance built from those patterns rather than a single official standard.
 :::
 
 ## What a Harness Is

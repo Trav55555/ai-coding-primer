@@ -72,7 +72,8 @@ Exclude:
 
 - **Research-backed:** review burden and rework costs increase when change scope balloons.
 - **Practitioner-backed:** characterization tests and seam-by-seam refactoring keep AI edits controllable.
-- **Synthesis:** this concrete gating workflow.
+
+This concrete gating workflow is editorial guidance based on those patterns.
 
 ## Next Scenario
 

@@ -76,7 +76,8 @@ Exclude:
 
 - **Research-backed:** explicit verification loops and executable feedback improve reliability.
 - **Practitioner-backed:** root-cause-first prompts reduce churn versus immediate broad edits.
-- **Synthesis:** exact wording and sequence in this scenario.
+
+The exact wording and sequence in this scenario are editorial guidance based on those patterns.
 
 ## Next Scenario
 
