@@ -8,7 +8,8 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Agentic Engineering Primer',
-			description: 'From your first prompt to production: AI-integrated IDEs, terminal tools, and workflows.',
+			description:
+				'Start safely, choose a workflow and stack that fit how you work, and learn the patterns that make AI-assisted engineering reliable.',
 			social: [
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/Trav55555/ai-coding-primer' },
 			],
@@ -17,50 +18,31 @@ export default defineConfig({
 			},
 			sidebar: [
 				{
-					label: 'Getting Started',
+					label: 'Start Safely',
 					items: [
 						{ label: 'Introduction', slug: 'learn/beginner/introduction' },
 						{ label: 'Agentic Engineering', slug: 'learn/beginner/what-is-ai-coding' },
-						{ label: 'Choose Your Tool', slug: 'learn/beginner/choose-your-tool' },
+						{ label: 'Quick Security Checklist', slug: 'security/checklist' },
 						{ label: 'Setup Checklist', slug: 'learn/beginner/setup-checklist' },
 						{ label: 'Your First Session', slug: 'learn/beginner/first-session' },
 					],
 				},
 				{
-					label: 'Working Effectively',
+					label: 'Work Reliably',
 					items: [
-						{ label: 'Core Concepts', slug: 'learn/intermediate/core-concepts' },
-						{ label: 'The Five Levels', slug: 'learn/intermediate/five-levels' },
-						{ label: 'Context Engineering', slug: 'learn/intermediate/context-engineering' },
-						{ label: 'Effective Patterns', slug: 'learn/intermediate/effective-patterns' },
 						{ label: 'Workflow Archetypes', slug: 'learn/intermediate/workflow-archetypes' },
 						{ label: 'Scenario - Fix a Bug', slug: 'learn/intermediate/scenario-bug-fix' },
 						{ label: 'Scenario - Add a Feature', slug: 'learn/intermediate/scenario-feature-build' },
 						{ label: 'Scenario - Safe Refactor', slug: 'learn/intermediate/scenario-safe-refactor' },
-						{ label: 'Common Mistakes', slug: 'learn/intermediate/common-mistakes' },
-						{ label: 'Learning with AI', slug: 'learn/intermediate/learning-with-ai' },
-						{ label: 'When It\'s Not Working', slug: 'learn/intermediate/troubleshooting' },
+						{ label: 'Effective Patterns', slug: 'learn/intermediate/effective-patterns' },
+						{ label: "When It's Not Working", slug: 'learn/intermediate/troubleshooting' },
 					],
 				},
 				{
-					label: 'Advanced',
+					label: 'Choose a Workflow and Stack',
 					items: [
-						{ label: 'Agent Harness', slug: 'learn/advanced/agent-harness' },
-						{ label: 'Project Context Files', slug: 'learn/advanced/project-context-files' },
-						{ label: 'MCP Deep Dive', slug: 'learn/advanced/mcp-deep-dive' },
-						{ label: 'Skills Deep Dive', slug: 'learn/advanced/skills' },
-						{ label: 'Subagent Architectures', slug: 'learn/advanced/subagents' },
-					],
-				},
-				{
-					label: 'Tools',
-					items: [
-						{ label: 'Tool Comparison', slug: 'tools/comparison' },
-					],
-				},
-				{
-					label: 'Models',
-					items: [
+						{ label: 'Choose a Workflow and Stack', slug: 'learn/beginner/choose-your-tool' },
+						{ label: 'Workflow and Stack Criteria', slug: 'tools/comparison' },
 						{ label: 'Models vs Providers', slug: 'models/overview' },
 						{ label: 'Capability Patterns', slug: 'models/capabilities' },
 						{ label: 'Choosing a Model', slug: 'models/pricing' },
@@ -68,46 +50,64 @@ export default defineConfig({
 					],
 				},
 				{
-					label: 'Reference Appendix',
+					label: 'Control Context',
 					items: [
-						{ label: 'Appendix Overview', slug: 'reference/appendix' },
-						{ label: 'Benchmarks That Matter', slug: 'models/benchmarks' },
-						{
-							label: 'IDE References',
-							autogenerate: { directory: 'tools/ides' },
-						},
-						{
-							label: 'Extension References',
-							autogenerate: { directory: 'tools/extensions' },
-						},
-						{
-							label: 'CLI References',
-							autogenerate: { directory: 'tools/cli' },
-						},
+						{ label: 'Core Concepts', slug: 'learn/intermediate/core-concepts' },
+						{ label: 'Context Engineering', slug: 'learn/intermediate/context-engineering' },
+						{ label: 'Project Context Files', slug: 'learn/advanced/project-context-files' },
+						{ label: 'Subagent Architectures', slug: 'learn/advanced/subagents' },
+						{ label: 'Agent Harness', slug: 'learn/advanced/agent-harness' },
 					],
 				},
 				{
-					label: 'Security & Privacy',
+					label: 'Learn Without Dependency',
 					items: [
-						{ label: 'Quick Checklist', slug: 'security/checklist' },
-						{ label: 'Security Risks', slug: 'security/risks' },
-						{ label: 'Privacy Comparison', slug: 'security/privacy-comparison' },
-						{ label: 'Privacy Deep Dive', slug: 'security/deep-dive' },
+						{ label: 'Learning with AI', slug: 'learn/intermediate/learning-with-ai' },
+						{ label: 'Common Mistakes', slug: 'learn/intermediate/common-mistakes' },
+						{ label: 'The Five Levels (Optional Lens)', slug: 'learn/intermediate/five-levels' },
 					],
 				},
 				{
-					label: 'Research & Evidence',
+					label: 'Team Adoption',
 					items: [
-						{ label: 'Overview', slug: 'research/overview' },
-						{ label: 'Productivity Research', slug: 'research/productivity' },
-						{ label: 'Code Quality & Security', slug: 'research/code-quality-security' },
+						{ label: 'Governance and Rollout', slug: 'team/governance' },
+						{ label: 'Security Risks', slug: 'team/security-risks' },
 						{ label: 'Adoption & Trends', slug: 'research/adoption-trends' },
-						{ label: 'Learning Impacts', slug: 'research/learning-impacts' },
+						{ label: 'Code Quality & Security', slug: 'research/code-quality-security' },
 					],
 				},
 				{
-					label: 'Templates',
-					autogenerate: { directory: 'templates' },
+					label: 'Reference',
+					items: [
+						{ label: 'Reference Appendix', slug: 'reference/appendix' },
+						{
+							label: 'Research and Evidence',
+							items: [
+								{ label: 'Research Overview', slug: 'research/overview' },
+								{ label: 'Productivity Research', slug: 'research/productivity' },
+								{ label: 'Learning Impacts', slug: 'research/learning-impacts' },
+							],
+						},
+						{
+							label: 'Security, Privacy, and Benchmarks',
+							items: [
+								{ label: 'Privacy Comparison', slug: 'security/privacy-comparison' },
+								{ label: 'Privacy Deep Dive', slug: 'security/deep-dive' },
+								{ label: 'Benchmarks That Matter', slug: 'models/benchmarks' },
+							],
+						},
+						{
+							label: 'Advanced References',
+							items: [
+								{ label: 'MCP Deep Dive', slug: 'learn/advanced/mcp-deep-dive' },
+								{ label: 'Skills Deep Dive', slug: 'learn/advanced/skills' },
+							],
+						},
+						{ label: 'IDE References', autogenerate: { directory: 'tools/ides' } },
+						{ label: 'Extension References', autogenerate: { directory: 'tools/extensions' } },
+						{ label: 'CLI References', autogenerate: { directory: 'tools/cli' } },
+						{ label: 'Templates', autogenerate: { directory: 'templates' } },
+					],
 				},
 			],
 			lastUpdated: true,
