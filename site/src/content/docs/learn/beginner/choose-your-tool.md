@@ -19,6 +19,16 @@ If you want durable decision criteria first, read [Tool Comparison](/ai-coding-p
 | local-first or privacy-constrained | Extension or CLI with local/BYOK support | easier to control deployment and data boundaries |
 | managed team rollout | IDE or extension with admin controls | easier identity, policy, and compliance integration |
 
+## At a Glance
+
+| Tool shape | Common options | Best when | Good at | Main tradeoff |
+|---|---|---|---|---|
+| IDE | Cursor, Windsurf, Zed, Kiro | you want one integrated workspace | navigation, edits, chat, multi-file work | more opinionated environment |
+| Extension | GitHub Copilot, Continue, Cody, Tabnine | you already like your editor | lightweight adoption, portability, gradual rollout | less integrated workflow |
+| CLI | Claude Code, Codex CLI, OpenCode, Aider, Gemini CLI | you already work in the terminal | explicit plans, diffs, scripts, verification loops | steeper learning curve |
+
+These are examples, not endorsements. Pick the category first, then compare the tools inside it.
+
 ## Decide by Workflow, Not Price
 
 ### IDEs

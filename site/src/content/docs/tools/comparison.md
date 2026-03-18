@@ -27,11 +27,13 @@ Keep these questions in the core path even as vendor pages age:
 
 ## Compare by Tool Category
 
-| Category | Strengths | Tradeoffs | Best fit |
-|---|---|---|---|
-| IDE | integrated navigation, multi-file workflows, unified chat/edit experience | more opinionated environment, more platform churn | developers who want AI woven into daily editing |
-| Extension | preserves existing editor habits, flexible rollout, often better local/BYOK options | can feel fragmented compared with full AI-native IDEs | teams or individuals who already like their editor |
-| CLI | explicit commands, scripting, automation, strong verification loops | steeper learning curve for editor-first users | terminal-first and agentic workflows |
+| Category | Common options | Strengths | Tradeoffs | Best fit |
+|---|---|---|---|---|
+| IDE | Cursor, Windsurf, Zed, Kiro | integrated navigation, multi-file workflows, unified chat/edit experience | more opinionated environment, more platform churn | developers who want AI woven into daily editing |
+| Extension | GitHub Copilot, Continue, Cody, Tabnine | preserves existing editor habits, flexible rollout, often better local/BYOK options | can feel fragmented compared with full AI-native IDEs | teams or individuals who already like their editor |
+| CLI | Claude Code, Codex CLI, OpenCode, Aider, Gemini CLI | explicit commands, scripting, automation, strong verification loops | steeper learning curve for editor-first users | terminal-first and agentic workflows |
+
+These are examples, not rankings. Use the category to narrow the field, then compare the tools inside that category.
 
 ## Compare by Access Model
 
