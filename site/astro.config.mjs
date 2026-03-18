@@ -20,7 +20,7 @@ export default defineConfig({
 					label: 'Getting Started',
 					items: [
 						{ label: 'Introduction', slug: 'learn/beginner/introduction' },
-						{ label: 'What is AI Coding?', slug: 'learn/beginner/what-is-ai-coding' },
+						{ label: 'Agentic Engineering', slug: 'learn/beginner/what-is-ai-coding' },
 						{ label: 'Choose Your Tool', slug: 'learn/beginner/choose-your-tool' },
 						{ label: 'Setup Checklist', slug: 'learn/beginner/setup-checklist' },
 						{ label: 'Your First Session', slug: 'learn/beginner/first-session' },
@@ -48,6 +48,7 @@ export default defineConfig({
 						{ label: 'Agent Harness', slug: 'learn/advanced/agent-harness' },
 						{ label: 'Project Context Files', slug: 'learn/advanced/project-context-files' },
 						{ label: 'MCP Deep Dive', slug: 'learn/advanced/mcp-deep-dive' },
+						{ label: 'Skills Deep Dive', slug: 'learn/advanced/skills' },
 						{ label: 'Subagent Architectures', slug: 'learn/advanced/subagents' },
 					],
 				},

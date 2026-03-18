@@ -1,11 +1,11 @@
 ---
-title: What is AI Coding?
-description: Understanding agentic coding and the core loop.
+title: Agentic Engineering
+description: Understanding agentic engineering and the core loop.
 sidebar:
   order: 2
 ---
 
-Agentic coding means using AI tools that can read files, change code, run commands, and keep going without waiting for every next instruction.
+Agentic engineering means using AI tools that can read files, change code, run commands, and keep going without waiting for every next instruction.
 
 The real shift is not just that AI can write code. More of the job now sits one level up: intent, context, and verification.
 

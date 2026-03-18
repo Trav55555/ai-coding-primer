@@ -5,7 +5,7 @@ sidebar:
   order: 1
 ---
 
-This guide shows how to get useful work out of AI coding tools without turning your process into a mess.
+This is a practical guide to AI coding workflows, from your first prompt to production-grade verification and long-running agent work.
 
 ## Who This Is For
 
@@ -23,7 +23,7 @@ This guide shows how to get useful work out of AI coding tools without turning y
 
 ## How to Use This Guide
 
-**If you're new to AI coding:** Start with [What is AI Coding?](/ai-coding-primer/learn/beginner/what-is-ai-coding/) and work through the Getting Started section in order.
+**If you're new to AI coding:** Start with [Agentic Engineering](/ai-coding-primer/learn/beginner/what-is-ai-coding/) and work through the Getting Started section in order.
 
 **If you're already using AI tools:** Jump to [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/), [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/), or [Learning with AI](/ai-coding-primer/learn/intermediate/learning-with-ai/).
 
