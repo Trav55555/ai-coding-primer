@@ -1,125 +1,119 @@
 ---
-title: Choose Your Tool
-description: Pick the right AI coding tool shape for your workflow.
+title: Choose a Workflow and Stack
+description: Pick a setup that matches how you work, then narrow to current stack options without turning the decision into a shopping spiral.
 sidebar:
   order: 3
 ---
 
-Most people make this harder than it needs to be. There are three tool shapes that matter: **IDEs**, **extensions**, and **CLI tools**. Start with how you like to work, then pick the lightest option that fits.
+Most people make this harder than it needs to be.
 
-If you want durable decision criteria first, read [Tool Comparison](/ai-coding-primer/tools/comparison/). If you want vendor-specific details, jump to the [Reference Appendix](/ai-coding-primer/reference/appendix/).
+Do not start with vendor rankings. Start with how you want to work. Once the workflow shape is right, the stack choice gets much easier.
 
-## Quick Recommendations
+## Step 1: Choose Your Workflow Shape
 
-| If your workflow is... | Start with... | Why |
-|---|---|---|
-| editor-first and multi-file | IDE | strongest integrated workflow for navigation, edits, and chat |
-| existing-editor and lightweight | Extension | adds AI without replacing your current environment |
-| terminal-first and verification-heavy | CLI | best fit for explicit plans, tests, and agentic loops |
-| local-first or privacy-constrained | Extension or CLI with local/BYOK support | easier to control deployment and data boundaries |
-| managed team rollout | IDE or extension with admin controls | easier identity, policy, and compliance integration |
+### Integrated AI IDE
 
-## At a Glance
+Best when you want navigation, editing, and AI help in one place.
 
-| Tool shape | Common options | Best when | Good at | Main tradeoff |
-|---|---|---|---|---|
-| IDE | Cursor, Windsurf, Zed, Kiro | you want one integrated workspace | navigation, edits, chat, multi-file work | more opinionated environment |
-| Extension | GitHub Copilot, Continue, Cody, Tabnine | you already like your editor | lightweight adoption, portability, gradual rollout | less integrated workflow |
-| CLI | Claude Code, Codex CLI, OpenCode, Aider, Gemini CLI | you already work in the terminal | explicit plans, diffs, scripts, verification loops | steeper learning curve |
+Good fit:
+- you want one environment
+- you do frequent multi-file work
+- you value ease of use over maximum flexibility
 
-These are examples, not endorsements. Pick the category first, then compare the tools inside it.
+### AI Extension in Your Current Editor
 
-## Decide by Workflow, Not Price
+Best when you already like your editor and want AI without changing your whole environment.
 
-### IDEs
+Good fit:
+- you want gradual adoption
+- you care about portability
+- you want flexibility in model or provider setup
 
-Choose an IDE if you want one place to handle navigation, editing, and AI help.
+### Terminal Agent Workflow
 
-Best for:
-- integrated chat, edits, and codebase navigation
-- editor-first workflows with frequent multi-file changes
-- users who want one environment to handle most tasks
+Best when you think in commands, diffs, plans, and verification loops.
 
-Tradeoff:
-- more opinionated environment and more product churn than simpler tool shapes
+Good fit:
+- you already work in the terminal
+- you want explicit control
+- you want long-running or research-heavy agent workflows
 
-### Extensions
+## Step 2: Apply Your Operating Constraints
 
-Choose an extension if you already like your editor and do not want a new environment just to add AI.
+Now filter the workflow shape through your real constraints:
 
-Best for:
-- keeping existing editor habits
-- gradual team rollout
-- mixing hosted, BYOK, or local-model setups
+- Do you need local or private execution?
+- Do you need enterprise identity, policy, or audit controls?
+- Do you need screenshots or other multimodal input?
+- Do you need easy model switching?
 
-Tradeoff:
-- less integrated than full AI-native IDE workflows
+These are filters, not separate workflow shapes.
 
-### CLI Tools
+## Step 3: Pick a Stack Bundle
 
-Choose a CLI tool if you already think in commands, diffs, and test output.
+Here are the only bundles most readers need to consider first:
 
-Best for:
-- long-running agentic workflows
-- explicit plans, diffs, and verification loops
-- automation-heavy or terminal-native development
+- integrated AI IDE stack
+- current-editor plus AI extension stack
+- terminal agent stack
+- private or local version of one of the above
+- enterprise-managed version of one of the above
 
-Tradeoff:
-- steeper learning curve for editor-first users
+The goal is not to find the perfect product. The goal is to pick a setup you can actually operate well.
 
-## Access Models
+## Step 4: Compare the Criteria That Matter
 
-Most tools offer multiple ways to access models:
+Before you commit, compare your short list on:
 
-| Method | How it works | Best for |
-|---|---|---|
-| Hosted account | the tool manages model access | easiest setup |
-| BYOK | you bring provider credentials | flexibility and provider choice |
-| Local | models run on your hardware or infrastructure | privacy and controlled environments |
+- verification ergonomics
+- privacy and deployment boundary
+- setup burden
+- switching cost
+- team rollout friction
 
-## Decision Flow
+If a tool is impressive but makes verification awkward, it is the wrong fit for serious work.
 
-```
-What workflow fits you best right now?
-│
-├─► "I want one integrated editor workflow"
-│   └─► IDE
-│
-├─► "I want to keep my editor"
-│   └─► Extension
-│
-├─► "I work in the terminal already"
-│   └─► CLI
-│
-├─► "I need local control or tighter privacy"
-│   └─► Extension or CLI with local/BYOK support
-│
-└─► "I need enterprise policy and rollout controls"
-    └─► IDE or extension with managed admin features
-```
+## Opinionated Defaults
 
-## Our Recommendation
+### If you are new
 
-For most beginners, the right answer is boring:
+Start with the lightest workflow that fits your existing habits.
 
-- use an **IDE** if you want one integrated environment
-- use an **extension** if you already like your editor
-- use a **CLI** if you already think in commands, tests, and scripts
+### If you are editor-first
 
-Do not burn time comparing vendors before you know which workflow shape actually fits.
+Start with an integrated IDE or an extension in the editor you already trust.
 
-## What Not to Optimize Too Early
+### If you are terminal-first
 
-- Do not start with pricing spreadsheets.
-- Do not over-configure MCPs or giant rule files on day one.
-- Do not pick a vendor before you know whether you prefer editor-first, terminal-first, or local-first work.
+Start with a terminal agent stack and optimize for explicit diffs, tests, and control.
 
-## Vendor Details Live in the Appendix
+### If privacy is the main constraint
 
-Once you know your preferred tool shape, use the [Reference Appendix](/ai-coding-primer/reference/appendix/) for vendor-specific pages.
+Choose the workflow shape first, then pick the local or tightly controlled version of it.
+
+### If you are evaluating for a team
+
+Prioritize deployment boundary, identity, auditability, and verification ergonomics before feature volume.
+
+## Where Models and Providers Fit
+
+Once you know your workflow shape, use these pages to narrow the stack:
+
+- [Models vs Providers](/ai-coding-primer/models/overview/)
+- [Capability Patterns](/ai-coding-primer/models/capabilities/)
+- [Selection Guide](/ai-coding-primer/models/selection-guide/)
+- [Choosing a Model](/ai-coding-primer/models/pricing/)
+
+These pages should support the workflow decision, not replace it.
+
+## What This Page Does Not Do
+
+This page helps you choose a working setup. It does not maintain a giant live market matrix.
+
+For volatile details like benchmark movement, vendor snapshots, and privacy comparisons, use the [Reference Appendix](/ai-coding-primer/reference/appendix/).
 
 ## Next Steps
 
-Picked a tool shape? [Set up your environment ->](/ai-coding-primer/learn/beginner/setup-checklist/)
-
-Then learn the workflows that matter: [Workflow Archetypes ->](/ai-coding-primer/learn/intermediate/workflow-archetypes/)
+- [Setup Checklist](/ai-coding-primer/learn/beginner/setup-checklist/)
+- [Your First Session](/ai-coding-primer/learn/beginner/first-session/)
+- [Workflow and Stack Criteria](/ai-coding-primer/tools/comparison/)

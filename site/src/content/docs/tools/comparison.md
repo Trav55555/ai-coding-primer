@@ -1,41 +1,42 @@
 ---
-title: Tool Comparison
-description: Durable decision criteria for choosing between IDE, extension, and CLI workflows.
+title: Workflow and Stack Criteria
+description: Compare a short list of workflow shapes and stack options without turning the decision into a shopping spiral.
 ---
 
-Use this page to choose the kind of tool you want first. The appendix vendor pages matter later.
+Use this page after [Choose a Workflow and Stack](/ai-coding-primer/learn/beginner/choose-your-tool/).
 
-## Start with Workflow Shape
+That page helps you pick a likely workflow shape. This page helps you pressure-test the shortlist.
 
-| If you want... | Start with... | Why |
-|---|---|---|
-| one integrated editor workflow | IDE | keeps navigation, edits, and chat in one place |
-| keep your current editor | Extension | adds AI without replacing your main environment |
-| explicit verification and scripting | CLI | best fit for terminal-first, agentic, and automation-heavy work |
-| maximum privacy or local control | Extension or CLI with BYOK/local support | easier to control data flow and deployment boundaries |
-| managed enterprise rollout | IDE or extension with hosted admin controls | easier policy, identity, and compliance integration |
+## What This Page Is For
 
-## Durable Governance Criteria
+By the time you are here, you should already have a likely workflow shape:
 
-Keep these questions in the core path even as vendor pages age:
+- integrated AI IDE
+- AI extension in your current editor
+- terminal agent workflow
 
-- privacy posture and retention boundaries
-- jurisdiction and compliance constraints
-- deployment model: hosted, BYOK, local, or self-hosted
-- workflow fit for solo work, terminal work, editor work, and team rollout
-- review and verification ergonomics
+If you are still deciding at that level, go back to [Choose a Workflow and Stack](/ai-coding-primer/learn/beginner/choose-your-tool/).
 
-## Compare by Tool Category
+## Compare Workflow Shapes by Friction and Control
 
-| Category | Common options | Strengths | Tradeoffs | Best fit |
-|---|---|---|---|---|
-| IDE | Cursor, Windsurf, Zed, Kiro | integrated navigation, multi-file workflows, unified chat/edit experience | more opinionated environment, more platform churn | developers who want AI woven into daily editing |
-| Extension | GitHub Copilot, Continue, Cody, Tabnine | preserves existing editor habits, flexible rollout, often better local/BYOK options | can feel fragmented compared with full AI-native IDEs | teams or individuals who already like their editor |
-| CLI | Claude Code, Codex CLI, OpenCode, Aider, Gemini CLI | explicit commands, scripting, automation, strong verification loops | steeper learning curve for editor-first users | terminal-first and agentic workflows |
+| Workflow shape | Strongest at | Main friction | Best when |
+|---|---|---|---|
+| **Integrated AI IDE** | one unified environment for navigation, editing, and chat | more opinionated environment and more product churn | you want the easiest integrated path |
+| **AI extension** | preserving your current editor habits | can feel more fragmented than a full AI-native IDE | you already like your editor and want gradual adoption |
+| **Terminal agent workflow** | explicit plans, diffs, scripts, and verification loops | steeper learning curve for editor-first users | you already work in the terminal and want direct control |
 
-These are examples, not rankings. Use the category to narrow the field, then compare the tools inside that category.
+## Apply Operating Filters
 
-## Compare by Access Model
+These are filters, not separate workflow shapes:
+
+- **local or private requirement** - can code leave your environment or not?
+- **enterprise requirement** - do you need identity, policy, audit logs, or admin controls?
+- **multimodal requirement** - do you need screenshots, mockups, or diagram input?
+- **model-switching requirement** - do you need easy provider or model changes?
+
+A good decision usually comes from one workflow shape plus one or two filters.
+
+## Compare Access Models
 
 | Access model | What it means | Best fit | Main caveat |
 |---|---|---|---|
@@ -44,54 +45,48 @@ These are examples, not rankings. Use the category to narrow the field, then com
 | Local | model runs on your infrastructure | privacy, offline, controlled environments | hardware and capability limits |
 | Self-hosted enterprise | organization controls deployment boundary | regulated environments | operational overhead |
 
-## Decision Heuristics
+## Compare the Criteria That Actually Matter
 
-### Choose an IDE when
+Before you commit, compare your shortlist on:
 
-- you value integrated chat, edits, search, and navigation in one place
-- you prefer one environment instead of stitching together multiple tools
-- you are optimizing for ease of use over maximum flexibility
+1. **verification ergonomics** - is it easy to review diffs, run tests, and keep the loop honest?
+2. **privacy boundary** - where can code go, and under whose terms?
+3. **setup burden** - how much configuration is required before the workflow is productive?
+4. **switching cost** - how reversible is the decision if the tool stops fitting?
+5. **team rollout friction** - how well does it support policy, identity, and onboarding?
 
-### Choose an extension when
+If a tool is impressive but makes verification awkward, it is the wrong fit for serious work.
 
-- you already like your editor and do not want to switch environments
-- you need gradual rollout for a team
-- you care about BYOK, local-model support, or editor portability
+## Good Decisions Usually Look Like This
 
-### Choose a CLI when
-
-- you want explicit plans, diffs, verification steps, and scripting
-- you do deep work in the terminal already
-- you expect to use agents for investigation, automation, or long-running tasks
-
-## Compliance and Privacy Filter
-
-Before comparing vendors, answer these first:
-
-1. Can code leave your environment?
-2. Do you need regional hosting or data residency controls?
-3. Do you need audit logs, SSO, or policy controls?
-4. Do you need local or self-hosted inference?
-
-These questions narrow the field faster than any feature table will.
+- pick the lightest workflow that fits your existing habits
+- prefer reversibility over premature optimization
+- choose deployment boundary before chasing feature lists
+- keep the shortlist small
+- treat vendor pages as lookup material, not the main curriculum
 
 ## What This Page Intentionally Does Not Do
 
 - rank specific products
 - preserve live feature matrices
-- compare plan details or pricing snapshots
-- freeze vendor claims into the core learning path
+- compare pricing snapshots
+- freeze product claims into the core path
 
 For product-specific details, use the vendor pages in the [Reference Appendix](/ai-coding-primer/reference/appendix/).
 
-## Evidence Tags
+## Where Models and Providers Fit
 
-- `Research-backed`: verification ergonomics and review costs matter more than feature-volume claims
-- `Practitioner-backed`: teams usually choose tools by workflow shape and deployment boundary before fine-grained feature comparison
-- `Synthesis`: the exact heuristics and category framing on this page
+Once you know your workflow shape, use these pages to narrow the stack:
+
+- [Models vs Providers](/ai-coding-primer/models/overview/)
+- [Capability Patterns](/ai-coding-primer/models/capabilities/)
+- [Choosing a Model](/ai-coding-primer/models/pricing/)
+- [Selection Guide](/ai-coding-primer/models/selection-guide/)
+
+Those pages should support the workflow decision, not replace it.
 
 ## Next Steps
 
-- [Choose Your Tool](/ai-coding-primer/learn/beginner/choose-your-tool/): beginner-oriented starting points
-- [Reference Appendix](/ai-coding-primer/reference/appendix/): vendor-specific tool pages
-- [Choosing a Model](/ai-coding-primer/models/pricing/): pick access and model strategy after tool shape
+- [Choose a Workflow and Stack](/ai-coding-primer/learn/beginner/choose-your-tool/)
+- [Setup Checklist](/ai-coding-primer/learn/beginner/setup-checklist/)
+- [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/)
