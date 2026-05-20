@@ -24,13 +24,21 @@ This is not a giant market guide. Vendor details, benchmark snapshots, and produ
 ## Start Here Based on What You Need
 
 **If you're new to AI coding:**
-Start with [Agentic Engineering](/ai-coding-primer/learn/beginner/what-is-ai-coding/), then [Choose a Workflow and Stack](/ai-coding-primer/learn/beginner/choose-your-tool/), [Setup Checklist](/ai-coding-primer/learn/beginner/setup-checklist/), and [Your First Session](/ai-coding-primer/learn/beginner/first-session/).
+Start with [Agentic Engineering](/ai-coding-primer/learn/beginner/what-is-ai-coding/).
+
+Then read [Choose a Workflow and Stack](/ai-coding-primer/learn/beginner/choose-your-tool/), [Setup Checklist](/ai-coding-primer/learn/beginner/setup-checklist/), and [Your First Session](/ai-coding-primer/learn/beginner/first-session/).
 
 **If you're already using AI tools:**
-Jump to [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/), [Scenario - Fix a Bug](/ai-coding-primer/learn/intermediate/scenario-bug-fix/), or [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/). That is where the real leverage is.
+Start with [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/).
+
+Then try [Scenario - Fix a Bug](/ai-coding-primer/learn/intermediate/scenario-bug-fix/) or [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/).
+
+That is where the real leverage is.
 
 **If you're evaluating for a team:**
-Start with [Governance and Rollout](/ai-coding-primer/team/governance/), [Security Risks](/ai-coding-primer/team/security-risks/), and [Workflow and Stack Criteria](/ai-coding-primer/tools/comparison/). Use the reference material only after the workflow and policy constraints are clear.
+Start with [Governance and Rollout](/ai-coding-primer/team/governance/), [Security Risks](/ai-coding-primer/team/security-risks/), and [Workflow and Stack Criteria](/ai-coding-primer/tools/comparison/).
+
+Use the reference material only after the workflow and policy constraints are clear.
 
 ## How to Use This Guide
 

@@ -10,10 +10,10 @@ These are the patterns that keep showing up when AI-assisted development actuall
 :::note[Evidence guide]
 Not every pattern here has the same evidence level.
 
-- `Research-backed` - [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/), [Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/)
-- `Practitioner-backed` - [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/), [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/)
+- `Research-supported principle` - [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/) and [Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/) support verification and review discipline.
+- `Practitioner-backed workflow` - [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/) and [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) show how those principles become practice.
 
-The exact pattern framing on this page is editorial guidance drawn from those sources and practitioner convergence.
+The exact pattern framing is editorial guidance drawn from those sources and practitioner convergence.
 :::
 
 ## Verification First
@@ -51,10 +51,16 @@ One reliable version looks like this:
 
 This forces the AI to produce code that demonstrably works.
 
-See [Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/) and [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/) for why verification matters so consistently even when the raw productivity results are mixed.
+Verification matters even when raw productivity results are mixed.
+
+For the evidence, see the [Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/) and [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/).
 
 :::caution[If AI writes the test]
-Review AI-generated tests critically. Ask yourself: "Does this test encode MY requirements, or just the AI's assumptions?" Tests should specify what the code *should* do, not describe what the code *does*. See [Lazy Testing](/ai-coding-primer/learn/intermediate/common-mistakes/#mistake-8-lazy-testing) for the full danger.
+Review AI-generated tests critically.
+
+Ask: "Does this test encode my requirements, or just the AI's assumptions?"
+
+Tests should specify what the code *should* do, not describe what the code *does*. See [Lazy Testing](/ai-coding-primer/learn/intermediate/common-mistakes/#mistake-8-lazy-testing).
 :::
 
 ## Close the Loop

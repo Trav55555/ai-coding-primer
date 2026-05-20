@@ -5,6 +5,11 @@ sidebar:
   order: 4
 ---
 
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+:::
+
+
 [Gemini CLI](https://github.com/google/gemini-cli) is Google's open-source terminal coding agent.
 
 ## Overview

@@ -3,6 +3,11 @@ title: Capability Patterns
 description: Durable model capability classes for coding workflows.
 ---
 
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: model availability, benchmark position, pricing, privacy terms, and provider feature support. Verify live docs and leaderboards before making current decisions.
+:::
+
+
 Use this page for durable capability classes, not leaderboard snapshots. Specific rankings move too quickly to build the guide around.
 
 ## Capability Classes That Matter
@@ -87,15 +92,15 @@ See [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineeri
 
 For time-sensitive benchmark details, use [Benchmarks That Matter](/ai-coding-primer/models/benchmarks/) and confirm current data before making team-level decisions.
 
-## Evidence Tags
+## Evidence Status
 
-- `Research-backed`: verification, selective context, and review costs matter more than leaderboard chasing
-- `Practitioner-backed`: capability classes are how many teams actually choose models in daily work
+- `Research-supported principle`: verification, selective context, and review costs affect outcomes more reliably than leaderboard rank alone.
+- `Practitioner-backed taxonomy`: these capability classes are a workflow-first simplification used for everyday model selection.
 
-The taxonomy on this page is a workflow-first simplification, not one benchmark's official ontology.
+The taxonomy is not one benchmark's official ontology.
 
 ## Next Steps
 
-- [Choosing a Model](/ai-coding-primer/models/pricing/): workflow-first chooser
+- [Billing Models](/ai-coding-primer/models/pricing/): subscription, token, request, compute, and enterprise billing shapes
 - [Selection Guide](/ai-coding-primer/models/selection-guide/): practical decision heuristics
 - [Benchmarks That Matter](/ai-coding-primer/models/benchmarks/): appendix-style benchmark interpretation

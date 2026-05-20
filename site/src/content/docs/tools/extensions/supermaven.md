@@ -5,6 +5,11 @@ sidebar:
   order: 5
 ---
 
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+:::
+
+
 [Supermaven](https://supermaven.com/) is an AI code completion tool optimized for speed and large context.
 
 ## Overview

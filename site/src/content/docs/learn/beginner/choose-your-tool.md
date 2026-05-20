@@ -102,7 +102,7 @@ Once you know your workflow shape, use these pages to narrow the stack:
 - [Models vs Providers](/ai-coding-primer/models/overview/)
 - [Capability Patterns](/ai-coding-primer/models/capabilities/)
 - [Selection Guide](/ai-coding-primer/models/selection-guide/)
-- [Choosing a Model](/ai-coding-primer/models/pricing/)
+- [Billing Models](/ai-coding-primer/models/pricing/)
 
 These pages should support the workflow decision, not replace it.
 

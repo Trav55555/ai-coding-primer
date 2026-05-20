@@ -3,156 +3,158 @@ title: Benchmarks That Matter
 description: Understanding AI coding benchmarks and what they actually test.
 ---
 
-Not all benchmarks are equal. Some are saturated, some are contaminated, and some don't reflect real-world coding. Here's what matters.
+Not all benchmarks are equal. Some are saturated, some are contaminated, and some do not reflect real-world coding. Use this page to understand what each benchmark measures, then check live leaderboards for current scores.
 
-:::note[Appendix review cadence]
-This page is reference appendix material. Benchmark details and example scores should be reviewed monthly or trimmed when they stop helping real workflow decisions.
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: model rankings, exact scores, benchmark variants, and saturation status. This page intentionally avoids static score tables; use live benchmark links for current numbers.
 :::
+
+## Decision: No Static Score Tables
+
+Exact benchmark scores move too quickly for a durable primer. This page keeps the interpretation layer and links to live sources.
+
+Use static docs to answer:
+
+- What does this benchmark test?
+- Which workflow does it approximate?
+- What are its limitations?
+- Which live leaderboard should I check?
+
+Use live sources to answer:
+
+- Which model is currently first?
+- What is the current score gap?
+- Has the benchmark become saturated?
+- Did a new benchmark variant replace the old one?
 
 ## The Essential Three
 
-These benchmarks best predict real-world coding performance:
+These benchmarks provide useful signal for coding work when read together.
 
-### SWE-bench (and variants)
+### SWE-bench and Variants
 
-**What it tests:** Resolving real GitHub issues from popular open-source projects.
+**What it tests:** resolving real GitHub issues from existing projects.
 
-| Variant | Difficulty | What It Measures |
-|---------|------------|------------------|
-| **SWE-bench Verified** | Medium | 500 human-validated tasks, ~1 hour each |
-| **SWE-bench Pro** | Hard | Complex multi-file changes, commercial codebases |
+| Variant | What it tends to measure |
+|---|---|
+| SWE-bench Verified | Real issue resolution on human-validated tasks |
+| Harder/pro variants | More complex multi-file and longer-horizon work |
 
-**Why it matters:** Unlike synthetic puzzles, these are actual bugs that humans filed and fixed. Models must understand existing code, locate the problem, and generate correct patches.
+**Why it matters:** Models must understand existing code, locate the relevant files, and produce a patch that passes tests. This is closer to real maintenance work than toy function generation.
 
-**Current scores (snapshot: Jan 2026):**
-- Claude Opus 4.5: 80.9%
-- GPT-5.2: 80.0%
-- DeepSeek V3.2: 73.1%
+**Best for:** agentic bug fixing, brownfield work, multi-file reasoning.
 
-**Caveat:** SWE-bench Verified is becoming saturated. SWE-bench Pro (where top models score <45%) is the new bar.
+**Caveats:** Popular variants can become saturated. Always check whether the leaderboard still separates frontier models meaningfully.
 
-| Link | [swebench.com](https://swebench.com) |
+**Live source:** [swebench.com](https://swebench.com)
 
 ---
 
 ### LiveCodeBench
 
-**What it tests:** Competitive programming problems from LeetCode, AtCoder, CodeForces.
+**What it tests:** competitive programming problems from sources such as LeetCode, AtCoder, and Codeforces.
 
-**Why it matters:** Continuously updated with new problems released *after* model training cutoffs. This makes it **contamination-resistant** — models can't memorize solutions.
+**Why it matters:** It is updated with new problems released after model training cutoffs, making it more contamination-resistant than many older coding benchmarks.
 
-**Key features:**
-- Time-segmented evaluation (only test on post-training problems)
-- Multi-capability: generation, self-repair, test prediction
-- Updated monthly
+**Best for:** algorithmic coding, reasoning under precise problem statements, contamination-resistant signal.
 
-**Current scores (snapshot: Jan 2026):**
-- Kimi K2 Thinking: 83.1%
-- Gemini 3 Pro: 79.7%
-- Grok 4: 79.0%
+**Caveats:** Competitive programming is not the same as editing a messy production codebase. Treat it as one signal, not a full model-selection answer.
 
-| Link | [livecodebench.github.io](https://livecodebench.github.io) |
+**Live source:** [livecodebench.github.io](https://livecodebench.github.io)
 
 ---
 
 ### Aider Polyglot
 
-**What it tests:** Code editing across 6 languages (C++, Go, Java, JavaScript, Python, Rust).
+**What it tests:** code editing across multiple languages.
 
-**Why it matters:** Tests *editing* existing code, not just generating from scratch. Measures if models can follow instructions and make targeted changes without breaking things.
+**Why it matters:** Editing existing code is more relevant to AI-assisted engineering than generating isolated functions from scratch.
 
-**Current scores (snapshot: Jan 2026):**
-- Claude Opus 4.5: 89.4%
-- GPT-5 (high): 88.0%
-- Gemini 3 Pro: 82.2%
+**Best for:** targeted edits, instruction following, multi-language editing quality.
 
-| Link | [aider.chat/docs/leaderboards](https://aider.chat/docs/leaderboards/) |
+**Caveats:** It reflects one tool's benchmark harness and task distribution. Useful, but not universal.
+
+**Live source:** [aider.chat/docs/leaderboards](https://aider.chat/docs/leaderboards/)
 
 ---
 
 ## Supplementary Benchmarks
 
-These provide additional signal but shouldn't be used alone:
+These provide additional signal but should not be used alone.
 
 ### HumanEval / MBPP
 
-**What it tests:** Simple function-level code generation (e.g., "write a function that reverses a string").
+**What it tests:** simple function-level code generation.
 
-**Limitation:** Too easy — top models score 95%+. Saturated and likely contaminated.
+**Limitation:** These are saturated and likely contaminated for frontier models.
 
-**Use for:** Sanity checks, not model selection.
-
----
-
-### Tencent AutoCodeBench
-
-**What it tests:** 3,920 problems across 20 programming languages, auto-generated to avoid contamination.
-
-**Why interesting:**
-- Multilingual coverage beyond Python
-- Three difficulty tiers (easy/medium/hard)
-- Claude Opus 4 leads at 52.4%
-
-**Caveat:** Newer benchmark, less adoption.
-
-| Link | [github.com/Tencent-Hunyuan/AutoCodeBenchmark](https://github.com/Tencent-Hunyuan/AutoCodeBenchmark) |
+**Use for:** sanity checks, not serious model selection.
 
 ---
 
-### SimpleBench
+### Auto-Generated or Multilingual Coding Benchmarks
 
-**What it tests:** Common-sense reasoning that humans find easy but LLMs struggle with.
+**What they test:** larger sets of coding tasks across more languages, often generated or curated to reduce contamination.
 
-**Why interesting:** Exposes reasoning failures that coding benchmarks miss. Tests spatial, social, and adversarial reasoning.
+**Why interesting:** They can expose language-specific weaknesses that Python-heavy benchmarks miss.
 
-**Current scores (snapshot: Jan 2026):**
-- Humans: ~85%
-- Gemini 3 Pro: 76.4%
-- Other top LLMs: ~62%
+**Caveat:** Newer benchmarks may have less independent adoption or weaker comparability across model releases.
 
-**Use for:** Understanding model limitations, not coding selection.
+---
 
-| Link | [simple-bench.com](https://simple-bench.com) |
+### General Reasoning Benchmarks
+
+**What they test:** reasoning capabilities that may affect coding but are not coding-specific.
+
+**Use for:** understanding limitations, not selecting a coding stack by itself.
 
 ---
 
 ## Behavioral Benchmarks
 
-These test *how* models behave, not just what they can do:
+Some benchmarks test how models behave, not just whether they solve a task.
 
-### SnitchBench
+Examples include benchmarks about:
 
-**What it tests:** Whether models report wrongdoing when given evidence of corporate malfeasance.
+- tool use
+- deception or sandbagging
+- autonomy and initiative
+- reporting or escalation behavior
+- security-relevant behavior
 
-**Why interesting:** Tests model alignment and tendency to "take initiative" on ethical issues. Relevant for autonomous agents with real-world permissions.
+These matter for autonomous coding agents because the risk is not only wrong code. It is also unwanted action.
 
-**Finding:** Grok leads, followed by Claude models. Both are significantly more likely to report issues to authorities than other models.
+Use behavioral benchmarks as risk signals, not as direct productivity rankings.
 
-| Link | [snitchbench.com](https://snitchbench.com) |
+## Red Flags: Benchmark Claims to Ignore
 
----
-
-## Red Flags: Benchmarks to Ignore
-
-| Benchmark | Problem |
-|-----------|---------|
-| **HumanEval alone** | Saturated (95%+ scores), likely contaminated |
-| **Self-reported evals** | Vendor benchmarks often cherry-pick favorable tests |
-| **Single-number scores** | "Best at coding" claims without methodology |
+| Claim | Problem |
+|---|---|
+| “Best coding model” from one benchmark | Coding work has multiple task shapes |
+| HumanEval-only ranking | Saturated and likely contaminated |
+| Vendor-only benchmark claim | Methodology may be cherry-picked |
+| Old score screenshots | Model releases and benchmark variants move quickly |
+| Single-number score without variance or task detail | Hides what the model is actually good at |
 
 ## How to Use Benchmarks
 
-1. **Check multiple benchmarks** — No single test captures everything
-2. **Prefer contamination-resistant** — LiveCodeBench, SWE-bench Pro
-3. **Match to your use case** — Agentic work? SWE-bench. Editing? Aider Polyglot.
-4. **Verify recency** — Benchmarks from 6+ months ago may be outdated
+1. **Start from workflow shape.** Bug fixing, editing, long-context research, UI work, and algorithmic coding need different signals.
+2. **Check multiple live leaderboards.** No single benchmark captures everything.
+3. **Prefer contamination-resistant tests.** Newer or time-segmented tasks are usually more informative.
+4. **Look at score gaps, not just rank.** A tiny lead may not matter in practice.
+5. **Run your own pilot.** Your codebase, tests, tooling, and review process are the real benchmark.
 
-## Aggregators
+## Live Sources and Aggregators
 
 | Site | What It Tracks |
-|------|----------------|
-| [Artificial Analysis](https://artificialanalysis.ai) | Speed, price, quality combined |
-| [LLM Stats](https://llm-stats.com) | Multiple benchmark leaderboards |
-| [Chatbot Arena](https://lmarena.ai) | Human preference (blind voting) |
+|---|---|
+| [SWE-bench](https://swebench.com) | real issue resolution and variants |
+| [LiveCodeBench](https://livecodebench.github.io) | time-segmented competitive programming tasks |
+| [Aider Leaderboards](https://aider.chat/docs/leaderboards/) | code editing performance |
+| [Artificial Analysis](https://artificialanalysis.ai) | speed, price, quality, and model comparisons |
+| [LLM Stats](https://llm-stats.com) | multiple benchmark leaderboards |
+| [Chatbot Arena](https://lmarena.ai) | human preference from blind voting |
 
-*Data snapshot: January 2026. Reviewed: February 2026.*
+## Bottom Line
+
+Benchmarks are useful for narrowing questions, not answering procurement by themselves. Use this page to understand what to check, then use live leaderboards and your own pilot results for current decisions.

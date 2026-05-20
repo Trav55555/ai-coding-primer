@@ -5,6 +5,11 @@ sidebar:
   order: 3
 ---
 
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+:::
+
+
 [Amazon Q Developer](https://aws.amazon.com/q/developer/) is AWS's AI coding assistant, available as a VS Code/JetBrains extension and CLI.
 
 ## Overview

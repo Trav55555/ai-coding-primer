@@ -5,6 +5,11 @@ sidebar:
   order: 0
 ---
 
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+:::
+
+
 Download these templates and customize for your project. Each is designed to be minimal—under 35 lines—following the [best practices](/ai-coding-primer/learn/advanced/project-context-files/) for context files.
 
 ## CLAUDE.md Templates

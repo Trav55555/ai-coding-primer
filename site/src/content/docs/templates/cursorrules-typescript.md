@@ -5,6 +5,11 @@ sidebar:
   order: 10
 ---
 
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+:::
+
+
 A minimal `.cursorrules` template for TypeScript projects in Cursor IDE.
 
 ## Template (27 lines)

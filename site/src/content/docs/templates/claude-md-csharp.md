@@ -5,6 +5,11 @@ sidebar:
   order: 6
 ---
 
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+:::
+
+
 A minimal CLAUDE.md template for C#/.NET projects using ASP.NET Core and Entity Framework.
 
 ## Template (28 lines)

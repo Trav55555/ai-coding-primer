@@ -8,21 +8,28 @@ sidebar:
 AI can help you learn faster. It can also make you worse at the parts of programming that matter when things break. The difference is not whether you use it. The difference is how much thinking you hand over.
 
 :::note[Evidence guide]
-- `Research-backed` - [Anthropic AI coding learning RCT](https://www.anthropic.com/research/ai-coding-learning), [OECD Digital Education Outlook 2026](https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_f6e1d3c0-en.html)
-- `Practitioner-backed` - [Tutor CoPilot RCT](https://arxiv.org/abs/2410.05017), [MIT Media Lab: Your Brain on ChatGPT](https://www.media.mit.edu/publications/your-brain-on-chatgpt/)
+- `Research-backed` - [Anthropic AI coding learning RCT](https://www.anthropic.com/research/ai-coding-learning), [OECD Digital Education Outlook 2026](https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_f6e1d3c0-en.html), [Tutor CoPilot RCT](https://arxiv.org/abs/2410.05017)
+- `Early / preprint evidence` - [MIT Media Lab: Your Brain on ChatGPT](https://www.media.mit.edu/publications/your-brain-on-chatgpt/)
+- `Practitioner-backed` - the tutor-style prompt patterns and code-review habits on this page
 
-The practical framing on this page combines the cited studies with recurring tutoring-style usage patterns; it is not a single paper's taxonomy.
+The practical framing combines studies, early evidence, and recurring tutoring-style usage patterns; it is not a single paper's taxonomy.
 :::
 
 ## The Problem
 
 There is a difference between finishing a task and actually learning from it. AI can close the first gap while widening the second.
 
-The Anthropic study found a 17% comprehension gap between developers who used AI heavily and those who did not, even when output quality looked similar. METR also found experienced open-source developers were slower with AI than they expected to be. The message is consistent: speed gains are real, but they are not automatic, and they do not guarantee learning.
+The Anthropic study found a 17% comprehension gap between developers who used AI heavily and those who did not, even when output quality looked similar.
+
+METR also found experienced open-source developers were slower with AI than they expected to be.
+
+The message is consistent: speed gains are real, but they are not automatic, and they do not guarantee learning.
 
 The mechanism is not mysterious. Learning needs struggle, recall, and correction. Heavy delegation short-circuits all three. You get the answer, but less of it sticks.
 
-See [Anthropic AI coding learning RCT](https://www.anthropic.com/research/ai-coding-learning) and [OECD Digital Education Outlook 2026](https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_f6e1d3c0-en.html) for the strongest primary sources behind this.
+For primary sources, start with the [Anthropic AI coding learning RCT](https://www.anthropic.com/research/ai-coding-learning).
+
+Also see [OECD Digital Education Outlook 2026](https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_f6e1d3c0-en.html).
 
 
 ## Explain, Don't Generate
@@ -75,7 +82,9 @@ The "illusion of competence" (IJRSI 2025) is subtle. AI's fluent, confident outp
 
 The test: if you can't explain the code without looking at it, you haven't learned it.
 
-A practical technique: after AI generates code, close the chat. Wait 10 minutes. Try to rewrite it from memory. The gaps in your rewrite are exactly what you need to study. Don't skip this step because it's uncomfortable. That discomfort is the learning.
+A practical technique: after AI generates code, close the chat. Wait 10 minutes. Try to rewrite it from memory.
+
+The gaps in your rewrite are exactly what you need to study. Don't skip this step because it's uncomfortable. That discomfort is the learning.
 
 Another practical test: if you cannot explain why the code works, what assumptions it makes, and how you would debug it when it fails, you have not learned the technique yet.
 
@@ -99,7 +108,9 @@ These prompts make the tool act more like a tutor and less like a vending machin
 
 ## What Good Use Looks Like
 
-This table draws on the studies cited on this page, especially the Anthropic learning RCT, Shen and Tamkin's conceptual-vs-delegated-use distinction, and the broader literature on productive struggle. It is a practical framework, not a direct taxonomy from one paper.
+This table draws on the studies cited on this page, especially the Anthropic learning RCT and Shen and Tamkin's conceptual-vs-delegated-use distinction.
+
+It is a practical framework, not a direct taxonomy from one paper.
 
 | Pattern | Outcome |
 |---------|---------|
@@ -148,7 +159,9 @@ Research-backed practices that don't require banning AI:
 
 Use AI as a thinking partner, not an answer machine.
 
-The broad pattern is pretty clear: the people who benefit most from AI are still doing a lot of the thinking themselves. They use it to move faster on the boring parts and to challenge their understanding. They do not use it to dodge the hard parts entirely.
+The broad pattern is clear: the people who benefit most from AI still do a lot of the thinking themselves.
+
+They use it to move faster on boring parts and challenge their understanding. They do not use it to dodge the hard parts entirely.
 
 The tool doesn't determine the outcome. Your habits do.
 

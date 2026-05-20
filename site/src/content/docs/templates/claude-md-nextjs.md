@@ -5,6 +5,11 @@ sidebar:
   order: 7
 ---
 
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+:::
+
+
 A minimal CLAUDE.md template for Next.js 15 projects using App Router.
 
 ## Template (27 lines)
