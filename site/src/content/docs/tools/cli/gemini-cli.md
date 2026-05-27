@@ -10,7 +10,7 @@ Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, pri
 :::
 
 
-[Gemini CLI](https://github.com/google/gemini-cli) is Google's open-source terminal coding agent.
+[Gemini CLI](https://github.com/google-gemini/gemini-cli) is Google's open-source terminal coding agent.
 
 ## Overview
 

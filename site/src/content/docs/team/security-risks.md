@@ -284,7 +284,7 @@ If you need a lightweight policy baseline, start here:
 
 - [Simon Willison: AI and Security](https://simonwillison.net/tags/security/) — ongoing analysis
 - [OWASP LLM Top 10](https://owasp.org/www-project-top-10-for-large-language-model-applications/) — systematic threat model
-- [Anthropic: Prompt Injection](https://www.anthropic.com/research/prompt-injection) — research from Claude's creators
+- [Anthropic: Prompt Injection Defenses](https://www.anthropic.com/research/prompt-injection-defenses) — research from Claude's creators
 - [Socket.dev Blog](https://socket.dev/blog) — supply chain security
 
 ## Next Steps
