@@ -114,9 +114,9 @@ Implement token refresh flow without changing login behavior.
 ## Supporting Evidence
 
 - [Anthropic: Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents/)
-- [OpenAI Codex `AGENTS.md` project-doc implementation](https://github.com/openai/codex/blob/main/codex-rs/core/src/project_doc.rs)
-- [Cline deep-planning `implementation_plan.md` prompt](https://github.com/cline/cline/blob/main/src/core/prompts/commands/deep-planning/variants/generic.ts)
-- [GitHub Spec Kit agent-context update script](https://github.com/github/spec-kit/blob/main/scripts/bash/update-agent-context.sh)
+- [OpenAI Codex `AGENTS.md` implementation](https://github.com/openai/codex/blob/main/codex-rs/core/src/agents_md.rs)
+- [Cline deep-planning prompt variants](https://github.com/cline/cline/tree/main/apps/vscode/src/core/prompts/commands/deep-planning/variants)
+- [GitHub Spec Kit agent configuration module](https://github.com/github/spec-kit/blob/main/src/specify_cli/_agent_config.py)
 - [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/)
 - [Productivity Research](/ai-coding-primer/research/productivity/)
 
@@ -124,6 +124,6 @@ Implement token refresh flow without changing login behavior.
 
 - [Anthropic: Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents/)
 - [OpenAI: Harness engineering](https://openai.com/index/harness-engineering/)
-- [OpenAI Codex `AGENTS.md` project-doc implementation](https://github.com/openai/codex/blob/main/codex-rs/core/src/project_doc.rs)
-- [Cline deep-planning `implementation_plan.md` prompt](https://github.com/cline/cline/blob/main/src/core/prompts/commands/deep-planning/variants/generic.ts)
-- [GitHub Spec Kit agent-context update script](https://github.com/github/spec-kit/blob/main/scripts/bash/update-agent-context.sh)
+- [OpenAI Codex `AGENTS.md` implementation](https://github.com/openai/codex/blob/main/codex-rs/core/src/agents_md.rs)
+- [Cline deep-planning prompt variants](https://github.com/cline/cline/tree/main/apps/vscode/src/core/prompts/commands/deep-planning/variants)
+- [GitHub Spec Kit agent configuration module](https://github.com/github/spec-kit/blob/main/src/specify_cli/_agent_config.py)

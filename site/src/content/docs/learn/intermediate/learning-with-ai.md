@@ -8,7 +8,7 @@ sidebar:
 AI can help you learn faster. It can also make you worse at the parts of programming that matter when things break. The difference is not whether you use it. The difference is how much thinking you hand over.
 
 :::note[Evidence guide]
-- `Research-backed` - [Anthropic AI coding learning RCT](https://www.anthropic.com/research/ai-coding-learning), [OECD Digital Education Outlook 2026](https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_f6e1d3c0-en.html), [Tutor CoPilot RCT](https://arxiv.org/abs/2410.05017)
+- `Research-backed` - [Anthropic AI coding learning RCT](https://www.anthropic.com/research/AI-assistance-coding-skills), [OECD Digital Education Outlook 2026](https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_f6e1d3c0-en.html), [Tutor CoPilot RCT](https://arxiv.org/abs/2410.03017)
 - `Early / preprint evidence` - [MIT Media Lab: Your Brain on ChatGPT](https://www.media.mit.edu/publications/your-brain-on-chatgpt/)
 - `Practitioner-backed` - the tutor-style prompt patterns and code-review habits on this page
 
@@ -27,7 +27,7 @@ The message is consistent: speed gains are real, but they are not automatic, and
 
 The mechanism is not mysterious. Learning needs struggle, recall, and correction. Heavy delegation short-circuits all three. You get the answer, but less of it sticks.
 
-For primary sources, start with the [Anthropic AI coding learning RCT](https://www.anthropic.com/research/ai-coding-learning).
+For primary sources, start with the [Anthropic AI coding learning RCT](https://www.anthropic.com/research/AI-assistance-coding-skills).
 
 Also see [OECD Digital Education Outlook 2026](https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_f6e1d3c0-en.html).
 
@@ -169,7 +169,7 @@ See [Learning Impacts](/ai-coding-primer/research/learning-impacts/) for the evi
 
 ## Bibliography
 
-- [Anthropic AI coding learning RCT](https://www.anthropic.com/research/ai-coding-learning)
+- [Anthropic AI coding learning RCT](https://www.anthropic.com/research/AI-assistance-coding-skills)
 - [OECD Digital Education Outlook 2026](https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_f6e1d3c0-en.html)
 - [MIT Media Lab: Your Brain on ChatGPT](https://www.media.mit.edu/publications/your-brain-on-chatgpt/)
-- [Tutor CoPilot RCT](https://arxiv.org/abs/2410.05017)
+- [Tutor CoPilot RCT](https://arxiv.org/abs/2410.03017)

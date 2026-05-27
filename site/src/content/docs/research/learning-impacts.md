@@ -49,8 +49,8 @@ AI boosts immediate task performance but can undermine the deep learning that bu
 
 - [OECD Digital Education Outlook 2026](https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_f6e1d3c0-en.html)
 - [MIT Media Lab "Your Brain on ChatGPT" (2025, preprint)](https://www.media.mit.edu/publications/your-brain-on-chatgpt/)
-- [Anthropic RCT on AI and learning (Jan 2026)](https://www.anthropic.com/research/ai-coding-learning)
-- [Tutor CoPilot RCT — Wang et al. (2025)](https://arxiv.org/abs/2410.05017)
+- [Anthropic RCT on AI and learning (Jan 2026)](https://www.anthropic.com/research/AI-assistance-coding-skills)
+- [Tutor CoPilot RCT — Wang et al. (2025)](https://arxiv.org/abs/2410.03017)
 - [Ponti (2025, Nature)](https://www.nature.com/articles/s41586-025-08600-3)
 - [Prather et al. (2024, ACM)](https://dl.acm.org/doi/10.1145/3649217.3653587)
 - [METR AI productivity study (2025)](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/)

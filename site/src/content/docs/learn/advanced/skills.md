@@ -185,4 +185,4 @@ Write one when the work is recurring, error-prone, and important enough to stand
 - [Microsoft Agent Framework Overview](https://learn.microsoft.com/en-us/agent-framework/overview/)
 - [llms.txt](https://llmstxt.org/)
 - [Stripe llms.txt](https://docs.stripe.com/llms.txt)
-- [OpenAI Codex `AGENTS.md` project-doc implementation](https://github.com/openai/codex/blob/main/codex-rs/core/src/project_doc.rs)
+- [OpenAI Codex `AGENTS.md` implementation](https://github.com/openai/codex/blob/main/codex-rs/core/src/agents_md.rs)
