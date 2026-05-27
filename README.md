@@ -27,6 +27,7 @@ From your first prompt to production: AI-integrated IDEs, terminal tools, and wo
 | [Claude Code](https://trav55555.github.io/ai-coding-primer/tools/cli/claude-code/) | Anthropic's official agentic CLI |
 | [Aider](https://trav55555.github.io/ai-coding-primer/tools/cli/aider/) | Open-source, git-native pair programmer |
 | [Gemini CLI](https://trav55555.github.io/ai-coding-primer/tools/cli/gemini-cli/) | Deprecated/perishable reference; verify Google's replacement path |
+| [Pi Coding Agent](https://trav55555.github.io/ai-coding-primer/tools/cli/pi/) | Minimal extensible harness with skills, extensions, and packages |
 
 ## Local Development
 
