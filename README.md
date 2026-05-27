@@ -26,7 +26,7 @@ From your first prompt to production: AI-integrated IDEs, terminal tools, and wo
 | [OpenCode](https://trav55555.github.io/ai-coding-primer/tools/cli/opencode/) | BYOK terminal agent, full MCP support |
 | [Claude Code](https://trav55555.github.io/ai-coding-primer/tools/cli/claude-code/) | Anthropic's official agentic CLI |
 | [Aider](https://trav55555.github.io/ai-coding-primer/tools/cli/aider/) | Open-source, git-native pair programmer |
-| [Gemini CLI](https://trav55555.github.io/ai-coding-primer/tools/cli/gemini-cli/) | Free tier, 1M context, multimodal |
+| [Gemini CLI](https://trav55555.github.io/ai-coding-primer/tools/cli/gemini-cli/) | Deprecated/perishable reference; verify Google's replacement path |
 
 ## Local Development
 
