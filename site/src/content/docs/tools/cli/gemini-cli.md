@@ -1,16 +1,22 @@
 ---
 title: Gemini CLI
-description: Google's terminal agent with strong multimodal and large-context support.
+description: Deprecated Google terminal agent reference; verify the current replacement path before adopting.
 sidebar:
   order: 4
 ---
 
 :::note[Freshness metadata]
-Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+Reviewed: May 2026. Volatile fields: deprecation status, replacement path, exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live Google docs before choosing or standardizing on this reference.
 :::
 
 
 [Gemini CLI](https://github.com/google-gemini/gemini-cli) is Google's open-source terminal coding agent.
+
+:::caution[Deprecated]
+Gemini CLI is being deprecated. Treat this page as historical/perishable reference, not as a recommendation to adopt it for new team workflows.
+
+Before using it, check Google's current replacement or migration path.
+:::
 
 ## Overview
 
@@ -38,8 +44,10 @@ npm install -g @google/gemini-cli
 
 Gemini CLI supports both Google account access and API-key-based access. Limits and account terms change often, so check Google's current docs before relying on a specific allowance.
 
-:::tip[Workflow Fit]
-Gemini CLI is a strong choice when you want multimodal help, large-context exploration, or Google ecosystem integration without switching away from the terminal.
+:::caution[Workflow Fit]
+Because Gemini CLI is deprecated, do not standardize new workflows on it unless Google documents a supported continuation path.
+
+Use this page to understand the old workflow shape, then verify the current Google-supported terminal option.
 :::
 
 ## Privacy
@@ -111,8 +119,9 @@ gemini /image error-screenshot.png "What's causing this error?"
 
 ## Tips
 
-- Use Gemini 3 Pro for larger context needs
-- Use Gemini Flash for quick iterations
-- Leverage multimodal for UI/visual tasks
+- Do not choose Gemini CLI for new team standards without checking Google's migration guidance
+- Use Gemini 3 Pro for larger context needs only if the current supported tool exposes it
+- Use Gemini Flash for quick iterations only if available in the current supported tool
+- Leverage multimodal for UI/visual tasks where Google's current tooling supports it
 - Start with the access path that matches your Google workflow, then verify current limits separately
 - Don't rely on full 1M context — quality degrades past ~200k
