@@ -25,75 +25,86 @@
 
 <style>
   .email-signup {
-    margin: 2rem 0;
-    padding: 2rem;
-    border: 1px solid var(--sl-color-gray-5, #383838);
-    border-radius: 0.5rem;
-    background: var(--sl-color-black, #0a0a0a);
-    text-align: center;
+    margin: 2.5rem 0;
+    padding: clamp(1.35rem, 3vw, 2.25rem);
+    border: 1px solid color-mix(in oklch, var(--sl-color-accent) 22%, transparent);
+    border-radius: 0.875rem;
+    background:
+      linear-gradient(135deg, color-mix(in oklch, var(--sl-color-accent) 16%, transparent), transparent 42%),
+      var(--primer-surface-warm, var(--sl-color-bg));
+    text-align: left;
+  }
+
+  .email-signup__inner {
+    max-width: 42rem;
   }
 
   .email-signup__heading {
-    font-size: 1.25rem;
-    margin: 0 0 0.5rem;
-    color: var(--sl-color-white, #fff);
+    font-size: clamp(1.25rem, 3vw, 1.65rem);
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    margin: 0 0 0.55rem;
+    color: var(--primer-ink, var(--sl-color-text));
   }
 
   .email-signup__description {
-    color: var(--sl-color-gray-2, #c2c2c2);
+    color: var(--primer-muted, var(--sl-color-gray-2));
     margin: 0 0 1.25rem;
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     max-width: 36rem;
-    margin-inline: auto;
   }
 
   .email-signup__form {
     display: flex;
-    gap: 0.5rem;
-    justify-content: center;
+    gap: 0.625rem;
     flex-wrap: wrap;
-    max-width: 28rem;
-    margin: 0 auto;
+    max-width: 31rem;
   }
 
   .email-signup__input {
-    flex: 1 1 12rem;
-    padding: 0.6rem 0.75rem;
-    border: 1px solid var(--sl-color-gray-5, #383838);
-    border-radius: 0.25rem;
-    background: var(--sl-color-gray-6, #1a1a1a);
-    color: var(--sl-color-white, #fff);
+    flex: 1 1 14rem;
+    min-height: 2.65rem;
+    padding: 0.65rem 0.8rem;
+    border: 1px solid var(--primer-rule, var(--sl-color-gray-5));
+    border-radius: 0.375rem;
+    background: color-mix(in oklch, var(--sl-color-bg) 92%, var(--sl-color-accent) 8%);
+    color: var(--primer-ink, var(--sl-color-text));
     font-size: 0.95rem;
   }
 
   .email-signup__input::placeholder {
-    color: var(--sl-color-gray-3, #8b8b8b);
+    color: var(--primer-muted, var(--sl-color-gray-3));
   }
 
   .email-signup__input:focus {
-    outline: 2px solid var(--sl-color-accent, #6366f1);
-    outline-offset: -1px;
+    outline: 2px solid var(--primer-focus, var(--sl-color-accent));
+    outline-offset: 2px;
     border-color: transparent;
   }
 
   .email-signup__button {
-    padding: 0.6rem 1.5rem;
-    border: none;
-    border-radius: 0.25rem;
-    background: var(--sl-color-accent, #6366f1);
-    color: var(--sl-color-black, #fff);
-    font-weight: 600;
+    min-height: 2.65rem;
+    padding: 0.65rem 1.35rem;
+    border: 1px solid transparent;
+    border-radius: 0.375rem;
+    background: var(--sl-color-accent);
+    color: var(--sl-color-white);
+    font-weight: 700;
     font-size: 0.95rem;
     cursor: pointer;
-    transition: opacity 0.15s;
   }
 
   .email-signup__button:hover {
-    opacity: 0.85;
+    opacity: 0.88;
+  }
+
+  .email-signup__button:focus-visible {
+    outline: 2px solid var(--primer-focus, var(--sl-color-accent));
+    outline-offset: 3px;
   }
 
   .email-signup__button:disabled {
-    opacity: 0.5;
+    opacity: 0.52;
     cursor: not-allowed;
   }
 
@@ -104,11 +115,11 @@
   }
 
   .email-signup__status.success {
-    color: #4ade80;
+    color: oklch(55% 0.16 145);
   }
 
   .email-signup__status.error {
-    color: #f87171;
+    color: oklch(60% 0.2 28);
   }
 </style>
 

@@ -7,6 +7,7 @@ export default defineConfig({
 	base: '/ai-coding-primer',
 	integrations: [
 		starlight({
+			customCss: ['/src/styles/custom.css'],
 			title: 'Agentic Engineering Primer',
 			description:
 				'Start safely, choose a workflow and stack that fit how you work, and learn the patterns that make AI-assisted engineering reliable.',
