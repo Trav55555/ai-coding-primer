@@ -5,6 +5,11 @@ sidebar:
   order: 1
 ---
 
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+:::
+
+
 [Continue.dev](https://continue.dev) is an open source extension that adds AI to your existing editor.
 
 ## Overview
@@ -21,7 +26,7 @@ sidebar:
 - **Tab Completions** — Inline suggestions
 - **Chat** — Conversational coding
 - **Local Model Support** — Ollama, LM Studio
-- **100% Local Option** — No data leaves your machine
+- **Local Model Option** — Keep model inference on your own machine or infrastructure
 - **BYOK** — Any OpenAI-compatible endpoint
 
 ## Access Model
@@ -30,14 +35,9 @@ Continue.dev is open source. You can run it with your own provider keys or pair 
 
 ## Privacy
 
-| Setting | Value |
-|---------|-------|
-| Local Mode | 100% local possible |
-| Training | Never |
-| Retention | None |
-| Jurisdiction | None (local) |
+Continue can be configured for local-model workflows, which gives teams a clearer boundary than hosted tools.
 
-This is the **most private option** — nothing leaves your machine.
+Verify telemetry, extension settings, model endpoints, and any connected cloud services before treating a setup as fully local.
 
 ## Model Options
 
@@ -57,17 +57,11 @@ This is the **most private option** — nothing leaves your machine.
 3. Run `ollama pull deepseek-coder-v2` or similar
 4. Configure Continue to use local model
 
-## 100% Local Setup
+## Local Setup
 
-```bash
-# Install Ollama
-curl -fsSL https://ollama.com/install.sh | sh
+Install Ollama or another local model runtime using its official installation instructions.
 
-# Pull a coding model
-ollama pull qwen3-coder:32b
-
-# Configure Continue to use localhost:11434
-```
+Then pull a coding model and configure Continue to use your local endpoint, such as `localhost:11434` for Ollama.
 
 ## Tips
 

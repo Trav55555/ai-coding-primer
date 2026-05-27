@@ -26,7 +26,8 @@ These mistakes waste time and produce poor results. Learn to recognize and avoid
 **The fix:**
 - Give the model *search tools* instead of pre-loaded code
 - Provide only relevant files
-- Stay under 40% of context window
+- Treat hard context percentages as heuristics, not laws
+- Keep context selective and clear stale work aggressively
 
 ---
 

@@ -5,6 +5,11 @@ sidebar:
   order: 4
 ---
 
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: model availability, benchmark position, pricing, privacy terms, and provider feature support. Verify live docs and leaderboards before making current decisions.
+:::
+
+
 Quick guide to choosing the right model without turning the decision into a pricing spreadsheet. Benchmarks move quickly; workflow fit lasts longer.
 
 ## Start with the Workflow

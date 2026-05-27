@@ -5,6 +5,11 @@ sidebar:
   order: 3
 ---
 
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+:::
+
+
 [Windsurf](https://windsurf.com) is Codeium's VS Code-based IDE with "Cascade" agentic flows.
 
 ## Overview

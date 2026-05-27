@@ -5,6 +5,11 @@ sidebar:
   order: 4
 ---
 
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+:::
+
+
 [Tabnine](https://www.tabnine.com/) is an AI code completion tool with strong privacy options including full self-hosting.
 
 ## Overview
@@ -89,6 +94,6 @@ Tabnine learns from your codebase:
 ## Tips
 
 - Enable "Team Learning" for consistent suggestions
-- Self-hosted is ~80-90% quality of cloud models
+- Self-hosted trades some frontier-model capability for control and deployment boundaries
 - Use for air-gapped/regulated environments
 - Works well alongside other AI tools

@@ -18,8 +18,8 @@ If the answer is no, the problem is context, not the model.
 This stopped being a prompt-writing trick a while ago. Good teams now treat context like a systems problem: what to include, what to leave out, what to fetch on demand, and what to isolate in another agent.
 
 :::note[Evidence status]
-- `Research-backed` - [Productivity Research](/ai-coding-primer/research/productivity/), [Code Quality & Security](/ai-coding-primer/research/code-quality-security/)
-- `Practitioner-backed` - [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/), [Subagent Architectures](/ai-coding-primer/learn/advanced/subagents/)
+- `Research-supported principle` - productivity, review, and security outcomes depend on feedback loops and task context.
+- `Practitioner-backed workflow` - selective context, compaction, and subagent isolation are common patterns in agent tooling.
 
 The framework on this page is an editorial working model built from those sources and recurring practice.
 :::
@@ -59,7 +59,7 @@ Information the AI gathers based on the current task:
 
 Explore the project first. Then reach for the docs. If you reverse that order, the model often latches onto the clean example from the docs instead of the mess in front of it.
 
-**Evidence tags:** `Practitioner-backed` ([Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/)); `Research-backed` ([Productivity Research](/ai-coding-primer/research/productivity/)).
+**Evidence tags:** `Practitioner-backed` ([Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/)); `Research-supported principle` ([Productivity Research](/ai-coding-primer/research/productivity/)).
 
 ### 3. Tool Context (MCP, CLI)
 
@@ -110,21 +110,15 @@ The order matters:
 
 This avoids a common failure mode: the model grabs a neat doc example that does not match your codebase at all.
 
-## The 40% Rule in Practice
+## Context Budget Discipline
 
-There does not appear to be a strong primary-source citation for an exact `40%` threshold. Treat it as a practitioner heuristic, not a measured law.
+There is no strong primary-source basis for a universal context percentage threshold.
 
-The better-supported point is broader: context quality degrades before the window is "full," and long-running agents need compaction, selective retrieval, and persistent artifacts rather than giant prompt dumps.
+The better-supported point is broader: context quality degrades before the window is "full." Long-running agents need compaction, selective retrieval, and persistent artifacts rather than giant prompt dumps.
 
-If you want a more defensible working rule, think in terms of budget discipline rather than a magic cutoff. For example, the local context-engineering playbook uses a practical target range of roughly `60-85%` utilization depending on model size and task shape.
+A more defensible rule is budget discipline. Treat every file, tool output, and previous correction as spending from a finite attention budget.
 
-| Context Window | 40% Threshold | Practical Limit |
-|----------------|---------------|-----------------|
-| 128k tokens | ~51k tokens | ~40 files |
-| 200k tokens | ~80k tokens | ~65 files |
-| 1M tokens | ~400k tokens | ~325 files |
-
-### When You're Over 40%
+### When Context Gets Noisy
 
 **Compaction strategies:**
 
@@ -149,7 +143,7 @@ The main benefit is not just parallelism. It is protecting the implementation co
 
 That claim is stronger than "multi-agent is always better." In fact, research and tool practice both suggest orchestration overhead can erase gains unless the subagents have clearly separated jobs.
 
-**Evidence tags:** `Research-backed` ([Productivity Research](/ai-coding-primer/research/productivity/)); `Practitioner-backed` ([Subagent Architectures](/ai-coding-primer/learn/advanced/subagents/)).
+**Evidence tags:** `Research-supported principle` ([Productivity Research](/ai-coding-primer/research/productivity/)); `Practitioner-backed` ([Subagent Architectures](/ai-coding-primer/learn/advanced/subagents/)).
 
 ## Practical Tips
 
@@ -167,7 +161,7 @@ That claim is stronger than "multi-agent is always better." In fact, research an
 - Dump your entire codebase into context
 - Include verbose documentation in context files
 - Expect the AI to remember previous sessions
-- Fight over 40% context utilization
+- Treat context utilization percentages as laws
 - Start with external docs before the agent has explored your project
 - Mix research and implementation in one giant context when subagents would keep it clean
 

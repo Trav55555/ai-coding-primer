@@ -5,6 +5,11 @@ sidebar:
   order: 6
 ---
 
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+:::
+
+
 [Cody](https://sourcegraph.com/cody) is Sourcegraph's AI coding assistant, built on their code intelligence platform.
 
 ## Overview

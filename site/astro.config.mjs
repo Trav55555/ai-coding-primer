@@ -7,6 +7,7 @@ export default defineConfig({
 	base: '/ai-coding-primer',
 	integrations: [
 		starlight({
+			customCss: ['/src/styles/custom.css'],
 			title: 'Agentic Engineering Primer',
 			description:
 				'Start safely, choose a workflow and stack that fit how you work, and learn the patterns that make AI-assisted engineering reliable.',
@@ -45,7 +46,7 @@ export default defineConfig({
 						{ label: 'Workflow and Stack Criteria', slug: 'tools/comparison' },
 						{ label: 'Models vs Providers', slug: 'models/overview' },
 						{ label: 'Capability Patterns', slug: 'models/capabilities' },
-						{ label: 'Choosing a Model', slug: 'models/pricing' },
+						{ label: 'Billing Models', slug: 'models/pricing' },
 						{ label: 'Selection Guide', slug: 'models/selection-guide' },
 					],
 				},
@@ -80,6 +81,7 @@ export default defineConfig({
 					label: 'Reference',
 					items: [
 						{ label: 'Reference Appendix', slug: 'reference/appendix' },
+						{ label: 'Fast-Changing Information', slug: 'reference/fast-changing-info' },
 						{
 							label: 'Research and Evidence',
 							items: [

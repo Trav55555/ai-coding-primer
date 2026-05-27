@@ -5,6 +5,11 @@ sidebar:
   order: 4
 ---
 
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: model availability, benchmark position, pricing, privacy terms, and provider feature support. Verify live docs and leaderboards before making current decisions.
+:::
+
+
 Detailed technical analysis of privacy implications.
 
 ## What Gets Sent
@@ -56,8 +61,8 @@ sudo lsof -i -n | grep cursor
 # Use mitmproxy for traffic inspection
 mitmproxy --mode regular
 
-# Check request headers for privacy mode
-# Look for: x-ghost-mode: true
+# Check request headers for privacy or zero-retention indicators
+# Header names vary by product and change over time
 ```
 
 ## API Key Security
@@ -97,13 +102,13 @@ export OPENAI_API_KEY=$(secret-tool lookup service openai username apikey)
 - Air-gapped where possible
 - Formal security review
 
-## Security Incidents to Know
+## Security Patterns to Know
 
-| Incident | Date | Lesson |
-|----------|------|--------|
-| Anthropic training default ON | Aug 2024 | Check defaults |
-| Package hallucination attacks | Ongoing | Verify dependencies |
-| Prompt injection demos | Ongoing | Limit agent permissions |
+| Pattern | Lesson |
+|---|---|
+| Plan-specific training or retention defaults | Check current defaults before approving a tool |
+| Package hallucination and slopsquatting | Verify dependencies before installing AI-suggested packages |
+| Prompt injection demonstrations and incidents | Limit agent permissions and network access |
 
 ## Minimizing Exposure
 

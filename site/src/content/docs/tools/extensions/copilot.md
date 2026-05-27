@@ -5,6 +5,11 @@ sidebar:
   order: 1
 ---
 
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+:::
+
+
 [GitHub Copilot](https://github.com/features/copilot) is GitHub's AI coding assistant, available as an extension for VS Code, JetBrains, and other editors.
 
 ## Overview

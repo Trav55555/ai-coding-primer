@@ -5,6 +5,11 @@ sidebar:
   order: 1
 ---
 
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+:::
+
+
 [Cursor](https://cursor.com) is a VS Code fork with AI deeply integrated.
 
 ## Overview
@@ -29,23 +34,18 @@ Cursor offers hosted access with several account tiers. Specific plan details ch
 
 ## Privacy
 
-| Setting | Value |
-|---------|-------|
-| Privacy Mode | Available (all tiers) |
-| Training | Opt-out |
-| Retention | 30 days (non-Business) |
-| Jurisdiction | US |
+Cursor's privacy posture depends on plan, settings, selected model, and current vendor terms.
 
-:::caution[Privacy Note]
-Non-Business plans have 30-day retention with OpenAI/Anthropic for "trust & safety" even with Privacy Mode enabled.
-:::
+Before using it with sensitive code, verify:
+
+- whether privacy mode covers prompts, completions, file contents, embeddings, screenshots, and tool traces
+- current retention and training defaults for your plan
+- subprocessors for the models you enable
+- enterprise controls such as SSO, audit logs, and admin policy
 
 ## Models Available
 
-- Claude Sonnet 4.5 / Opus 4.5
-- GPT-5.2
-- Gemini 3 Pro
-- Grok 4.1
+Cursor supports multiple hosted frontier models. The exact model list changes quickly, so check Cursor's live model settings before deciding.
 
 ## Getting Started
 

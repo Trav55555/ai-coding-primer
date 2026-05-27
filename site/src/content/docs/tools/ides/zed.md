@@ -5,6 +5,11 @@ sidebar:
   order: 2
 ---
 
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+:::
+
+
 [Zed](https://zed.dev) is a Rust-based, GPU-accelerated editor with built-in AI.
 
 ## Overview

@@ -37,22 +37,18 @@ data/production/
 
 ## Tool-Specific Settings
 
-### Cursor
-1. Settings → Privacy Mode → Enable
-2. Create `.cursorignore` file
-3. Settings → Telemetry → Disable
+Use these as examples, not evergreen vendor facts. Exact setting names and plan behavior change frequently.
 
-### Zed
-1. Use BYOK (your own API keys)
-2. Settings → Telemetry → Opt-out
+### Integrated IDEs
+1. Enable privacy or zero-retention mode if available.
+2. Create the tool's exclusion file for secrets and sensitive paths.
+3. Disable telemetry where possible.
+4. Verify whether consumer and business tiers have different retention or training defaults.
 
-### Continue.dev
-1. Use local models (Ollama)
-2. No cloud = no data leaves machine
-
-### Claude Code
-1. Enterprise plan for privacy mode
-2. Consumer plans have training ON by default
+### BYOK or Local Workflows
+1. Use your own API keys when provider terms matter.
+2. Use local models when code cannot leave your environment.
+3. Remember that BYOK changes provider terms, not necessarily every tool-side log.
 
 ## Red Flags
 
@@ -63,15 +59,14 @@ data/production/
 | No exclusion mechanism | Can't protect sensitive files |
 | China jurisdiction | Different legal protections |
 
-## Quick Privacy Ranking
+## Quick Privacy Tiers
 
-| Tool | Privacy Level |
-|------|---------------|
-| Continue.dev + Ollama | Maximum (local) |
-| Zed + BYOK | High (your API terms) |
-| Cursor Teams | High (zero retention) |
-| Cursor Pro | Medium (30-day retention) |
-| Claude Code (consumer) | Low (training ON) |
+| Setup | Typical privacy posture |
+|---|---|
+| Local model, local tool execution | strongest boundary, highest operations burden |
+| BYOK through an inspectable client | depends on provider terms and client logs |
+| Enterprise managed hosted tool | depends on contract, admin controls, retention, and subprocessors |
+| Consumer hosted tool | highest uncertainty; verify training and retention defaults |
 
 ## Next Steps
 

@@ -5,6 +5,11 @@ sidebar:
   order: 1
 ---
 
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: model availability, benchmark position, pricing, privacy terms, and provider feature support. Verify live docs and leaderboards before making current decisions.
+:::
+
+
 **Models** determine capability: how smart the AI is, how fast it responds, and what kinds of work it can do.
 
 **Providers** determine operating constraints: privacy policy, legal jurisdiction, availability, and access model.
@@ -27,25 +32,17 @@ Use a strong multimodal model for screenshots, mockups, and design files. That i
 
 ## Providers
 
-The same model can be available through multiple providers:
+The same model family can be available through multiple providers.
 
-| Model | Direct Provider | Also Available Via |
-|-------|-----------------|-------------------|
-| Claude Sonnet 4.6 | Anthropic | AWS Bedrock, Google Vertex |
-| GPT-5.2 | OpenAI | Azure OpenAI |
-| Llama 4 | Meta (weights only) | AWS Bedrock, Azure, Together AI |
-| Mistral Large | Mistral | AWS Bedrock, Azure, Google Vertex |
+Examples include direct provider access, cloud-platform access, and aggregator access. Exact model availability changes quickly, so verify current provider docs before deciding.
 
 ## Why This Matters
 
 ### For Privacy
-Different providers have different data policies:
-- Anthropic direct: US jurisdiction, 30-day retention
-- AWS Bedrock: Your AWS account, your retention settings
+Different providers have different data policies, retention defaults, subprocessors, and abuse-monitoring practices.
 
 ### For Enterprise
-- Azure OpenAI: EU data residency available
-- AWS Bedrock: Private endpoints, VPC integration
+Cloud platforms may offer data residency, private networking, audit logs, policy controls, and procurement paths that direct consumer tools do not.
 
 ### For Workflow
 - Direct providers: best when you want the vendor's native tooling and latest releases
@@ -54,13 +51,12 @@ Different providers have different data policies:
 
 ## Aggregators & Cloud Platforms
 
-| Platform | Type | Models | Why Use It |
-|----------|------|--------|------------|
-| **OpenRouter** | Aggregator | 200+ | One key for all models, fallback routing |
-| **Together AI** | Aggregator | 100+ | Open models, fine-tuning |
-| **AWS Bedrock** | Cloud | Claude, Llama, Mistral | Enterprise, VPC integration |
-| **Azure OpenAI** | Cloud | GPT, DALL-E | EU regions, compliance |
-| **Google Vertex** | Cloud | Gemini, Claude | GCP integration |
+| Platform type | Why use it |
+|---|---|
+| Aggregator | one key, fallback routing, easy model switching |
+| Open-model host | hosted open-weight models, fine-tuning, deployment flexibility |
+| Cloud platform | procurement, private networking, data controls, compliance features |
+| Direct provider | native tooling, newest releases, simpler debugging path |
 
 ## Open Weight Models
 

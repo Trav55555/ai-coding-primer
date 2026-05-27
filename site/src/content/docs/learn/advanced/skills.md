@@ -5,6 +5,11 @@ sidebar:
   order: 3
 ---
 
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+:::
+
+
 Skills are reusable instructions. They tell an agent how to approach a class of tasks.
 
 If MCP gives the agent new hands, a skill gives it a playbook.

@@ -5,57 +5,58 @@ sidebar:
   order: 2
 ---
 
-Privacy characteristics of major AI coding tools.
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+:::
 
-## Comparison Matrix
 
-| Tool | Open Source | Privacy Mode | Training | Retention | Jurisdiction |
-|------|-------------|--------------|----------|-----------|--------------|
-| **Cursor** | No | Yes | Opt-out | 30d* | US |
-| **Zed** | Yes | Yes (BYOK) | Never | None | US |
-| **Windsurf** | No | Yes (ZDR) | Never | Zero | US/EU |
-| **Copilot** | No | Yes | Opt-out | Varies | US |
-| **Continue.dev** | Yes | 100% local | Never | None | None |
-| **Claude Code** | No | Enterprise | ON** | 30d-5y | US |
-| **Aider** | Yes | BYOK | Depends | Depends | None |
+Privacy characteristics of major AI coding tools change by plan, provider, and enterprise contract.
 
-*Non-Business plans  
-**Consumer accounts since August 2024
+Use this page for the decision shape. Verify exact retention, training, jurisdiction, and subprocessors in live vendor docs before approving a tool.
 
-## Truly Private Options
+## Comparison Questions
 
-For maximum privacy, use local models:
+| Question | Why it matters |
+|---|---|
+| Is the client open source or inspectable? | Affects auditability, not necessarily privacy by itself |
+| Can it run with local or BYOK models? | Changes where code and prompts are processed |
+| Are prompts or file contents used for training? | Determines whether code can become training data |
+| How long are prompts, completions, logs, and tool traces retained? | Retention is often plan-specific |
+| Which legal entity and jurisdiction process the data? | Matters for regulated and cross-border work |
+| Are enterprise controls available? | SSO, audit logs, policy controls, and DPAs usually live on higher tiers |
 
-| Setup | Privacy | Quality |
-|-------|---------|---------|
-| Continue.dev + Ollama | Maximum | 85-90% |
-| Zed + Ollama | Maximum | 85-90% |
-| OpenCode + Ollama | Maximum | 85-90% |
+## More Private Options
 
-No data leaves your machine. Trade-off: requires capable local hardware (24GB+ VRAM for the best local coding models).
+For maximum privacy, prefer local or self-hosted setups where code, prompts, and tool outputs stay inside your controlled environment.
 
-## Hidden Gotchas
+Examples include local-model workflows with Continue.dev, Zed, OpenCode, or Aider.
 
-| Tool | Gotcha |
-|------|--------|
-| **Cursor** | 30-day retention even with Privacy Mode (non-Business) |
-| **Claude Code** | Training ON by default for consumer accounts |
-| **Anthropic** | Must opt-out within 30 days or data used for training |
-| **Azure OpenAI** | 30-day abuse monitoring (waivable) |
+The trade-off is capability and operations. Local setups require capable hardware, model maintenance, and a realistic understanding of current model quality.
+
+## Hidden Gotchas to Verify
+
+Do not rely on old privacy screenshots or blog posts. Verify these details in current vendor docs and contracts:
+
+- whether privacy mode covers prompts, completions, file contents, embeddings, screenshots, and tool traces
+- whether consumer and business plans have different retention or training defaults
+- whether abuse-monitoring logs are retained, and whether enterprise waivers exist
+- whether subprocessors or model providers differ by selected model
+- whether BYOK changes data handling or only billing
 
 ## By Use Case
 
 ### Personal Projects
-Any tool is fine. Enable privacy mode if available.
+Most tools are viable. Enable privacy mode if available and avoid pasting secrets.
 
 ### Client Work (NDA)
-- **Safe**: Continue.dev + local, Zed + BYOK
-- **Acceptable**: Cursor Teams, Windsurf Enterprise
-- **Avoid**: Claude Code (consumer), any tool with training enabled
+Prefer approved enterprise, BYOK, local, or self-hosted workflows.
+
+Avoid any setup where training, retention, or subprocessors conflict with the client agreement.
 
 ### Enterprise/Regulated
-- **Required**: Cursor Enterprise, Windsurf Enterprise, or self-hosted
-- **Verify**: DPA, subprocessors, audit logs, SSO/SCIM
+Require procurement and security review.
+
+Verify DPA, subprocessors, audit logs, SSO/SCIM, retention, training use, and incident-response commitments.
 
 ## Jurisdiction Notes
 

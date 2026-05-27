@@ -5,6 +5,11 @@ sidebar:
   order: 2
 ---
 
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+:::
+
+
 [Aider](https://aider.chat) is an open-source AI pair programming tool for the terminal.
 
 ## Overview
@@ -112,4 +117,4 @@ Aider maintains a [public leaderboard](https://aider.chat/docs/leaderboards/) co
 - Use `/add` to bring relevant files into context
 - Enable auto-commits for automatic git history
 - Check the leaderboard before choosing a model
-- Use with Ollama for 100% local operation
+- Use with Ollama or another local runtime when you need local model execution

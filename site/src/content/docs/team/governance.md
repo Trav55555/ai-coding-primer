@@ -118,6 +118,51 @@ Keep the policy short. It should usually cover:
 
 That is enough to make decisions consistent without creating a giant governance manual nobody reads.
 
+## Minimal Team Rollout Policy Template
+
+Use this as a starting point. Keep it short enough that engineers actually read it.
+
+```md
+# AI Coding Policy
+
+## Scope
+This policy applies to AI-assisted coding, code review, debugging, refactoring, documentation, and agentic tooling used on company repositories.
+
+## Approved workflow shapes
+- Low-risk repositories: editor assistant, AI IDE, or terminal agent allowed with normal review.
+- Sensitive repositories: approved tools only; hosted consumer tools are not allowed unless explicitly approved.
+- High-permission agent workflows: sandbox required; network access must be explicit.
+
+## Data boundaries
+- Do not paste secrets, credentials, customer data, or regulated data into unapproved tools.
+- Client or regulated code requires approved deployment boundaries and current vendor terms.
+- Treat prompts, file contents, tool outputs, and screenshots as data exposure events.
+
+## Permission rules
+- Read access is project-scoped by default.
+- Write access requires diff review.
+- Package installs, MCP servers, plugins, browser tools, and networked commands require explicit approval.
+- Sudo, home-directory access, and broad filesystem access are prohibited outside isolated environments.
+
+## Verification requirements
+Every non-trivial AI-authored change must include:
+- human diff review
+- relevant tests or build checks
+- typecheck/lint where available
+- security scan when dependencies, auth, data handling, or network behavior changes
+- PR note explaining AI involvement and verification performed
+
+## Review and rollback
+- Reviewers may ask for AI-generated diffs to be split or regenerated if scope is unclear.
+- Every merged AI-assisted change must have a normal rollback path.
+- Suspected data exposure or malicious tool behavior escalates to security immediately.
+
+## Cadence
+- Re-review approved tools, privacy terms, benchmark assumptions, and policy exceptions monthly or quarterly.
+```
+
+Adapt the scope and risk tiers to your organization. The important part is not the exact wording; it is making permissions, data boundaries, and verification explicit before broad rollout.
+
 ## Failure Modes to Avoid
 
 | Failure mode | What it looks like | Better move |

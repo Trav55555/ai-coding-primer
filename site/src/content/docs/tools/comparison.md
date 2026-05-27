@@ -3,6 +3,11 @@ title: Workflow and Stack Criteria
 description: Compare a short list of workflow shapes and stack options without turning the decision into a shopping spiral.
 ---
 
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+:::
+
+
 Use this page after [Choose a Workflow and Stack](/ai-coding-primer/learn/beginner/choose-your-tool/).
 
 That page helps you pick a likely workflow shape. This page helps you pressure-test the shortlist.
@@ -69,7 +74,7 @@ If a tool is impressive but makes verification awkward, it is the wrong fit for 
 
 - rank specific products
 - preserve live feature matrices
-- compare pricing snapshots
+- compare billing models and live pricing snapshots
 - freeze product claims into the core path
 
 For product-specific details, use the vendor pages in the [Reference Appendix](/ai-coding-primer/reference/appendix/).
@@ -80,7 +85,7 @@ Once you know your workflow shape, use these pages to narrow the stack:
 
 - [Models vs Providers](/ai-coding-primer/models/overview/)
 - [Capability Patterns](/ai-coding-primer/models/capabilities/)
-- [Choosing a Model](/ai-coding-primer/models/pricing/)
+- [Billing Models](/ai-coding-primer/models/pricing/)
 - [Selection Guide](/ai-coding-primer/models/selection-guide/)
 
 Those pages should support the workflow decision, not replace it.

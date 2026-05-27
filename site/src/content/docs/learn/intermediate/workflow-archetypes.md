@@ -8,8 +8,8 @@ sidebar:
 Most AI coding frustration is not about model quality. It is about using the wrong workflow for the job. These four patterns cover most of the work people actually do.
 
 :::note[Evidence guide]
-- `Research-backed` - [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/), [Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/)
-- `Practitioner-backed` - [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/), [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/)
+- `Research-supported principle` - [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/) and [Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/) support verification and review discipline.
+- `Practitioner-backed workflow` - [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/) and [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) show how those principles become practice.
 
 The four archetypes on this page are an editorial simplification of recurring workflow patterns, not a formal taxonomy from one source.
 :::

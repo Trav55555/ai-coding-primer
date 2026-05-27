@@ -5,6 +5,11 @@ sidebar:
   order: 3
 ---
 
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+:::
+
+
 [OpenCode](https://github.com/sst/opencode) is an open-source terminal coding agent with BYOK (Bring Your Own Key).
 
 ## Overview
@@ -114,7 +119,7 @@ opencode --mcp postgres
 
 ## Tips
 
-- Use Ollama for 100% local, offline operation
+- Use Ollama or another local runtime when you need local, offline model execution
 - Configure MCP servers for extended capabilities
 - Use `/compact` to manage long conversations
 - Session management enables pausing/resuming work

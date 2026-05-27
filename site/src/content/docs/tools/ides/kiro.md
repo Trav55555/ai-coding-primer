@@ -5,6 +5,11 @@ sidebar:
   order: 5
 ---
 
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+:::
+
+
 [Kiro](https://kiro.dev) is Amazon's agentic IDE focused on spec-driven development.
 
 ## Overview

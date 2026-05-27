@@ -5,6 +5,11 @@ sidebar:
   order: 5
 ---
 
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+:::
+
+
 [Codex CLI](https://github.com/openai/codex) is OpenAI's open-source terminal coding agent.
 
 ## Overview
@@ -84,14 +89,13 @@ codex --sandbox
 | `/sandbox` | Toggle sandbox mode |
 | `/model <name>` | Switch model |
 
-## SWE-bench Performance
+## Benchmark Signal
 
-Codex CLI with Codex 5 achieves 74.9% on SWE-bench verified, one of the highest scores for agentic coding.
+Codex CLI is designed around OpenAI's coding models and agent workflows.
 
-| Model | SWE-bench |
-|-------|-----------|
-| Codex 5 | 74.9% |
-| GPT-5.2 | 72.1% |
+For current SWE-bench or coding benchmark performance, check live leaderboards instead of relying on a static snapshot.
+
+See [Benchmarks That Matter](/ai-coding-primer/models/benchmarks/) for how to interpret those scores.
 
 ## Tips
 

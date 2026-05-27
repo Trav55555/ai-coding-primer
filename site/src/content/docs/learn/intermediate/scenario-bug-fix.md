@@ -11,71 +11,160 @@ Use this workflow when behavior is already broken and you need a reliable fix wi
 
 Ship a small, verified patch that fixes the bug and preserves unrelated behavior.
 
+## Example Situation
+
+A TypeScript API endpoint returns `200` for invalid input. The expected behavior is `400` with a validation error. You have one failing integration test and a short stack trace.
+
+The workflow is the same for frontend, backend, CLI, or data bugs: reproduce, localize, explain, patch, verify, review.
+
 ## Inputs You Need
 
-- one reproducible failure signal (failing test, command output, or screenshot)
+- one reproducible failure signal: failing test, command output, screenshot, or exact manual reproduction steps
 - expected behavior in one to three lines
 - smallest relevant file set
+- one nearby test file or example of similar behavior
+- the command that proves the bug exists
 
-## Prompt Shape
+## Step 1: Reproduce Before Asking for a Fix
 
-```
-Here is the failing signal and expected behavior.
+Run the smallest command that demonstrates the bug.
 
-Failing signal:
-<paste test failure, command output, or screenshot notes>
-
-Expected behavior:
-<one to three lines>
-
-Relevant files:
-- path/a
-- path/b
-
-First: explain likely root cause with file-level evidence.
-Then: implement the smallest fix.
-Do not change unrelated behavior.
-After edits: run tests/lint/typecheck for this area and report results.
+```bash
+npm test -- user-validation.test.ts
 ```
 
-## Context Pack Strategy
+Capture only the useful output:
+
+```text
+Expected status 400, received 200
+Route: POST /api/users
+Payload: { email: "not-an-email" }
+```
+
+Do not begin with "fix this repo." Begin with a concrete failing signal.
+
+## Step 2: Give a Focused Context Pack
 
 Include:
+
 - failing test or reproducible command output
-- files at the failure boundary (handler, service, parser, query, serializer)
-- one adjacent test file
+- files at the failure boundary: route, handler, parser, service, query, serializer, or component
+- one adjacent test file that shows local testing style
+- relevant schema or validation definition
 
 Exclude:
+
 - unrelated modules
 - broad architecture docs unless directly relevant
 - stale conversation history that is not tied to this bug
+- previous failed fix attempts unless they reveal a constraint
 
-## Verification Loop
+## Step 3: Ask for Root Cause Before Code
 
-1. Reproduce the failure before any edits.
-2. Apply the smallest plausible fix.
-3. Re-run the exact failing signal.
-4. Run related tests.
-5. Run project type/lint checks used by that module.
-6. Review diff for scope creep.
+```text
+Here is the failing signal and expected behavior.
 
-## Common Failure Mode
+Failing signal:
+Expected status 400, received 200 for POST /api/users with payload:
+{ email: "not-an-email" }
 
-**Failure mode:** broad "fix it" prompts push the model into speculative multi-file edits.
+Expected behavior:
+Invalid email should return 400 with a validation error. Valid payloads should still return 201.
 
-**Recovery move:** reset to a fresh session, restate expected behavior and relevant files only, require root-cause explanation before code changes.
+Relevant files:
+- src/routes/users.ts
+- src/validation/userSchema.ts
+- tests/user-validation.test.ts
+
+First, reproduce the failure mentally from these files and explain the likely root cause with file-level evidence.
+Do not edit yet.
+```
+
+Good answer shape:
+
+- names the specific file and branch that mishandles the case
+- distinguishes symptom from cause
+- states the smallest likely fix
+- names the verification command to run after editing
+
+If the explanation is vague, stop and ask it to inspect narrower code. Vague diagnosis usually leads to broad speculative edits.
+
+## Step 4: Implement the Smallest Fix
+
+```text
+Implement the smallest fix for that root cause.
+
+Constraints:
+- Do not change the public API shape except the invalid-input status code.
+- Do not rewrite validation generally.
+- Do not touch unrelated routes.
+
+After edits:
+1. run `npm test -- user-validation.test.ts`
+2. run the nearest related test file if different
+3. report the diff summary and test results
+```
+
+Watch for scope creep:
+
+- new helper libraries
+- broad refactors
+- renamed functions outside the bug boundary
+- changes to unrelated tests
+- snapshot updates that hide behavior changes
+
+## Step 5: Verify in Layers
+
+1. Re-run the exact failing command.
+2. Add or update a regression test if one does not already exist.
+3. Run related tests for the touched module.
+4. Run typecheck/lint/build used by that area.
+5. Review the diff manually.
+
+A good bug fix has a tiny causal story:
+
+```text
+The route called parse() but ignored parse.success. Invalid payloads fell through to createUser().
+The patch returns 400 when parse.success is false. Added regression coverage for invalid email.
+```
+
+## If the Agent Gets Stuck
+
+| Symptom | Recovery move |
+|---|---|
+| It keeps editing more files | Stop, reset context, restate the failing signal and allowed files |
+| It cannot reproduce the bug | Ask for the exact command and environment assumptions before further edits |
+| It changes the test to pass | Revert test change; state that the test encodes expected behavior |
+| It proposes a broad refactor | Split refactor into a follow-up; fix the bug first |
+| It loops on the same failed fix | Start a fresh session with current findings and failed attempts summarized in five bullets |
+
+## Commit Checkpoint
+
+Commit when:
+
+- the regression test fails before the fix or clearly captures the bug
+- the minimal fix passes the failing test
+- related checks pass
+- the diff is explainable in one paragraph
+
+Suggested commit message:
+
+```text
+fix: reject invalid user email payloads
+```
 
 ## Done Criteria
 
 - original failure is resolved
+- regression coverage exists or the original failing test is preserved
 - related tests and checks pass
 - no unrelated behavior changed
 - patch is easy to explain in one paragraph
 
 ## Evidence Status
 
-- **Research-backed:** explicit verification loops and executable feedback improve reliability.
-- **Practitioner-backed:** root-cause-first prompts reduce churn versus immediate broad edits.
+- **Research-supported principle:** executable feedback and verification loops improve reliability.
+- **Practitioner-backed workflow:** root-cause-first prompts reduce churn versus immediate broad edits.
 
 The exact wording and sequence in this scenario are editorial guidance based on those patterns.
 

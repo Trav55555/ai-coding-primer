@@ -5,6 +5,11 @@ sidebar:
   order: 2
 ---
 
+:::note[Freshness metadata]
+Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+:::
+
+
 MCP (Model Context Protocol) lets AI tools connect to external services such as databases, APIs, browsers, and documentation systems.
 
 It is the connectivity layer, not the judgment layer. MCP tells the agent what it can reach. It does not tell the agent how to use those capabilities well.

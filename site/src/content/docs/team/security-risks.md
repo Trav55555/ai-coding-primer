@@ -87,10 +87,7 @@ The AI sees this instruction. You don't (in rendered markdown).
 
 AI suggests packages that don't exist. Attackers register them with malware.
 
-| Model Type | Hallucination Rate | Source |
-|------------|-------------------|--------|
-| Commercial (GPT, Claude) | ~5% | DASR, Jan 2026 |
-| Open-source | ~22% | DASR, Jan 2026 |
+Studies and security reports have found that package hallucination happens often enough to be exploitable. Exact rates vary by model, prompt, language, and methodology.
 
 **Attack flow:**
 1. AI suggests: `npm install fast-json-parser-v2` (doesn't exist)
