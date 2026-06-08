@@ -25,6 +25,19 @@ Before you get lost in examples, keep these rules in mind:
 3. If a task touches regulated or client code, default to tighter deployment and permission boundaries.
 4. If you cannot explain the review and rollback path, the workflow is not mature enough for broad rollout.
 
+## Incident Patterns to Design Around
+
+These risks are no longer theoretical edge cases. Security reviews and incident reports now cluster around a few repeatable patterns:
+
+| Pattern | What it looks like | Policy implication |
+|---|---|---|
+| AI-built apps miss basic access control | generated routes trust client IDs, admin checks live only in the UI, or data filters are applied after retrieval | auth, authorization, tenancy, and data-handling changes need explicit security review |
+| AI accelerates attackers | phishing variants, exploit scaffolds, dependency probes, and payload mutations can be generated quickly | do not rely on obscurity; keep scanning, logging, and dependency review in the default workflow |
+| Assistant extensions become the supply chain | a plugin, MCP server, browser tool, or skill reads private context and communicates externally | treat assistant extensions like software dependencies: provenance, pinning, sandboxing, and network limits matter |
+| High-permission agents normalize unsafe behavior | repeated approval of installs, broad filesystem access, or networked commands becomes routine | require permission tiers and make broad access exceptional, logged, and reversible |
+
+The point is not that every AI workflow is high risk. The point is that permission, data exposure, and untrusted input decide the risk faster than the brand name does.
+
 ## The Lethal Trifecta
 
 > "When an agent has access to all three, exfiltration becomes possible." — Simon Willison

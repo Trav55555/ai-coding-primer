@@ -1,6 +1,6 @@
 ---
 title: Templates Overview
-description: Ready-to-use CLAUDE.md and .cursorrules templates for common tech stacks.
+description: Starter CLAUDE.md and .cursorrules examples for common tech stacks.
 sidebar:
   order: 0
 ---
@@ -10,7 +10,15 @@ Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, pri
 :::
 
 
-Download these templates and customize for your project. Each is designed to be minimal—under 35 lines—following the [best practices](/ai-coding-primer/learn/advanced/project-context-files/) for context files.
+Use these as starter examples, not as a configuration catalog to copy blindly. Each template is designed to be minimal—under 35 lines—following the [best practices](/ai-coding-primer/learn/advanced/project-context-files/) for context files.
+
+If your stack is not listed, adapt the closest example. The important pattern is not the stack name; it is short commands, local gotchas, verification rules, and boundaries the agent would otherwise miss.
+
+## Template Growth Rule
+
+Do not add a new template just because a framework exists. Add one only when it teaches a meaningfully different context-file pattern.
+
+Prefer improving the canonical [Project Context Files](/ai-coding-primer/learn/advanced/project-context-files/) guide over expanding this list. A smaller set of accurate examples is better than a broad catalog that quietly goes stale.
 
 ## CLAUDE.md Templates
 
@@ -42,10 +50,11 @@ For Cursor IDE (save as `.cursorrules` in project root):
 
 ## How to Use
 
-1. **Download** the template for your stack
+1. **Choose** the closest example for your workflow and stack
 2. **Rename** to `CLAUDE.md` (or `.cursorrules` for Cursor)
-3. **Customize** the `[placeholders]` with your project details
-4. **Add gotchas** as you discover what the AI gets wrong
+3. **Delete irrelevant lines** before adding anything new
+4. **Customize** the `[placeholders]` with your project details
+5. **Add gotchas** only after you see the AI make repeatable mistakes
 
 ## Template Philosophy
 

@@ -62,4 +62,30 @@ Review monthly or trim aggressively:
 - privacy and retention comparisons
 - MCP, plugin, and extension trust guidance
 
+## Monthly Reference Sweep Checklist
+
+Use this as a small maintenance pass, not a market-research project.
+
+1. **Find perishable pages.** Check pages with `Reviewed:` metadata and pages under tools, models, privacy, benchmarks, templates, and fast-changing reference.
+2. **Search for stale-value pressure.** Grep for exact prices, score tables, plan names, quotas, and ranking language.
+3. **Check live sources only for claims you keep.** Official docs, trust centers, leaderboards, changelogs, and vendor policy pages are the source of truth.
+4. **Remove precision you cannot maintain.** Replace exact scores, prices, quotas, or date-sensitive feature claims with decision criteria and live-source links.
+5. **Update the reviewed date only when reviewed.** Do not bump metadata as a cosmetic change.
+6. **Run the build and inspect changed pages.** Confirm the update did not pull reference material back into the core learning path.
+
+Useful local checks:
+
+```bash
+grep -RIn "Reviewed:" site/src/content/docs/{tools,models,security,reference,templates}
+grep -RIn "\$[0-9]\|per million\|best value\|budget pick\|leader" site/src/content/docs
+npm run build
+```
+
+Exit criteria:
+
+- exact values are either verified, removed, or clearly marked as examples
+- vendor pages still read as appendix material
+- durable workflow pages do not depend on current market facts
+- the site builds cleanly
+
 If a page cannot be maintained on that cadence, remove exact values and link to live sources instead.
