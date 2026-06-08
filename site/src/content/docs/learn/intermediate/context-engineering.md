@@ -24,6 +24,30 @@ This stopped being a prompt-writing trick a while ago. Good teams now treat cont
 The framework on this page is an editorial working model built from those sources and recurring practice.
 :::
 
+## The 60-Second Context Checklist
+
+Before any non-trivial AI coding task, answer these six questions:
+
+1. **What is the task?** State the desired behavior or decision in one or two sentences.
+2. **What is the done signal?** Name the test, build, screenshot, diff review, or output that proves success.
+3. **Which files are probably relevant?** Provide paths or ask the agent to find them with search.
+4. **Which local rules must be visible?** Include only the gotchas that would change the implementation.
+5. **What should be fetched on demand?** Let tools retrieve docs, examples, and secondary files instead of pre-loading them.
+6. **What should stay out of context?** Exclude unrelated history, failed attempts, logs, and architecture notes that do not affect this task.
+
+A strong default context pack is:
+
+```text
+Task:
+Constraints / non-goals:
+Relevant files or search target:
+One nearby example pattern:
+Current failure signal or desired output:
+Verification command:
+```
+
+If you cannot name the verification command or done signal yet, do not ask for implementation. Ask the agent to help define the check first.
+
 | Component | What It Means | Example |
 |-----------|---------------|---------|
 | **Right Information** | Model has what it needs | Relevant files, not entire codebase |
@@ -145,25 +169,16 @@ That claim is stronger than "multi-agent is always better." In fact, research an
 
 **Evidence tags:** `Research-supported principle` ([Productivity Research](/ai-coding-primer/research/productivity/)); `Practitioner-backed` ([Subagent Architectures](/ai-coding-primer/learn/advanced/subagents/)).
 
-## Practical Tips
+## Common Context Mistakes
 
-### Do
-
-- Give the model search tools instead of pre-loading everything
-- Keep context files short and focused
-- Include only relevant files for the current task
-- Provide verification methods (run this test, check this file)
-- Put non-obvious repo rules in `AGENTS.md`, `CLAUDE.md`, or equivalent
-- Use a persistent plan file for multi-session work
-
-### Don't
-
-- Dump your entire codebase into context
-- Include verbose documentation in context files
-- Expect the AI to remember previous sessions
-- Treat context utilization percentages as laws
-- Start with external docs before the agent has explored your project
-- Mix research and implementation in one giant context when subagents would keep it clean
+| Mistake | Why it hurts | Recovery move |
+|---|---|---|
+| Dumping the whole codebase | the model spends attention on irrelevant files | give search tools and only the first likely paths |
+| Starting with external docs | clean examples can override local reality | explore local files and tests first, then consult docs |
+| Carrying old failed attempts forever | stale corrections pollute the next plan | summarize findings in five bullets and restart |
+| Treating context-window size as quality | more tokens can still mean worse attention | prefer task-specific files, head-tail logs, and compact state |
+| Mixing research and implementation | search noise buries the actual patch | send research to a subagent or separate session |
+| Hiding the done signal | the agent cannot close the loop | provide or create the test, build, screenshot, or expected output |
 
 ## Example: Good vs Bad Context
 

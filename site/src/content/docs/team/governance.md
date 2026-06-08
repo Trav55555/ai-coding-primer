@@ -69,6 +69,21 @@ Track:
 
 Do not measure success only by code volume or prompt count.
 
+## Minimal Approval Matrix
+
+Use a matrix like this before broad rollout. It turns vague comfort levels into explicit permission and verification rules.
+
+| Use case | Default approval | Permission boundary | Required verification |
+|---|---|---|---|
+| Learning, docs, local experiments | individual allowed | no secrets, no customer data, no production credentials | human review before reuse |
+| Low-risk feature or bug work | team policy allowed | project-scoped read/write; normal package/network rules | tests or build checks plus diff review |
+| Refactors in production repos | tech lead or reviewer approval | approved files or module scope; no behavior changes without spec | characterization tests, focused diff review, rollback path |
+| Dependency, auth, payment, data-handling changes | explicit senior/security approval | package installs and networked tooling require approval | tests, security review, dependency scan, PR explanation |
+| Sensitive, regulated, or client repositories | approved tool and deployment boundary only | no hosted consumer tools unless contractually approved | policy check, audit trail, required human review |
+| High-permission agents, MCP servers, plugins, or browser automation | explicit approval per workflow | sandboxed; least privilege; network and filesystem access enumerated | tool provenance review, command log, rollback plan |
+
+The exact rows will vary by organization. The important part is that approval depends on repository risk, data exposure, and agent permissions rather than enthusiasm for a tool.
+
 ## A Practical Rollout Pattern
 
 ### Phase 1: Bounded pilot

@@ -63,6 +63,81 @@ Ask: "Does this test encode my requirements, or just the AI's assumptions?"
 Tests should specify what the code *should* do, not describe what the code *does*. See [Lazy Testing](/ai-coding-primer/learn/intermediate/common-mistakes/#mistake-8-lazy-testing).
 :::
 
+## Worked Example: Fix One Bug Without Losing the Thread
+
+Here is what these patterns look like together.
+
+### Situation
+
+A settings form saves successfully, but the updated value disappears after refresh. You have a failing test command and one likely UI file.
+
+### 1. Give the agent a narrow job
+
+```text
+We are fixing one bug: the settings page appears to save timezone changes,
+but after refresh the old timezone returns.
+
+Known signal:
+- `npm test -- settings-timezone.test.ts` fails with:
+  Expected "Europe/Paris", received "UTC"
+
+Relevant files:
+- src/settings/SettingsForm.tsx
+- src/settings/settingsApi.ts
+- tests/settings-timezone.test.ts
+
+First explain the likely root cause from these files. Do not edit yet.
+```
+
+Good output names a specific boundary: form state, API payload, persistence response, or reload path. If the answer is generic, ask it to inspect narrower code before editing.
+
+### 2. Ask for the smallest patch and verification
+
+```text
+Implement the smallest fix for that root cause.
+
+Constraints:
+- Do not redesign the settings page.
+- Do not change unrelated settings fields.
+- Do not update the test expectation unless the test is clearly wrong.
+
+After edits, run:
+1. `npm test -- settings-timezone.test.ts`
+2. the nearest related settings test if different
+
+Then report changed files, test results, and the exact behavior fixed.
+```
+
+### 3. Review the diff before continuing
+
+Do not just read the agent's summary. Check whether the diff matches the causal story:
+
+- Did it change the persistence path that caused the bug?
+- Did it leave unrelated settings fields alone?
+- Did it preserve or add regression coverage?
+- Can you explain the fix in one paragraph?
+
+A good handoff sounds like this:
+
+```text
+Root cause: the form updated local state but sent `timezoneLabel` instead of
+`timezone` to the API. The server ignored the unknown field, so refresh loaded
+the old value. The patch sends the expected key and keeps the existing response
+shape. The regression test now passes.
+```
+
+### 4. Recovery if the loop goes bad
+
+| Symptom | Stop and do this |
+|---|---|
+| Agent edits unrelated settings | Re-anchor on allowed files and revert unrelated diff |
+| Agent changes the failing test first | Restore the test; it is the done signal |
+| Root cause is still vague | Ask for file-level evidence before code |
+| The fix requires API/schema change | Pause and write the decision into a small spec |
+| The conversation gets polluted by failed attempts | Start fresh with current findings, failed fixes, and remaining signal in five bullets |
+
+This is the core loop: narrow context, root-cause explanation, smallest edit, executable verification, human diff review, and a clean recovery path.
+
 ## Close the Loop
 
 > "The big secret is always close the loop. The model needs to be able to debug and test itself." — Peter Steinberger

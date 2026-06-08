@@ -28,6 +28,8 @@ Start with [Agentic Engineering](/ai-coding-primer/learn/beginner/what-is-ai-cod
 
 Then read [Choose a Workflow and Stack](/ai-coding-primer/learn/beginner/choose-your-tool/), [Setup Checklist](/ai-coding-primer/learn/beginner/setup-checklist/), and [Your First Session](/ai-coding-primer/learn/beginner/first-session/).
 
+Before AI becomes your default learning path, read [Learning with AI](/ai-coding-primer/learn/intermediate/learning-with-ai/). Beginners need this early: the goal is faster feedback, not outsourcing the thinking that builds debugging skill.
+
 **If you're already using AI tools:**
 Start with [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/).
 

@@ -9,6 +9,26 @@ Most people make this harder than it needs to be.
 
 Do not start with vendor rankings. Start with how you want to work. Once the workflow shape is right, the stack choice gets much easier.
 
+## Quick Decision Tree
+
+Use this before reading any vendor page:
+
+| If this describes you | Start with | Why |
+|---|---|---|
+| "I want the simplest path and do most work in one editor" | integrated AI IDE | lowest setup burden and easiest navigation/edit loop |
+| "I already like my editor and do not want to migrate" | AI extension in your current editor | preserves existing habits while adding assistance |
+| "I think in tests, scripts, diffs, and terminal commands" | terminal agent workflow | strongest fit for explicit verification and long-running tasks |
+| "Code cannot leave a controlled boundary" | private/local version of the workflow above | deployment boundary is a filter on the workflow, not a separate goal |
+| "This is for a team" | governed pilot with one or two approved workflow shapes | policy, review, identity, and auditability matter before feature volume |
+
+Then pressure-test the choice with three questions:
+
+1. Can I easily review diffs and run verification?
+2. Do the privacy and deployment boundaries fit this codebase?
+3. Is the setup light enough that I will actually use it consistently?
+
+If the answer to any question is no, switch workflow shape before comparing tools.
+
 ## Step 1: Choose Your Workflow Shape
 
 ### Integrated AI IDE
