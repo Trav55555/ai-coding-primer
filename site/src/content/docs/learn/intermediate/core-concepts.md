@@ -17,7 +17,7 @@ This page defines terms used throughout the primer.
 | **Context window** | The amount of text and tool output the model can consider at once, measured in tokens. More context is not automatically better. |
 | **BYOK** | Bring Your Own Key. A setup where you provide model-provider credentials instead of using a bundled subscription. |
 | **MCP** | Model Context Protocol. A protocol for connecting AI tools to external services and data sources. |
-| **Skill** | A reusable instruction set, playbook, or convention that helps an agent perform a class of tasks consistently. |
+| **Skill** | A reusable instruction set, procedure, or convention that helps an agent perform a class of tasks consistently. |
 
 ## Context Terms
 
@@ -80,4 +80,4 @@ This distinction matters for enterprise use because privacy, compliance, and pro
 - [Understand the Five Levels](/ai-coding-primer/learn/intermediate/five-levels/) — optional workflow maturity lens
 - [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) — choosing task context
 - [MCP Deep Dive](/ai-coding-primer/learn/advanced/mcp-deep-dive/) — external tool connectivity
-- [Skills Deep Dive](/ai-coding-primer/learn/advanced/skills/) — reusable instructions and playbooks
+- [Skills Deep Dive](/ai-coding-primer/learn/advanced/skills/) — reusable instructions and procedures

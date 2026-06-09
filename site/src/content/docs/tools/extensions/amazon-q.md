@@ -1,6 +1,6 @@
 ---
 title: Amazon Q Developer
-description: AWS's AI coding assistant with deep cloud integration.
+description: AWS AI coding assistant with cloud, CLI, and enterprise workflow integrations.
 sidebar:
   order: 3
 ---
@@ -9,8 +9,7 @@ sidebar:
 Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
 :::
 
-
-[Amazon Q Developer](https://aws.amazon.com/q/developer/) is AWS's AI coding assistant, available as a VS Code/JetBrains extension and CLI.
+[Amazon Q Developer](https://aws.amazon.com/q/developer/) is AWS's AI coding assistant, available through editor integrations and CLI workflows.
 
 ## Overview
 
@@ -18,90 +17,97 @@ Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, pri
 |---|---|
 | **Type** | Extension + CLI |
 | **Open Source** | No |
-| **Best For** | AWS users, enterprise, large context |
+| **Workflow fit** | AWS-heavy development, enterprise governance, cloud-service workflows |
 
-## Key Features
+## Capability Areas
 
-- **200k Context** — One of the largest context windows
-- **AWS Integration** — Native cloud service support
-- **Code Transformation** — Automated Java upgrades, .NET porting
-- **Security Scanning** — Built-in vulnerability detection
-- **CLI Support** — `q` command for terminal
+- **Large context support** — useful for repository and documentation-heavy tasks; verify current limits in AWS docs
+- **AWS integration** — service-aware help for AWS workflows
+- **Code transformation** — Java upgrade and porting workflows where supported
+- **Security scanning** — vulnerability detection and remediation workflows where supported
+- **CLI support** — `q` command for terminal workflows
 
 ## Access Model
 
-Amazon Q has individual and enterprise-oriented access paths. The durable decision is whether you want AWS-native workflows, Bedrock alignment, and centralized AWS governance.
+Amazon Q has individual and enterprise-oriented access paths. The durable decision is whether the team needs AWS-native workflows, Bedrock alignment, and centralized AWS governance.
+
+Verify current plan terms, quotas, and enterprise controls in AWS docs before standardizing.
 
 ## Privacy
 
 | Setting | Value |
-|---------|-------|
-| Training | OFF (code not used) |
-| Data Storage | AWS security standards |
-| Self-hosted | Via Bedrock |
-| Jurisdiction | US (AWS) |
+|---|---|
+| Training | verify current plan and organization settings |
+| Data storage | governed by AWS service terms and selected configuration |
+| Self-hosted | use Bedrock or AWS-managed deployment paths where available |
+| Jurisdiction | depends on AWS region, account setup, and service terms |
 
-:::tip[IP Indemnity]
-Pro and Enterprise plans include IP indemnity coverage.
+:::note[Contract-sensitive terms]
+IP indemnity, retention, training exclusions, and enterprise controls are contract- and plan-dependent. Verify them in current AWS documentation and procurement review.
 :::
 
 ## Models
 
-- Claude Sonnet 4.5 / Opus 4.5 (via Bedrock)
-- Amazon Titan
-- Custom fine-tuned models (Enterprise)
+Model availability changes. Check current AWS and Amazon Q documentation for supported models, Bedrock integration, custom model options, and regional availability.
 
 ## Installation
 
-**VS Code:**
-```
-Extensions → Search "Amazon Q"
-Install → Sign in with AWS Builder ID
+**Editor extension:**
+
+```text
+Install the Amazon Q extension for your editor.
+Sign in with the required AWS or Builder ID account.
+Verify organization policy before using it on company repositories.
 ```
 
 **CLI:**
+
 ```bash
-# Install Q CLI
-brew install amazon-q  # macOS
-# or download from AWS
+# Example macOS install path; verify current AWS docs first
+brew install amazon-q
 ```
 
-## Key Features
+## Code Transformation
 
-### Code Transformation
+Code transformation workflows can assist with upgrades and migrations, such as supported Java or .NET migrations.
 
-Automated upgrades and migrations:
+Use these workflows with normal migration controls:
 
-```
-Q: "Upgrade this Java 8 project to Java 17"
-→ Analyzes dependencies
-→ Updates syntax
-→ Fixes deprecated APIs
-→ Generates migration report
-```
+1. inspect the generated migration plan
+2. run tests before and after transformation
+3. review dependency and runtime changes
+4. keep rollback path available
+5. verify behavior in the target runtime
 
-### Security Scanning
+## Security Scanning
+
+Example command shape:
 
 ```bash
 # Scan for vulnerabilities
 q scan --path ./src
 
-# Auto-fix security issues
+# Attempt supported security fixes
 q fix --security
 ```
 
-### AWS Service Integration
+Treat auto-fixes as proposed diffs. Review them and run project-specific tests before merging.
 
-```
-Q: "How do I set up an S3 bucket with versioning?"
-→ Generates CloudFormation/CDK code
-→ Includes IAM policies
-→ Follows AWS best practices
-```
+## AWS Service Integration
+
+Amazon Q can help produce AWS-oriented examples such as CloudFormation, CDK, IAM, and service configuration snippets.
+
+Verify generated infrastructure code against:
+
+- least-privilege IAM requirements
+- account and region constraints
+- organization policy
+- security review
+- deployment tests
 
 ## Tips
 
-- Use with AWS Toolkit extension for full integration
-- Verify current access terms separately if you depend on usage limits
-- Code transformation saves days on Java upgrades
-- Security scanning catches issues before PR
+- Use with AWS Toolkit when AWS service context is required.
+- Verify current access terms separately if you depend on usage limits.
+- Treat code transformation output as a migration proposal, not a completed migration.
+- Review security fixes and infrastructure snippets before applying them.

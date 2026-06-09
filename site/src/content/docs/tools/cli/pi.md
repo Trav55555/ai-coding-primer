@@ -56,7 +56,7 @@ Check the current provider docs before relying on a specific model or account ty
 | Jurisdiction | Your selected provider and any installed package services |
 
 :::caution[Package and extension risk]
-Pi is intentionally extensible. That is powerful, but it changes the security model.
+Pi is intentionally extensible. Extensibility changes the security model.
 
 Extensions run arbitrary TypeScript. Skills can instruct the model to run commands. Packages may bundle both. Review source before installing third-party Pi packages.
 :::
@@ -94,9 +94,9 @@ Or use interactive login:
 
 ## Workflow Fit
 
-Pi is a strong fit when you want the agent harness itself to be programmable.
+Pi fits workflows where the agent harness itself needs to be programmable.
 
-Use it when you want custom permission gates, project-specific tools, shared skills, custom compaction, or a workflow that differs from the defaults in larger vendor tools.
+Use it when the project needs custom permission gates, project-specific tools, shared skills, custom compaction, or a workflow that differs from the defaults in larger vendor tools.
 
 It is less plug-and-play than tools that bake in plan mode, MCP, subagents, and permission prompts. Pi expects you to add those patterns with extensions, packages, tmux, or project files.
 

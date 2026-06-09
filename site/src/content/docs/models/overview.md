@@ -9,93 +9,95 @@ sidebar:
 Reviewed: May 2026. Volatile fields: model availability, benchmark position, pricing, privacy terms, and provider feature support. Verify live docs and leaderboards before making current decisions.
 :::
 
+**Models** determine model-side capability: reasoning behavior, supported inputs, latency, and task fit.
 
-**Models** determine capability: how smart the AI is, how fast it responds, and what kinds of work it can do.
-
-**Providers** determine operating constraints: privacy policy, legal jurisdiction, availability, and access model.
+**Providers** determine operating constraints: privacy policy, legal jurisdiction, availability, access model, quotas, and enterprise controls.
 
 ## Models
 
-Models are the AI systems themselves. In practice, it helps more to think in capability classes than in winner lists.
+Models are the AI systems themselves. For a durable decision, group them by capability class instead of relying on a current winner list.
 
-| Model class | What it is best at |
-|-------------|--------------------|
+| Model class | Typical fit |
+|---|---|
 | frontier reasoning models | complex agentic work, debugging, and multi-file changes |
-| strong general-purpose coding models | everyday implementation and review loops |
+| general-purpose coding models | everyday implementation and review loops |
 | multimodal models | screenshots, mockups, diagrams, and visual/UI work |
 | long-context models | large investigations when context is still selective |
-| hosted open-weight models | more control without going fully local |
+| hosted open-weight models | more deployment control without fully local operations |
 
-:::tip[Visual/UI Tasks]
-Use a strong multimodal model for screenshots, mockups, and design files. That is usually the right fit for implementing UI from designs, debugging visual issues, or working from component libraries.
+:::tip[Visual/UI tasks]
+For screenshots, mockups, design files, or visual debugging, use a model and tool path that support image input. Verify current multimodal support in the tool you plan to use.
 :::
 
 ## Providers
 
 The same model family can be available through multiple providers.
 
-Examples include direct provider access, cloud-platform access, and aggregator access. Exact model availability changes quickly, so verify current provider docs before deciding.
+Provider options include direct model-provider access, cloud-platform access, and aggregator access. Exact model availability changes quickly, so verify current provider docs before deciding.
 
-## Why This Matters
+## Decision Factors
 
-### For Privacy
-Different providers have different data policies, retention defaults, subprocessors, and abuse-monitoring practices.
+### Privacy
 
-### For Enterprise
+Different providers have different data policies, retention defaults, subprocessors, abuse-monitoring practices, and training exclusions.
+
+### Enterprise controls
+
 Cloud platforms may offer data residency, private networking, audit logs, policy controls, and procurement paths that direct consumer tools do not.
 
-### For Workflow
-- Direct providers: best when you want the vendor's native tooling and latest releases
-- Aggregators: useful when you want one key, fallback routing, or easy model switching
-- Cloud platforms: useful when procurement, networking, or compliance requirements matter more than raw convenience
+### Workflow fit
 
-## Aggregators & Cloud Platforms
+- Direct providers: native tooling and early access to new releases
+- Aggregators: one key, fallback routing, or model switching
+- Cloud platforms: procurement, networking, compliance, and data-control requirements
 
-| Platform type | Why use it |
+## Aggregators and Cloud Platforms
+
+| Platform type | Primary reason to use it |
 |---|---|
-| Aggregator | one key, fallback routing, easy model switching |
+| Aggregator | one key, fallback routing, model switching |
 | Open-model host | hosted open-weight models, fine-tuning, deployment flexibility |
 | Cloud platform | procurement, private networking, data controls, compliance features |
-| Direct provider | native tooling, newest releases, simpler debugging path |
+| Direct provider | native tooling, current releases, simpler provider support path |
 
-## Open Weight Models
+## Open-Weight Models
 
-"Open weight" means the model weights are publicly available, so you can download and run them yourself. That is not the same thing as open source, which would also include training code and data.
+"Open weight" means model weights are publicly available. It does not necessarily mean open source; open source would also require training code, data, and licensing terms that permit source-level reuse.
 
-| Model | Params | Why It Matters |
-|-------|--------|----------------|
-| **Llama 4** | 405B | Meta's flagship, runs locally or hosted |
-| **DeepSeek V3.2** | 671B MoE | Strong open-weight coding model |
-| **Qwen 3** | 235B | Strong multilingual, tool use |
-| **Kimi K2.5** | 1T MoE | Moonshot's flagship, massive scale |
-| **GLM 4.7** | 320B | Zhipu's latest, strong reasoning |
-| **Mistral Large** | 123B | EU-based, good reasoning |
+Open-weight choices change quickly. Instead of relying on a static list, check current leaderboards and provider docs for:
 
-### Why Care?
+- license terms
+- parameter size and hardware requirements
+- coding and reasoning benchmark results
+- tool-use support
+- local and hosted availability
+- fine-tuning support
+- jurisdiction and provider boundary
 
-**Self-hosting**: Run on your own hardware. Zero data leaves your network and provider boundaries stay under your control.
+### Operational implications
 
-**No vendor lock-in**: Switch providers freely. Model weights are yours.
+| Requirement | Why open-weight models may fit |
+|---|---|
+| Self-hosting | code and prompts can remain inside your infrastructure |
+| Provider control | you can choose a host or run locally when hardware allows |
+| Fine-tuning | some models support domain-specific training or adaptation |
+| Offline use | local deployment can support disconnected or air-gapped environments |
 
-**Fine-tuning**: Train on your codebase for domain-specific improvements.
+### Tradeoff
 
-**Offline**: Works without internet. Air-gapped environments.
-
-### The Tradeoff
-
-Open weight models lag ~6-12 months behind frontier closed models (Claude, GPT). For most coding tasks, this gap is negligible. For cutting-edge agentic workflows, closed models still lead.
+Open-weight models may trail the strongest closed frontier models on some agentic coding tasks. The size of that gap changes with each release. For current decisions, check live benchmarks and run a small pilot on your own workflow.
 
 ### Running Locally
 
 | Tool type | What it does |
-|-----------|--------------|
+|---|---|
 | local runner | one-command local inference for individuals |
 | desktop runtime | GUI-based local model management |
 | serving stack | production-grade local or self-hosted inference |
 
-Pair with the editor or terminal workflow you already use. Note: "free" local models still require capable hardware (16GB+ RAM, GPU with 8GB+ VRAM recommended).
+Local models still require capable hardware. Treat hardware requirements as part of the operating cost.
 
 ## Next Steps
 
-- [Capabilities Matrix](/ai-coding-primer/models/capabilities/): compare what models can do
+- [Capabilities Matrix](/ai-coding-primer/models/capabilities/): compare capability classes
 - [Selection Guide](/ai-coding-primer/models/selection-guide/): choose by workflow, privacy, and capability
