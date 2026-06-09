@@ -5,61 +5,79 @@ sidebar:
   order: 1
 ---
 
-Before diving deeper, let's establish shared vocabulary.
+This page defines terms used throughout the primer.
 
 ## Key Terms
 
-| Term | What It Means |
-|------|---------------|
-| **Model** | The AI itself (e.g., GPT-5.2, Claude Sonnet 4.5). Determines capability and quality |
-| **Provider** | Company hosting the model's API (e.g., OpenAI, Anthropic). Determines pricing and terms |
-| **Agentic** | AI that acts autonomously: reads files, runs commands, iterates on errors |
-| **Context Window** | How much text the AI can "see" at once (measured in tokens). More ≠ better |
-| **BYOK** | Bring Your Own Key. Use your own API keys instead of a subscription |
-| **MCP** | Model Context Protocol. A standard for connecting AI tools to external services |
-| **Skill** | A reusable instruction set, playbook, or convention that helps an agent perform a class of tasks more reliably |
+| Term | Meaning |
+|---|---|
+| **Model** | The AI system that generates text, code, plans, or tool calls. Model choice affects reasoning ability, latency, cost, and supported inputs. |
+| **Provider** | The service or platform that hosts model access. Provider choice affects pricing, privacy terms, jurisdiction, quotas, and enterprise controls. |
+| **Agentic** | A workflow where the AI can take actions such as reading files, editing code, running commands, and iterating on errors. |
+| **Context window** | The amount of text and tool output the model can consider at once, measured in tokens. More context is not automatically better. |
+| **BYOK** | Bring Your Own Key. A setup where you provide model-provider credentials instead of using a bundled subscription. |
+| **MCP** | Model Context Protocol. A protocol for connecting AI tools to external services and data sources. |
+| **Skill** | A reusable instruction set, playbook, or convention that helps an agent perform a class of tasks consistently. |
 
-## Context Concepts
+## Context Terms
 
-| Term | What It Means |
-|------|---------------|
-| **Context Engineering** | Building systems to provide the right information and tools to the model |
-| **Context Rot** | When too much irrelevant context makes the AI "dumber" |
-| **Context Budget** | A practical limit for how much context to load before quality starts to degrade |
-| **Subagent** | A separate AI instance launched for investigation, keeping main context clean |
+| Term | Meaning |
+|---|---|
+| **Context engineering** | Designing what information, tools, and instructions the model receives for a task. |
+| **Context rot** | Degraded output caused by irrelevant, stale, contradictory, or excessive context. |
+| **Context budget** | A practical limit on how much information to load before attention and output quality degrade. |
+| **Subagent** | A separate AI session or agent used for investigation, summarization, or isolated work. |
 
-## Workflow Concepts
+## Workflow Terms
 
-| Term | What It Means |
-|------|---------------|
-| **Composer/Agent Mode** | Multi-file editing mode (vs. single-file autocomplete) |
-| **Prompt** | Your instruction to the AI. Quality of prompt = quality of output |
-| **Verification** | Having the AI check its own work (tests, linter, type checker) |
-| **Close the Loop** | Design workflow so the agent can verify its own output |
+| Term | Meaning |
+|---|---|
+| **Composer / agent mode** | A multi-file editing mode, distinct from single-line or single-file autocomplete. |
+| **Prompt** | The instruction, question, or task description given to the AI. |
+| **Verification** | A check that can falsify or confirm the result, such as a test, type check, lint command, build, screenshot, or expected output. |
+| **Close the loop** | Design the workflow so the agent can run or observe verification results and revise based on them. |
 
 ## Context Budget
 
-There is no strong primary-source basis for a universal `40%` threshold. Treat hard percentages as heuristics, not laws.
+There is no strong primary-source basis for a universal context threshold such as `40%`. Treat hard percentages as heuristics, not laws.
 
-The safer idea is simpler: quality drops before the window is full, especially when context is noisy. Use selective retrieval, compaction, and project context files instead of stuffing everything into one prompt.
+The more defensible claim is narrower: output quality can degrade before the context window is full, especially when context is noisy. Use selective retrieval, compaction, and project context files instead of putting everything into one prompt.
 
-If you want a working rule, think in ranges rather than one magic number. The practical target depends on the model, the task, and how clean the context is.
+A practical context budget depends on:
+
+- model behavior
+- task complexity
+- relevance of loaded files
+- length and quality of tool output
+- amount of stale conversation history
 
 ## Models vs Providers
 
-**Models** determine capability — how smart the AI is, how fast it responds.
+A model and a provider are separate decisions.
 
-**Providers** determine terms — pricing, privacy policy, legal jurisdiction.
+**Model choice** affects:
 
-The same model can be available through multiple providers:
-- Claude Sonnet 4.5 is available via Anthropic, AWS Bedrock, and Google Vertex
-- GPT-5.2 is available via OpenAI and Azure OpenAI
+- reasoning ability
+- code-generation quality
+- supported modalities
+- latency
+- cost profile
 
-This matters for enterprise (data residency, compliance) and cost optimization.
+**Provider choice** affects:
+
+- data-retention terms
+- training exclusions
+- legal jurisdiction
+- enterprise controls
+- quota and billing model
+
+The same model may be available through multiple providers. For example, a model can be offered directly by its creator and also through cloud platforms such as AWS, Azure, or Google Cloud.
+
+This distinction matters for enterprise use because privacy, compliance, and procurement depend on provider terms, not only on model capability.
 
 ## Next Steps
 
-- [Understand the Five Levels](/ai-coding-primer/learn/intermediate/five-levels/) — where you are and where to aim
-- [Learn Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) — the key skill
-- [MCP Deep Dive](/ai-coding-primer/learn/advanced/mcp-deep-dive/) — the connectivity layer
+- [Understand the Five Levels](/ai-coding-primer/learn/intermediate/five-levels/) — optional workflow maturity lens
+- [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) — choosing task context
+- [MCP Deep Dive](/ai-coding-primer/learn/advanced/mcp-deep-dive/) — external tool connectivity
 - [Skills Deep Dive](/ai-coding-primer/learn/advanced/skills/) — reusable instructions and playbooks

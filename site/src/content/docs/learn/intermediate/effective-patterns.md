@@ -1,11 +1,11 @@
 ---
 title: Effective Patterns
-description: High-signal approaches for AI-assisted development.
+description: Procedures for verifiable AI-assisted development.
 sidebar:
   order: 4
 ---
 
-These are the patterns that keep showing up when AI-assisted development actually goes well.
+These patterns reduce common failure modes in AI-assisted development. They focus on verification, bounded scope, useful context, and reviewable diffs.
 
 :::note[Evidence guide]
 Not every pattern here has the same evidence level.
@@ -16,62 +16,55 @@ Not every pattern here has the same evidence level.
 The exact pattern framing is editorial guidance drawn from those sources and practitioner convergence.
 :::
 
-## Verification First
+## Require Verification
 
-> "Give Claude a way to verify its work. This is the **single highest-leverage thing** you can do." — Anthropic
+AI output should be checked against an observable signal.
 
-**Verification is not optional.** It's the foundation everything else builds on.
+Useful verification signals include:
 
-### Why Verification Matters
+| Method | Example | Best for |
+|---|---|---|
+| **Tests** | `pytest`, `npm test`, `cargo test` | behavior and logic |
+| **Type checker** | `mypy`, `tsc`, `cargo check` | type and interface errors |
+| **Linter** | `eslint`, `ruff`, `clippy` | common bugs and style rules |
+| **Build** | `npm run build`, `cargo build` | compilation and bundling |
+| **Screenshot** | browser screenshot after UI change | visual UI checks |
+| **Expected output** | command output equals a known value | CLIs and data transforms |
 
-- AI produces plausible-looking code that may be subtly wrong
-- Without verification, you're trusting output you can't validate
-- Verification closes the loop. The agent can see its own mistakes and respond to them.
+A useful prompt names the check:
 
-### Ways to Provide Verification
-
-| Method | Example | Best For |
-|--------|---------|----------|
-| **Tests** | "Run `pytest` after changes" | Logic correctness |
-| **Type checker** | "Run `mypy` / `tsc`" | Type safety |
-| **Linter** | "Run `eslint` / `ruff`" | Style, common bugs |
-| **Build** | "Run `cargo build`" | Compilation |
-| **Screenshot** | "Take a screenshot" | UI work |
-| **Expected output** | "Result should be X" | Specific behavior |
-
-### A Simple TDD Loop
-
-One reliable version looks like this:
-
-```
-1. Write the test first (or have the AI write it)
-2. Commit the test
-3. Prompt: "Make this test pass. Don't modify the test."
+```text
+Make the smallest change that fixes this bug.
+After editing, run `npm test -- user-validation.test.ts` and report the result.
 ```
 
-This forces the AI to produce code that demonstrably works.
+### Test-first loop
 
-Verification matters even when raw productivity results are mixed.
+One reliable test-first sequence is:
 
-For the evidence, see the [Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/) and [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/).
+```text
+1. Write or confirm the failing test.
+2. Keep the test fixed unless the requirement is wrong.
+3. Ask the agent to make the test pass.
+4. Run the targeted test and then a broader related check.
+5. Review the diff before accepting the change.
+```
 
-:::caution[If AI writes the test]
-Review AI-generated tests critically.
+If the agent writes the test, review the test before using it as the done signal.
 
-Ask: "Does this test encode my requirements, or just the AI's assumptions?"
+:::caution[AI-generated tests]
+Ask whether the test encodes the requirement or only the agent's assumption.
 
-Tests should specify what the code *should* do, not describe what the code *does*. See [Lazy Testing](/ai-coding-primer/learn/intermediate/common-mistakes/#mistake-8-lazy-testing).
+Tests should specify what the code should do. They should not merely describe the current implementation. See [Lazy Testing](/ai-coding-primer/learn/intermediate/common-mistakes/#mistake-8-lazy-testing).
 :::
 
-## Worked Example: Fix One Bug Without Losing the Thread
-
-Here is what these patterns look like together.
+## Worked Example: Bug Fix With Verification
 
 ### Situation
 
 A settings form saves successfully, but the updated value disappears after refresh. You have a failing test command and one likely UI file.
 
-### 1. Give the agent a narrow job
+### 1. Start with a narrow diagnosis
 
 ```text
 We are fixing one bug: the settings page appears to save timezone changes,
@@ -89,9 +82,9 @@ Relevant files:
 First explain the likely root cause from these files. Do not edit yet.
 ```
 
-Good output names a specific boundary: form state, API payload, persistence response, or reload path. If the answer is generic, ask it to inspect narrower code before editing.
+A useful diagnosis names a specific boundary: form state, API payload, persistence response, or reload path. If the explanation is generic, ask for narrower file-level evidence before editing.
 
-### 2. Ask for the smallest patch and verification
+### 2. Ask for the smallest patch
 
 ```text
 Implement the smallest fix for that root cause.
@@ -108,16 +101,16 @@ After edits, run:
 Then report changed files, test results, and the exact behavior fixed.
 ```
 
-### 3. Review the diff before continuing
+### 3. Review the diff
 
-Do not just read the agent's summary. Check whether the diff matches the causal story:
+Check whether the diff matches the diagnosis:
 
 - Did it change the persistence path that caused the bug?
 - Did it leave unrelated settings fields alone?
 - Did it preserve or add regression coverage?
 - Can you explain the fix in one paragraph?
 
-A good handoff sounds like this:
+A concise handoff should look like this:
 
 ```text
 Root cause: the form updated local state but sent `timezoneLabel` instead of
@@ -126,132 +119,133 @@ the old value. The patch sends the expected key and keeps the existing response
 shape. The regression test now passes.
 ```
 
-### 4. Recovery if the loop goes bad
+### 4. Recover if the loop degrades
 
-| Symptom | Stop and do this |
+| Symptom | Recovery step |
 |---|---|
 | Agent edits unrelated settings | Re-anchor on allowed files and revert unrelated diff |
 | Agent changes the failing test first | Restore the test; it is the done signal |
 | Root cause is still vague | Ask for file-level evidence before code |
 | The fix requires API/schema change | Pause and write the decision into a small spec |
-| The conversation gets polluted by failed attempts | Start fresh with current findings, failed fixes, and remaining signal in five bullets |
+| Failed attempts pollute the session | Start fresh with findings, failed fixes, and remaining signal in five bullets |
 
-This is the core loop: narrow context, root-cause explanation, smallest edit, executable verification, human diff review, and a clean recovery path.
+The loop is: narrow context, root-cause explanation, smallest edit, executable verification, human diff review, and recovery if the session degrades.
 
-## Close the Loop
+## Close the Verification Loop
 
-> "The big secret is always close the loop. The model needs to be able to debug and test itself." — Peter Steinberger
+Set the workflow up so the agent can observe failure and success:
 
-Set the workflow up so the agent can check its own work:
+- have it run tests, not only write tests
+- use linters and type checkers that produce immediate errors
+- provide expected output for commands or data transformations
+- use screenshots or DOM checks for UI work
 
-- Have it **run** tests, not just write them
-- Use linters that catch errors immediately
-- Build CLIs for common operations
+## Discuss Before Implementation
 
-## Talk Before You Build
+Use discussion before code when the design is still ambiguous.
 
-**Instead of:** "Build a login system"
-
-**Try:** "Let's discuss how authentication should work in this app. What are my options?"
-
-This prevents premature building and surfaces better solutions.
-
-## Small Iterations
-
-Never ask the AI to "build the whole app." Break it down:
-
-1. "Define the data structures in `models.py`"
-2. "Implement the repository pattern for these models"
-3. "Write unit tests for the business logic"
-
-Each step is verifiable before moving to the next.
-
-## Less Context, Better Results
-
-> "The more the model knows, the dumber it gets." — Theo (t3.gg)
-
-- **Don't** dump your entire codebase into context
-- **Do** provide only relevant files
-- **Do** give tools to search rather than pre-loading
-
-See [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) for the evidence and caveats behind this claim.
-
-## Clone and Imitate
-
-> "Clone datasette/datasette-enrichments from GitHub to /tmp and imitate the testing patterns it uses." — Simon Willison
-
-The fastest way to get consistent output is to show an example:
-
-```
-Clone https://github.com/simonw/datasette to /tmp.
-Look at how tests are structured in tests/.
-Now write tests for my new plugin following the same patterns.
+```text
+Before implementing, explain the viable authentication approaches for this app.
+List tradeoffs, required files, and the smallest implementation path.
 ```
 
-Use this when you need:
-- Setting up test patterns
-- Adopting library conventions
-- Replicating a coding style
+This separates design choices from implementation. It also exposes assumptions before they become code.
 
-## Use Subagents for Research
+## Use Small Iterations
 
-If research lives in the same context as implementation, the main thread gets noisy fast. Let a subagent do the reading and come back with file paths and patterns.
+Avoid asking for an entire feature in one prompt. Break the work into verifiable slices:
 
+1. define data structures
+2. implement core logic
+3. add tests for behavior
+4. integrate UI or API surface
+5. run final checks
+
+Each slice should have a validation command or review artifact.
+
+## Limit Context to the Task
+
+Large context is not automatically useful context.
+
+- Provide relevant files and failure signals.
+- Give the agent search tools for secondary files.
+- Exclude unrelated logs, history, and documents.
+
+See [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) for evidence and caveats.
+
+## Provide Examples When Style Matters
+
+If output needs to match a project style, provide a nearby example or ask the agent to inspect one.
+
+```text
+Look at how tests are structured in tests/settings/*.test.ts.
+Write the new test using the same style and helper functions.
 ```
-Use subagents to investigate how authentication is implemented 
-in this codebase. Report back with file paths and patterns.
+
+Use examples for:
+
+- test patterns
+- library conventions
+- naming style
+- error handling
+- file organization
+
+## Isolate Research From Implementation
+
+Research-heavy tasks can pollute the implementation context. Use a separate session or subagent for exploration.
+
+```text
+Investigate how authentication is implemented in this codebase.
+Report back with file paths, patterns, and open questions.
+Do not modify files.
 ```
 
-What you get:
-- Main context stays clean
-- Research happens in isolation
-- You get a summary, not raw exploration
+Useful outputs from research sessions:
 
-Best fit:
-- Exploring unfamiliar codebases
-- Looking up documentation
-- Investigating multiple approaches
-- Any task that's "read a lot, summarize a little"
+- entry points
+- relevant files
+- observed conventions
+- risks and unknowns
+- recommended next workflow
 
-## Start with a Spec
+## Start Larger Work With a Spec
 
-Loose prompts are fine for tiny changes. They break down on real feature work.
+Loose prompts are acceptable for tiny changes. Larger tasks need a short source of truth.
 
-Before a larger task, write a small spec with:
+A useful spec includes:
 
 - requirements
 - acceptance criteria
 - out-of-scope items
-- constraints or non-negotiables
+- constraints and non-negotiables
+- verification commands
 
-Then prompt the model to read the spec and discuss the plan before writing code.
-
-This is the easiest step up from improvising.
+Ask the model to read the spec and discuss the plan before writing code.
 
 ## Use a Harness for Long Tasks
 
-When work spans multiple sessions, keep a tiny set of persistent artifacts:
+When work spans multiple sessions, keep a small set of persistent artifacts:
 
-- `PLAN.md` — what remains to be done
+- `PLAN.md` — remaining work
 - `STATE.md` — current status and decisions
-- `spec.md` or equivalent — the source of truth for intent
+- `spec.md` or equivalent — source of truth for intent
 
-This keeps the task stable even when the model's conversational context gets compacted or cleared.
+These artifacts preserve task state when conversation context is compacted or cleared.
 
-## Anti-Patterns to Avoid
+## Anti-Patterns
 
-| Anti-Pattern | Problem | Fix |
-|--------------|---------|-----|
-| **No verification** | Can't tell if code works | Always include test/lint step |
-| **Giant prompts** | Context rot | Break into smaller asks |
-| **"Fix it" loops** | Failed attempts pollute context | Clear and rewrite prompt |
-| **Skipping review** | Shipping code you don't understand | Always read diffs |
+| Anti-pattern | Problem | Correction |
+|---|---|---|
+| **No verification** | Result cannot be checked | Include a test, lint, build, screenshot, or expected output |
+| **Giant prompts** | Irrelevant context reduces output quality | Break work into smaller asks |
+| **Repeated `fix it` loops** | Failed attempts pollute context | Clear context and restate the task precisely |
+| **Skipping review** | Code may be wrong or unmaintainable | Read diffs and verify behavior before accepting |
 
 ## Next Steps
 
 - [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/): common end-to-end workflows
-- [Learn Common Mistakes](/ai-coding-primer/learn/intermediate/common-mistakes/): avoid the pitfalls
-- [Troubleshooting](/ai-coding-primer/learn/intermediate/troubleshooting/): when things go wrong
+- [Common Mistakes](/ai-coding-primer/learn/intermediate/common-mistakes/): failure modes to avoid
+- [Troubleshooting](/ai-coding-primer/learn/intermediate/troubleshooting/): recovery steps
 - [Research Overview](/ai-coding-primer/research/overview/): empirical studies and caveats
 
 ## Bibliography

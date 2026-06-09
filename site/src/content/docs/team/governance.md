@@ -1,50 +1,61 @@
 ---
 title: Governance and Rollout
-description: Turn AI coding from ad hoc tool usage into a governed team workflow.
+description: Define policy, permissions, and verification for team AI coding workflows.
 ---
 
-Teams usually do not fail because they picked the wrong product first. They fail because adoption moves faster than policy, verification, and permission boundaries.
+Team adoption needs policy before broad tool access. The important decisions are workflow shape, data boundary, permissions, and verification requirements.
 
-This page is about making AI coding usable at team scale without turning it into a free-for-all or a procurement spreadsheet.
+This page provides a compact governance model for team AI coding use.
 
-## What Good Governance Actually Does
+## What Governance Should Define
 
-Good governance should:
+A useful policy defines:
 
-- make it clear which workflows are allowed
-- define where code can go and under what terms
-- set verification expectations for AI-authored changes
-- keep permissions narrower than convenience pushes them
-- make rollout reversible if a tool stops fitting
+- which workflows are allowed
+- where code and data can go
+- which repositories or data classes are in scope
+- what permissions agents can receive
+- what verification is required before merge
+- how exceptions are approved and reviewed
+- how the rollout can be reversed or narrowed
 
-If governance only produces long vendor checklists, it is not doing its job.
+A long vendor checklist is not enough if it does not answer those questions.
 
-## Start with Workflow and Risk, Not Brand
+## Start with Workflow and Risk
 
 Before comparing vendors, decide:
 
-1. Which workflow shapes are acceptable for your team?
-2. Which deployment boundaries are acceptable?
-3. Which repositories or data classes are in scope?
-4. What must be verified before AI-authored code is merged?
+1. Which workflow shapes are allowed?
+2. Which deployment boundaries are allowed?
+3. Which repositories, clients, or data classes are excluded?
+4. Which agent permissions require approval?
+5. What must be verified before AI-authored code is merged?
 
-These decisions narrow the tool field much faster than feature comparisons do.
+These decisions reduce the tool field without relying on current feature rankings.
 
 ## The Four Policy Questions
 
 ### 1. Where can code go?
 
-- consumer hosted tools allowed or not?
-- BYOK allowed or required?
-- local or self-hosted needed for some work?
-- regulated or client repositories excluded by default?
+Define whether the team allows:
+
+- consumer hosted tools
+- enterprise hosted tools
+- BYOK workflows
+- local or self-hosted tools
+- regulated, client, or sensitive repositories
 
 ### 2. What permissions can agents have?
 
-- read-only by default?
-- terminal access allowed?
-- network access allowed?
-- sandbox required for higher-risk workflows?
+Define whether agents can:
+
+- read only the current project
+- write files
+- run terminal commands
+- access the network
+- install packages
+- use MCP servers, browser tools, or plugins
+- operate only inside a sandbox
 
 ### 3. What verification is mandatory?
 
@@ -52,26 +63,29 @@ At minimum, define whether AI-authored changes require:
 
 - human diff review
 - tests or build checks
+- typecheck or lint
 - security scanning
-- explanation in the PR for non-trivial changes
+- dependency review
+- PR explanation for non-trivial changes
 
-If you do not define this, the team will drift into "it looked right" review.
+If verification is not defined, review standards will vary by person and task.
 
-### 4. How will you evaluate success?
+### 4. How will the rollout be evaluated?
 
-Track:
+Track signals such as:
 
 - review time
 - rework rate
 - defect rate
 - security findings
 - developer-reported friction
+- policy exceptions
 
-Do not measure success only by code volume or prompt count.
+Do not use code volume or prompt count as the primary measure.
 
 ## Minimal Approval Matrix
 
-Use a matrix like this before broad rollout. It turns vague comfort levels into explicit permission and verification rules.
+Use a matrix like this before broad rollout.
 
 | Use case | Default approval | Permission boundary | Required verification |
 |---|---|---|---|
@@ -82,27 +96,27 @@ Use a matrix like this before broad rollout. It turns vague comfort levels into 
 | Sensitive, regulated, or client repositories | approved tool and deployment boundary only | no hosted consumer tools unless contractually approved | policy check, audit trail, required human review |
 | High-permission agents, MCP servers, plugins, or browser automation | explicit approval per workflow | sandboxed; least privilege; network and filesystem access enumerated | tool provenance review, command log, rollback plan |
 
-The exact rows will vary by organization. The important part is that approval depends on repository risk, data exposure, and agent permissions rather than enthusiasm for a tool.
+The exact rows vary by organization. Approval should depend on repository risk, data exposure, and agent permissions.
 
-## A Practical Rollout Pattern
+## Rollout Pattern
 
 ### Phase 1: Bounded pilot
 
 - choose one or two workflow shapes
-- pick low-to-medium risk repositories
+- use low-to-medium risk repositories
 - define mandatory verification checks
-- keep the pilot short and review outcomes quickly
+- review outcomes after a short period
 
 ### Phase 2: Standardize the baseline
 
 - publish approved workflow shapes
 - publish allowed deployment boundaries
 - publish minimum review and verification rules
-- add starter context files and setup guidance
+- provide starter context files and setup guidance
 
-### Phase 3: Expand carefully
+### Phase 3: Expand by risk tier
 
-- allow more repositories only after pilot evidence is good
+- add repositories only after pilot evidence is reviewed
 - separate low-risk and high-risk usage patterns
 - add stronger controls before granting broader permissions
 
@@ -110,32 +124,35 @@ The exact rows will vary by organization. The important part is that approval de
 
 - revisit tool policy quarterly
 - revisit privacy and retention assumptions on a fixed schedule
-- trim stale internal guidance aggressively
+- remove stale internal guidance
+- review exceptions and permission expansions
 
-## Default Team Rules That Usually Work
+## Default Team Rules
 
-- AI-generated code is never exempt from review.
-- Verification-first workflows are mandatory for non-trivial changes.
-- Sensitive repositories need tighter deployment and permission boundaries.
-- Vendor claims are not policy; live verification and contracts are.
-- Agents do not get broad permissions by default just because they are convenient.
+These defaults are suitable for many teams:
+
+- AI-generated code is not exempt from review.
+- Non-trivial changes require verification before merge.
+- Sensitive repositories require tighter deployment and permission boundaries.
+- Vendor claims are not policy; current contracts and live docs are.
+- Broad agent permissions require explicit approval.
+- Package installs, MCP servers, plugins, and browser tools are supply-chain events.
 
 ## What Belongs in Team Policy
 
-Keep the policy short. It should usually cover:
+Keep the policy short enough to use. It should cover:
 
 - approved workflow shapes
 - approved deployment models
+- repository and data risk tiers
 - verification requirements
 - permission boundaries
 - security escalation path
-- review cadence for tool and provider assumptions
-
-That is enough to make decisions consistent without creating a giant governance manual nobody reads.
+- review cadence for tools and provider assumptions
 
 ## Minimal Team Rollout Policy Template
 
-Use this as a starting point. Keep it short enough that engineers actually read it.
+Use this as a starting point.
 
 ```md
 # AI Coding Policy
@@ -176,26 +193,25 @@ Every non-trivial AI-authored change must include:
 - Re-review approved tools, privacy terms, benchmark assumptions, and policy exceptions monthly or quarterly.
 ```
 
-Adapt the scope and risk tiers to your organization. The important part is not the exact wording; it is making permissions, data boundaries, and verification explicit before broad rollout.
+Adapt the scope and risk tiers to your organization. The important requirement is that permissions, data boundaries, and verification are explicit before broad rollout.
 
-## Failure Modes to Avoid
+## Failure Modes
 
-| Failure mode | What it looks like | Better move |
+| Failure mode | What it looks like | Correction |
 |---|---|---|
 | Tool-first rollout | product selection before policy | set workflow and risk boundaries first |
-| Convenience creep | agents quietly get more permissions over time | require explicit permission boundaries |
-| Verification theater | AI used everywhere, review standards unchanged or vague | define mandatory checks by risk level |
-| Stale policy | retention/privacy assumptions frozen from old docs | review on a fixed cadence |
-| One-policy-for-everything | same rules for toy repos and sensitive code | tier by repository and data risk |
+| Permission creep | agents gradually receive broader access | require explicit permission tiers and review |
+| Verification theater | AI use expands while review standards remain vague | define checks by risk level |
+| Stale policy | retention or privacy assumptions come from old docs | review on a fixed cadence |
+| One policy for every repository | toy projects and sensitive systems use identical rules | tier by repository and data risk |
 
-## How This Connects to the Rest of the Primer
+## Related Pages
 
-- Use [Workflow and Stack Criteria](/ai-coding-primer/tools/comparison/) after your workflow and risk boundaries are clear.
-- Use [Security Risks](/ai-coding-primer/team/security-risks/) to understand the threats behind the controls.
-- Use [Adoption & Trends](/ai-coding-primer/research/adoption-trends/) and [Code Quality & Security](/ai-coding-primer/research/code-quality-security/) for evidence backstops.
+- [Workflow and Stack Criteria](/ai-coding-primer/tools/comparison/) — use after workflow and risk boundaries are clear
+- [Security Risks](/ai-coding-primer/team/security-risks/) — threat patterns behind the controls
+- [Adoption & Trends](/ai-coding-primer/research/adoption-trends/) — adoption evidence and caveats
+- [Code Quality & Security](/ai-coding-primer/research/code-quality-security/) — quality and security findings
 
-## Bottom Line
+## Summary
 
-Good team adoption is not about finding the perfect AI tool.
-
-It is about choosing a workflow the team can verify, defining the boundaries that matter, and reviewing those assumptions before convenience quietly rewrites the policy for you.
+Team AI coding policy should define allowed workflows, data boundaries, permissions, verification, and review cadence. Tool selection comes after those constraints are known.

@@ -1,59 +1,60 @@
 ---
 title: Setup Checklist
-description: Configure your environment for AI-assisted development.
+description: Configure project feedback loops before using AI coding tools.
 sidebar:
   order: 4
 ---
 
-AI agents work better when the environment answers back quickly. Before you start prompting, make sure the project can actually surface errors.
+Before using an AI coding tool on a project, make sure the project can surface errors quickly. The agent needs the same feedback a developer would use: type errors, lint errors, test failures, and build output.
 
-## What You Need Before You Start
+## Required Feedback Signals
 
-| Tool | Purpose | Why It Matters |
-|------|---------|----------------|
-| **Language Server (LSP)** | Real-time type checking, error detection | AI sees mistakes instantly |
-| **Linter** | Style issues, common bugs | Immediate feedback on quality |
-| **Formatter** | Consistent style | AI doesn't fight your preferences |
+| Tool | Purpose | Verification signal |
+|---|---|---|
+| **Language Server (LSP)** | Real-time type checking and symbol information | inline errors, hover types, go-to-definition |
+| **Linter** | Style issues and common bugs | repeatable lint command |
+| **Formatter** | Consistent code style | repeatable format command or editor integration |
+| **Test or build command** | Behavior and integration checks | command that exits non-zero on failure |
 
 ## Language Server Setup
 
-Install the LSP for your language:
+Install or enable the language server for your stack:
 
 | Language | LSP | Install |
-|----------|-----|---------|
+|---|---|---|
 | TypeScript | typescript-language-server | `npm i -g typescript-language-server typescript` |
-| Python | mypy | `uv tool install mypy` or `pip install mypy` |
+| Python | mypy or pyright-compatible tooling | `uv tool install mypy` or install your editor's Python language tooling |
 | Go | gopls | `go install golang.org/x/tools/gopls@latest` |
 | Rust | rust-analyzer | `rustup component add rust-analyzer` |
-| C# | OmniSharp | Included with C# extension |
+| C# | OmniSharp or C# Dev Kit language services | included with common C# editor extensions |
 
-:::note[Language-Specific IDEs]
-If you use IntelliJ, PyCharm, GoLand, or other JetBrains IDEs, language intelligence is already built in. Same for Visual Studio (not VS Code) with C#/.NET.
+:::note[Language-specific IDEs]
+JetBrains IDEs and Visual Studio include language intelligence for their primary ecosystems. You may not need a separate LSP install.
 :::
 
 ## Linter Setup
 
-| Language | Linter | Config File |
-|----------|--------|-------------|
+| Language | Linter | Common config file |
+|---|---|---|
 | TypeScript | ESLint | `eslint.config.js` |
 | Python | Ruff | `pyproject.toml` or `ruff.toml` |
 | Go | golangci-lint | `.golangci.yml` |
 | Rust | Clippy | `clippy.toml` |
-| C# | dotnet format | `.editorconfig` |
+| C# | dotnet format / analyzers | `.editorconfig` |
 
 ## Formatter Setup
 
-| Language | Formatter | Config File |
-|----------|-----------|-------------|
+| Language | Formatter | Common config file |
+|---|---|---|
 | TypeScript | Prettier | `.prettierrc` |
 | Python | Ruff / Black | `pyproject.toml` |
-| Go | gofmt | (built-in, no config) |
+| Go | gofmt | built in |
 | Rust | rustfmt | `rustfmt.toml` |
 | C# | dotnet format | `.editorconfig` |
 
-## Verification Commands
+## Baseline Verification Commands
 
-Run these **before** starting an AI session. If they fail, fix them first. Agents are bad at distinguishing their own mistakes from the ones you handed them.
+Run the relevant commands before starting an AI session. If the baseline is already failing, record or fix that first. Otherwise the agent may spend time on pre-existing failures rather than the change you asked for.
 
 ```bash
 # TypeScript
@@ -72,21 +73,35 @@ cargo clippy
 dotnet build
 ```
 
-## Why This Matters
+Use the commands your project actually supports. The examples above are starting points, not universal requirements.
 
-> "Agents have no long-term memory. They rediscover 'ghost errors' every session, try to fix them, fail, and get confused."
+## Failure Conditions
 
-If the environment is already broken, the agent usually wastes time chasing ghosts.
+Do not start an implementation task until you know:
+
+- which command checks the changed area
+- whether that command currently passes
+- which files already have known errors
+- whether generated or vendored files should be excluded
+
+If the baseline is not clean, include that fact in the prompt:
+
+```text
+Baseline note: `npm run lint` currently fails in legacy/admin.ts.
+Do not edit that file. For this task, verify with `npm test -- user-form.test.ts`.
+```
 
 ## Quick Checklist
 
 Before your first AI session:
 
-- [ ] LSP installed and working (hover shows types, errors appear inline)
-- [ ] Linter configured and passing
-- [ ] Formatter configured (optional but recommended)
-- [ ] No pre-existing errors in files you'll be editing
+- [ ] Language intelligence is installed and showing local errors.
+- [ ] Linter is configured and you know the command to run.
+- [ ] Formatter is configured or intentionally omitted.
+- [ ] Relevant test/build command is known.
+- [ ] Pre-existing failures are fixed or documented.
+- [ ] Sensitive files are excluded from tool access where needed.
 
 ## Next Steps
 
-Environment ready? [Start your first session →](/ai-coding-primer/learn/beginner/first-session/)
+Environment configured? Start with a small verified task: [Your First Session →](/ai-coding-primer/learn/beginner/first-session/)

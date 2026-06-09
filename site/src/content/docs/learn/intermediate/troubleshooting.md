@@ -1,133 +1,164 @@
 ---
 title: When It's Not Working
-description: Recovery strategies for AI-assisted development.
+description: Diagnostic and recovery steps for AI-assisted development.
 sidebar:
   order: 6
 ---
 
-Signs the AI is struggling, and what to do about it.
+Use this page when the agent is producing repeated errors, broad diffs, or output you cannot verify.
 
 ## Warning Signs
 
-| Signal | What's Happening | What to Do |
-|--------|------------------|------------|
-| Same error 3+ times | Context polluted with failed attempts | Revert all changes, start fresh |
-| "I'll try a different approach" repeatedly | AI is guessing, not understanding | Stop. Provide more context or simplify |
-| Changes unrelated files | AI misunderstood scope | Be explicit: "Only modify X" |
-| Output looks plausible but wrong | Hallucination | Test immediately. Don't trust unverified code |
-| 10+ iterations for simple task | Wrong tool or wrong problem | Do it yourself |
+| Signal | Likely cause | Recovery step |
+|---|---|---|
+| Same error appears three or more times | Context contains failed attempts | Revert changes and restart with a shorter task summary |
+| Agent repeatedly says it will try another approach | Context or evidence is insufficient | Stop and provide a smaller task or stronger evidence |
+| Unrelated files are changed | Scope is unclear | State allowed files and non-goals explicitly |
+| Output looks plausible but fails checks | Hallucinated behavior, API, or assumption | Run the verification signal and inspect the diff |
+| Simple task takes many iterations | Wrong tool, wrong framing, or insufficient context | Do it manually or restart with a narrower task |
 
-## The Recovery Pattern
+## Recovery Pattern
 
-When things go wrong:
+When the session degrades, reset the state before continuing:
 
+```bash
+# Preserve work if needed
+git status --short
+git diff > /tmp/ai-attempt.diff
+
+# Then revert unwanted changes using your normal git workflow
 ```
-1. git stash or git checkout .     # Revert everything
-2. Close the chat/session          # Fresh context
-3. Simplify the task               # Smaller scope
-4. Add explicit constraints        # "Don't touch X, only modify Y"
-5. Try again with one specific ask # Not "build feature" but "add function"
+
+Then restart with a smaller prompt:
+
+```text
+Current task:
+Expected behavior:
+Relevant files:
+Known failure signal:
+Allowed files:
+Do not change:
+Verification command:
 ```
 
-## When to Give Up
+## When to Switch to Manual Work
 
-Code it yourself when:
+Switch to manual implementation when:
 
-- You've explained the same thing 3 different ways with no improvement
-- The fix would take you 5 minutes but the AI has burned 20
-- The AI keeps "fixing" things that weren't broken
-- You don't understand the AI's solution well enough to maintain it
+- the same constraint has been explained repeatedly without improvement
+- a small manual fix is taking longer through the agent
+- the agent keeps changing working code outside the task boundary
+- you cannot understand or maintain the proposed solution
 
-**This is not failure.** Some tasks are faster by hand. Knowing when to switch is a skill.
+Manual work is the correct fallback when it gives a clearer result with less review risk.
 
 ## Specific Situations
 
-### AI Keeps Breaking Working Code
+### Agent Breaks Working Code
 
-**Symptoms:** Each "fix" introduces new problems. Tests that passed now fail.
+**Symptoms:** Each attempted fix introduces new failures. Tests that previously passed now fail.
 
-**Cause:** AI doesn't have full context of dependencies.
+**Likely cause:** The agent does not have enough dependency or interface context.
 
-**Fix:**
-1. Revert to last working state
-2. Provide more context about what other code depends on this
-3. Add constraint: "Don't change the function signature" or "These tests must still pass"
+**Recovery:**
 
-### AI Hallucinates APIs or Packages
+1. Revert to the last working state.
+2. Identify the public interfaces and dependent tests.
+3. Add constraints such as:
+   - `Do not change the function signature.`
+   - `These tests must still pass: ...`
+   - `Only modify these files: ...`
+4. Ask for a smaller patch.
 
-**Symptoms:** AI suggests packages that don't exist, or uses API methods that don't exist.
+### Agent Hallucinates APIs or Packages
 
-**Cause:** Training data cutoff, or confusion between similar libraries.
+**Symptoms:** Suggested packages do not exist, or API methods are not available in the installed version.
 
-**Fix:**
-1. Provide the actual API documentation
-2. Show an example of correct usage from the real docs
-3. Use [Context7](https://context7.com) MCP for up-to-date documentation
+**Likely cause:** Training data is stale, documentation is missing from context, or similar libraries are being confused.
 
-### AI Produces Verbose/Over-Engineered Code
+**Recovery:**
 
-**Symptoms:** Simple request results in 500 lines with factories, interfaces, and abstractions.
+1. Provide current official documentation or local type definitions.
+2. Show a real example from the project or dependency docs.
+3. Require a verification step such as typecheck, build, or package-resolution check.
+4. Do not install suggested packages until their provenance is verified.
 
-**Cause:** AI defaults to "enterprise" patterns when uncertain.
+### Agent Produces Over-Engineered Code
 
-**Fix:**
-1. Be explicit: "Keep it simple. No unnecessary abstractions."
-2. Show an example of the style you want
-3. Add to context file: "Prefer simple solutions over clever ones"
+**Symptoms:** A small request produces unnecessary factories, interfaces, abstractions, or broad rewrites.
 
-### AI Misunderstands the Codebase
+**Likely cause:** The task is underspecified or the agent is optimizing for generality.
 
-**Symptoms:** AI makes changes that contradict existing patterns or architecture.
+**Recovery:**
 
-**Cause:** Not enough context about how the codebase works.
+1. State the smallest acceptable change.
+2. Provide a nearby example of the desired style.
+3. Add constraints:
+   - `No new abstractions.`
+   - `No new dependencies.`
+   - `Preserve public API.`
+4. Reject diffs that exceed the stated scope.
 
-**Fix:**
-1. Point to specific files: "Follow the pattern in `src/auth/login.ts`"
-2. Explain the architecture: "We use repository pattern, services should not access DB directly"
-3. Create/update your CLAUDE.md or .cursorrules file
+### Agent Misreads the Codebase
 
-### AI Gets Stuck in a Loop
+**Symptoms:** The change contradicts existing architecture, naming, or data flow.
 
-**Symptoms:** Same suggestion repeatedly, even after you say it doesn't work.
+**Likely cause:** Local conventions were not visible enough.
 
-**Cause:** Context is saturated with the failed approach.
+**Recovery:**
 
-**Fix:**
-1. Clear context completely
-2. Revert all changes
-3. Start fresh with a different framing of the problem
+1. Point to specific files that show the pattern.
+2. State the relevant architecture rule.
+3. Ask the agent to restate the pattern before editing.
+4. Add stable rules to `CLAUDE.md`, `AGENTS.md`, `.cursorrules`, or the equivalent context file when the same issue recurs.
 
-## Debugging Prompts
+### Agent Repeats a Failed Approach
 
-When stuck, try these prompts:
+**Symptoms:** The same suggestion returns after correction.
 
+**Likely cause:** The context is saturated with failed attempts.
+
+**Recovery:**
+
+1. Clear or restart the session.
+2. Revert failed edits.
+3. Summarize what was tried and why it failed.
+4. Ask for a different framing or solve the task manually.
+
+## Diagnostic Prompts
+
+Use these before allowing more edits:
+
+```text
+Before making changes, explain:
+1. What the current code does.
+2. What change I am asking for.
+3. Which files need to change.
+4. Which files should not change.
+5. How you will verify the result.
 ```
-Before making any changes, explain your understanding of:
-1. What the current code does
-2. What change I'm asking for
-3. What files will need to change
+
+```text
+List the assumptions you are making. Mark each assumption as verified or unverified.
 ```
 
-```
-What assumptions are you making? List them before proceeding.
-```
-
-```
-What could go wrong with this approach? What are the risks?
+```text
+What could go wrong with this approach? List the failure modes and the checks that would catch them.
 ```
 
 ## Prevention Checklist
 
 Before starting any significant task:
 
-- [ ] Environment is clean (no pre-existing errors)
-- [ ] Context file is up to date
-- [ ] Task is small enough to verify
-- [ ] You know how to verify success
-- [ ] You understand the code well enough to review
+- [ ] Baseline environment is clean or known failures are documented.
+- [ ] Context file is current and short.
+- [ ] Task is small enough to verify.
+- [ ] Success is tied to a test, build, screenshot, expected output, or review checklist.
+- [ ] You understand the code well enough to review the diff.
+- [ ] Allowed files and non-goals are explicit.
 
 ## Next Steps
 
-- [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/) — what works
-- [Common Mistakes](/ai-coding-primer/learn/intermediate/common-mistakes/) — what to avoid
-- [Project Context Files](/ai-coding-primer/learn/advanced/project-context-files/) — prevent misunderstandings
+- [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/) — procedures for verifiable work
+- [Common Mistakes](/ai-coding-primer/learn/intermediate/common-mistakes/) — recurring failure modes
+- [Project Context Files](/ai-coding-primer/learn/advanced/project-context-files/) — stable rules and local conventions
