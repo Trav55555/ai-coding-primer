@@ -1,11 +1,11 @@
 ---
 title: Your First Session
-description: Write your first AI-assisted code with confidence.
+description: Run a small AI-assisted coding task with verification.
 sidebar:
   order: 5
 ---
 
-You've picked a tool and set up your environment. Let's write some code.
+Use the first session to test the workflow on a small, reviewable task.
 
 ## Step 1: Open Your Tool's AI Surface
 
@@ -16,89 +16,88 @@ If you need product-specific shortcuts, use the vendor pages in the [Reference A
 
 ## Step 2: Start with Exploration
 
-Do not start by commanding. Start by exploring. Your first prompt should be something you can verify:
+Start by asking the tool to describe something you can check quickly:
 
-```
+```text
 Look at this codebase and explain:
 1. What is the main entry point?
 2. How is the code organized?
 3. What patterns and conventions are used?
 ```
 
-**Why this works:** you are asking about something you already know, or can check quickly. That is how you learn when the AI is helping and when it is bluffing.
+**Verification logic:** this prompt asks about information you can inspect. It gives you a first signal about whether the tool is reading the project accurately.
 
 ## Step 3: Ask for a Small Change
 
 Pick something simple that you know how to do manually:
 
-```
+```text
 Add a utility function to src/utils.ts that validates email addresses.
 Use the same style as the other functions in that file.
 ```
 
-**Good first tasks:**
+**Useful first tasks:**
 - Add a utility function
 - Write a test for an existing function
 - Add TypeScript types to an untyped function
 - Refactor a function to be more readable
 
-**Bad first tasks:**
+**Avoid for the first session:**
 - "Build me a login system"
 - "Refactor the entire codebase"
-- Anything you couldn't do yourself
+- Anything you could not review yourself
 
 ## Step 4: Review the Output
 
 Before accepting any changes:
 
-1. **Read the diff**: understand what changed
-2. **Check for errors**: does the LSP show problems?
-3. **Run tests**: do existing tests still pass?
-4. **Verify behavior**: does it do what you asked?
+1. **Read the diff** — understand what changed
+2. **Check for errors** — inspect editor or language-server warnings
+3. **Run tests** — confirm relevant tests still pass
+4. **Verify behavior** — check the output against what you asked for
 
-:::caution[Never blindly accept]
-If you don't understand the code, don't ship it. Ask the AI to explain, or reject the change.
+:::caution[Review before shipping]
+If you do not understand the code, do not ship it. Ask for an explanation, narrow the task, or reject the change.
 :::
 
 ## Step 5: Iterate
 
-If something's wrong, be specific:
+If the result is wrong, state the mismatch and the required correction:
 
-```
-The email validation doesn't handle plus signs in the local part.
+```text
+The email validation does not handle plus signs in the local part.
 Update it to allow addresses like user+tag@example.com.
 ```
 
-**Good correction:**
-> "The function doesn't handle X. Fix it by doing Y."
+**Useful correction:**
+> "The function does not handle X. Fix it by doing Y."
 
-**Bad correction:**
-> "Fix it" (too vague)
-> "That's wrong" (not actionable)
+**Not useful:**
 
-## The Golden Rule in Practice
+> "Fix it"
+> "That's wrong"
 
-You asked for email validation because you know what correct email validation looks like. This lets you:
+## Why Familiar Tasks Come First
 
-- Spot if the regex is wrong
-- Notice if edge cases are missing
-- Verify the code actually works
+You asked for email validation because you know what correct email validation should include. That lets you:
 
-Once you can reliably spot mistakes on familiar tasks, you're ready for unfamiliar territory.
+- spot an incorrect regex
+- notice missing edge cases
+- verify that the code behaves as requested
+
+After familiar tasks, move to less familiar work only when you have a verification signal: a test, build, screenshot, expected output, or review checklist.
 
 ## Common First-Session Mistakes
 
 | Mistake | Fix |
-|---------|-----|
-| Too big a first ask | Start smaller, one function, not a feature |
-| Accepting without reading | Always review diffs before accepting |
-| No verification | Run linter/tests after every change |
-| Giving up too fast | Try 2-3 iterations before abandoning |
+|---|---|
+| Too big a first ask | Start with one function, one test, or one small refactor |
+| Accepting without reading | Review diffs before accepting |
+| No verification | Run linter, tests, or another relevant check after the change |
+| Giving up too fast | Try two or three specific corrections before abandoning |
 
 ## What's Next
 
-You've completed your first AI-assisted coding session. To work more effectively:
-
 - [Learn the core concepts](/ai-coding-primer/learn/intermediate/core-concepts/): terminology and mental models
-- [Study effective patterns](/ai-coding-primer/learn/intermediate/effective-patterns/): what actually works
-- [Avoid common mistakes](/ai-coding-primer/learn/intermediate/common-mistakes/): save yourself pain
+- [Study effective patterns](/ai-coding-primer/learn/intermediate/effective-patterns/): common workflow patterns and examples
+- [Avoid common mistakes](/ai-coding-primer/learn/intermediate/common-mistakes/): failure modes and corrections

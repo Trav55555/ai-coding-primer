@@ -1,6 +1,15 @@
 ---
+id: ai-coding-primer-design-system
+tags:
+  - project
+  - ai-coding
+  - design
+  - editorial
+type: design-system
+status: active
+created: '2026-06-08'
 name: Agentic Engineering Primer
-description: A practical, skeptical, empowering documentation system for reliable AI-assisted engineering.
+description: A matter-of-fact documentation system for accurate, useful AI-assisted engineering guidance.
 colors:
   reasoning-indigo: "#4f46e5"
   reasoning-indigo-soft: "#eef2ff"
@@ -71,11 +80,11 @@ components:
 
 ## 1. Overview
 
-**Creative North Star: "The Field Manual Desk"**
+**Interface North Star: "The Field Manual Desk"**
 
 The interface should feel like a well-used engineering field manual on a clean desk: practical, calm, annotated, and built for repeated consultation.
 
-It rejects hype surfaces and leaderboard theater. Visual choices should create trust through structure, not excitement through spectacle.
+It rejects hype surfaces and leaderboard theater. Visual choices should make information easier to scan, compare, and verify.
 
 Key Characteristics:
 
@@ -126,7 +135,7 @@ The palette is restrained: tinted paper neutrals, slate ink, one reasoning-indig
 
 ### Hierarchy
 
-- **Display** (750, fluid clamp, tight line-height): homepage hero and rare campaign-level headings.
+- **Display** (750, fluid clamp, tight line-height): homepage title and rare top-level orientation headings.
 - **Headline** (720, fluid clamp, compact line-height): major section headings and page titles.
 - **Title** (650, 1.125rem to 1.35rem): component headings, callouts, and newsletter titles.
 - **Body** (400, 1rem, 1.7 line-height): primary reading text, capped near 65 to 75 characters.
@@ -134,7 +143,7 @@ The palette is restrained: tinted paper neutrals, slate ink, one reasoning-indig
 
 ### Named Rules
 
-**The Manual, Not Poster Rule.** Type should help readers work. Avoid decorative display treatments unless the page is explicitly a brand surface.
+**The Manual, Not Poster Rule.** Type should help readers work. Avoid decorative display treatments unless they make hierarchy or scanning clearer.
 
 ## 4. Elevation
 
@@ -184,7 +193,7 @@ Active states need clear contrast. Reference groups should feel secondary to wor
 
 ### Newsletter Panel
 
-The email signup is a compact credibility panel, not a marketing hero. Keep the copy plain, the spacing generous, and the button unambiguous.
+The email signup is a compact subscription panel, not a sales surface. Keep the copy plain, the spacing generous, and the action unambiguous.
 
 ## 6. Do's and Don'ts
 
@@ -205,5 +214,5 @@ The email signup is a compact credibility panel, not a marketing hero. Keep the 
 - **Don't** make it a vendor comparison spreadsheet.
 - **Don't** let it collapse into a generic docs template.
 - **Don't** chase leaderboard aesthetics or model-rank drama.
-- **Don't** use hero-metric templates, gradient text, glassmorphism, colored side-stripe borders, or endless identical card grids.
+- **Don't** use metric-first landing-page patterns, gradient text, glassmorphism, colored side-stripe borders, or endless identical card grids.
 - **Don't** use color without semantic purpose.

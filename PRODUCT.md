@@ -1,18 +1,26 @@
-# Product
+---
+id: ai-coding-primer-product
+tags:
+  - project
+  - ai-coding
+  - product
+  - editorial
+type: product-direction
+status: active
+created: '2026-06-08'
+---
 
-## Register
-
-brand
+# Product Direction
 
 ## Users
 
 The primer serves three overlapping audiences:
 
 - beginners learning AI-assisted coding from scratch
-- practicing engineers upgrading from casual prompting to reliable workflows
+- practicing engineers improving their AI-assisted workflows
 - team leads evaluating how AI coding tools should fit into team practice
 
-Readers often arrive with tool confusion, hype fatigue, or partial hands-on experience. They need clear judgment, not another vendor ranking.
+Readers often arrive with tool confusion, inconsistent claims, or partial hands-on experience. They need accurate and useful guidance, not another vendor ranking.
 
 ## Product Purpose
 
@@ -20,15 +28,15 @@ The AI Coding Primer helps readers use AI coding tools safely, effectively, and 
 
 It teaches durable workflows: verification, context control, security boundaries, learning discipline, and team governance.
 
-Success means readers leave with a practical operating model. They should know how to choose a workflow, verify output, avoid common failure modes, and decide which fast-changing details require live source checks.
+Success means readers leave with a practical operating model. They should know how to choose a workflow, verify output, avoid common failure modes, and identify which fast-changing details require live source checks.
 
-## Brand Personality
+## Editorial Stance
 
-Practical, skeptical, empowering.
+The primer should be accurate and useful.
 
-The tone should feel calm, direct, and trustworthy. It should give readers confidence without overstating what AI tools can do.
+The tone should be plain, direct, and technically careful. The writing should explain what is known, what is uncertain, what to do next, and how to check the result.
 
-The emotional goal: “I can use AI coding tools safely and effectively without getting swept up in hype.”
+The project should not try to persuade readers that AI coding is transformative. It should explain how to use the tools when they are useful, where they fail, and what safeguards are needed.
 
 ## Anti-references
 
@@ -41,16 +49,18 @@ This should not feel like:
 - a generic docs template
 - a leaderboard-chasing model guide
 - a template dump or configuration catalog
+- a motivational adoption guide
 
-Avoid breathless language, dark-mode hacker theater, hero-metric clichés, generic card grids, and market-map sprawl.
+Avoid breathless language, landing-page metric clichés, generic card grids, market-map sprawl, and copy that sounds like it is selling a product.
 
 ## Design Principles
 
-1. Workflow before vendor. The design should guide readers toward operating patterns, not shopping behavior.
-2. Calm authority. The site should feel rigorous without becoming academic or intimidating.
-3. Evidence with caveats. Research support, practitioner guidance, and perishable reference material should be visually distinct.
-4. Progressive confidence. Beginners should know where to start; experienced readers should be able to jump straight to workflows and reference.
-5. Durable center, perishable edge. Core learning pages should feel stable; fast-changing information should be visibly quarantined in reference material.
+1. **Accuracy before positioning.** Claims should be clear, qualified when needed, and easy to verify.
+2. **Usefulness before completeness.** Prefer the information a reader can apply over broad market coverage.
+3. **Workflow before vendor.** Guide readers toward operating patterns, not shopping behavior.
+4. **Evidence with caveats.** Research support, practitioner guidance, and perishable reference material should be visually distinct.
+5. **Durable center, perishable edge.** Core learning pages should stay stable; fast-changing information should be visibly quarantined in reference material.
+6. **Plain language.** Use direct explanations, checklists, examples, and limits instead of persuasive copy.
 
 ## Accessibility & Inclusion
 

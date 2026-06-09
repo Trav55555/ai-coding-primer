@@ -19,12 +19,13 @@ Define what this project is, what it is not, and how contributors should decide 
 
 ## Product Definition
 
-The Agentic Engineering Primer is a workflow-and-judgment guide.
+The Agentic Engineering Primer is a matter-of-fact workflow-and-judgment guide.
 
 Primary job:
-- teach reliable AI-assisted engineering workflows
+- provide accurate and useful guidance for reliable AI-assisted engineering workflows
 
 Not the primary job:
+- sell AI adoption
 - maintain a comprehensive live market guide for every tool, model, and provider detail
 
 ## Scope Boundaries
@@ -60,12 +61,15 @@ Use for perishable vendor snapshots and implementation specifics that are useful
 
 ## Writing Rules
 
-1. Lead with workflow decision logic before naming tools or models.
-2. Prefer capability classes (reasoning class, fast class, local class) over volatile brand rankings.
-3. If a claim is time-sensitive, mark it as a snapshot and link to live trackers.
-4. Keep privacy, jurisdiction, and operational-boundary details when they affect workflow or governance.
-5. Avoid language that implies static market certainty (for example, "best value" or "top model" without context and evidence caveat).
-6. Link to primary sources where possible; use internal synthesis pages as secondary context, not as a substitute for original research, official docs, or maintainer-authored engineering writeups.
+1. Lead with the information the reader needs to act: task, context, steps, verification, limits, and failure modes.
+2. Lead with workflow decision logic before naming tools or models.
+3. Prefer capability classes (reasoning class, fast class, local class) over volatile brand rankings.
+4. If a claim is time-sensitive, mark it as a snapshot and link to live trackers.
+5. Keep privacy, jurisdiction, and operational-boundary details when they affect workflow or governance.
+6. Avoid language that implies static market certainty (for example, "best value" or "top model" without context and evidence caveat).
+7. Avoid sales language, hype, motivational framing, and broad promises of confidence or transformation.
+8. Link to primary sources where possible; use internal synthesis pages as secondary context, not as a substitute for original research, official docs, or maintainer-authored engineering writeups.
+9. When accuracy and tone conflict, choose accuracy. When accuracy and completeness conflict, include the useful core and mark what needs live verification.
 
 ## Core Ownership of Governance Criteria
 
@@ -78,12 +82,13 @@ Vendor-specific pages may reference these criteria, but should not become the ca
 
 ## Contributor Gate (Before Merge)
 
-1. Does this page improve workflow execution or verification quality?
-2. Could this claim remain useful in six months without major edits?
-3. If content is perishable, should it live in appendix instead of core?
-4. Are evidence-status cues clear for non-obvious claims?
-5. Does the page avoid pricing-led or budget-led recommendations?
-6. Does the page link to primary sources where those sources are available?
+1. Does this page improve workflow execution, verification quality, safety, or reader understanding?
+2. Is the guidance accurate enough to rely on, with caveats where needed?
+3. Could this claim remain useful in six months without major edits?
+4. If content is perishable, should it live in appendix instead of core?
+5. Are evidence-status cues clear for non-obvious claims?
+6. Does the page avoid pricing-led, budget-led, hype-led, or adoption-sales framing?
+7. Does the page link to primary sources where those sources are available?
 
 Any "no" answer requires rewrite, re-scope, or relocation.
 

@@ -1,11 +1,11 @@
 ---
 title: Learning with AI
-description: How to use AI tools to accelerate learning instead of replacing it.
+description: How to use AI tools without hiding gaps in understanding.
 sidebar:
   order: 6
 ---
 
-AI can help you learn faster. It can also make you worse at the parts of programming that matter when things break. The difference is not whether you use it. The difference is how much thinking you hand over.
+AI assistance can support learning, but it can also hide gaps in understanding. The main risk is delegation without review, recall, or debugging practice.
 
 :::note[Evidence guide]
 - `Research-backed` - [Anthropic AI coding learning RCT](https://www.anthropic.com/research/AI-assistance-coding-skills), [OECD Digital Education Outlook 2026](https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_f6e1d3c0-en.html), [Tutor CoPilot RCT](https://arxiv.org/abs/2410.03017)
@@ -15,38 +15,50 @@ AI can help you learn faster. It can also make you worse at the parts of program
 The practical framing combines studies, early evidence, and recurring tutoring-style usage patterns; it is not a single paper's taxonomy.
 :::
 
-## The Problem
+## Learning Risk
 
-There is a difference between finishing a task and actually learning from it. AI can close the first gap while widening the second.
+Finishing a task and learning from the task are different outcomes. AI can improve the first while weakening the second.
 
 The Anthropic study found a 17% comprehension gap between developers who used AI heavily and those who did not, even when output quality looked similar.
 
 METR also found experienced open-source developers were slower with AI than they expected to be.
 
-The message is consistent: speed gains are real, but they are not automatic, and they do not guarantee learning.
+Taken together, these findings point to the same constraint: AI assistance does not automatically improve productivity or learning. The workflow matters.
 
-The mechanism is not mysterious. Learning needs struggle, recall, and correction. Heavy delegation short-circuits all three. You get the answer, but less of it sticks.
+Learning depends on struggle, recall, and correction. Heavy delegation can skip all three. The answer arrives, but less of the reasoning is retained.
 
 For primary sources, start with the [Anthropic AI coding learning RCT](https://www.anthropic.com/research/AI-assistance-coding-skills).
 
 Also see [OECD Digital Education Outlook 2026](https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_f6e1d3c0-en.html).
 
+## Prefer Explanation Before Generation
 
-## Explain, Don't Generate
+**Less useful for learning:**
 
-**Instead of:** "Write a function that parses this JSON and returns only active users."
+```text
+Write a function that parses this JSON and returns only active users.
+```
 
-**Try:** "Explain how I'd approach filtering a JSON array in JavaScript, then I'll implement it."
+**More useful for learning:**
 
-Or: "I wrote this implementation. What did I get wrong?"
+```text
+Explain how I should approach filtering a JSON array in JavaScript.
+I will implement it, then you can review my attempt.
+```
 
-The second framing keeps you in the loop. You are using AI to patch gaps in your mental model, not replace the model entirely.
+Another useful prompt:
+
+```text
+I wrote this implementation. What did I get wrong?
+```
+
+This keeps the learner responsible for the implementation and uses AI to expose gaps in the mental model.
 
 Shen & Tamkin (2026) found developers who used AI for conceptual questions retained significantly more than those who delegated code generation. The output looked similar. The understanding did not.
 
-## The Debugging Dependency Trap
+## Debugging Dependency
 
-The biggest gap in the Anthropic coding study was not writing code. It was debugging.
+The biggest gap in the Anthropic coding study was debugging.
 
 ```text
 AI writes code -> you do not build a mental model ->
@@ -55,115 +67,108 @@ you ask AI to debug it -> it fixes the symptom ->
 you still do not have a mental model
 ```
 
-This is how developers become dependent on AI for problems they used to be able to reason through themselves.
+This loop creates dependency: the developer can produce working code but cannot diagnose failures without the tool.
 
----
+## Schedule AI-Free Practice
 
-## Code Without AI Regularly
+The Anthropic study's largest skill gap was debugging. Debugging requires time spent forming hypotheses, testing them, and correcting wrong assumptions.
 
-The Anthropic study's biggest skill gap wasn't in writing code. It was in debugging. That's a skill you only develop by getting stuck and finding your own way out.
+Use some sessions without AI assistance. This is practice for code reading, reasoning, and debugging.
 
-Treat AI-free sessions like training without a calculator. You're not proving anything to anyone. You're building the muscle.
-
-| AI-assisted sessions | Solo sessions |
+| AI-assisted sessions | AI-free sessions |
 |---|---|
 | Exploring unfamiliar APIs | Debugging your own logic |
 | Boilerplate and scaffolding | Implementing algorithms from scratch |
 | Reviewing and refactoring | Writing tests without hints |
-| Learning new frameworks fast | Internalizing patterns you've seen before |
+| Learning a new framework | Rebuilding patterns from memory |
 
-Neither mode is better. Both are necessary.
+Both modes are useful. A practical rule is to keep at least one regular session each week where AI is off and the task requires manual reasoning, debugging, or code reading.
 
-One practical rule: keep at least one regular session each week where AI is off and the job is manual reasoning, debugging, or code reading.
+## Verify Understanding
 
-## Verify Before You Trust
+AI output can create an illusion of understanding. The test is whether you can explain and modify the code without the chat.
 
-The "illusion of competence" (IJRSI 2025) is subtle. AI's fluent, confident output feels like your own understanding. It isn't.
+After AI generates code:
 
-The test: if you can't explain the code without looking at it, you haven't learned it.
+1. Close or hide the chat.
+2. Wait a few minutes.
+3. Rewrite the core idea from memory.
+4. Compare your rewrite to the original.
+5. Study the gaps.
 
-A practical technique: after AI generates code, close the chat. Wait 10 minutes. Try to rewrite it from memory.
-
-The gaps in your rewrite are exactly what you need to study. Don't skip this step because it's uncomfortable. That discomfort is the learning.
-
-Another practical test: if you cannot explain why the code works, what assumptions it makes, and how you would debug it when it fails, you have not learned the technique yet.
+Another check: explain why the code works, what assumptions it makes, and how you would debug it when it fails. If you cannot do that, the topic needs more practice.
 
 ## Use AI Like a Tutor
 
-One of the strongest patterns across the research is that AI helps learning more when it asks questions or scaffolds thinking than when it simply gives answers (Park et al., 2024). The format matters as much as the content.
+AI supports learning better when it asks questions, gives hints, or scaffolds reasoning instead of only providing answers (Park et al., 2024).
 
-You can prompt your way into this mode.
+Useful tutor-style prompts:
 
 :::tip
-Prompt templates that actually work:
-
-- "Quiz me on [concept]. Don't give me the answers until I've tried."
-- "I'm going to explain [concept] in my own words. Point out where I'm wrong."
-- "What questions should I be asking about this code before I ship it?"
+- "Quiz me on [concept]. Do not give me the answers until I try."
+- "I will explain [concept] in my own words. Point out where I am wrong."
+- "What questions should I ask about this code before I ship it?"
 - "Give me a hint, not a solution. I want to figure this out."
 :::
 
-These prompts make the tool act more like a tutor and less like a vending machine. The answers feel slower. That is usually a good sign.
+These prompts slow the interaction down, but they preserve more of the reasoning work.
 
-
-## What Good Use Looks Like
+## Usage Patterns
 
 This table draws on the studies cited on this page, especially the Anthropic learning RCT and Shen and Tamkin's conceptual-vs-delegated-use distinction.
 
 It is a practical framework, not a direct taxonomy from one paper.
 
-| Pattern | Outcome |
-|---------|---------|
-| **"Explain this pattern"** | Preserves understanding |
-| **"Review my attempt"** | Improves mental model |
-| **"Give me a hint"** | Keeps productive struggle alive |
-| **"Write this for me"** | Fast output, weak retention |
-| **"Fix it" loops** | Weak debugging skill, high dependence |
+| Pattern | Likely learning effect |
+|---|---|
+| **"Explain this pattern"** | preserves understanding |
+| **"Review my attempt"** | improves mental model |
+| **"Give me a hint"** | preserves productive struggle |
+| **"Write this for me"** | produces output with weaker retention |
+| **"Fix it" loops** | weakens debugging practice and increases dependency |
 
-## Do Not Skip the Struggle
+## Preserve Productive Struggle
 
 > "Novice programmers using AI often skip the 'productive struggle' phase of learning." — Prather et al. (2024)
 
-The struggle is the learning. When you hit a wall, the instinct is to immediately ask AI. Resist it for 10 to 15 minutes. Sit with the problem. Try things. Be wrong.
+Productive struggle is part of learning. When you hit a wall, spend 10 to 15 minutes forming your own hypothesis before asking AI for help.
 
-If you still need help after that, ask for a hint, not a solution. "What direction should I be looking?" is a better prompt than "Fix this."
+If you still need help, ask for a hint instead of a solution:
+
+```text
+What direction should I investigate next?
+```
 
 :::caution
-Skipping productive struggle doesn't just slow learning. It can also create dependency. Developers who never sit with hard problems usually become less comfortable handling them unaided.
+Skipping productive struggle can create dependency. Developers who do not practice hard problems become less comfortable handling them unaided.
 :::
 
-## Copy-Paste Is Not Learning
+## Copy-Paste Does Not Show Understanding
 
-Copying AI code and moving on teaches nothing. PNAS (2025) found students using AI without guardrails performed worse on assessments than those who learned traditionally, even though their submitted work looked better.
+Copying AI code and moving on does not prove comprehension. PNAS (2025) found students using AI without guardrails performed worse on assessments than those who learned traditionally, even when submitted work looked better.
 
-If you copy AI-generated code, you owe yourself three things before moving on:
+If you copy AI-generated code, do three checks before moving on:
 
-1. Explain every line out loud or in a comment
-2. Modify it for a different use case
-3. Break it deliberately and debug it
+1. Explain every line out loud or in a comment.
+2. Modify it for a different use case.
+3. Break it deliberately and debug it.
 
-If you can't do all three, you don't understand it. You just have it.
+If you cannot do all three, treat the code as unlearned material.
 
-## For Team Leads: Guardrails That Work
+## For Team Leads: Guardrails
 
-Research-backed practices that don't require banning AI:
+Research-backed practices that preserve learning without banning AI:
 
-- Require explanation of AI-generated code in PRs. Not a summary, an explanation. "This function does X because Y" (Kazemitabaar et al., 2025).
-- Include unassisted coding in assessments. The OECD Performance Trap only surfaces when you test without the tool. If you never test without it, you won't see the gap until it matters.
-- Use AI for onboarding scaffolding. Tutor CoPilot showed the biggest gains for less-experienced users when AI was used to scaffold, not to replace, the learning process.
-- Set AI-free practice time. Frame it as training, not punishment. Senior developers who are good at their jobs practice fundamentals. This is the same thing.
+- Require explanations of AI-generated code in PRs. The explanation should cover what the code does and why (Kazemitabaar et al., 2025).
+- Include unassisted coding in assessments. The OECD Performance Trap only appears when people are tested without the tool.
+- Use AI for onboarding scaffolding. Tutor CoPilot showed gains for less-experienced users when AI scaffolded the learning process instead of replacing it.
+- Schedule AI-free practice time. Frame it as maintenance of debugging and reasoning skill.
 
----
+## Summary
 
-## The Bottom Line
+Use AI as a tutor, reviewer, or scaffold when learning. Avoid using it only as a code generator.
 
-Use AI as a thinking partner, not an answer machine.
-
-The broad pattern is clear: the people who benefit most from AI still do a lot of the thinking themselves.
-
-They use it to move faster on boring parts and challenge their understanding. They do not use it to dodge the hard parts entirely.
-
-The tool doesn't determine the outcome. Your habits do.
+The useful pattern is consistent: keep the human responsible for reasoning, implementation review, and debugging practice.
 
 See [Learning Impacts](/ai-coding-primer/research/learning-impacts/) for the evidence behind these recommendations.
 

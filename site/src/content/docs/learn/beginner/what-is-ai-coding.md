@@ -1,71 +1,71 @@
 ---
 title: Agentic Engineering
-description: Understanding agentic engineering and the core loop.
+description: What agentic engineering is and how the core loop works.
 sidebar:
   order: 2
 ---
 
-Agentic engineering means using AI tools that can read files, change code, run commands, and keep going without waiting for every next instruction.
+Agentic engineering means using AI tools that can read files, change code, run commands, and continue across multiple steps without a separate instruction for each action.
 
-The real shift is not just that AI can write code. More of the job now sits one level up: intent, context, and verification.
+The operational change is that more work moves into intent, context, constraints, and verification. Code generation is only one part of the workflow.
 
 ## The Core Loop
 
-```
+```text
 Intent → Plan → Execute → Reflect → Repeat
 ```
 
-1. **Intent** — You describe what you want ("add a login page")
-2. **Plan** — The AI determines which files to read and what changes to make
-3. **Execute** — The AI writes code, runs commands, edits files
-4. **Reflect** — The AI checks the result (tests, linter, type checker)
-5. **Repeat** — If something's wrong, it tries again
+1. **Intent** — state the desired change or question
+2. **Plan** — identify relevant files, constraints, and verification steps
+3. **Execute** — write code, edit files, or run commands
+4. **Reflect** — check tests, lint, types, build output, screenshots, or expected results
+5. **Repeat** — revise based on the verification signal
 
-That is what makes it agentic. The tool is acting, not just suggesting.
+That is what makes the workflow agentic. The tool can act in the environment instead of only suggesting text.
 
 ## What Changed
 
-| Era | How It Works | Your Role |
-|-----|--------------|-----------|
-| **Autocomplete** (2021) | Tab to accept suggestions | Write most code yourself |
-| **Chat** (2022) | Copy-paste from ChatGPT | Manually integrate suggestions |
-| **Agentic** (2024+) | AI reads, writes, runs, iterates | Review and guide |
+| Era | How it works | Your role |
+|---|---|---|
+| **Autocomplete** | accept inline suggestions | write and integrate most code yourself |
+| **Chat** | copy code or explanations from a chat window | adapt suggestions manually |
+| **Agentic tools** | tool reads, writes, runs, and iterates | set intent, constraints, and verification; review the result |
 
-## The New Skill Premium
+## Skills That Matter More
 
-As tools get better at generating code, the valuable skill moves up a level:
+As tools become better at generating code, these skills become more important:
 
-| Old center of gravity | New center of gravity |
-|-----------------------|-----------------------|
-| Writing syntax fast | Designing the workflow and constraints |
-| Knowing every API by memory | Knowing how to verify the result |
-| Manually doing every implementation step | Delegating safely and reviewing well |
+| Less central | More central |
+|---|---|
+| Writing syntax quickly | Designing the workflow and constraints |
+| Memorizing every API | Knowing how to verify the result |
+| Doing every implementation step manually | Delegating safely and reviewing well |
 
-That is why the good workflows always include tests, linters, type checks, or some other feedback loop.
+Usable workflows include tests, linters, type checks, screenshots, expected outputs, or another feedback loop.
 
 ## What These Tools Can Do
 
 - Use context from your codebase
 - Write and edit multiple files
-- Run terminal commands (build, test, lint)
+- Run terminal commands such as build, test, and lint
 - Fix errors they detect in their output
-- Use external tools (databases, APIs, browsers)
+- Use external tools such as databases, APIs, or browsers when configured
 
-## What They Can't Do (Yet)
+## Current Limits
 
-- Perfectly interpret your intent on the first try
-- Know your organization's conventions without being told
-- Reliably handle very large changes (500+ line diffs)
-- Replace human judgment on architecture and design
+- They do not reliably infer intent on the first try.
+- They do not know local conventions unless those conventions are visible.
+- They often handle large, loosely scoped changes poorly.
+- They do not replace human judgment on architecture, design, safety, or product behavior.
 
-## The Golden Rule
+## Starting Rule
 
 > **Start with tasks you already know how to solve.**
 
-This helps you learn when the AI is right and when it is only sounding right. Once you can spot its mistakes on familiar work, you can trust yourself more on unfamiliar work too.
+Familiar tasks make errors easier to detect. Once you can identify mistakes on familiar work, move gradually to less familiar tasks with stronger verification.
 
 ## Next Steps
 
-Ready to try it? [Choose a workflow and stack ->](/ai-coding-primer/learn/beginner/choose-your-tool/)
+Choose a workflow and stack: [Choose a workflow and stack ->](/ai-coding-primer/learn/beginner/choose-your-tool/)
 
-Then learn the workflows that make these tools useful: [Workflow Archetypes →](/ai-coding-primer/learn/intermediate/workflow-archetypes/)
+Then review the main workflow patterns: [Workflow Archetypes →](/ai-coding-primer/learn/intermediate/workflow-archetypes/)

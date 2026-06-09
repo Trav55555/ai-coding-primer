@@ -1,15 +1,15 @@
 ---
 title: Agentic Engineering Primer
-description: Start safely, choose a workflow and stack that fit how you work, and learn the patterns that make AI-assisted engineering reliable.
+description: Technical guidance for AI-assisted engineering workflows, verification, context control, and safety.
 template: splash
 hero:
-  tagline: A practical guide to AI-assisted engineering that stays useful after the tool rankings change.
+  tagline: A technical guide to AI-assisted engineering workflows, verification, context control, and safety.
   actions:
     - text: Start Safely
       link: /ai-coding-primer/learn/beginner/introduction/
       icon: right-arrow
       variant: primary
-    - text: Work Reliably
+    - text: Workflow Patterns
       link: /ai-coding-primer/learn/intermediate/workflow-archetypes/
       icon: list-format
     - text: Choose a Workflow
@@ -22,55 +22,57 @@ import EmailSignup from '../../components/EmailSignup.astro';
 
 <EmailSignup />
 
-## What This Primer Is
+## Scope
 
-This guide helps you do three things well:
+This guide covers three things:
 
-1. start safely with AI coding tools
-2. choose a workflow and stack that fit how you already work
-3. learn the patterns that make AI-assisted engineering reliable instead of sloppy
+1. safe setup for AI coding tools
+2. workflow and stack selection based on how the work is done
+3. verification, context, and review patterns for AI-assisted engineering
 
-It is opinionated on purpose. It does not try to be a giant AI tools database.
+It is not a live product database. Tool and model details change quickly; durable workflow guidance changes more slowly.
 
-## Start Here
+## Where to Start
 
 <CardGrid stagger>
   <Card title="Start Safely" icon="shield-check">
-    Get your environment, feedback loops, and first session right before you trust a tool with real work.
+    Set up the environment, feedback loops, and first session before using a tool on real code.
   </Card>
-  <Card title="Work Reliably" icon="puzzle">
-    Learn bug-fix, feature, and refactor workflows that stay verifiable under real engineering constraints.
+  <Card title="Workflow Patterns" icon="puzzle">
+    Use bug-fix, feature, and refactor workflows with explicit verification steps.
   </Card>
   <Card title="Choose a Workflow and Stack" icon="rocket">
-    Choose by workflow shape first, then narrow to current stack options without drowning in vendor trivia.
+    Choose by workflow shape first, then narrow to current stack options.
   </Card>
   <Card title="Control Context" icon="setting">
-    Learn how to manage context, context files, and agent scaffolding so the model stays useful.
+    Manage context, context files, and agent scaffolding so the model receives relevant information.
   </Card>
   <Card title="Learning and Judgment" icon="graph">
-    Use AI to move faster without outsourcing the thinking that keeps your skills sharp.
+    Use AI assistance while preserving code comprehension and debugging skill.
   </Card>
 </CardGrid>
 
-## Quick Recommendations
+## Entry Points
 
-| Your Situation | Start With |
-|----------------|------------|
+| Your situation | Start with |
+|---|---|
 | **New to AI coding** | [Introduction](/ai-coding-primer/learn/beginner/introduction/) -> [Choose a Workflow and Stack](/ai-coding-primer/learn/beginner/choose-your-tool/) |
 | **Already using AI tools** | [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/) -> [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) |
 | **Terminal-first workflow** | [Choose a Workflow and Stack](/ai-coding-primer/learn/beginner/choose-your-tool/) -> [Workflow and Stack Criteria](/ai-coding-primer/tools/comparison/) |
 | **Privacy or compliance constraint** | [Quick Security Checklist](/ai-coding-primer/security/checklist/) -> [Governance and Rollout](/ai-coding-primer/team/governance/) |
 | **Team evaluator** | [Governance and Rollout](/ai-coding-primer/team/governance/) -> [Security Risks](/ai-coding-primer/team/security-risks/) |
 
-## What Makes AI Coding Go Well
+## Required Conditions
 
-- verification matters more than confidence
-- workflow fit matters more than vendor hype
-- selective context works better than giant prompt dumps
-- reliable habits matter more than the latest ranking
-- the hard part is not getting code generated, it is getting good judgment preserved
+AI-assisted coding is more reliable when these conditions are present:
 
-## What Stays Current and What Doesn't
+- output is checked with tests, builds, type checks, screenshots, or explicit expected results
+- workflow shape matches the task type
+- context is selective and relevant to the current task
+- changes are small enough to review
+- generated code is still reviewed by a human who can maintain it
+
+## Stable and Perishable Material
 
 The core of this guide is designed to age slowly:
 
@@ -80,19 +82,19 @@ The core of this guide is designed to age slowly:
 - security boundaries
 - learning discipline
 
-The fast-moving material does not belong at the center:
+The fast-moving material belongs in reference pages:
 
 - vendor snapshots
 - privacy detail by product tier
 - benchmark tables
 - exact feature comparisons
 
-That material belongs in the reference layer.
+Use the reference layer to identify what must be checked against current vendor or benchmark sources.
 
-## The Golden Rule
+## Verification Rule
 
-> **Start with work you could solve on your own.** That is how you learn when the model is helping and when it is just sounding confident.
+> **Start with work you could solve on your own.** Familiar tasks make model errors easier to detect.
 
 ---
 
-*Last updated: March 2026*
+*Last updated: June 2026*
