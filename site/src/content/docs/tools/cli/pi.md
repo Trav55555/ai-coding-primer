@@ -6,7 +6,7 @@ sidebar:
 ---
 
 :::note[Freshness metadata]
-Reviewed: May 2026. Volatile fields: exact provider list, model support, package ecosystem, telemetry controls, pricing, quotas, and subscription terms. Verify live Pi docs before choosing or standardizing on this reference.
+Reviewed: June 2026. Volatile fields: exact provider list, model support, package ecosystem, telemetry controls, pricing, quotas, and subscription terms. Verify live Pi docs before choosing or standardizing on this reference.
 :::
 
 [Pi Coding Agent](https://pi.dev) is a minimal terminal coding harness from Earendil Works. It is designed to be shaped with TypeScript extensions, skills, prompt templates, themes, and Pi packages.
@@ -18,15 +18,38 @@ Reviewed: May 2026. Volatile fields: exact provider list, model support, package
 | **Type** | CLI / SDK / RPC harness |
 | **Open Source** | Yes |
 | **Best For** | Extensible workflows, custom tools, skills, package-based customization |
+| **Not Primarily** | A preconfigured all-in-one assistant platform |
+
+## What It Is
+
+Pi starts from a small core: model chat, file tools, precise editing, bash execution, session state, and provider configuration. Most opinionated workflow behavior is added around that core.
+
+This is the main distinction from larger vendor tools. Pi is a programmable harness. If you want plan mode, custom permission gates, review workflows, subagent orchestration, or project-specific UI behavior, Pi expects those patterns to come from extensions, skills, packages, shell tools, or local project files.
 
 ## Key Features
 
-- **Minimal core** — Starts with file, edit, write, search, and bash-style tools
-- **Extensible** — TypeScript extensions can add tools, commands, UI, gates, and workflow behavior
-- **Skills** — Supports the Agent Skills pattern with progressive disclosure
-- **Packages** — Bundles extensions, skills, prompts, and themes through Pi packages
-- **Multiple modes** — Interactive, print, JSON, RPC, and SDK usage
-- **Session tree** — Branch, fork, clone, compact, and export sessions
+- **Minimal core** - starts with file, edit, write, search, and bash-style tools
+- **Extensions** - TypeScript extensions can add tools, commands, UI, gates, and workflow behavior
+- **Skills** - supports the Agent Skills pattern with progressive disclosure
+- **Packages** - bundles extensions, skills, prompts, and themes through Pi packages
+- **Prompt templates and themes** - lets teams standardize prompts and terminal presentation
+- **Multiple modes** - interactive, print, JSON, RPC, and SDK usage
+- **Session tree** - branch, fork, clone, compact, and export sessions
+
+## What Is Deliberately Not Built In
+
+Pi keeps the core small. Some workflows that other tools ship as built-ins are expected to be composed externally or through extensions.
+
+Examples include:
+
+- MCP-style integrations
+- subagent orchestration
+- plan-mode enforcement
+- permission popups beyond what an extension implements
+- background bash supervision
+- todo/task-state systems
+
+This is not necessarily a weakness. It is a design tradeoff: less default machinery, more responsibility for the user or team to assemble the workflow they need.
 
 ## Installation
 
@@ -34,7 +57,13 @@ Reviewed: May 2026. Volatile fields: exact provider list, model support, package
 npm install -g @earendil-works/pi-coding-agent
 ```
 
-Avoid installing third-party packages casually. Extensions and Pi packages can execute code with your user permissions.
+For a more conservative npm install path, Pi's documentation also describes installing with lifecycle scripts disabled:
+
+```bash
+npm install -g --ignore-scripts @earendil-works/pi-coding-agent
+```
+
+Avoid installing third-party Pi packages casually. Extensions and Pi packages can execute code with your user permissions.
 
 ## Access Model
 
@@ -60,6 +89,20 @@ Pi is intentionally extensible. Extensibility changes the security model.
 
 Extensions run arbitrary TypeScript. Skills can instruct the model to run commands. Packages may bundle both. Review source before installing third-party Pi packages.
 :::
+
+## Project Trust and Sandboxing
+
+Pi's project-trust model controls whether project-local inputs such as context files, settings, skills, extensions, and packages are loaded. Treat a cloned repository's local agent files as code and instructions from that repository, not as neutral documentation.
+
+Project trust is not a sandbox. If a trusted project loads an extension or package, that code can run with your user permissions. If the agent can run shell commands, it can affect the environment you gave it.
+
+For higher-risk work, put the boundary outside Pi:
+
+- use Docker, a VM, OpenShell, Gondolin, or another sandbox
+- mount sensitive files read-only or not at all
+- keep network access explicit
+- review third-party extensions and packages before loading them
+- prefer pinned packages for team workflows
 
 ## Getting Started
 
@@ -110,7 +153,7 @@ Pi also supports prompt templates and skills for reusable workflows.
 
 Pi does not ship with MCP or subagents as core defaults. The philosophy is to keep the core small and add those workflows through extensions, packages, shell tools, or tmux orchestration.
 
-If your team requires built-in MCP or built-in permission prompts, compare Pi against OpenCode, Claude Code, and Codex CLI before standardizing.
+If your team requires built-in MCP or built-in permission prompts, compare Pi against OpenCode, Claude Code, Codex CLI, and broader agent platforms before standardizing.
 
 ## Tips
 

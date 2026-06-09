@@ -148,6 +148,23 @@ Different tools package skills differently:
 
 The packaging matters less than the behavior. If it changes how the agent performs a recurring task, it is functioning as a skill.
 
+## Installing Third-Party Skills
+
+Treat skill installation as a supply-chain operation. A skill can change agent behavior, ask the model to run commands, or reference scripts and assets outside the main instruction file.
+
+Avoid unpinned remote installers for real projects. Commands such as `npx skills`, `npx add-skill`, `npx skills@latest`, and `npx add-skill@latest` can execute package code before the skill has been reviewed.
+
+Use this intake process instead:
+
+1. clone or download the candidate skill source
+2. inspect `SKILL.md`, scripts, package metadata, and referenced assets
+3. check for network calls, package installs, shell commands, and writes outside the intended skills directory
+4. pin the approved version or commit
+5. copy or symlink the reviewed skill into the controlled skills directory
+6. test it in a low-risk repository before using it on sensitive code
+
+For teams, maintain an approved skills directory or private registry. Do not let tools install third-party skills directly into each developer's agent directory without review.
+
 ## Examples
 
 - OpenAI Codex discovers `AGENTS.md` files from the repo and uses them as project instructions.

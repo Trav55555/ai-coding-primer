@@ -54,6 +54,44 @@ Most AI coding tools give agents all three by default.
 
 ---
 
+## Autonomous and Always-On Agent Risks
+
+An autonomous agent is not just a chat session with more steps. The risk changes when an agent can keep working after the initial prompt, wake up on a schedule, receive messages from other people, modify its own instructions, or delegate to other agents.
+
+This includes coding agents running in background loops, chat-connected personal assistants, scheduled research agents, agent gateways, and tools that can update their own skills or memory.
+
+| Risk pattern | What changes | Example failure |
+|---|---|---|
+| Long-lived sessions | The agent accumulates state across many decisions | an old approval or assumption is reused after the task changed |
+| Inbound untrusted triggers | Other people or systems can start work by sending messages, tickets, emails, or webhooks | a malicious DM asks the agent to read files, summarize secrets, or run a command |
+| Scheduled execution | Work happens when nobody is watching | a cron job keeps using stale credentials, stale prompts, or stale repository state |
+| Memory poisoning | Notes, preferences, or project facts become part of future context | an attacker causes the agent to remember a false instruction or unsafe shortcut |
+| Skill or tool mutation | The agent can create, edit, install, or delete its own procedures | a generated skill quietly adds network calls, package installs, or broader file access |
+| Cross-session bleed | Context from one repo, client, or channel influences another | confidential details from one workspace appear in another task |
+| Delegation fan-out | Subagents multiply reads, commands, and external calls | one vague goal turns into many unsupervised tool executions |
+| Ambient credentials | Long-running processes inherit tokens, SSH agents, browser sessions, or cloud credentials | a compromised prompt gains access to accounts the user forgot were available |
+
+### Controls for Autonomous Agents
+
+Use stricter defaults for autonomous or always-on workflows than for a one-off local coding session.
+
+| Control | Practical rule |
+|---|---|
+| Explicit trigger policy | Define which events may start work. Treat DMs, webhooks, issue comments, and emails as untrusted input. |
+| Pairing and allowlists | For messaging gateways, require explicit pairing or allowlists before an account can trigger the agent. |
+| Short-lived credentials | Give agents scoped tokens that can be revoked without disrupting the user's normal account. |
+| Per-task sandboxing | Run risky jobs in fresh containers, VMs, SSH sandboxes, or other isolated execution backends. |
+| Approval gates | Require manual approval for package installs, credential access, outbound network calls, destructive commands, and cross-repo writes. |
+| Memory review | Log memory writes and review them. Keep sensitive facts out of persistent memory unless there is a clear need. |
+| Skill review | Do not let agents install or modify skills/plugins in production without provenance checks and version pinning. |
+| Channel separation | Keep client workspaces, personal assistants, and public chat channels separated by identity, storage, and credentials. |
+| Audit trail | Record prompts, triggers, tool calls, changed files, and external calls enough to reconstruct what happened. |
+| Kill switch | Make it easy to disable schedules, webhooks, gateways, and background workers quickly. |
+
+A reasonable minimum bar before enabling an autonomous agent is: no ambient personal credentials, no unsandboxed package installs, no unaudited persistent memory writes, and no inbound public trigger path without pairing or allowlists.
+
+---
+
 ## Prompt Injection
 
 Malicious instructions hidden in content the agent reads.
@@ -151,6 +189,22 @@ AI tools load "skills" or plugins that modify behavior.
 - Use private registries for internal skills
 - Monitor for unexpected skill behavior
 
+### Remote Skill Installers
+
+Treat unpinned `npx` or `npm exec` skill installers as remote code execution. Commands such as `npx skills`, `npx add-skill`, `npx skills@latest`, or `npx add-skill@latest` can download and execute package code before you have reviewed the skill.
+
+The risk is not limited to the final `SKILL.md`. Installer packages can run lifecycle scripts, fetch additional assets, install dependencies, or write into agent-specific directories that later change tool behavior.
+
+Safer intake pattern:
+
+1. download or clone the candidate skill source without running an installer
+2. inspect `SKILL.md`, scripts, package metadata, and referenced assets
+3. pin the exact version or commit you approved
+4. copy or symlink the approved skill into a controlled skills directory
+5. run the agent in a sandbox before using the skill on sensitive repositories
+
+For team use, treat new skills like dependencies: require provenance, review, version pinning, and a rollback path.
+
 ---
 
 ## Agent Permission Escalation
@@ -165,7 +219,7 @@ AI tools load "skills" or plugins that modify behavior.
 3. Eventually, agent has persistent elevated access
 4. One day, something goes wrong
 
-**This WILL happen. The question is when.**
+This pattern is common enough to plan for.
 
 ### Permission Creep
 

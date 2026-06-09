@@ -4,7 +4,7 @@ description: Compare a short list of workflow shapes and stack options without t
 ---
 
 :::note[Freshness metadata]
-Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+Reviewed: June 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
 :::
 
 
@@ -20,7 +20,9 @@ By the time you are here, you should already have a likely workflow shape:
 - AI extension in your current editor
 - terminal agent workflow
 
-If you are still deciding at that level, go back to [Choose a Workflow and Stack](/ai-coding-primer/learn/beginner/choose-your-tool/).
+Some tools are broader agent platforms rather than editor or terminal coding tools. Evaluate those only if you need always-on operation, messaging gateways, persistent memory, scheduled tasks, or cross-device assistants.
+
+If you are still deciding at the basic workflow level, go back to [Choose a Workflow and Stack](/ai-coding-primer/learn/beginner/choose-your-tool/).
 
 ## Compare Workflow Shapes by Friction and Control
 
@@ -29,6 +31,7 @@ If you are still deciding at that level, go back to [Choose a Workflow and Stack
 | **Integrated AI IDE** | one unified environment for navigation, editing, and chat | more opinionated environment and more product churn | you want the easiest integrated path |
 | **AI extension** | preserving your current editor habits | can feel more fragmented than a full AI-native IDE | you already like your editor and want gradual adoption |
 | **Terminal agent workflow** | explicit plans, diffs, scripts, and verification loops | steeper learning curve for editor-first users | you already work in the terminal and want direct control |
+| **Agent platform / gateway** | persistent assistants, chat-triggered tasks, scheduled jobs, memory, and cross-device workflows | larger security and operations surface | the task needs an always-on or multi-channel agent, not just code editing |
 
 ## Apply Operating Filters
 
@@ -40,6 +43,21 @@ These are filters, not separate workflow shapes:
 - **model-switching requirement** - do you need easy provider or model changes?
 
 A good decision usually comes from one workflow shape plus one or two filters.
+
+## Agent Platforms Are a Separate Category
+
+Do not evaluate broader agent platforms with the same checklist as a local editor extension.
+
+Tools such as [OpenClaw](/ai-coding-primer/tools/agents/openclaw/) and [Hermes Agent](/ai-coding-primer/tools/agents/hermes-agent/) can involve messaging gateways, scheduled execution, persistent memory, skills/plugins, or multiple execution backends. Those features can be useful, but they also add trigger surfaces and state that live beyond a single coding session.
+
+Use an agent platform when the workflow requires one of these properties:
+
+- the agent must be reachable from chat, mobile, or multiple devices
+- work should run on a schedule or continue in the background
+- memory and reusable skills are central to the workflow
+- the agent needs to coordinate tools beyond a single repository
+
+If the job is simply to edit and verify code in a repo, start with a narrower IDE, extension, or terminal agent. A smaller tool is usually easier to audit.
 
 ## Compare Access Models
 

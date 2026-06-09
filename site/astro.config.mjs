@@ -108,6 +108,7 @@ export default defineConfig({
 						{ label: 'IDE References', autogenerate: { directory: 'tools/ides' } },
 						{ label: 'Extension References', autogenerate: { directory: 'tools/extensions' } },
 						{ label: 'CLI References', autogenerate: { directory: 'tools/cli' } },
+						{ label: 'Agent Platform References', autogenerate: { directory: 'tools/agents' } },
 						{ label: 'Templates', autogenerate: { directory: 'templates' } },
 					],
 				},
