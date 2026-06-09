@@ -9,77 +9,94 @@ sidebar:
 Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
 :::
 
-
 MCP (Model Context Protocol) lets AI tools connect to external services such as databases, APIs, browsers, and documentation systems.
 
-It is the connectivity layer, not the judgment layer. MCP tells the agent what it can reach. It does not tell the agent how to use those capabilities well.
+MCP is a connectivity layer. It defines what the agent can reach. It does not define how the agent should use that access, what permissions are appropriate, or how results should be verified.
 
-## When You Need MCP
+## When MCP Is Needed
 
-**You probably don't need MCP if:**
-- You're just starting with AI coding
-- Your workflow is code editing + tests
-- Stock tool configuration works fine
+MCP is usually unnecessary when:
 
-**You might need MCP for:**
-- Browser automation and testing
-- Database queries and schema inspection
-- Real-time documentation lookup
-- Custom integrations
+- you are starting with basic AI coding workflows
+- the task is local code editing plus tests
+- built-in tool configuration already provides the needed access
 
-If the question is "how do I let the agent use GitHub, a browser, or a docs service?" that is probably an MCP question.
+MCP may be useful for:
 
-If the question is "how should the agent perform code review or release prep?" that is probably a skills question.
+- browser automation and testing
+- database queries and schema inspection
+- current documentation lookup
+- custom internal integrations
+- issue tracker or repository workflows
 
-## Essential MCP Servers
+If the question is "how do I let the agent use GitHub, a browser, or a docs service?" it is likely an MCP question.
 
-If you do need MCP, start with these:
+If the question is "how should the agent perform code review or release prep?" it is likely a skills or workflow question.
 
-| MCP Server | Use Case | Install |
-|------------|----------|---------|
-| **Context7** | Documentation lookup | `npx -y @context7/mcp` |
-| **Filesystem** | Sandboxed file access | `npx -y @anthropic/mcp-filesystem` |
-| **GitHub** | Repo management, PRs | `npx -y @anthropic/mcp-github` |
-| **Playwright** | Browser automation | `npx -y @anthropic/mcp-playwright` |
+## Common MCP Server Categories
 
-These are examples of MCP's core value: one standard protocol, many tools, and less custom integration work per agent client.
+| Server type | Use case | Example install pattern |
+|---|---|---|
+| Documentation lookup | retrieve current library docs | Context7-style documentation server |
+| Filesystem | sandboxed file access | filesystem server with explicit directory scope |
+| Repository hosting | inspect issues, PRs, and repo metadata | GitHub or GitLab server |
+| Browser automation | test UI flows and collect screenshots | Playwright-style server |
+| Database | inspect schemas or query data | database-specific server with read limits |
+
+Install commands change and should be checked against current official docs before use.
 
 ## MCP in Practice
 
-The practical pattern is simple:
+The practical pattern is:
 
-1. give the agent access to the system it needs
-2. keep the tool surface narrow
-3. pair the MCP server with a workflow or skill that says how to use it
+1. identify the external system the agent needs
+2. choose the narrowest server and permission scope
+3. pair the server with a workflow or skill that defines how to use it
+4. define verification and logging expectations
+5. remove or disable access when the task no longer needs it
 
-For example:
+Examples:
 
-- use GitHub MCP to inspect issues or open PRs
-- use Playwright MCP to test a UI flow
-- use Context7 MCP to fetch current docs
+- use repository MCP to inspect issues or draft PR notes
+- use browser MCP to test a UI flow
+- use documentation MCP to fetch current API docs
 
-The connection alone is not enough. The workflow around it still matters.
+The connection alone is not sufficient. The workflow around it still determines safety and quality.
 
-## Token Cost Warning
+## Token Cost
 
-MCP tools can consume massive context:
+MCP tools can add large amounts of context:
 
-| MCP Tool | Typical Cost |
-|----------|--------------|
+| MCP tool output | Typical cost |
+|---|---|
 | Playwright screenshot | 15,000+ tokens |
 | Full DOM snapshot | 10,000-50,000 tokens |
-| Database query result | Variable |
+| Database query result | variable |
 
-A single screenshot can exhaust hours of token allocation.
+Large tool outputs can crowd out task-relevant context.
 
-**Mitigations:**
-- Use targeted selectors, not full page captures
-- Limit result set sizes
-- Monitor token usage
+Mitigations:
+
+- use targeted selectors instead of full page captures
+- limit database result sizes
+- summarize long outputs before continuing
+- monitor token usage when the tool supports it
+- keep raw logs outside the main prompt when possible
 
 ## Security Note
 
-MCP servers run with your permissions. Use caution:
+MCP servers run with the permissions granted to them. Treat each server as software with a trust boundary.
+
+Minimum checks:
+
+- verify the source and maintainer
+- prefer official or audited servers
+- pin versions where possible
+- run untrusted servers in containers or sandboxes
+- limit filesystem and network access
+- review command logs for high-permission workflows
+
+Example sandboxing shape:
 
 ```bash
 # Sandboxed execution for untrusted servers
@@ -88,16 +105,16 @@ docker run --rm -it mcp/playwright
 
 ## Registries
 
-- [Docker MCP Catalog](https://hub.docker.com/mcp) — Verified, containerized (recommended)
-- [mcp.so](https://mcp.so) — Community registry (verify before use)
+- [Docker MCP Catalog](https://hub.docker.com/mcp) — containerized server catalog
+- [mcp.so](https://mcp.so) — community registry; verify source and behavior before use
 
 ## MCP vs Skills
 
-Use MCP when you need external access.
+Use MCP when the agent needs external access.
 
-Use skills when you need reusable judgment.
+Use skills when the agent needs a repeatable procedure.
 
-Most serious setups use both: MCP to reach systems, skills to keep behavior consistent.
+A typical governed setup uses MCP for access and skills or workflow rules for behavior.
 
 ## Bibliography
 

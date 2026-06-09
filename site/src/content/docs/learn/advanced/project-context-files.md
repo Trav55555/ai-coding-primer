@@ -1,91 +1,92 @@
 ---
 title: Project Context Files
-description: Best practices for CLAUDE.md, .cursorrules, and AGENTS.md files.
+description: How to write CLAUDE.md, .cursorrules, and AGENTS.md files.
 sidebar:
   order: 1
 ---
 
-AI tools read markdown files in your project root to understand context, conventions, and gotchas. If those files are good, the tool stops fighting you so much.
+AI coding tools can read project instruction files to learn local commands, conventions, and constraints. These files should be short and specific.
 
 ## Which File to Use
 
-| Tool | Context File | Notes |
-|------|--------------|-------|
-| Claude Code | `CLAUDE.md` | Official convention |
-| Cursor | `.cursorrules` | Or `.cursor/rules/*.mdc` |
-| Zed | `AGENTS.md` | Also reads `CLAUDE.md` |
-| Continue.dev | `AGENTS.md` | Also reads `CLAUDE.md` |
+| Tool | Context file | Notes |
+|---|---|---|
+| Claude Code | `CLAUDE.md` | official convention |
+| Cursor | `.cursorrules` | or `.cursor/rules/*.mdc` |
+| Zed | `AGENTS.md` | also reads `CLAUDE.md` |
+| Continue.dev | `AGENTS.md` | also reads `CLAUDE.md` |
 | Copilot | `.github/copilot-instructions.md` | GitHub convention |
-| Any tool | `AGENTS.md` | Widely recognized fallback |
+| Any tool | `AGENTS.md` | widely recognized fallback |
 
-## The Golden Rule: Keep Them Short
+## Length Rule
 
 > "Overly verbose files can lead to Claude ignoring instructions if deemed irrelevant. Aim for under 300 lines." — Anthropic
 
-**Target lengths:**
-- **Ideal:** Under 100 lines
-- **Maximum:** Under 300 lines
-- **If longer:** Split into multiple files
+Suggested length:
 
-**For each line, ask:** "Would removing this cause the AI to make mistakes?" If not, cut it.
+- **Preferred:** under 100 lines
+- **Upper bound:** under 300 lines
+- **If longer:** split into smaller linked files
 
-## What to Include (and What to Skip)
+For each line, ask whether removing it would likely cause an implementation mistake. If not, remove it.
 
-### Include
+## What to Include
 
 | Category | Examples |
-|----------|----------|
-| **Gotchas** | "Use `date-fns`, not moment" / "Auth tokens in cookies, not localStorage" |
+|---|---|
+| **Gotchas** | `Use date-fns, not moment`; `Auth tokens live in cookies, not localStorage` |
 | **Commands** | `npm run dev`, `npm test`, build commands |
-| **Non-obvious architecture** | "Database schema in `/prisma/`, not `/db/`" |
-| **Project-specific conventions** | "Named exports only" / "No class components" |
+| **Non-obvious architecture** | `Database schema is in /prisma/, not /db/` |
+| **Project-specific conventions** | `Named exports only`; `No class components` |
+| **Safety boundaries** | `Do not edit generated files`; `Do not run networked commands without approval` |
 
-### Skip (the AI can infer these)
+## What to Skip
 
-| Category | Why Skip |
-|----------|----------|
-| **Language basics** | AI knows TypeScript, Python, etc. |
-| **Framework docs** | AI knows React, Express, FastAPI |
-| **Obvious patterns** | If it's in the code, AI will see it |
-| **Vocabulary definitions** | Don't explain what "component" means |
-| **Architectural patterns** | Don't explain MVC, Clean Architecture |
+| Category | Reason to skip |
+|---|---|
+| **Language basics** | the model already has general language knowledge |
+| **Framework docs** | link to docs instead of copying them |
+| **Obvious patterns** | the agent can inspect the code |
+| **Vocabulary definitions** | avoid generic definitions that do not change implementation |
+| **Full architecture documents** | link to them and summarize only the relevant gotcha |
 
 ## Progressive Disclosure Pattern
 
-Do not embed everything. Tell the AI where to look.
+Do not embed every supporting document. Link to the document the agent should inspect when needed.
 
 ```markdown
 ## Architecture
 See `/docs/architecture.md` for detailed system design.
 
-## API Conventions  
+## API Conventions
 See `/docs/api-conventions.md` for request/response patterns.
 
 ## Database
 Schema in `/prisma/schema.prisma`. Migrations in `/prisma/migrations/`.
 ```
 
-That keeps the context file short while still giving the AI a path to the details.
+This keeps the context file short while preserving a path to details.
 
 ## Modular Hierarchy
 
-For larger projects, use a hierarchy of context files:
+For larger projects, use context files near the code they govern:
 
-```
+```text
 project/
-├── CLAUDE.md              # Project-wide: commands, gotchas, conventions
+├── CLAUDE.md              # project-wide: commands, gotchas, conventions
 ├── src/
 │   ├── api/
 │   │   └── CLAUDE.md      # API-specific: auth patterns, error handling
 │   └── components/
-│       └── CLAUDE.md      # Component-specific: styling, state patterns
+│       └── CLAUDE.md      # component-specific: styling, state patterns
 └── docs/
-    ├── architecture.md    # Detailed docs (linked, not embedded)
+    ├── architecture.md    # detailed docs, linked rather than embedded
     └── api-conventions.md
 ```
 
-**Personal + project files:**
-- `~/.claude/CLAUDE.md`: your personal preferences
+Personal and project files serve different purposes:
+
+- `~/.claude/CLAUDE.md`: personal preferences
 - `./CLAUDE.md`: project-specific context
 
 ## Template Structure
@@ -100,23 +101,23 @@ project/
 - `[command]` - [what it does]
 
 ## Gotchas
-- [Thing the AI gets wrong and how to fix it]
+- [Thing the AI gets wrong and how to avoid it]
 
 ## Code Style
 - [Non-obvious preference]
 ```
 
-That is enough. Start small and add only what prevents repeated mistakes.
+Start small. Add only the rules that prevent repeated mistakes.
 
 ## Anti-Patterns
 
-| Anti-Pattern | Why It Fails |
-|--------------|--------------|
-| **Embedding full documentation** | AI ignores long files; use links instead |
-| **Explaining language basics** | AI already knows; wastes context |
-| **Duplicating README content** | AI can read README; don't repeat |
-| **Listing every file/folder** | AI can explore; describe only non-obvious structure |
-| **Verbose style guides** | Keep to 3-5 key rules; AI infers the rest |
+| Anti-pattern | Problem |
+|---|---|
+| **Embedding full documentation** | long files reduce instruction relevance; link instead |
+| **Explaining language basics** | consumes context without changing behavior |
+| **Duplicating README content** | the agent can read the README when needed |
+| **Listing every file or folder** | the agent can explore; describe only non-obvious structure |
+| **Verbose style guides** | keep only the rules that affect common edits |
 
 ## Example: Minimal TypeScript/React
 
@@ -138,7 +139,7 @@ That is enough. Start small and add only what prevents repeated mistakes.
 - Prefer arrow functions for components
 ```
 
-**22 lines.** The rest is usually already visible in the code.
+This example is short because most project information is already visible in code and tests.
 
 ## Example: Minimal Python
 
@@ -151,28 +152,26 @@ That is enough. Start small and add only what prevents repeated mistakes.
 - `uv run alembic upgrade head` - Migrations
 
 ## Gotchas
-- Model artifacts in `/models/` - don't commit (use DVC)
-- Legacy `/v1/score` uses old schema - don't modify
+- Model artifacts in `/models/` - do not commit; use DVC
+- Legacy `/v1/score` uses old schema - do not modify
 
 ## Code Style
 - Type hints on all functions
 - Async for I/O, sync for CPU-bound
 ```
 
-**16 lines.** Focused on what the AI would get wrong without guidance.
+## Maintenance
 
-## Living Document
+Update context files when repeated behavior shows a missing rule:
 
-Your context file should evolve:
-
-1. **Start minimal**: 10-20 lines
-2. **Add when AI makes mistakes**: "It keeps suggesting moment instead of date-fns" -> add gotcha
-3. **Remove when redundant**: if the tool consistently gets something right, stop spending lines on it
-4. **Version control**: track changes and revert them if they make the file worse
+1. **Start minimal:** 10 to 20 lines.
+2. **Add a rule after repeated mistakes:** for example, `Use date-fns, not moment`.
+3. **Remove redundant rules:** if the tool infers something reliably, stop spending context on it.
+4. **Version control changes:** revert context edits that make output worse.
 
 ## Downloadable Templates
 
-Ready-to-use templates for common stacks:
+Starter examples for common stacks:
 
 - [Node.js/Express](/ai-coding-primer/templates/claude-md-nodejs/)
 - [Python/FastAPI](/ai-coding-primer/templates/claude-md-python/)

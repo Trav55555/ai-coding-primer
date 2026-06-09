@@ -1,40 +1,44 @@
 ---
 title: Subagent Architectures
-description: Using multiple AI instances to keep implementation context clean.
+description: Using separate AI sessions to isolate research context from implementation context.
 sidebar:
   order: 3
 ---
 
-Subagents are separate AI instances that handle scoped tasks while your main agent stays focused on implementation.
+Subagents are separate AI instances or sessions assigned to scoped tasks. They are useful when investigation would add too much noise to the main implementation context.
 
 :::note[Evidence status]
 - `Research-supported principle` - context pressure and verification overhead affect agent reliability.
 - `Practitioner-backed` - subagent isolation patterns from tool docs and production workflows.
 :::
 
-## Why Subagents
+## Use Case
 
-**Problem:** Research pollutes context. Looking up docs, exploring codebases, and investigating options fills your context window with information that is useful once and distracting afterward.
+Use subagents when the task has a research phase that can be separated from implementation.
 
-**Solution:** Delegate research to subagents that run in separate contexts.
+Common cases:
 
-## When to Use Subagents
+- exploring an unfamiliar codebase
+- looking up external documentation
+- comparing implementation approaches
+- mapping tests, APIs, database layers, or dependencies
+- gathering file paths and conventions before editing
 
-- Exploring unfamiliar codebases
-- Looking up documentation
-- Investigating multiple approaches
-- Any task that's "read a lot, summarize a little"
+Do not use subagents just to add parallelism. They add coordination overhead and can make the task harder to review.
 
-## What They Are Good At
+## What Subagents Are For
+
+Subagents are useful for:
 
 - codebase exploration
-- external documentation lookup
-- pattern finding across multiple modules
-- comparing implementation options before you commit to one
+- documentation lookup
+- pattern finding across modules
+- option comparison before implementation
+- summarizing evidence with file paths
 
-They are usually **bad** at owning the whole task indefinitely. Use them to reduce noise, not to create management overhead.
+They are usually not good owners for the entire task. Keep implementation in the main context unless the workflow explicitly requires isolated execution.
 
-This caveat matters. Research and architecture writeups both suggest multi-agent systems help most when the agents have genuinely different scopes, tools, or capabilities.
+This caveat matters. Research and architecture writeups suggest multi-agent systems help most when agents have different scopes, tools, or capabilities.
 
 **Evidence tags:** `Research-supported principle` via context and verification research; `Practitioner-backed` via [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/) and Anthropic-style harness guidance.
 
@@ -42,40 +46,45 @@ This caveat matters. Research and architecture writeups both suggest multi-agent
 
 ### In Claude Code
 
-```
-Use subagents to investigate how authentication is implemented 
-in this codebase. Report back with file paths and patterns.
+```text
+Use subagents to investigate how authentication is implemented in this codebase.
+Report back with file paths, entry points, conventions, and open questions.
+Do not modify files.
 ```
 
 ### In Cursor
 
-Use Background Agents for research tasks. Keep your main Composer session focused on implementation.
+Use Background Agents for research tasks. Keep the main Composer session focused on implementation and diff review.
 
-## Benefits
+## Expected Output
 
-| Benefit | Why It Matters |
-|---------|----------------|
-| Clean main context | No research pollution |
-| Parallel investigation | Multiple angles at once |
-| Focused summaries | Get answers, not raw exploration |
-| Context budget | Each agent gets its own context budget |
+A useful subagent report should include:
 
-## The Orchestrator Pattern
+| Output | Purpose |
+|---|---|
+| File paths | lets the main agent inspect evidence directly |
+| Observed patterns | identifies local conventions |
+| Relevant commands | connects findings to verification |
+| Risks or unknowns | prevents premature implementation |
+| Recommended next workflow | routes to bug fix, feature build, refactor, or further research |
 
-The main agent should act like an orchestrator:
+## Orchestrator Pattern
 
-1. decide what needs to be discovered
+The main agent coordinates the work:
+
+1. define what needs to be discovered
 2. send narrow research tasks to subagents
-3. collect concise findings
-4. implement in the main context
+3. collect concise findings with evidence
+4. decide whether implementation is ready
+5. implement in the main context
 
-This works best when search and implementation are different jobs.
+Use this pattern when search and implementation are separate jobs.
 
 ## Architecture Patterns
 
 ### Research + Implementation
 
-```
+```text
 Main Agent ─┬─> Subagent: "Research auth patterns"
             │   └─> Returns: "Found JWT in /auth, sessions in /middleware"
             │
@@ -84,22 +93,31 @@ Main Agent ─┬─> Subagent: "Research auth patterns"
 
 ### Parallel Exploration
 
-```
+```text
 Main Agent ─┬─> Subagent 1: "Explore database layer"
             ├─> Subagent 2: "Explore API layer"
             └─> Subagent 3: "Explore test patterns"
-            
+
             └─> Main synthesizes findings
 ```
 
-## Best Practices
+## Operating Rules
 
-1. **Give clear scope** — "Investigate X in these files"
-2. **Ask for summary** — "Report back with key findings"
-3. **Set constraints** — "Don't modify any files"
-4. **Time-box** — Use for investigation, not implementation
-5. **Separate research from build** — Let subagents search, let the main agent write code
-6. **Request file paths and patterns** — Summaries are better when they point back to evidence
+1. Give each subagent a narrow scope.
+2. Ask for evidence, not broad summaries.
+3. Require file paths and commands when available.
+4. Set constraints such as `Do not modify files`.
+5. Time-box investigation.
+6. Keep implementation in one reviewable context unless there is a reason to split it.
+
+## When Not to Use Subagents
+
+Avoid subagents for:
+
+- tiny one-file edits
+- syntax or typo fixes
+- tasks where the search space is already clear
+- work where coordination overhead exceeds the research benefit
 
 ## Supporting Evidence
 
@@ -107,15 +125,9 @@ Main Agent ─┬─> Subagent 1: "Explore database layer"
 - [Productivity Research](/ai-coding-primer/research/productivity/)
 - agent architecture analyses showing orchestration overhead and context-isolation benefits
 
-## When Not to Use Them
-
-- Tiny one-file edits
-- Simple syntax or typo fixes
-- Tasks where the overhead is larger than the search space
-
 ## Next Steps
 
-- [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/) — where subagents fit in real workflows
+- [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/) — where subagents fit in common workflows
 - [Agent Harness](/ai-coding-primer/learn/advanced/agent-harness/) — keeping long-running work stable
 
 ## Bibliography

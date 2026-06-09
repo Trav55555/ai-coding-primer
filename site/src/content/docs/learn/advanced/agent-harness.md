@@ -5,7 +5,7 @@ sidebar:
   order: 2
 ---
 
-Long-running agent work usually falls apart for a boring reason: the system loses the thread. A harness is how you stop that from happening.
+Long-running agent work needs persistent state. A harness is the small set of files, checks, and rules that lets work continue after context compaction, session reset, or handoff.
 
 :::note[Evidence status]
 - `Practitioner-backed` - [Anthropic: Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents), [OpenAI: Harness engineering](https://openai.com/index/harness-engineering/), [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/)
@@ -15,30 +15,32 @@ The exact file set and harness shape here are editorial guidance built from thos
 
 ## What a Harness Is
 
-A harness is the small amount of structure around the model that keeps the work legible:
+A harness is structure around the model that keeps work legible:
 
 - persistent task files
 - verification commands
-- clear constraints
-- a repeatable review loop
+- explicit constraints
+- review checkpoints
+- handoff notes
 
-If the session resets, compacts, or goes sideways, the harness is what lets the next pass pick the work back up without starting from scratch.
+If the session resets or context is compacted, the harness lets the next session recover the task state without relying on chat history.
 
-## The Minimal Harness
+## Minimal Harness
 
-You do not need much. For most projects, three files are enough:
+For many projects, three files are enough.
 
 ### `spec.md`
 
-The source of truth for what should be built.
+Source of truth for the intended behavior:
 
 - requirements
 - acceptance criteria
-- out of scope
+- non-goals
+- constraints
 
 ### `PLAN.md`
 
-The executable task list.
+Executable task list:
 
 - current step
 - remaining steps
@@ -47,22 +49,23 @@ The executable task list.
 
 ### `STATE.md`
 
-The compact memory of what already happened.
+Compact record of what happened:
 
 - decisions made
 - files touched
 - important constraints
+- checks run
 - unresolved risks
 
-## Why This Matters
+## Failure Mode Addressed
 
-Without a harness, long sessions turn into a pile of stale context, half-finished attempts, and forgotten constraints. With one, the task survives even when the conversation does not.
+Without a harness, long sessions accumulate stale context, partial attempts, and forgotten constraints. With a harness, the task state is stored in files that can be reread and reviewed.
 
 This matches current harness practice in Anthropic-style long-running agent setups, Codex-style operational harnesses, and open-source agent architecture analyses.
 
-## Examples in the Wild
+## Examples in Current Tools
 
-- **Anthropic long-running agents** - initializer + coding-agent workflow with durable progress artifacts and incremental commits
+- **Anthropic long-running agents** - initializer and coding-agent workflows with durable progress artifacts and incremental commits
 - **Codex / AGENTS.md** - project instructions and verification commands discovered from the repo itself
 - **Cline / implementation plans** - structured planning files used before deep execution
 - **GitHub Spec Kit / plan.md** - project metadata and plan artifacts used to keep agent context aligned
@@ -85,26 +88,32 @@ Implement token refresh flow without changing login behavior.
 - `npm run build`
 ```
 
-## Rules That Actually Matter
+## Operating Rules
 
 1. Keep files short enough to reread quickly.
-2. Update the harness when the task changes, not hours later.
-3. Put constraints in writing so the next session cannot forget them.
-4. Store the verification commands next to the plan.
-5. Treat specs and plans like code: review them, tighten them, and keep them current.
+2. Update the harness when the task changes.
+3. Put constraints in writing.
+4. Store verification commands next to the plan.
+5. Review specs and plans like code.
+6. Record unresolved risks before handoff.
 
 ## When to Use a Harness
+
+Use a harness for:
 
 - multi-session feature work
 - long refactors
 - parallel subagent research
-- tasks where verification has several steps
+- tasks with multiple verification steps
+- work that may be handed to another agent or developer
 
-## When You Can Skip It
+## When to Skip It
+
+A harness is usually unnecessary for:
 
 - small one-file edits
 - typo fixes
-- work you will finish before the context gets messy
+- tasks completed before context becomes noisy
 
 ## Next Steps
 
