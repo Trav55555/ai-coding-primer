@@ -5,7 +5,7 @@ sidebar:
   order: 8
 ---
 
-Use this workflow when code quality is poor but functional behavior should remain stable.
+Use this workflow when code quality is poor but functional behavior should remain stable. It is the refactor version of the [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/).
 
 ## Outcome
 
@@ -200,8 +200,9 @@ The reviewer should know exactly what behavior-preserving move happened.
 - **Research-supported principle:** review burden and rework costs increase when change scope balloons.
 - **Practitioner-backed workflow:** characterization tests and seam-by-seam refactoring keep AI edits controllable.
 
-This concrete gating workflow is editorial guidance based on those patterns.
+This concrete gating workflow is editorial guidance based on those patterns and the canonical [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/).
 
 ## Next Scenario
 
+- [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/)
 - [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/)

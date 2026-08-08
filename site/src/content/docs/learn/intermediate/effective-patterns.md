@@ -5,13 +5,13 @@ sidebar:
   order: 4
 ---
 
-These patterns reduce common failure modes in AI-assisted development. They focus on verification, bounded scope, useful context, and reviewable diffs.
+These patterns are reusable moves inside the [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/). Use them to improve verification, context control, and diff review without restating the full loop on every task.
 
 :::note[Evidence guide]
 Not every pattern here has the same evidence level.
 
 - `Research-supported principle` - [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/) and [Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/) support verification and review discipline.
-- `Practitioner-backed workflow` - [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/) and [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) show how those principles become practice.
+- `Practitioner-backed workflow` - [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/), [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/), and [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) show how those principles become practice.
 
 The exact pattern framing is editorial guidance drawn from those sources and practitioner convergence.
 :::
@@ -129,7 +129,7 @@ shape. The regression test now passes.
 | The fix requires API/schema change | Pause and write the decision into a small spec |
 | Failed attempts pollute the session | Start fresh with findings, failed fixes, and remaining signal in five bullets |
 
-The loop is: narrow context, root-cause explanation, smallest edit, executable verification, human diff review, and recovery if the session degrades.
+This example is the bug-fix version of the canonical loop: define the failure, bound the task, run checks, review the diff, and reset context if the session degrades.
 
 ## Close the Verification Loop
 
@@ -153,15 +153,9 @@ This separates design choices from implementation. It also exposes assumptions b
 
 ## Use Small Iterations
 
-Avoid asking for an entire feature in one prompt. Break the work into verifiable slices:
+Avoid asking for an entire feature in one prompt. Break the work into verifiable slices with a stop point and a validation command. Prefer a thin end-to-end slice when it can test the real behavior; use a foundation-first slice only when a migration, contract, or safety boundary must be settled before user-visible work.
 
-1. define data structures
-2. implement core logic
-3. add tests for behavior
-4. integrate UI or API surface
-5. run final checks
-
-Each slice should have a validation command or review artifact.
+See [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/#3-choose-a-thin-vertical-slice) for the full slicing rule.
 
 ## Limit Context to the Task
 
@@ -237,12 +231,13 @@ These artifacts preserve task state when conversation context is compacted or cl
 | Anti-pattern | Problem | Correction |
 |---|---|---|
 | **No verification** | Result cannot be checked | Include a test, lint, build, screenshot, or expected output |
-| **Giant prompts** | Irrelevant context reduces output quality | Break work into smaller asks |
-| **Repeated `fix it` loops** | Failed attempts pollute context | Clear context and restate the task precisely |
-| **Skipping review** | Code may be wrong or unmaintainable | Read diffs and verify behavior before accepting |
+| **Giant prompts** | Irrelevant context reduces output quality | Break work into bounded asks with explicit stop points |
+| **Repeated `fix it` loops** | Failed attempts pollute context | Start fresh with facts, failed attempts, and remaining evidence |
+| **Skipping review** | Code may be wrong or unmaintainable | Review assumptions, risk, diff, and behavior before accepting |
 
 ## Next Steps
 
+- [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/): canonical bounded-task procedure
 - [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/): common end-to-end workflows
 - [Common Mistakes](/ai-coding-primer/learn/intermediate/common-mistakes/): failure modes to avoid
 - [Troubleshooting](/ai-coding-primer/learn/intermediate/troubleshooting/): recovery steps

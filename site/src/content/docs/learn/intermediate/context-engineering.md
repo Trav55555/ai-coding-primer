@@ -53,68 +53,60 @@ If you cannot name the verification command or done signal, ask the agent to hel
 | **Format** | Context is concise and structured | Short error output, not raw logs with no summary |
 | **Plausibility check** | A human could complete the task from the same inputs | If the task is ambiguous for a human, clarify it first |
 
-## Types of Context
+## Three Context Jobs
 
-### 1. Static Context
+Do not put every helpful-looking fact in the same place. Context does three different jobs, and each job has a different failure mode.
 
-Static context is project-specific information that does not change per task, such as `AGENTS.md`, `CLAUDE.md`, or `.cursorrules`.
+### 1. Retrieved Context
 
-Useful static context includes:
+Retrieved context is information gathered for the current task:
 
-- project architecture summary
-- commands to run
-- known gotchas
-- code style preferences
-- permission or safety rules
-
-Keep static context short. For each line, ask whether removing it would cause a likely mistake. If not, remove it.
-
-### 2. Dynamic Context
-
-Dynamic context is information gathered for the current task:
-
-- relevant files
+- relevant files and symbols
 - recent git history
 - test results
 - error messages
 - examples of nearby patterns
+- external docs when the repository does not answer the question
 
-Many agent tools gather this automatically by reading files, searching the codebase, and running commands.
+Many agent tools gather this by searching the codebase, reading files, and running commands. For large codebases, selective retrieval is usually better than pre-loading a large directory tour. The model can fetch the next relevant file instead of carrying every possible file in the prompt.
 
-Explore the local project before relying on external documentation. External examples may not match the codebase you are editing.
+Explore the local project before relying on external documentation. External examples may not match the codebase you are editing. That is not a claim that filesystem storage is better than external retrieval in general; a well-maintained docs index, search service, or retrieval system can be the right source when it contains current, task-relevant material.
 
 **Evidence tags:** `Practitioner-backed` ([Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/)); `Research-supported principle` ([Productivity Research](/ai-coding-primer/research/productivity/)).
 
-### 3. Tool Context
+### 2. Persistent Instructions
 
-Tool context is access to commands and external data sources.
+Persistent instructions are project-specific rules loaded across tasks, such as `AGENTS.md`, `CLAUDE.md`, or `.cursorrules`.
 
-Common examples:
+Useful persistent instructions include:
 
-- code search
-- file reads
-- tests and build commands
-- browser or screenshot tools
-- MCP servers
+- commands to run
+- non-obvious architecture boundaries
+- known gotchas
+- code style rules that affect edits
+- permission, safety, or review requirements
 
-For large codebases, tool access is usually better than pre-loading large amounts of text. The model can retrieve the next relevant file instead of carrying every possible file in context.
+Keep these files short. For each line, ask whether removing it would cause a likely mistake on representative tasks. If not, remove it.
 
-### 4. Memory Context
+Evidence is mixed. Brain-2's summary of arXiv 2602.11988 reports that generated repository instruction files failed to improve, or slightly reduced, task success while raising cost by roughly 20–23 percent. Concise human-written instructions produced a small gain in that study, also at higher cost. Other practitioner reports find benefits from persistent rules. The practical default is: write short human rules for non-obvious constraints, avoid generated directory tours, and test whether the file helps your tasks.
 
-Memory context is information carried across sessions:
+### 3. Saved Task State
+
+Saved task state records what happened during a task so the next session does not depend on a long transcript:
 
 - decisions made
-- patterns established
+- files touched
 - checks that passed or failed
 - remaining work
+- unresolved risks
 
-Most tools do not provide reliable project memory by default. You can simulate it with small persistent files such as `PLAN.md`, `STATE.md`, and a spec or scratchpad.
+Most tools do not provide reliable project memory by default. You can simulate it with small persistent files such as `PLAN.md`, `STATE.md`, and a spec or scratchpad. Keep saved state factual. Do not carry every failed attempt; record the result and the current hypothesis.
 
 ## Push and Pull Context
 
 Push-based project guidance means core rules are loaded automatically, such as with `AGENTS.md`, `CLAUDE.md`, or `.cursorrules`.
 
-Pull-based context means the model retrieves information when needed, such as by searching the repo or reading docs.
+Pull-based context means the model retrieves information when needed, such as by searching the repo, reading docs, querying an index, or inspecting tool output.
 
 Use push-based context for:
 
@@ -132,7 +124,7 @@ Use pull-based context for:
 - logs
 - large references
 
-The safest claim is not that push-based context always wins. The useful rule is that core constraints should not depend on retrieval luck.
+The safest claim is not that push-based context always wins. The useful rule is that core constraints should not depend on retrieval luck, and large references should not be forced into every task.
 
 **Evidence tags:** `Practitioner-backed` ([Agent Harness](/ai-coding-primer/learn/advanced/agent-harness/)). The push-vs-pull framing here is an editorial judgment built on those patterns.
 
@@ -142,7 +134,7 @@ Use this order for most implementation tasks:
 
 1. Explore local files, tests, commands, and patterns.
 2. Load only context relevant to the current task.
-3. Consult external docs if local context is insufficient.
+3. Consult external docs or retrieval systems if local context is insufficient.
 4. Execute with a verification signal.
 
 This avoids a common failure mode: applying a clean external example that does not fit the local codebase.
@@ -151,9 +143,9 @@ This avoids a common failure mode: applying a clean external example that does n
 
 There is no strong primary-source basis for a universal context percentage threshold.
 
-The better-supported point is broader: context quality can degrade before the window is full. Long-running agents need selective retrieval, compaction, and persistent artifacts instead of large prompt dumps.
+The better-supported point is broader: context quality can degrade before the window is full. Long or generated context can also add cost without improving task success. Treat every file, tool output, instruction line, and previous correction as part of a finite attention budget.
 
-Treat every file, tool output, and previous correction as part of a finite attention budget.
+Long-running agents need selective retrieval, compaction, and persistent artifacts instead of large prompt dumps.
 
 ### When Context Gets Noisy
 
@@ -182,12 +174,26 @@ This does not mean multi-agent workflows are always better. Orchestration overhe
 
 **Evidence tags:** `Research-supported principle` ([Productivity Research](/ai-coding-primer/research/productivity/)); `Practitioner-backed` ([Subagent Architectures](/ai-coding-primer/learn/advanced/subagents/)).
 
+## Minimal-Context Experiment
+
+Before making a large repository instruction file permanent, test it on real work.
+
+1. Pick three to five recent tasks that represent normal edits: a bug fix, a small feature, a test update, and one task with a known local gotcha.
+2. Run each task twice in fresh sessions when practical: once with only minimal instructions and retrieval tools, once with the proposed instruction file.
+3. Record success, commands run, review fixes, wall-clock time, token or inference cost if available, and whether the agent used the extra instructions correctly.
+4. Keep instructions that prevent observed mistakes. Delete rules that were unused, obvious from local files, or caused the agent to inspect the wrong area.
+5. Repeat when the repository structure or agent tooling changes.
+
+This is not a laboratory benchmark. It is a cheap check against paying for context that does not change outcomes.
+
 ## Common Context Mistakes
 
 | Mistake | Problem | Recovery step |
 |---|---|---|
 | Dumping the whole codebase | Irrelevant files consume attention | provide search tools and first likely paths |
-| Starting with external docs | Examples may not match local code | inspect local files and tests first |
+| Starting with external docs | Examples may not match local code | inspect local files and tests first, then fetch external sources as needed |
+| Treating generated instructions as free | Extra tokens can raise cost without improving success | test the file on representative tasks |
+| Mixing persistent rules and task state | Old task details become accidental policy | keep `AGENTS.md`-style rules separate from `STATE.md`-style notes |
 | Carrying old failed attempts | Stale corrections bias the next plan | summarize findings and restart |
 | Treating context-window size as quality | More tokens can still reduce relevance | prefer task-specific files and compact state |
 | Mixing research and implementation | Search noise buries the patch context | use a separate session or subagent |
@@ -231,6 +237,7 @@ TypeScript + React + Express. Tests with Vitest.
 
 ## Bibliography
 
+- [Evaluating AGENTS.md: Are Repository-Level Context Files Helpful for Coding Agents?](https://arxiv.org/abs/2602.11988)
 - [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/)
 - [DORA 2025 report](https://dora.dev/research/2025/dora-report/)
 - [Anthropic: Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents/)

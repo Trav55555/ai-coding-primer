@@ -32,6 +32,7 @@ export default defineConfig({
 					label: 'Work Reliably',
 					items: [
 						{ label: 'Workflow Archetypes', slug: 'learn/intermediate/workflow-archetypes' },
+						{ label: 'Agentic Development Loop', slug: 'learn/intermediate/agentic-development-loop' },
 						{ label: 'Scenario - Fix a Bug', slug: 'learn/intermediate/scenario-bug-fix' },
 						{ label: 'Scenario - Add a Feature', slug: 'learn/intermediate/scenario-feature-build' },
 						{ label: 'Scenario - Safe Refactor', slug: 'learn/intermediate/scenario-safe-refactor' },

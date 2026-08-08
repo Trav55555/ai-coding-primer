@@ -5,7 +5,7 @@ sidebar:
   order: 7
 ---
 
-Use this workflow when you are adding new behavior and want predictable delivery instead of one-shot generation.
+Use this workflow when you are adding new behavior and want predictable delivery instead of one-shot generation. It is the feature-specific version of the [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/).
 
 ## Outcome
 
@@ -15,7 +15,7 @@ Ship new functionality that meets explicit acceptance criteria and passes staged
 
 You are adding email notification preferences to an existing app. Users should be able to opt in or out of product updates from the settings page. The feature touches schema, API, UI, tests, and docs.
 
-The mistake to avoid is asking for the whole feature at once. The safe workflow is spec → plan → slices → verification gates.
+The mistake to avoid is asking for the whole feature at once. The safe workflow is spec → consequential decisions → thin slice or foundation step → verification gates.
 
 ## Inputs You Need
 
@@ -73,63 +73,62 @@ Answer the open questions before implementation. If you skip this step, the mode
 ```text
 Propose an implementation plan in small verifiable slices.
 
-Use this slice structure unless the codebase suggests a better one:
-1. data/schema or persistence
-2. API/core logic
-3. tests for core behavior
-4. UI integration
-5. docs or release notes
+Default preference:
+- choose the smallest end-to-end behavior that proves the design, such as one setting loading, saving, and reloading through the real path.
+
+Use a foundation-first slice only if a migration, public contract, permission rule, or other hard-to-reverse decision must be reviewed before behavior can safely use it.
 
 For each slice, list:
+- user-visible or system behavior proved by the slice
 - files likely touched
 - validation command
 - risk or rollback note
+- explicit stop point
 
 Do not edit yet.
 ```
 
-Good plans name concrete files and checks. Weak plans say "update backend" or "add frontend" without naming boundaries.
+Good plans name concrete files, checks, and the behavior each slice proves. Weak plans say "update backend" or "add frontend" without naming boundaries or evidence.
 
 ## Step 4: Implement One Slice at a Time
 
-### Slice 1: Persistence
+### Slice 1: One End-to-End Preference
 
 ```text
-Implement only slice 1: persistence for notification preference.
+Implement only slice 1: one end-to-end product-updates preference.
+
+Behavior to prove:
+- A signed-in user can load the current product-updates preference.
+- The user can change it from the existing settings page.
+- After save and reload, the chosen value remains.
 
 Constraints:
-- Do not touch UI yet.
+- Use existing settings endpoint and form patterns where possible.
+- Do not add email delivery, campaign tooling, or notification categories.
 - Do not change unrelated settings fields.
-- Add migration or default handling for existing users.
 
-After edits, run the persistence/API test command from the plan and report results.
-Stop after this slice.
+After edits, run the test command from the plan and `npm run typecheck`.
+Stop after this slice and report changed files, assumptions, and results.
 ```
 
-Review the diff before continuing. Then repeat for the next slice.
+Review the diff before continuing. The first slice may still touch storage, server logic, and UI, but only enough to prove one real behavior.
 
-### Slice 2: API/Core Logic
+### Foundation-first exception
+
+If the plan identifies an irreversible migration or public contract decision, split that foundation out first:
 
 ```text
-Implement only slice 2: API/core logic.
+Implement only the approved foundation step: add the notification preference storage default.
 
-Use the existing settings endpoint patterns.
-Reject invalid preference values.
-Add or update tests that prove load and save behavior.
-Run the relevant API tests and typecheck.
-Stop after this slice.
+Constraints:
+- Include migration/default handling for existing users.
+- Add the migration or model test from the plan.
+- Do not expose UI or API behavior yet.
+
+Stop after the migration check and report rollback assumptions.
 ```
 
-### Slice 3: UI Integration
-
-```text
-Implement only slice 3: settings UI integration.
-
-Use existing form/toggle patterns in the settings page.
-Show save success and failure states consistent with nearby controls.
-Run UI tests or build checks listed in the plan.
-Stop after this slice.
-```
+Then return to the smallest end-to-end behavior slice.
 
 ## Step 5: Final Integration Pass
 
@@ -152,7 +151,7 @@ Run final checks and produce a handoff summary with changed files and verificati
 |---|---|---|
 | Spec gate | requirements, non-goals, open questions | before code |
 | Plan gate | files, slices, commands, risks | before code |
-| Slice gate | local tests and focused diff | after each slice |
+| Slice gate | behavior proved, local tests, focused diff, stop point honored | after each slice |
 | Integration gate | acceptance criteria and full checks | before handoff |
 | Review gate | human diff review and rollback path | before merge |
 
@@ -191,8 +190,9 @@ Each commit should pass its relevant checks. Do not wait until the entire featur
 - **Research-supported principle:** verification and human review loops improve downstream quality.
 - **Practitioner-backed workflow:** spec-first implementation reduces ambiguity and drift on larger tasks.
 
-This slice sequence and gating pattern are editorial guidance based on those patterns.
+This slice sequence and gating pattern are editorial guidance based on those patterns and the canonical [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/).
 
 ## Next Scenario
 
+- [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/)
 - [Scenario - Safe Refactor](/ai-coding-primer/learn/intermediate/scenario-safe-refactor/)

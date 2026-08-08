@@ -7,11 +7,11 @@ sidebar:
 
 AI coding workflows should match the task type. A bug fix, a feature build, a refactor, and a codebase exploration need different context and verification.
 
-The four patterns below cover common AI-assisted engineering work.
+Use the [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/) as the shared control loop. The four patterns below show how that loop changes by task type.
 
 :::note[Evidence guide]
 - `Research-supported principle` - [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/) and [Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/) support verification and review discipline.
-- `Practitioner-backed workflow` - [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/) and [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) show how those principles become practice.
+- `Practitioner-backed workflow` - [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/), [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/), and [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) show how those principles become practice.
 
 The four archetypes on this page are an editorial simplification of recurring workflow patterns, not a formal taxonomy from one source.
 :::
@@ -43,7 +43,7 @@ Use this when you are adding new behavior and the shape of the work still needs 
 
 1. Write a short spec with requirements, constraints, and acceptance criteria.
 2. Ask the agent to read the spec and identify open questions.
-3. Break execution into small slices: schema, core logic, tests, UI, docs.
+3. Break execution into small verifiable slices. Prefer a thin end-to-end behavior when safe; start with schema, contract, or migration only when it is a necessary foundation.
 4. Verify each slice before moving on.
 5. Update the spec when scope changes.
 
@@ -116,6 +116,7 @@ All four workflows need:
 
 ## Next Steps
 
+- [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/)
 - [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/)
 - [Scenario - Fix a Bug](/ai-coding-primer/learn/intermediate/scenario-bug-fix/)
 - [Scenario - Add a Feature](/ai-coding-primer/learn/intermediate/scenario-feature-build/)

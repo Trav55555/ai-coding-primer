@@ -21,7 +21,7 @@ A useful policy defines:
 
 A long vendor checklist is not enough if it does not answer those questions.
 
-## Start with Workflow and Risk
+## Start with Workflow, Risk, and Repository Readiness
 
 Before comparing vendors, decide:
 
@@ -30,8 +30,11 @@ Before comparing vendors, decide:
 3. Which repositories, clients, or data classes are excluded?
 4. Which agent permissions require approval?
 5. What must be verified before AI-authored code is merged?
+6. Which repositories have enough feedback and recovery controls for delegated work?
 
 These decisions reduce the tool field without relying on current feature rankings.
+
+Repository readiness is not a maturity contest. A team is not "better" because it allows more autonomy. A high-risk repository may correctly require strict human gates even when the team has excellent engineering practice.
 
 ## The Four Policy Questions
 
@@ -83,6 +86,37 @@ Track signals such as:
 
 Do not use code volume or prompt count as the primary measure.
 
+## Repository Readiness Check
+
+Use this check before giving agents write access, terminal access, or long-running tasks.
+
+| Dimension | Readiness question | If weak, reduce autonomy by... |
+|---|---|---|
+| Repeatable environment | Can a new developer or agent install, build, and run focused checks from documented commands? | limiting agents to read-only research or small edits |
+| Test speed and depth | Are there fast focused tests plus broader checks before merge? | requiring human-authored tests or manual review before implementation |
+| Static and architecture checks | Do type, lint, dependency, API, or architecture rules catch common mistakes? | narrowing file scope and adding reviewer approval for boundary changes |
+| Security controls | Are secrets, sensitive data, package installs, network access, and tool provenance controlled? | disabling network/package actions or requiring security approval |
+| Ownership and review | Is there a clear owner for each affected area and a required review path? | routing changes through an accountable human before merge |
+| Observability and rollback | Can the team detect, revert, or roll back a bad change? | blocking autonomous deployment or data changes |
+| Action logs and spending limits | Are commands, tool calls, approvals, and cost or time budgets recorded? | adding command logs, stop rules, and spending caps |
+
+A repository can be ready for one workflow and not another. Documentation edits may need little infrastructure; auth changes, migrations, and deployment automation need stronger controls.
+
+## Autonomy Ladder
+
+Describe autonomy by allowed action and required control, not by team status.
+
+| Level | Allowed actions | Required controls |
+|---|---|---|
+| Read-only assistance | explain code, summarize docs, draft plans | data boundary, no file writes, cited sources or file paths |
+| Local draft edits | edit project files in a developer workspace | human diff review, focused tests or build where available |
+| Verified bounded tasks | implement scoped issues and run checks | written spec, file or module boundary, mandatory tests/build, command log |
+| Isolated agent work | work in a branch or worktree, possibly async | harness state, retry budget, independent validation, reviewer-owned merge |
+| High-permission operations | package installs, networked tools, MCP/browser automation, deployment-adjacent changes | explicit approval, sandboxing, audit trail, rollback plan, security or owner review |
+| Irreversible or production-impacting actions | migrations, data modification, secret/config changes, production deployment | human approval at the action point, change record, monitoring and rollback/restore plan |
+
+Teams may choose a lower level permanently for sensitive systems. That is a policy decision, not a failure to advance.
+
 ## Minimal Approval Matrix
 
 Use a matrix like this before broad rollout.
@@ -116,7 +150,7 @@ The exact rows vary by organization. Approval should depend on repository risk, 
 
 ### Phase 3: Expand by risk tier
 
-- add repositories only after pilot evidence is reviewed
+- add repositories only after pilot evidence and readiness are reviewed
 - separate low-risk and high-risk usage patterns
 - add stronger controls before granting broader permissions
 
@@ -136,7 +170,9 @@ These defaults are suitable for many teams:
 - Sensitive repositories require tighter deployment and permission boundaries.
 - Vendor claims are not policy; current contracts and live docs are.
 - Broad agent permissions require explicit approval.
+- Reversible edits and irreversible actions need different gates.
 - Package installs, MCP servers, plugins, and browser tools are supply-chain events.
+- Long-running or high-permission agents need action logs and stop budgets.
 
 ## What Belongs in Team Policy
 
@@ -182,7 +218,7 @@ Every non-trivial AI-authored change must include:
 - relevant tests or build checks
 - typecheck/lint where available
 - security scan when dependencies, auth, data handling, or network behavior changes
-- PR note explaining AI involvement and verification performed
+- PR note explaining verification performed and any tool-assisted assumptions or risks
 
 ## Review and rollback
 - Reviewers may ask for AI-generated diffs to be split or regenerated if scope is unclear.
@@ -201,7 +237,9 @@ Adapt the scope and risk tiers to your organization. The important requirement i
 |---|---|---|
 | Tool-first rollout | product selection before policy | set workflow and risk boundaries first |
 | Permission creep | agents gradually receive broader access | require explicit permission tiers and review |
+| Autonomy as status | teams treat higher autonomy as proof of maturity | choose autonomy from repository risk and controls |
 | Verification theater | AI use expands while review standards remain vague | define checks by risk level |
+| Weak repository feedback | agents can edit but cannot get fast evidence | improve setup/tests or keep tasks smaller and more supervised |
 | Stale policy | retention or privacy assumptions come from old docs | review on a fixed cadence |
 | One policy for every repository | toy projects and sensitive systems use identical rules | tier by repository and data risk |
 
@@ -214,4 +252,4 @@ Adapt the scope and risk tiers to your organization. The important requirement i
 
 ## Summary
 
-Team AI coding policy should define allowed workflows, data boundaries, permissions, verification, and review cadence. Tool selection comes after those constraints are known.
+Team AI coding policy should define allowed workflows, data boundaries, permissions, verification, repository readiness, autonomy gates, and review cadence. Tool selection comes after those constraints are known.

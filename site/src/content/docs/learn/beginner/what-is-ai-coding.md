@@ -71,3 +71,5 @@ See how these tools fit into earlier programming practice: [From Human Computers
 Choose a workflow and stack: [Choose a workflow and stack →](/ai-coding-primer/learn/beginner/choose-your-tool/)
 
 Then review the main workflow patterns: [Workflow Archetypes →](/ai-coding-primer/learn/intermediate/workflow-archetypes/)
+
+For a practical bounded-task procedure, use the [Agentic Development Loop →](/ai-coding-primer/learn/intermediate/agentic-development-loop/)

@@ -5,7 +5,7 @@ sidebar:
   order: 6
 ---
 
-Use this workflow when behavior is already broken and you need a reliable fix with minimal collateral changes.
+Use this workflow when behavior is already broken and you need a reliable fix with minimal collateral changes. It is the bug-fix version of the [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/).
 
 ## Outcome
 
@@ -166,8 +166,9 @@ fix: reject invalid user email payloads
 - **Research-supported principle:** executable feedback and verification loops improve reliability.
 - **Practitioner-backed workflow:** root-cause-first prompts reduce churn versus immediate broad edits.
 
-The exact wording and sequence in this scenario are editorial guidance based on those patterns.
+The exact wording and sequence in this scenario are editorial guidance based on those patterns and the canonical [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/).
 
 ## Next Scenario
 
+- [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/)
 - [Scenario - Add a Feature](/ai-coding-primer/learn/intermediate/scenario-feature-build/)
