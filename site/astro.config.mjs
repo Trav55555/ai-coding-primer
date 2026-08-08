@@ -80,6 +80,7 @@ export default defineConfig({
 				{
 					label: 'Reference',
 					items: [
+						{ label: 'Development Practices Timeline', slug: 'reference/development-practices-timeline' },
 						{ label: 'Reference Appendix', slug: 'reference/appendix' },
 						{ label: 'Fast-Changing Information', slug: 'reference/fast-changing-info' },
 						{

@@ -41,6 +41,7 @@ The main guide stays practical on purpose. These pages are where the caveats, sa
 
 ## What You'll Find
 
+- [Development Practices Timeline](/ai-coding-primer/reference/development-practices-timeline/): the historical path from human computation to coding agents
 - [Productivity Research](/ai-coding-primer/research/productivity/): mixed results and context-dependent gains
 - [Code Quality & Security](/ai-coding-primer/research/code-quality-security/): defect and vulnerability patterns
 - [Adoption & Trends](/ai-coding-primer/research/adoption-trends/): usage, trust, and workflow changes

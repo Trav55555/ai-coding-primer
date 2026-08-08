@@ -5,7 +5,7 @@ description: Where to put tool, model, pricing, benchmark, and privacy details t
 
 Some AI coding information expires quickly. Keep it out of the core learning path.
 
-The primer's durable pages should teach workflows, verification, context control, learning discipline, and security boundaries. This page points to the reference material that needs more frequent review.
+The primer's durable pages should teach workflows, verification, context control, learning discipline, security boundaries, and the history behind those practices. Start with the [Development Practices Timeline](/ai-coding-primer/reference/development-practices-timeline/) for the durable historical frame. This page points to reference material that needs more frequent review.
 
 :::caution[Check live sources]
 Use these pages for decision shape, vocabulary, and what to verify. Do not treat static snapshots as current vendor truth.

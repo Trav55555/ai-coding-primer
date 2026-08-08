@@ -25,6 +25,7 @@ Adoption is high, but trust and consistency lag.
 
 ## Next Steps
 
+- [Development Practices Timeline](/ai-coding-primer/reference/development-practices-timeline/) - place current agentic workflows in the longer history of programming work
 - [Governance and Rollout](/ai-coding-primer/team/governance/) - turn these trends into policy and rollout choices
 - [Security Risks](/ai-coding-primer/team/security-risks/) - understand the threat model behind the controls
 - [Workflow and Stack Criteria](/ai-coding-primer/tools/comparison/) - evaluate workflows after your constraints are clear

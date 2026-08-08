@@ -66,6 +66,8 @@ Familiar tasks make errors easier to detect. Once you can identify mistakes on f
 
 ## Next Steps
 
-Choose a workflow and stack: [Choose a workflow and stack ->](/ai-coding-primer/learn/beginner/choose-your-tool/)
+See how these tools fit into earlier programming practice: [From Human Computers to Agentic Engineering →](/ai-coding-primer/reference/development-practices-timeline/)
+
+Choose a workflow and stack: [Choose a workflow and stack →](/ai-coding-primer/learn/beginner/choose-your-tool/)
 
 Then review the main workflow patterns: [Workflow Archetypes →](/ai-coding-primer/learn/intermediate/workflow-archetypes/)
