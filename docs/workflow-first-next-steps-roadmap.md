@@ -105,6 +105,8 @@ The primer should be the best resource for moving from casual prompting to relia
 
 ## Verification Checklist
 
+Latest dependency review: `docs/dependency-audit-2026-08-08.md`.
+
 For each roadmap phase:
 
 1. Run `npm run build` from `site/`.
