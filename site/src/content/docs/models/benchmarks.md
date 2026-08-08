@@ -3,10 +3,10 @@ title: Benchmarks That Matter
 description: Understanding AI coding benchmarks and what they actually test.
 ---
 
-Not all benchmarks are equal. Some are saturated, some are contaminated, and some do not reflect real-world coding. Use this page to understand what each benchmark measures, then check live leaderboards for current scores.
+Coding benchmarks answer narrower questions than model marketing usually implies. A benchmark may test issue resolution, algorithmic problem solving, edit quality, tool use, retrieval, or risky behavior. It cannot, by itself, tell you which model will work best in your repository.
 
 :::note[Freshness metadata]
-Reviewed: May 2026. Volatile fields: model rankings, exact scores, benchmark variants, and saturation status. This page intentionally avoids static score tables; use live benchmark links for current numbers.
+Reviewed: August 2026. Volatile fields: model rankings, exact scores, benchmark variants, and claims about saturation. This page avoids static score tables; use live benchmark links for current numbers.
 :::
 
 ## Decision: No Static Score Tables
@@ -18,131 +18,120 @@ Use static docs to answer:
 - What does this benchmark test?
 - Which workflow does it approximate?
 - What are its limitations?
-- Which live leaderboard should I check?
+- Which live source should I check?
 
 Use live sources to answer:
 
 - Which model is currently first?
 - What is the current score gap?
-- Has the benchmark become saturated?
-- Did a new benchmark variant replace the old one?
+- Has a benchmark variant changed?
+- Does the current leaderboard still separate the models you are considering?
 
-## The Essential Three
+## Benchmark Families
 
-These benchmarks provide useful signal for coding work when read together.
+### Issue Resolution
 
-### SWE-bench and Variants
+The Software Engineering Benchmark (SWE-bench) family uses repository issues and test-based checks.
 
-**What it tests:** resolving real GitHub issues from existing projects.
+**Examples:** [SWE-bench](https://swebench.com), SWE-bench Verified, harder/pro variants.
 
-| Variant | What it tends to measure |
-|---|---|
-| SWE-bench Verified | Real issue resolution on human-validated tasks |
-| Harder/pro variants | More complex multi-file and longer-horizon work |
+**What it tests:** whether a model or agent can resolve real issues in existing repositories and produce a patch that passes the benchmark checks.
 
-**Why it matters:** Models must understand existing code, locate the relevant files, and produce a patch that passes tests. This is closer to real maintenance work than toy function generation.
+**Can establish:** signal about bug fixing, repository navigation, multi-file changes, and patch generation under a defined harness.
 
-**Best for:** agentic bug fixing, brownfield work, multi-file reasoning.
+**Cannot establish:** general production reliability, security, maintainability, or performance in your codebase. Passing tests may not mean the change is the right design.
 
-**Caveats:** Popular variants can become saturated. Always check whether the leaderboard still separates frontier models meaningfully.
+### Algorithmic Coding
 
-**Live source:** [swebench.com](https://swebench.com)
+**Examples:** [LiveCodeBench](https://livecodebench.github.io), older function-level sets such as HumanEval and MBPP.
 
----
+**What it tests:** solving self-contained programming problems from precise statements. LiveCodeBench uses newer problem releases to reduce training-data contamination risk.
 
-### LiveCodeBench
+**Can establish:** signal about algorithmic reasoning, implementation accuracy, and following precise problem constraints.
 
-**What it tests:** competitive programming problems from sources such as LeetCode, AtCoder, and Codeforces.
+**Cannot establish:** ability to modify a messy codebase, understand product requirements, migrate APIs, preserve style, or choose safe dependencies.
 
-**Why it matters:** It is updated with new problems released after model training cutoffs, making it more contamination-resistant than many older coding benchmarks.
+### Editing Existing Code
 
-**Best for:** algorithmic coding, reasoning under precise problem statements, contamination-resistant signal.
+**Example:** [Aider Polyglot](https://aider.chat/docs/leaderboards/).
 
-**Caveats:** Competitive programming is not the same as editing a messy production codebase. Treat it as one signal, not a full model-selection answer.
+**What it tests:** targeted code edits across multiple languages in a specific tool harness.
 
-**Live source:** [livecodebench.github.io](https://livecodebench.github.io)
+**Can establish:** signal about instruction following, patch format, and edit accuracy for bounded tasks.
 
----
+**Cannot establish:** long-horizon planning, repository-wide judgment, or how another editor/agent harness will perform.
 
-### Aider Polyglot
+### Long-Horizon and Tool Use
 
-**What it tests:** code editing across multiple languages.
+**Examples:** agent benchmarks that require shell use, file navigation, test execution, retries, or multi-step task completion.
 
-**Why it matters:** Editing existing code is more relevant to AI-assisted engineering than generating isolated functions from scratch.
+**What it tests:** whether a model can use tools over several steps and recover from intermediate failures.
 
-**Best for:** targeted edits, instruction following, multi-language editing quality.
+**Can establish:** signal about planning, tool-call reliability, environment use, and persistence across a task.
 
-**Caveats:** It reflects one tool's benchmark harness and task distribution. Useful, but not universal.
+**Cannot establish:** that the agent will choose safe actions without permission boundaries. Tool-use success and tool-use safety are separate questions.
 
-**Live source:** [aider.chat/docs/leaderboards](https://aider.chat/docs/leaderboards/)
+### Sequential Maintenance
 
----
+**Examples:** benchmarks or pilots that ask an agent to perform dependent changes over time: bug fix, follow-up refactor, test update, documentation update, and later regression fix.
 
-## Supplementary Benchmarks
+**What it tests:** whether the system preserves intent and consistency across a sequence, not just one final patch.
 
-These provide additional signal but should not be used alone.
+**Can establish:** signal about maintenance workflows where earlier choices constrain later work.
 
-### HumanEval / MBPP
+**Cannot establish:** long-term ownership. A team still needs review history, rollback points, tests, and maintainers who understand the accumulated changes.
 
-**What it tests:** simple function-level code generation.
+### Context Retrieval
 
-**Limitation:** These are saturated and likely contaminated for frontier models.
+**Examples:** [ContextBench](https://arxiv.org/abs/2602.05892) and [Agent Retrieval Bench](https://arxiv.org/abs/2607.24882).
 
-**Use for:** sanity checks, not serious model selection.
+**What it tests:** whether an agent finds the files and code context needed before editing.
 
----
+- As reported in its August 2026 source, ContextBench includes 1,136 issue-resolution tasks from 66 repositories across eight programming languages, with human-annotated gold contexts.
+- As reported in its August 2026 source, Agent Retrieval Bench includes 427 samples from 25 repositories and focuses on next-needed-file retrieval.
 
-### Auto-Generated or Multilingual Coding Benchmarks
+**Can establish:** signal about repository search, context recall, precision, and whether the agent is looking at relevant files during a task.
 
-**What they test:** larger sets of coding tasks across more languages, often generated or curated to reduce contamination.
+**Cannot establish:** that the final patch is correct. Retrieval is upstream of coding; a model can find the right files and still make a bad change.
 
-**Why interesting:** They can expose language-specific weaknesses that Python-heavy benchmarks miss.
+### Trajectory and Process
 
-**Caveat:** Newer benchmarks may have less independent adoption or weaker comparability across model releases.
+**Examples:** benchmarks and papers that inspect intermediate actions: files read, commands run, tests skipped, repeated mistakes, unsafe operations, or whether the agent escalates uncertainty.
 
----
+**What it tests:** how the agent gets to an answer, not only whether the final answer passes.
 
-### General Reasoning Benchmarks
+**Can establish:** signal about debugging process, verification habits, unnecessary churn, and risky intermediate behavior.
 
-**What they test:** reasoning capabilities that may affect coding but are not coding-specific.
+**Cannot establish:** a universal risk rate. Results depend heavily on the tool permissions, task setup, scoring rubric, and threat model.
 
-**Use for:** understanding limitations, not selecting a coding stack by itself.
+### Behavioral and Security
 
----
+**Examples:** security-focused code generation tests, insecure-action trajectory studies, and behavior evaluations for tool-using agents.
 
-## Behavioral Benchmarks
+**What it tests:** whether generated code or agent actions violate security expectations under a defined test harness or threat model.
 
-Some benchmarks test how models behave, not just whether they solve a task.
+**Can establish:** risk signals that justify guardrails: review, secret scanning, dependency checks, sandboxing, and permission limits.
 
-Examples include benchmarks about:
-
-- tool use
-- deception or sandbagging
-- autonomy and initiative
-- reporting or escalation behavior
-- security-relevant behavior
-
-These matter for autonomous coding agents because the risk is not only wrong code. It is also unwanted action.
-
-Use behavioral benchmarks as risk signals, not as direct productivity rankings.
+**Cannot establish:** that a model is safe for unrestricted use. Security behavior is contextual and should be tested against your stack and policies.
 
 ## Red Flags: Benchmark Claims to Ignore
 
 | Claim | Problem |
 |---|---|
 | “Best coding model” from one benchmark | Coding work has multiple task shapes |
-| HumanEval-only ranking | Saturated and likely contaminated |
-| Vendor-only benchmark claim | Methodology may be cherry-picked |
+| HumanEval-only ranking | Function-level tasks are too narrow for most engineering decisions |
+| Vendor-only benchmark claim | Methodology may be cherry-picked or incomplete |
 | Old score screenshots | Model releases and benchmark variants move quickly |
-| Single-number score without variance or task detail | Hides what the model is actually good at |
+| Single-number score without task detail | Hides what the model is actually good at |
+| Safety claim from a productivity benchmark | Solving a task does not prove safe tool use |
 
 ## How to Use Benchmarks
 
-1. **Start from workflow shape.** Bug fixing, editing, long-context research, UI work, and algorithmic coding need different signals.
-2. **Check multiple live leaderboards.** No single benchmark captures everything.
-3. **Prefer contamination-resistant tests.** Newer or time-segmented tasks are usually more informative.
+1. **Start from workflow shape.** Bug fixing, editing, long-context research, UI work, security review, and algorithmic coding need different signals.
+2. **Check multiple live sources.** No single benchmark captures everything.
+3. **Read the method before the score.** Look for task source, date range, language mix, tool access, pass criteria, and whether humans validated the tasks.
 4. **Look at score gaps, not just rank.** A tiny lead may not matter in practice.
-5. **Run your own pilot.** Your codebase, tests, tooling, and review process are the real benchmark.
+5. **Run your own pilot.** Your codebase, tests, tooling, permissions, and review process are the real benchmark.
 
 ## Live Sources and Aggregators
 
@@ -151,10 +140,12 @@ Use behavioral benchmarks as risk signals, not as direct productivity rankings.
 | [SWE-bench](https://swebench.com) | real issue resolution and variants |
 | [LiveCodeBench](https://livecodebench.github.io) | time-segmented competitive programming tasks |
 | [Aider Leaderboards](https://aider.chat/docs/leaderboards/) | code editing performance |
+| [ContextBench](https://arxiv.org/abs/2602.05892) | process-oriented context retrieval for coding agents |
+| [Agent Retrieval Bench](https://arxiv.org/abs/2607.24882) | next-needed-file repository retrieval |
 | [Artificial Analysis](https://artificialanalysis.ai) | speed, price, quality, and model comparisons |
 | [LLM Stats](https://llm-stats.com) | multiple benchmark leaderboards |
 | [Chatbot Arena](https://lmarena.ai) | human preference from blind voting |
 
 ## Bottom Line
 
-Benchmarks are useful for narrowing questions, not answering procurement by themselves. Use this page to understand what to check, then use live leaderboards and your own pilot results for current decisions.
+Use benchmarks to choose what to test next, not to outsource judgment. Match the benchmark family to the workflow, check current sources for scores, then run a small pilot with your repository, permissions, tests, and review rules.

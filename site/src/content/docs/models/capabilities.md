@@ -94,7 +94,7 @@ For time-sensitive benchmark details, use [Benchmarks That Matter](/ai-coding-pr
 
 ## Evidence Status
 
-- `Research-supported principle`: verification, selective context, and review costs affect outcomes more reliably than leaderboard rank alone.
+- `Research-backed principle`: verification, selective context, and review costs affect outcomes more reliably than leaderboard rank alone.
 - `Practitioner-backed taxonomy`: these capability classes are a workflow-first simplification used for everyday model selection.
 
 The taxonomy is not one benchmark's official ontology.

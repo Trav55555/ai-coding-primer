@@ -187,7 +187,7 @@ Each commit should pass its relevant checks. Do not wait until the entire featur
 
 ## Evidence Status
 
-- **Research-supported principle:** verification and human review loops improve downstream quality.
+- **Research-backed principle:** verification and human review loops improve downstream quality.
 - **Practitioner-backed workflow:** spec-first implementation reduces ambiguity and drift on larger tasks.
 
 This slice sequence and gating pattern are editorial guidance based on those patterns and the canonical [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/).

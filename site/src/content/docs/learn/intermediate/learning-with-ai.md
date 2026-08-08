@@ -9,7 +9,7 @@ AI assistance can support learning, but it can also hide gaps in understanding. 
 
 :::note[Evidence guide]
 - `Research-backed` - [Anthropic AI coding learning RCT](https://www.anthropic.com/research/AI-assistance-coding-skills), [OECD Digital Education Outlook 2026](https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_f6e1d3c0-en.html), [Tutor CoPilot RCT](https://arxiv.org/abs/2410.03017)
-- `Early / preprint evidence` - [MIT Media Lab: Your Brain on ChatGPT](https://www.media.mit.edu/publications/your-brain-on-chatgpt/)
+- `Early / uncertain evidence` - [MIT Media Lab: Your Brain on ChatGPT](https://www.media.mit.edu/publications/your-brain-on-chatgpt/)
 - `Practitioner-backed` - the tutor-style prompt patterns and code-review habits on this page
 
 The practical framing combines studies, early evidence, and recurring tutoring-style usage patterns; it is not a single paper's taxonomy.

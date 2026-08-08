@@ -10,7 +10,7 @@ AI coding workflows should match the task type. A bug fix, a feature build, a re
 Use the [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/) as the shared control loop. The four patterns below show how that loop changes by task type.
 
 :::note[Evidence guide]
-- `Research-supported principle` - [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/) and [Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/) support verification and review discipline.
+- `Research-backed principle` - [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/) and [Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/) support verification and review discipline.
 - `Practitioner-backed workflow` - [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/), [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/), and [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) show how those principles become practice.
 
 The four archetypes on this page are an editorial simplification of recurring workflow patterns, not a formal taxonomy from one source.

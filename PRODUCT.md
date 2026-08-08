@@ -24,7 +24,7 @@ Readers often arrive with tool confusion, inconsistent claims, or partial hands-
 
 ## Product Purpose
 
-The AI Coding Primer helps readers use AI coding tools safely, effectively, and without dependency.
+The Agentic Engineering Primer helps readers use AI coding tools safely, effectively, and without dependency.
 
 It teaches durable workflows: verification, context control, security boundaries, learning discipline, and team governance.
 

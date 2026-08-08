@@ -8,7 +8,7 @@ sidebar:
 Subagents are separate AI instances or sessions assigned to scoped tasks. They are useful when investigation would add too much noise to the main implementation context.
 
 :::note[Evidence status]
-- `Research-supported principle` - context pressure and verification overhead affect agent reliability.
+- `Research-backed principle` - context pressure and verification overhead affect agent reliability.
 - `Practitioner-backed` - subagent isolation patterns from tool docs and production workflows.
 :::
 
@@ -48,7 +48,7 @@ They are usually not good owners for the entire task. Keep implementation in the
 
 This caveat matters. Research and architecture writeups suggest multi-agent systems help most when agents have different scopes, tools, or capabilities.
 
-**Evidence tags:** `Research-supported principle` via context and verification research; `Practitioner-backed` via [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/) and Anthropic-style harness guidance.
+**Evidence tags:** `Research-backed principle` via context and verification research; `Practitioner-backed` via [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/) and Anthropic-style harness guidance.
 
 ## Example Usage
 

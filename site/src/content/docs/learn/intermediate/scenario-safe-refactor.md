@@ -197,7 +197,7 @@ The reviewer should know exactly what behavior-preserving move happened.
 
 ## Evidence Status
 
-- **Research-supported principle:** review burden and rework costs increase when change scope balloons.
+- **Research-backed principle:** review burden and rework costs increase when change scope balloons.
 - **Practitioner-backed workflow:** characterization tests and seam-by-seam refactoring keep AI edits controllable.
 
 This concrete gating workflow is editorial guidance based on those patterns and the canonical [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/).

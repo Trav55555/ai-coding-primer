@@ -16,7 +16,7 @@ Ask: **Could the model plausibly complete this task with the context and tools a
 If not, change the context, tools, or task scope before asking for implementation.
 
 :::note[Evidence status]
-- `Research-supported principle` - productivity, review, and security outcomes depend on feedback loops and task context.
+- `Research-backed principle` - productivity, review, and security outcomes depend on feedback loops and task context.
 - `Practitioner-backed workflow` - selective context, compaction, and subagent isolation are common patterns in agent tooling.
 
 The framework on this page is an editorial working model built from those sources and recurring practice.
@@ -72,7 +72,7 @@ Many agent tools gather this by searching the codebase, reading files, and runni
 
 Explore the local project before relying on external documentation. External examples may not match the codebase you are editing. That is not a claim that filesystem storage is better than external retrieval in general; a well-maintained docs index, search service, or retrieval system can be the right source when it contains current, task-relevant material.
 
-**Evidence tags:** `Practitioner-backed` ([Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/)); `Research-supported principle` ([Productivity Research](/ai-coding-primer/research/productivity/)).
+**Evidence tags:** `Practitioner-backed` ([Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/)); `Research-backed principle` ([Productivity Research](/ai-coding-primer/research/productivity/)).
 
 ### 2. Persistent Instructions
 
@@ -172,7 +172,7 @@ The main benefit is context isolation. It prevents search noise from entering th
 
 This does not mean multi-agent workflows are always better. Orchestration overhead can erase the benefit unless each subagent has a clearly separated job.
 
-**Evidence tags:** `Research-supported principle` ([Productivity Research](/ai-coding-primer/research/productivity/)); `Practitioner-backed` ([Subagent Architectures](/ai-coding-primer/learn/advanced/subagents/)).
+**Evidence tags:** `Research-backed principle` ([Productivity Research](/ai-coding-primer/research/productivity/)); `Practitioner-backed` ([Subagent Architectures](/ai-coding-primer/learn/advanced/subagents/)).
 
 ## Minimal-Context Experiment
 

@@ -10,7 +10,7 @@ These patterns are reusable moves inside the [Agentic Development Loop](/ai-codi
 :::note[Evidence guide]
 Not every pattern here has the same evidence level.
 
-- `Research-supported principle` - [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/) and [Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/) support verification and review discipline.
+- `Research-backed principle` - [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/) and [Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/) support verification and review discipline.
 - `Practitioner-backed workflow` - [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/), [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/), and [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) show how those principles become practice.
 
 The exact pattern framing is editorial guidance drawn from those sources and practitioner convergence.

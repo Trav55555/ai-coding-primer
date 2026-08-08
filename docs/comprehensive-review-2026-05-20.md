@@ -13,7 +13,7 @@ status: active
 created: '2026-05-20'
 ---
 
-# AI Coding Primer Comprehensive Review — 2026-05-20
+# Agentic Engineering Primer Comprehensive Review — 2026-05-20
 
 ## Verdict
 
@@ -356,7 +356,7 @@ One high-leverage sprint:
 
 ## Final Judgment
 
-The AI Coding Primer still holds up because its center of gravity is now the right one: **agentic engineering as disciplined workflow, not magical prompting or vendor selection.**
+The Agentic Engineering Primer still holds up because its center of gravity is now the right one: **agentic engineering as disciplined workflow, not magical prompting or vendor selection.**
 
 The project should not restart. It should prune and deepen:
 

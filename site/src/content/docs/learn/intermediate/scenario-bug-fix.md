@@ -163,7 +163,7 @@ fix: reject invalid user email payloads
 
 ## Evidence Status
 
-- **Research-supported principle:** executable feedback and verification loops improve reliability.
+- **Research-backed principle:** executable feedback and verification loops improve reliability.
 - **Practitioner-backed workflow:** root-cause-first prompts reduce churn versus immediate broad edits.
 
 The exact wording and sequence in this scenario are editorial guidance based on those patterns and the canonical [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/).
