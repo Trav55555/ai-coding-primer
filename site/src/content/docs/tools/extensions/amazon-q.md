@@ -1,113 +1,64 @@
 ---
 title: Amazon Q Developer
-description: AWS AI coding assistant with cloud, CLI, and enterprise workflow integrations.
+description: AWS coding assistant for editor, command-line, cloud, and migration workflows.
 sidebar:
   order: 3
 ---
 
 :::note[Freshness metadata]
-Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+Reviewed: August 2026. Volatile fields: quotas, transformation support, data handling, and enterprise controls. Verify the [Amazon Q Developer documentation](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/what-is.html).
 :::
 
-[Amazon Q Developer](https://aws.amazon.com/q/developer/) is AWS's AI coding assistant, available through editor integrations and CLI workflows.
+[Amazon Q Developer](https://aws.amazon.com/q/developer/) provides coding assistance through supported editors, command-line tools, AWS consoles, and code-transformation workflows.
 
-## Overview
+## Workflow Fit
 
-| | |
-|---|---|
-| **Type** | Extension + CLI |
-| **Open Source** | No |
-| **Workflow fit** | AWS-heavy development, enterprise governance, cloud-service workflows |
+Amazon Q is most relevant when work depends on AWS services, IAM policy, AWS account governance, or supported migration workflows.
 
-## Capability Areas
+Capability areas include:
 
-- **Large context support** — useful for repository and documentation-heavy tasks; verify current limits in AWS docs
-- **AWS integration** — service-aware help for AWS workflows
-- **Code transformation** — Java upgrade and porting workflows where supported
-- **Security scanning** — vulnerability detection and remediation workflows where supported
-- **CLI support** — `q` command for terminal workflows
+- repository-aware coding assistance
+- AWS service guidance
+- supported code transformations
+- security analysis and remediation suggestions
+- organization controls through AWS identity and account systems
 
-## Access Model
+Exact availability differs by surface, region, account, and plan.
 
-Amazon Q has individual and enterprise-oriented access paths. The durable decision is whether the team needs AWS-native workflows, Bedrock alignment, and centralized AWS governance.
+## Access and Governance
 
-Verify current plan terms, quotas, and enterprise controls in AWS docs before standardizing.
+Before rollout, verify:
 
-## Privacy
+- identity path and organization assignment
+- supported regions and development environments
+- quotas and transformation limits
+- administrator and audit controls
+- contract terms for data use, retention, and intellectual-property protection
 
-| Setting | Value |
-|---|---|
-| Training | verify current plan and organization settings |
-| Data storage | governed by AWS service terms and selected configuration |
-| Self-hosted | use Bedrock or AWS-managed deployment paths where available |
-| Jurisdiction | depends on AWS region, account setup, and service terms |
+Use the [current service tiers documentation](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/q-tiers.html); do not preserve plan tables in repository documentation.
 
-:::note[Contract-sensitive terms]
-IP indemnity, retention, training exclusions, and enterprise controls are contract- and plan-dependent. Verify them in current AWS documentation and procurement review.
-:::
+## Data Boundaries
 
-## Models
+AWS documents data-protection and content-sharing controls separately for different Amazon Q surfaces. Review the [data protection guidance](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/data-protection.html) and the settings for the exact client and account type in use.
 
-Model availability changes. Check current AWS and Amazon Q documentation for supported models, Bedrock integration, custom model options, and regional availability.
-
-## Installation
-
-**Editor extension:**
-
-```text
-Install the Amazon Q extension for your editor.
-Sign in with the required AWS or Builder ID account.
-Verify organization policy before using it on company repositories.
-```
-
-**CLI:**
-
-```bash
-# Example macOS install path; verify current AWS docs first
-brew install amazon-q
-```
+Do not infer that editor chat, general command-line use, and code transformation have identical handling.
 
 ## Code Transformation
 
-Code transformation workflows can assist with upgrades and migrations, such as supported Java or .NET migrations.
+AWS's current command-line transformation workflow uses the `qct` tool. Follow the [official transformation documentation](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/transform-CLI.html) instead of relying on old `q scan` or `q fix` examples.
 
-Use these workflows with normal migration controls:
+Treat transformed code as a migration proposal:
 
-1. inspect the generated migration plan
-2. run tests before and after transformation
+1. inspect the transformation scope
+2. run tests before and after
 3. review dependency and runtime changes
-4. keep rollback path available
-5. verify behavior in the target runtime
+4. preserve a rollback path
+5. verify behavior in the target environment
 
-## Security Scanning
+## Adoption Check
 
-Example command shape:
-
-```bash
-# Scan for vulnerabilities
-q scan --path ./src
-
-# Attempt supported security fixes
-q fix --security
-```
-
-Treat auto-fixes as proposed diffs. Review them and run project-specific tests before merging.
-
-## AWS Service Integration
-
-Amazon Q can help produce AWS-oriented examples such as CloudFormation, CDK, IAM, and service configuration snippets.
-
-Verify generated infrastructure code against:
-
-- least-privilege IAM requirements
-- account and region constraints
-- organization policy
-- security review
-- deployment tests
-
-## Tips
-
-- Use with AWS Toolkit when AWS service context is required.
-- Verify current access terms separately if you depend on usage limits.
-- Treat code transformation output as a migration proposal, not a completed migration.
-- Review security fixes and infrastructure snippets before applying them.
+1. Pick one AWS-heavy task with clear acceptance evidence.
+2. Configure identity and organization policy first.
+3. Confirm data handling for the chosen surface.
+4. Review generated IAM and infrastructure code for least privilege.
+5. Measure review and rework before broader adoption.

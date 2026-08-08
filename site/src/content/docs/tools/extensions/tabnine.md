@@ -1,99 +1,36 @@
 ---
 title: Tabnine
-description: AI code completion with self-hosted enterprise option.
+description: Coding assistant with hosted, private, and air-gapped enterprise deployment options.
 sidebar:
   order: 4
 ---
 
 :::note[Freshness metadata]
-Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+Reviewed: August 2026. Volatile fields: deployment requirements, supported features, telemetry, and enterprise controls. Verify the [current Tabnine documentation](https://docs.tabnine.com/).
 :::
 
+[Tabnine](https://www.tabnine.com/) provides code completion, chat, and enterprise deployment options.
 
-[Tabnine](https://www.tabnine.com/) is an AI code completion tool with strong privacy options including full self-hosting.
+## Workflow Fit
 
-## Overview
+Tabnine is most relevant when deployment boundaries matter as much as model capability. Its documented options include hosted service, private installation, and fully air-gapped deployment.
 
-| | |
-|---|---|
-| **Type** | Extension |
-| **Open Source** | No (self-hosted option) |
-| **Best For** | Privacy-focused teams, air-gapped environments |
+## Deployment Boundary
 
-## Key Features
+Do not treat “self-hosted” and “air-gapped” as synonyms.
 
-- **Self-Hosted** — Run entirely on your infrastructure
-- **Personalized Models** — Learns your codebase patterns
-- **Multi-IDE** — VS Code, JetBrains, Vim, Emacs, more
-- **Whole-Line Completion** — Context-aware suggestions
-- **Chat** — Conversational coding assistance
+- A private installation can still send operational metrics or logs outside the environment, depending on configuration.
+- A fully air-gapped installation is designed to keep service traffic inside the controlled network.
+- Optional features may introduce additional endpoints or data requirements.
 
-## Access Model
+Review [deployment options](https://docs.tabnine.com/main/welcome/readme/architecture/deployment-options) and [privacy documentation](https://docs.tabnine.com/main/welcome/readme/privacy) for the exact architecture.
 
-Tabnine offers both hosted and enterprise self-hosted paths. The real choice is whether you need normal cloud convenience or infrastructure-level control.
+## Evaluation Check
 
-## Privacy
+1. Define the required network and data boundary.
+2. List which completion, chat, attribution, and administration features must work inside it.
+3. Inspect telemetry and log destinations.
+4. Test installation and updates under the real network policy.
+5. Evaluate suggestion quality on representative code before accepting infrastructure cost.
 
-| Setting | Value |
-|---------|-------|
-| Training | Only on your code (opt-in) |
-| Self-Hosted | Full on-prem option |
-| Air-Gapped | Supported |
-| Jurisdiction | Your infrastructure |
-
-:::tip[Maximum Privacy]
-Tabnine Enterprise can run completely on your infrastructure with no external network calls. Ideal for regulated industries.
-:::
-
-## Models
-
-- Tabnine proprietary models
-- Custom models trained on your codebase (Enterprise)
-- Protected model (never trained on public code)
-
-## Installation
-
-**VS Code:**
-```
-Extensions → Search "Tabnine"
-Install → Create account or connect to enterprise server
-```
-
-**JetBrains:**
-```
-Settings → Plugins → Marketplace → Tabnine
-```
-
-## Self-Hosted Deployment
-
-For Enterprise customers:
-
-```yaml
-# Docker deployment
-docker run -d \
-  --name tabnine-server \
-  -p 8080:8080 \
-  -v /path/to/models:/models \
-  tabnine/enterprise:latest
-```
-
-Supports:
-- Docker / Kubernetes
-- AWS / Azure / GCP
-- Air-gapped networks
-- Custom model training
-
-## Personalization
-
-Tabnine learns from your codebase:
-
-1. **Team Patterns** — Suggests code matching team style
-2. **Project Context** — Understands your architecture
-3. **Private Training** — Models stay on your servers
-
-## Tips
-
-- Enable "Team Learning" for consistent suggestions
-- Self-hosted trades some frontier-model capability for control and deployment boundaries
-- Use for air-gapped/regulated environments
-- Works well alongside other AI tools
+A private deployment improves control only when its egress, model, logs, updates, and administrator access are all understood.

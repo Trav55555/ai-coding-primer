@@ -1,127 +1,40 @@
 ---
 title: Cody (Sourcegraph)
-description: AI coding assistant with enterprise code search.
+description: Enterprise Sourcegraph coding assistant for code-search and multi-repository workflows.
 sidebar:
   order: 6
 ---
 
 :::note[Freshness metadata]
-Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+Reviewed: August 2026. Volatile fields: enterprise availability, clients, model providers, and deployment support. Verify the [current Cody documentation](https://sourcegraph.com/docs/cody).
 :::
 
+Cody is Sourcegraph's enterprise coding assistant built around Sourcegraph code search and code intelligence.
 
-[Cody](https://sourcegraph.com/cody) is Sourcegraph's AI coding assistant, built on their code intelligence platform.
+:::caution[Enterprise status]
+Sourcegraph ended Cody Free and Pro and removed Cody from Enterprise Starter in July 2025. Cody Enterprise remains supported. See the [official plan-change notice](https://sourcegraph.com/changelog/cody-plan-changes) and [Cody FAQ](https://sourcegraph.com/docs/cody/faq).
+:::
 
-## Overview
+## Workflow Fit
 
-| | |
-|---|---|
-| **Type** | Extension |
-| **Open Source** | Partially (client) |
-| **Best For** | Large codebases, enterprise code search |
+Cody is relevant to organizations already using Sourcegraph for large or multi-repository codebases. Its value comes from connecting coding assistance to indexed code intelligence, not from a static model list.
 
-## Key Features
+## Deployment and Data Boundary
 
-- **Code Graph** — Deep understanding of code relationships
-- **Multi-Repo** — Search across all your repositories
-- **Context Selection** — Manual + automatic context
-- **Multiple Models** — Claude, GPT, Gemini, local
-- **Self-Hosted** — Sourcegraph Enterprise
+Cody Enterprise can be used with Sourcegraph Cloud or self-hosted Sourcegraph Enterprise. Model-provider, retention, jurisdiction, and network boundaries depend on that deployment and its completion configuration.
 
-## Access Model
+Review:
 
-Cody follows Sourcegraph's enterprise-heavy operating model. That makes it more compelling for organizations that already value code search, code intelligence, and multi-repository workflows than for casual individual use.
+- [enabling Cody Enterprise](https://sourcegraph.com/docs/cody/clients/enable-cody-enterprise)
+- [enterprise features](https://sourcegraph.com/docs/cody/enterprise/features)
+- current model-provider and completion configuration
 
-## Privacy
+Do not infer “self-hosted Sourcegraph” means every model request stays inside your infrastructure.
 
-| Setting | Value |
-|---------|-------|
-| Training | Never on your code |
-| Self-Hosted | Full Sourcegraph Enterprise |
-| BYOK | Supported (Pro+) |
-| Jurisdiction | Your choice with self-hosted |
+## Adoption Check
 
-## Models
-
-Choose your model:
-- Claude Sonnet 4.5 / Opus 4.5
-- GPT-5.2
-- Gemini 3 Pro
-- Ollama (local models)
-- Custom (Enterprise)
-
-## Installation
-
-**VS Code:**
-```
-Extensions → Search "Cody"
-Install → Sign in with Sourcegraph
-```
-
-**JetBrains:**
-```
-Settings → Plugins → Marketplace → Cody
-```
-
-## Code Graph Intelligence
-
-Cody leverages Sourcegraph's code intelligence:
-
-```
-You: "How is authentication handled?"
-
-Cody (with Code Graph):
-1. Finds auth-related symbols across repos
-2. Traces function call paths
-3. Identifies configuration files
-4. Shows related tests
-
-vs. Basic RAG:
-1. Keyword search for "auth"
-2. Returns potentially unrelated files
-```
-
-## Context Control
-
-Manually control what Cody sees:
-
-```
-@file:src/auth/login.ts
-@repo:backend-api
-@symbol:AuthService
-
-How does login validation work?
-```
-
-## Multi-Repository Search
-
-For enterprise codebases:
-
-```
-You: "Find all usages of the PaymentService across our microservices"
-
-Cody:
-→ Searches all connected repositories
-→ Shows usage patterns
-→ Identifies inconsistencies
-→ Suggests refactoring
-```
-
-## Self-Hosted Setup
-
-Sourcegraph Enterprise includes Cody:
-
-```bash
-# Docker deployment
-docker run -d \
-  --name sourcegraph \
-  -p 7080:7080 \
-  sourcegraph/server:latest
-```
-
-## Tips
-
-- Best value when you already use Sourcegraph
-- Code Graph makes context selection much smarter
-- BYOK option for data-sensitive organizations
-- Multi-repo search is unique advantage
+1. Confirm that Cody Enterprise is part of the intended Sourcegraph deployment.
+2. Map which repositories and code intelligence it can access.
+3. Review the configured model-provider boundary.
+4. Pilot one cross-repository investigation.
+5. Compare retrieved context, review time, and false connections against normal code search.

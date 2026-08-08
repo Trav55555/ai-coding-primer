@@ -1,120 +1,56 @@
 ---
 title: Aider
-description: Open-source terminal pair programmer.
+description: Open-source terminal pair-programming client with Git integration.
 sidebar:
   order: 2
 ---
 
 :::note[Freshness metadata]
-Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+Reviewed: August 2026. Volatile fields: provider support, model settings, installation methods, and benchmark results. Verify the [current Aider documentation](https://aider.chat/docs/).
 :::
 
+[Aider](https://aider.chat) is an open-source terminal pair-programming client built around repository editing and Git workflows.
 
-[Aider](https://aider.chat) is an open-source AI pair programming tool for the terminal.
+## Workflow Fit
 
-## Overview
+Aider fits developers who want a focused terminal editing loop, explicit file selection, provider choice, and visible Git history without adopting a larger agent platform.
 
-| | |
-|---|---|
-| **Type** | CLI |
-| **Open Source** | Yes (Apache 2.0) |
-| **Best For** | BYOK, polyglot projects, benchmarking |
+Its useful durable features include:
 
-## Key Features
+- adding and removing files from task context
+- reviewing diffs and undoing edits
+- optional automatic commits
+- configuration through command-line options and `.aider.conf.yml`
+- support for hosted and local model providers
 
-- **Git-native** — Auto-commits with descriptive messages
-- **BYOK** — Any OpenAI-compatible API
-- **Multi-file Editing** — Handles large refactors
-- **Voice Input** — Speak your prompts
-- **Leaderboard** — Public benchmarks for model comparison
+## Provider and Data Boundary
 
-## Installation
+Aider is a client, not the model host. Code and prompts may still go to the provider configured for the session. Provider terms determine training, retention, jurisdiction, and subprocessors.
 
-```bash
-# pip
-pip install aider-chat
+Aider documents its own analytics behavior separately and says it does not collect code, chat messages, keys, or personal information. Review [Aider analytics](https://aider.chat/docs/more/analytics.html) and the selected provider's terms.
 
-# pipx (recommended)
-pipx install aider-chat
+## Configuration
 
-# homebrew
-brew install aider
-```
-
-## Access Model
-
-Aider is open source and BYOK. You connect it to the provider you want to use, which makes it a strong fit for developers who want explicit control over model choice and privacy boundaries.
-
-## Privacy
-
-| Setting | Value |
-|---------|-------|
-| Open Source | Yes (auditable) |
-| Training | Depends on API provider |
-| Data Storage | Local only |
-| Jurisdiction | Your API provider |
-
-:::tip[Privacy Advantage]
-Aider is fully open source. No data goes to Aider — only to your chosen API provider.
-:::
-
-## Models
-
-Works with any OpenAI-compatible API:
-- OpenAI (GPT-5.2, Codex 5)
-- Anthropic (Claude Opus/Sonnet 4.5)
-- DeepSeek, Mistral, Ollama
-- Any OpenAI-compatible endpoint
-
-## Getting Started
-
-```bash
-# Set API key
-export OPENAI_API_KEY=sk-...
-
-# Start in your project
-cd your-project
-aider
-
-# Or specify files to edit
-aider src/main.py src/utils.py
-```
-
-## Key Commands
-
-| Command | Action |
-|---------|--------|
-| `/add <file>` | Add file to context |
-| `/drop <file>` | Remove file from context |
-| `/undo` | Undo last change |
-| `/diff` | Show pending changes |
-| `/commit` | Commit current changes |
-| `/clear` | Clear conversation |
-| `/help` | Show all commands |
-
-## Aider Conventions File
-
-Create `.aider.conf.yml` for project settings:
+Use the [current configuration reference](https://aider.chat/docs/config.html). Avoid copying old model identifiers into shared configuration.
 
 ```yaml
 # .aider.conf.yml
-model: claude-sonnet-4-5-20250514
-auto-commits: true
-gitignore: true
-
-# Files to always include
+model: your-reviewed-model
 read:
   - README.md
   - docs/architecture.md
 ```
 
-## The Aider Leaderboard
+Do not store API keys in committed configuration.
 
-Aider maintains a [public leaderboard](https://aider.chat/docs/leaderboards/) comparing models on real coding tasks. Useful for model selection.
+## Benchmark Boundary
 
-## Tips
+Aider's [leaderboards](https://aider.chat/docs/leaderboards/) are useful for comparing model behavior inside Aider's benchmark harness. They do not establish how another harness or your repository will perform.
 
-- Use `/add` to bring relevant files into context
-- Enable auto-commits for automatic git history
-- Check the leaderboard before choosing a model
-- Use with Ollama or another local runtime when you need local model execution
+## Adoption Check
+
+1. Install using the [current installation guide](https://aider.chat/docs/install.html).
+2. Choose a provider and review its data terms.
+3. Start with a bounded edit and a clean Git state.
+4. Inspect the diff and tests before accepting an automatic commit.
+5. Use the leaderboard as one signal, then run a local pilot.

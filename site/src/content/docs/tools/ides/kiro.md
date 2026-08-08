@@ -1,102 +1,57 @@
 ---
 title: Kiro
-description: AWS's spec-driven agentic IDE.
+description: AWS agentic IDE and CLI with spec-driven workflows.
 sidebar:
   order: 5
 ---
 
 :::note[Freshness metadata]
-Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+Reviewed: August 2026. Volatile fields: models, credits, data handling, and enterprise controls. Verify the [current Kiro documentation](https://kiro.dev/docs/).
 :::
 
+[Kiro](https://kiro.dev) is an AWS agentic development environment with IDE and command-line workflows. Kiro is generally available; older descriptions of it as a preview product are stale.
 
-[Kiro](https://kiro.dev) is Amazon's agentic IDE focused on spec-driven development.
+## Workflow Fit
 
-## Overview
+Kiro emphasizes spec-driven development: requirements, design decisions, implementation tasks, and acceptance checks can be recorded before an agent changes code.
 
-| | |
-|---|---|
-| **Type** | IDE (VS Code compatible) |
-| **Open Source** | No |
-| **Best For** | Spec-first workflows, AWS integration |
+That structure is useful when the spec remains a reviewable engineering artifact. Generated requirements or tests still need human validation.
 
-## Key Features
-
-- **Spec-Driven Development** — Write specs, generate code
-- **Automated Tests** — Generated from specs
-- **Automated Docs** — Kept in sync with code
-- **Q Developer CLI** — AWS tooling integration
-- **MCP Support** — External tool connections
-
-## Access Model
-
-Kiro is a preview product. The exact access model will evolve, but its real differentiator is the spec-first workflow, not the launch-stage commercial details.
-
-:::note[Preview Status]
-Kiro is in preview, so availability and policy details may change with general release.
-:::
-
-## Privacy
-
-| Setting | Value |
-|---------|-------|
-| Privacy Mode | Yes (AWS terms) |
-| Training | AWS data policies |
-| Jurisdiction | US |
-
-## Models Available
-
-- Claude Sonnet 4.5 (default)
-- Claude Opus 4.5
-- AWS Titan (internal)
-
-## The Spec-Driven Workflow
-
-Kiro's key differentiator is spec-first development:
+## Spec-Driven Workflow
 
 ```markdown
-# Feature: User Authentication
+# Feature: Session expiry
 
-## Requirements
-- Email/password login
-- JWT tokens with 24h expiry
-- Rate limiting: 5 attempts per minute
+## Behavior
+- Expire inactive sessions after the configured interval.
+- Preserve active sessions.
 
-## Acceptance Criteria
-- [ ] User can register with email
-- [ ] User can login and receive JWT
-- [ ] Failed logins are rate limited
+## Non-goals
+- Do not change login or token formats.
+
+## Acceptance evidence
+- Unit tests cover active and expired sessions.
+- Existing authentication integration tests pass.
 ```
 
-Then:
-```
-You: "Implement this spec"
-Kiro:
-1. Generates implementation plan
-2. Writes code matching spec
-3. Generates tests for acceptance criteria
-4. Updates documentation
-```
+Then review the proposed design and task breakdown before implementation.
 
-## Getting Started
+## Access and Data Boundaries
 
-1. Download from [kiro.dev](https://kiro.dev)
-2. Sign in with AWS Builder ID
-3. Create a spec file for your feature
-4. Let Kiro generate implementation
+Kiro subscriptions can cover multiple product surfaces, including IDE and CLI workflows. Models and credit use change frequently; use the [live model documentation](https://kiro.dev/docs/models/) and pricing page rather than a static list.
 
-## AWS Integration
+Kiro's data-protection terms differ between individual and enterprise use. Its documentation describes telemetry and content-collection controls, storage location, and cross-region processing caveats. Review [privacy and security](https://kiro.dev/docs/privacy-and-security/) for the exact account and product surface.
 
-Kiro integrates with AWS services:
+## Permission Boundary
 
-- **Q Developer CLI** — AWS-specific assistance
-- **CodeWhisperer** — Inline completions
-- **Bedrock** — Model access
-- **CloudWatch** — Observability
+Before enabling broad agent execution:
 
-## Tips
+1. review command-approval and trusted-command settings
+2. protect sensitive paths from unattended writes
+3. constrain credentials and cloud permissions
+4. require acceptance checks and diff review
+5. confirm organization model policy
 
-- Write detailed specs before asking Kiro to implement
-- Use acceptance criteria for automatic test generation
-- Leverage AWS integration if you're in the AWS ecosystem
-- Specs become living documentation
+## Adoption Check
+
+Use one feature where a written specification helps resolve ambiguity. Compare the resulting review and rework with a normal bounded-agent workflow; do not keep the extra ceremony if it adds no useful control.

@@ -9,11 +9,12 @@ Before using any AI coding tool with real code, complete this checklist.
 
 ## Before You Start
 
-- [ ] **Enable privacy/ghost mode** if available
-- [ ] **Create exclusion rules** for sensitive files
-- [ ] **Disable telemetry** where possible
-- [ ] **Use unique API keys** (not production keys)
-- [ ] **Review privacy policy** for training/retention
+- [ ] **Review data-use settings** for the exact account and feature
+- [ ] **Restrict tool access** to the files and services the task needs
+- [ ] **Test exclusion rules** instead of assuming every agent surface honors them
+- [ ] **Disable optional telemetry** where policy requires it
+- [ ] **Use scoped, non-production credentials**
+- [ ] **Review current terms** for training, retention, and subprocessors
 - [ ] **Verify jurisdiction** is acceptable
 
 ## File Exclusions

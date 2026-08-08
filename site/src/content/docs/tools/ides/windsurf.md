@@ -1,80 +1,44 @@
 ---
 title: Windsurf
-description: Codeium's agentic IDE with cascade flows.
+description: Agentic editor with Cascade workflows and managed deployment features.
 sidebar:
   order: 3
 ---
 
 :::note[Freshness metadata]
-Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+Reviewed: August 2026. Volatile fields: models, data handling, deployment options, and enterprise controls. Verify the [current Windsurf documentation](https://docs.windsurf.com/).
 :::
 
+[Windsurf](https://windsurf.com) is an agentic editor built around completion and Cascade task workflows.
 
-[Windsurf](https://windsurf.com) is Codeium's VS Code-based IDE with "Cascade" agentic flows.
+## Workflow Fit
 
-## Overview
+Windsurf fits teams seeking an integrated editor where an agent can inspect a repository, propose multi-step changes, execute tools, and present results for review.
 
-| | |
-|---|---|
-| **Type** | IDE (VS Code fork) |
-| **Open Source** | No |
-| **Best For** | EU compliance, hybrid deployment |
+## Data and Deployment Boundary
 
-## Key Features
+Do not rely on old claims about zero retention, regional hosting, certifications, or self-hosting without checking current contract and security documentation.
 
-- **Cascade** — Multi-step agentic workflows
-- **Flows** — Pre-built automation patterns
-- **Supercomplete** — Context-aware completions
-- **Command Mode** — Natural language commands
-- **Hybrid Deployment** — Cloud, on-prem, or mixed
+Different features can have different boundaries. For example, Windsurf's App Deploys documentation says project code is uploaded for managed preview deployment. Treat deployment, background execution, model requests, and local editing as separate data flows.
 
-## Access Model
+Before use, verify:
 
-Windsurf offers both managed and enterprise deployment paths. For most teams, the practical distinction is not price but whether you need hosted convenience, stronger compliance controls, or self-hosted options.
+- selected model and provider handling
+- retention and training terms
+- repository indexing and remote-execution behavior
+- deployment destination and public exposure
+- enterprise identity, role, and audit controls
 
-## Privacy
+## Cascade Review Loop
 
-| Setting | Value |
-|---------|-------|
-| Privacy Mode | Yes (ZDR - Zero Data Retention) |
-| Training | Opt-out |
-| Self-hosted | Available (Enterprise) |
-| Jurisdiction | US / EU option |
+For a bounded Cascade task:
 
-:::tip[Privacy Advantage]
-Windsurf offers EU data residency and FedRAMP certification for regulated industries.
-:::
+1. state behavior, non-goals, and acceptance evidence
+2. restrict credentials and external services
+3. inspect proposed commands
+4. run repository checks
+5. review the final diff and any deployment action
 
-## Models Available
+## Adoption Check
 
-- GPT-5.2
-- Claude Sonnet 4.5 / Opus 4.5
-- Gemini 3 Pro
-- Custom models (Enterprise)
-
-## Getting Started
-
-1. Download from [windsurf.com](https://windsurf.com)
-2. Sign in with email or GitHub
-3. Enable Zero Data Retention in settings
-4. Start with Cascade mode for agentic workflows
-
-## Cascade Flows
-
-Cascade is Windsurf's agentic mode:
-
-```
-You: "Add user authentication to this Express app"
-Cascade: 
-1. Analyzes current codebase
-2. Creates auth middleware
-3. Adds routes for login/logout
-4. Updates database schema
-5. Writes tests
-```
-
-## Tips
-
-- Use Cascade for multi-step tasks
-- Enable ZDR for privacy-sensitive projects
-- Consider EU Cloud option for GDPR compliance
+Pilot the exact feature path the team intends to use. Do not infer privacy or compliance properties from the editor as a whole.

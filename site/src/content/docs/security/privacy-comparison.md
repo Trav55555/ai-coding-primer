@@ -6,7 +6,7 @@ sidebar:
 ---
 
 :::note[Freshness metadata]
-Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+Reviewed: August 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
 :::
 
 
@@ -25,13 +25,13 @@ Use this page for the decision shape. Verify exact retention, training, jurisdic
 | Which legal entity and jurisdiction process the data? | Matters for regulated and cross-border work |
 | Are enterprise controls available? | SSO, audit logs, policy controls, and DPAs usually live on higher tiers |
 
-## More Private Options
+## More Controlled Deployment Options
 
-For maximum privacy, prefer local or self-hosted setups where code, prompts, and tool outputs stay inside your controlled environment.
+Local or self-hosted setups can keep model inference inside controlled infrastructure. They are not automatically private: extensions, telemetry, embeddings, tool servers, logs, and update systems may still communicate externally.
 
-Examples include local-model workflows with Continue.dev, Zed, OpenCode, or Aider.
+Continue, Zed, OpenCode, and Aider can participate in local-model workflows. Verify the complete data path rather than inferring it from the client.
 
-The trade-off is capability and operations. Local setups require capable hardware, model maintenance, and a realistic understanding of current model quality.
+The trade-off is capability and operations. Local setups require suitable hardware, model maintenance, egress controls, and realistic evaluation of model quality.
 
 ## Hidden Gotchas to Verify
 
@@ -46,7 +46,8 @@ Do not rely on old privacy screenshots or blog posts. Verify these details in cu
 ## By Use Case
 
 ### Personal Projects
-Most tools are viable. Enable privacy mode if available and avoid pasting secrets.
+
+Classify the repository and connected accounts before choosing a tool. Review data-use settings and never expose credentials.
 
 ### Client Work (NDA)
 Prefer approved enterprise, BYOK, local, or self-hosted workflows.
@@ -58,15 +59,17 @@ Require procurement and security review.
 
 Verify DPA, subprocessors, audit logs, SSO/SCIM, retention, training use, and incident-response commitments.
 
-## Jurisdiction Notes
+## Jurisdiction and Transfer Review
 
-| Location | Risks |
-|----------|-------|
-| **US** | CLOUD Act, FISA 702 |
-| **EU** | Generally stricter protections |
-| **China** | PIPL, data localization requirements |
+Jurisdiction is a legal and procurement question, not a country ranking. Ask:
 
-For EU companies: Consider Schrems II implications with US tools.
+- Which legal entity provides the service?
+- Where are prompts, code, logs, backups, and support data processed or stored?
+- Which subprocessors and model providers can receive them?
+- What transfer mechanism and data-processing agreement apply?
+- Which government-access, localization, sector, or client-contract rules apply to this workload?
+
+Have qualified legal and security reviewers evaluate current terms for regulated or cross-border work.
 
 ## Next Steps
 

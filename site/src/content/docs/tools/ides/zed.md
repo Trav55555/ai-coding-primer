@@ -1,68 +1,40 @@
 ---
 title: Zed
-description: Fast, open source editor with AI.
+description: Open-source native editor with first-party and external agent workflows.
 sidebar:
   order: 2
 ---
 
 :::note[Freshness metadata]
-Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+Reviewed: August 2026. Volatile fields: supported models, providers, agents, retention, and organization controls. Verify the [current Zed AI documentation](https://zed.dev/docs/ai/overview).
 :::
 
+[Zed](https://zed.dev) is an open-source native editor with collaboration, first-party agent features, external agents, and provider configuration.
 
-[Zed](https://zed.dev) is a Rust-based, GPU-accelerated editor with built-in AI.
+## Workflow Fit
 
-## Overview
+Zed fits developers who want a fast native editor and the option to use Zed-hosted models, provider API keys, local models, or external agents.
 
-| | |
-|---|---|
-| **Type** | IDE (native Rust) |
-| **Open Source** | Yes (GPL-3.0) |
-| **Best For** | Speed, open source, BYOK |
+## Data Boundary
 
-## Key Features
+The boundary changes with the selected path:
 
-- **Agent Panel** — Agentic coding
-- **Edit Prediction** — Zeta model for completions
-- **ACP/MCP Support** — External tool integration
-- **Multiplayer** — Real-time collaboration
-- **BYOK** — Bring your own API keys
+- Zed-hosted model requests follow Zed's service and provider arrangements.
+- Bring-your-own-key requests follow the selected provider's terms.
+- Local models remain local only if configuration and tools do not introduce external calls.
+- External agents and terminal threads follow their own processes, permissions, and data policies.
 
-## Access Model
+Read [AI privacy and security](https://zed.dev/docs/ai/privacy-and-security) and [business privacy](https://zed.dev/docs/business/privacy). Do not summarize every path as “no retention” or “full privacy.”
 
-Zed supports both hosted AI and BYOK workflows. That makes it useful for developers who want a native editor today without locking themselves into one provider model later.
+## Agent Controls
 
-## Privacy
+Zed documents first-party and external workflows under [Agents](https://zed.dev/docs/ai/agents). Before enabling them:
 
-| Setting | Value |
-|---------|-------|
-| Privacy Mode | Opt-in telemetry |
-| Training | Never (with BYOK) |
-| Retention | None (with BYOK) |
-| Jurisdiction | US (mitigated by BYOK) |
+1. identify which process runs commands
+2. review filesystem and network permissions
+3. confirm whether organization controls cover BYOK and external agents
+4. require repository checks and diff review
 
-## Models Available
+## Adoption Check
 
-**Hosted:**
-- Claude Sonnet 4.5 / Opus 4.5
-- GPT-5.2
-- Gemini 3 Pro
-- Grok 4.1
-
-**BYOK / Local:**
-- Ollama (Qwen3 Coder, DeepSeek V3.2)
-- LM Studio
-- Any OpenAI-compatible endpoint
-
-## Getting Started
-
-1. Download from [zed.dev](https://zed.dev)
-2. Sign in (optional, required for hosted AI)
-3. Configure BYOK in settings if using own keys
-4. Create `AGENTS.md` in your project root
-
-## Tips
-
-- Use `Cmd+Shift+A` for Agent Panel
-- BYOK gives you full privacy control
-- Open source = auditable client code
+Choose the editor for its complete workflow, not a static model list. Pilot the exact provider and agent path the team would deploy.

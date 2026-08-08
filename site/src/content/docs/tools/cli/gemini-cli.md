@@ -1,127 +1,40 @@
 ---
 title: Gemini CLI
-description: Deprecated Google terminal agent reference; verify the current replacement path before adopting.
+description: Historical Google terminal-agent reference after the transition to Antigravity CLI.
 sidebar:
   order: 4
 ---
 
 :::note[Freshness metadata]
-Reviewed: May 2026. Volatile fields: deprecation status, replacement path, exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live Google docs before choosing or standardizing on this reference.
+Reviewed: August 2026. Volatile fields: service status, supported account paths, migration behavior, and model availability. Verify the [Gemini CLI repository](https://github.com/google-gemini/gemini-cli) and Google's migration notices.
 :::
 
+Gemini CLI is Google's open-source terminal-agent project. In 2026, Google began moving its individual terminal experience to Antigravity CLI.
 
-[Gemini CLI](https://github.com/google-gemini/gemini-cli) is Google's open-source terminal coding agent.
+:::caution[Transition status]
+Google's official repository announcement says Gemini CLI stopped serving requests for free-tier, Google AI Pro, and Google AI Ultra individual accounts on June 18, 2026. Enterprise users with Gemini Code Assist licenses and API-key authentication were unaffected at that time.
 
-:::caution[Deprecated]
-Gemini CLI is being deprecated. Treat this page as historical/perishable reference, not as a recommendation to adopt it for new team workflows.
-
-Before using it, check Google's current replacement or migration path.
+Read the [transition announcement](https://github.com/google-gemini/gemini-cli/discussions/27274) and [service-status update](https://github.com/google-gemini/gemini-cli/discussions/28017) before relying on this page.
 :::
 
-## Overview
+## What the Workflow Provided
 
-| | |
-|---|---|
-| **Type** | CLI |
-| **Open Source** | Yes |
-| **Best For** | Large context, multimodal work, Google ecosystem |
+Gemini CLI combined repository access, file editing, command execution, multimodal input, and Google model access in a terminal workflow. The repository remains useful for understanding that client and for enterprise or API-key paths that Google still supports.
 
-## Key Features
+Do not assume that an old authentication command, allowance, model name, or context limit still applies. Use the project's current README and documentation for any supported continuation path.
 
-- **Flexible Access** — Works with both Google account access and API keys
-- **Large Context** — Up to 1M tokens (see caveats below)
-- **Agentic** — File editing, terminal commands
-- **Google Integration** — Works with Google Cloud
-- **Multimodal** — Image understanding
+## What to Choose Now
 
-## Installation
+- **Individual account:** start with [Antigravity](/ai-coding-primer/tools/ides/antigravity/) and verify Google's current CLI instructions.
+- **Enterprise Gemini Code Assist:** verify entitlement and migration policy with current Google documentation.
+- **API-key workflow:** confirm that the repository still supports the required authentication and model before adopting it.
 
-```bash
-npm install -g @google/gemini-cli
-```
+## Migration Check
 
-## Access Model
+1. Identify whether the workflow uses an individual account, enterprise license, or API key.
+2. Read Google's current transition notice.
+3. Export any local instructions or policies that need to move.
+4. Recreate permissions with least privilege in the supported replacement.
+5. Run a bounded repository task and verify edits, commands, and data handling.
 
-Gemini CLI supports both Google account access and API-key-based access. Limits and account terms change often, so check Google's current docs before relying on a specific allowance.
-
-:::caution[Workflow Fit]
-Because Gemini CLI is deprecated, do not standardize new workflows on it unless Google documents a supported continuation path.
-
-Use this page to understand the old workflow shape, then verify the current Google-supported terminal option.
-:::
-
-## Privacy
-
-| Setting | Value |
-|---------|-------|
-| Open Source | Yes (client) |
-| Training | GCP terms apply |
-| Jurisdiction | US (Google) |
-
-## Models Available
-
-- Gemini 3 Pro (up to 1M context)
-- Gemini 3 Flash (fast iteration)
-- Gemini Deep Think (reasoning)
-
-:::caution[Context Reality]
-While Gemini advertises 1M tokens, practical limits vary by account and workflow. Even with the full window available, retrieval quality degrades significantly past ~200k tokens. Don't assume the full window works reliably.
-:::
-
-## Getting Started
-
-```bash
-# Authenticate with Google
-gemini auth login
-
-# Or use API key
-export GOOGLE_API_KEY=...
-
-# Start in your project
-cd your-project
-gemini
-```
-
-## Key Commands
-
-| Command | Action |
-|---------|--------|
-| `/help` | Show commands |
-| `/clear` | Reset context |
-| `/model <name>` | Switch model |
-| `/image <path>` | Add image to context |
-
-## Use Cases
-
-### Large Codebase Analysis
-
-Gemini's large context window helps with codebase-wide tasks:
-
-```
-gemini "Analyze this entire codebase and explain the architecture"
-```
-
-Note: For very large codebases, results may be inconsistent. Consider chunking or using targeted queries.
-
-### Visual/UI Work
-
-Gemini excels at visual tasks:
-
-```
-gemini /image screenshot.png "Improve the UI of this page"
-```
-
-### Multimodal Debugging
-
-```
-gemini /image error-screenshot.png "What's causing this error?"
-```
-
-## Tips
-
-- Do not choose Gemini CLI for new team standards without checking Google's migration guidance
-- Use Gemini 3 Pro for larger context needs only if the current supported tool exposes it
-- Use Gemini Flash for quick iterations only if available in the current supported tool
-- Leverage multimodal for UI/visual tasks where Google's current tooling supports it
-- Start with the access path that matches your Google workflow, then verify current limits separately
-- Don't rely on full 1M context — quality degrades past ~200k
+Do not standardize a new team workflow on Gemini CLI solely because an older install command still works.

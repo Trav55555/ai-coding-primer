@@ -1,80 +1,58 @@
 ---
 title: Claude Code
-description: Anthropic's official terminal agent.
+description: Anthropic's coding agent for terminal and editor workflows.
 sidebar:
   order: 1
 ---
 
 :::note[Freshness metadata]
-Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+Reviewed: August 2026. Volatile fields: account eligibility, model availability, retention, and enterprise controls. Verify the [current Claude Code documentation](https://docs.anthropic.com/en/docs/claude-code/overview).
 :::
 
+Claude Code is Anthropic's coding agent for terminal, editor, and automation workflows.
 
-[Claude Code](https://claude.ai/code) is Anthropic's agentic coding tool for the terminal.
+## Workflow Fit
 
-## Overview
-
-| | |
-|---|---|
-| **Type** | CLI |
-| **Open Source** | No |
-| **Best For** | Agentic workflows, MCP |
-
-## Key Features
-
-- **Agentic Coding** — Reads, writes, executes autonomously
-- **Multi-file Editing** — Understands project structure
-- **Terminal Commands** — Runs build, test, lint
-- **MCP Support** — External tool integration
-- **CLAUDE.md** — Project context files
-
-## Installation
-
-```bash
-curl -fsSL https://claude.ai/install.sh | bash
-```
+Claude Code can inspect repositories, edit files, run commands, use subagents, and connect to external tools. It fits workflows that need a hosted coding agent with explicit repository instructions and permission controls.
 
 ## Access Model
 
-Claude Code uses Anthropic account access. Availability and plan details change frequently, so treat the vendor docs as the source of truth.
+Anthropic's current setup documentation supports paid Claude subscriptions, Claude Console accounts, and selected cloud-provider paths. Eligibility changes, so check [setup and authentication](https://docs.anthropic.com/en/docs/claude-code/setup) before rollout.
 
-**Workflow fit:** best when you want a strong hosted terminal agent and are comfortable with Anthropic's account and policy model.
+Use Anthropic's official installer or package path from that page rather than copying an old installation command from a third-party guide.
 
-## Privacy
+## Data Boundaries
 
-| Setting | Value |
-|---------|-------|
-| Privacy Mode | Enterprise only |
-| Training | ON by default (consumer) |
-| Retention | 30 days or 5 years |
-| Jurisdiction | US |
+Consumer and commercial accounts have different data-use terms.
 
-:::caution[Privacy Warning]
-Consumer accounts (Free/Pro/Max) have training ON by default since August 2024. Enterprise accounts can disable this.
-:::
+- Consumer users can control whether their Claude and Claude Code data may be used for model improvement.
+- Anthropic says commercial usage under Team, Enterprise, API, and supported cloud-provider terms is not used to train generative models by default.
+- Retention depends on account type, privacy settings, features, and contractual arrangements.
 
-## Getting Started
+Read [Claude Code data usage](https://docs.anthropic.com/en/docs/claude-code/data-usage) and [security guidance](https://docs.anthropic.com/en/docs/claude-code/security) for current details. Do not compress these distinctions into a single “privacy mode” value.
 
-1. Install Claude Code
-2. Authenticate with Claude account
-3. Create `CLAUDE.md` in your project root
-4. Run `claude` in your project directory
+## Repository Instructions
 
-## CLAUDE.md Example
+Claude Code reads project guidance from `CLAUDE.md` files.
 
 ```markdown
-# Project Context
+# Project context
 
 ## Commands
-- `npm run dev` - Start dev server
-- `npm test` - Run tests
+- npm test
+- npm run lint
 
-## Gotchas
-- Auth tokens in cookies, not localStorage
+## Boundaries
+- Do not alter database migrations without approval.
+- Keep authentication tokens in secure cookies.
 ```
 
-## Tips
+Keep instructions task-relevant. Tests, permission settings, and review remain authoritative.
 
-- Use `/clear` to reset context
-- Create CLAUDE.md for project-specific context
-- Use subagents for research: "Use subagents to investigate X"
+## Adoption Check
+
+1. Choose the account or cloud-provider path.
+2. Review data-use and retention terms for that path.
+3. Configure permissions before opening a sensitive repository.
+4. Start with a bounded task and explicit stop point.
+5. Inspect commands, diff, tests, and unresolved risks before merging.

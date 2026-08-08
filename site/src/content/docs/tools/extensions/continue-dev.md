@@ -1,70 +1,50 @@
 ---
 title: Continue.dev
-description: Open source AI extension for VS Code and JetBrains.
+description: Open-source editor tooling for configurable coding-assistant workflows.
 sidebar:
   order: 1
 ---
 
 :::note[Freshness metadata]
-Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+Reviewed: August 2026. Volatile fields: editor support, model providers, configuration, telemetry, and hosted services. Verify the [current Continue documentation](https://docs.continue.dev/).
 :::
 
+[Continue](https://continue.dev) provides open-source coding-assistant tooling for supported editors and configurable model providers.
 
-[Continue.dev](https://continue.dev) is an open source extension that adds AI to your existing editor.
+## Workflow Fit
 
-## Overview
+Continue fits teams that want to keep their existing editor while choosing hosted, gateway, or local model infrastructure.
 
-| | |
-|---|---|
-| **Type** | Extension |
-| **Platforms** | VS Code, JetBrains |
-| **Open Source** | Yes (Apache 2.0) |
-| **Best For** | Local models, existing editor |
+Common workflow areas include:
 
-## Key Features
+- inline completion
+- chat and repository context
+- configurable model roles
+- local or hosted provider endpoints
+- project-level rules and configuration
 
-- **Tab Completions** — Inline suggestions
-- **Chat** — Conversational coding
-- **Local Model Support** — Ollama, LM Studio
-- **Local Model Option** — Keep model inference on your own machine or infrastructure
-- **BYOK** — Any OpenAI-compatible endpoint
+## Data Boundary
 
-## Access Model
+A local model can reduce external inference traffic, but it does not make the whole workflow local automatically. Review:
 
-Continue.dev is open source. You can run it with your own provider keys or pair it with a local model stack, which makes it one of the clearest choices for teams that want explicit infrastructure control.
+- extension telemetry
+- model and embedding endpoints
+- repository indexing
+- connected tools and services
+- logs and configuration storage
 
-## Privacy
+“Bring your own key” means provider terms still apply. A local endpoint stays local only when all configured supporting services do too.
 
-Continue can be configured for local-model workflows, which gives teams a clearer boundary than hosted tools.
+## Configuration Check
 
-Verify telemetry, extension settings, model endpoints, and any connected cloud services before treating a setup as fully local.
+Use the [current configuration documentation](https://docs.continue.dev/customize/overview) rather than copying old model identifiers or editor shortcuts.
 
-## Model Options
+1. Assign a provider to each required role.
+2. Keep credentials out of committed configuration.
+3. Test context retrieval on a representative repository question.
+4. Disable unused external integrations.
+5. Inspect network traffic when a fully local boundary is required.
 
-**Local (Ollama):**
-- DeepSeek V3.2
-- Qwen3 Coder 32B
-- Llama 4
+## Adoption Check
 
-**Cloud (BYOK):**
-- Any OpenAI-compatible API
-- Anthropic, OpenAI, Google, xAI, etc.
-
-## Getting Started
-
-1. Install from VS Code marketplace or JetBrains
-2. Install [Ollama](https://ollama.com) for local models
-3. Run `ollama pull deepseek-coder-v2` or similar
-4. Configure Continue to use local model
-
-## Local Setup
-
-Install Ollama or another local model runtime using its official installation instructions.
-
-Then pull a coding model and configure Continue to use your local endpoint, such as `localhost:11434` for Ollama.
-
-## Tips
-
-- Use `Cmd+L` to open chat
-- Local models require 8GB+ VRAM (24GB+ for best results)
-- Combine with cloud models for complex tasks
+Compare the configured Continue workflow against the team's existing editor and verification loop. Provider flexibility is useful only if the resulting configuration remains understandable and maintainable.

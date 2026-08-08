@@ -6,7 +6,7 @@ sidebar:
 ---
 
 :::note[Freshness metadata]
-Reviewed: May 2026. Volatile fields: model availability, benchmark position, pricing, privacy terms, and provider feature support. Verify live docs and leaderboards before making current decisions.
+Reviewed: August 2026. Volatile fields: model availability, benchmark position, pricing, privacy terms, and provider feature support. Verify live docs and leaderboards before making current decisions.
 :::
 
 
@@ -24,21 +24,19 @@ When you use AI coding tools, they typically send:
 - Git diff (sometimes)
 - Terminal output (sometimes)
 
-## Jurisdiction Risk
+## Jurisdiction and Legal Review
 
-| Jurisdiction | Legal Framework | Risk Level |
-|--------------|-----------------|------------|
-| **US** | CLOUD Act, FISA 702 | Government can compel disclosure |
-| **EU** | GDPR | Stronger user protections |
-| **China** | PIPL, Cybersecurity Law | Data localization requirements |
+A server region alone does not establish the legal boundary. The provider entity, subprocessors, model hosts, support access, backups, and contractual transfer mechanisms can all matter.
 
-### US CLOUD Act
-Allows US government to compel disclosure of data stored by US companies **anywhere globally**, potentially without user notification.
+For regulated or cross-border work, have qualified reviewers determine:
 
-### Implications
-- Data stored by US company = subject to US law
-- Applies even if servers are in EU
-- Enterprise agreements may provide some protection
+- which entities can process or disclose the data
+- where each data category is stored and processed
+- which transfer and data-processing agreements apply
+- whether localization, government-access, sector, or client-contract rules constrain the workflow
+- what notice, challenge, audit, deletion, and incident terms the contract provides
+
+Do not turn jurisdiction into a simple country risk score.
 
 ## Verification Methods
 

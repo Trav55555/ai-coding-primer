@@ -218,12 +218,12 @@ For practical guidance, continue with [Workflow Archetypes](/ai-coding-primer/le
 
 ### Computing and programming history
 
-- [Stanford Encyclopedia of Philosophy: Algorithms](https://plato.stanford.edu/entries/algorithms/)
-- [NASA: The Human Computers](https://www.nasa.gov/history/human-computers/)
+- [Stanford Encyclopedia of Philosophy: The Philosophy of Computer Science](https://plato.stanford.edu/entries/computer-science/)
+- [NASA: When Computers Were Human](https://www.nasa.gov/centers-and-facilities/jpl/when-computers-were-human)
 - [Ada Lovelace's notes on the Analytical Engine](https://www.fourmilab.ch/babbage/sketch.html)
 - [Turing: On Computable Numbers](https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf)
 - [ENIAC Programmers Project](http://eniacprogrammers.org/)
-- [University of Manchester: The Baby computer](https://www.manchester.ac.uk/discover/history-heritage/history/stories/baby-computer/)
+- [University of Manchester: Computing history and heritage](https://www.cs.manchester.ac.uk/about/history-and-heritage/index.htm)
 - [IBM: The history of FORTRAN](https://www.ibm.com/history/fortran)
 - [Ritchie and Thompson: The UNIX Time-Sharing System](https://people.eecs.berkeley.edu/~brewer/cs262/unix.pdf)
 

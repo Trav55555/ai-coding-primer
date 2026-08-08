@@ -4,7 +4,7 @@ description: Compare a short list of workflow shapes and stack options without t
 ---
 
 :::note[Freshness metadata]
-Reviewed: June 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+Reviewed: August 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
 :::
 
 

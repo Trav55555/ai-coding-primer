@@ -1,104 +1,35 @@
 ---
 title: Supermaven
-description: Ultra-fast AI code completion with 1M token context.
+description: Historical completion-tool reference after Supermaven's standalone product sunset.
 sidebar:
   order: 5
 ---
 
 :::note[Freshness metadata]
-Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+Reviewed: August 2026. Supermaven was sunset as a standalone product in November 2025. This page is retained as historical reference.
 :::
 
+Supermaven was a low-latency code-completion product acquired by Cursor in 2024.
 
-[Supermaven](https://supermaven.com/) is an AI code completion tool optimized for speed and large context.
-
-## Overview
-
-| | |
-|---|---|
-| **Type** | Extension |
-| **Open Source** | No |
-| **Best For** | Speed-focused developers, large codebases |
-
-## Key Features
-
-- **1M Token Context** — Entire codebase in memory
-- **Ultra-Fast** — Sub-10ms latency
-- **Inline Edits** — Multi-line completions
-- **Chat** — Conversational assistance
-- **Repository Understanding** — Deep codebase awareness
-
-## Access Model
-
-Supermaven offers individual and team access paths. The important question is whether your workflow is completion-first enough to justify a specialized speed tool.
-
-## Privacy
-
-| Setting | Value |
-|---------|-------|
-| Training | OFF by default |
-| Retention | Minimal (performance only) |
-| Jurisdiction | US |
-
-## Speed Comparison
-
-| Tool | Latency |
-|------|---------|
-| **Supermaven** | ~5-10ms |
-| Copilot | ~50-100ms |
-| Cursor | ~100-200ms |
-
-:::tip[Speed Advantage]
-Supermaven's custom model architecture prioritizes latency. Feels like enhanced autocomplete, not AI generation.
+:::caution[Sunset]
+Supermaven's official [sunset announcement](https://supermaven.com/blog/sunsetting-supermaven) says the standalone product was sunset in November 2025 and directs users toward Cursor. Do not adopt Supermaven as a new team standard from older feature or pricing pages.
 :::
 
-## Installation
+## What the Product Illustrated
 
-**VS Code:**
-```
-Extensions → Search "Supermaven"
-Install → Sign in
-```
+Supermaven emphasized a completion-first workflow:
 
-**Neovim:**
-```lua
--- Using lazy.nvim
-{ "supermaven-inc/supermaven-nvim" }
-```
+- low interaction latency
+- broad repository context
+- inline suggestions rather than autonomous task execution
 
-## 1M Token Context
+That workflow distinction remains useful. Completion tools and coding agents solve different problems and should be evaluated separately.
 
-Unlike tools that chunk and retrieve, Supermaven keeps your entire codebase in context:
+## Migration Check
 
-```
-Traditional: Search → Retrieve chunks → Generate
-Supermaven:  Full codebase loaded → Instant generation
-```
+1. Identify whether the old workflow depended on VS Code, JetBrains, or Neovim support.
+2. Verify the current status of any remaining plugin before use.
+3. Re-evaluate data handling and account terms in the replacement product.
+4. Measure completion acceptance and correction cost instead of relying on old latency claims.
 
-Benefits:
-- No retrieval latency
-- Better cross-file understanding
-- More consistent suggestions
-
-## Use Cases
-
-### Speed-Critical Workflows
-
-When latency matters:
-- Rapid prototyping
-- Live coding / streaming
-- Pair programming
-
-### Large Monorepos
-
-When context matters:
-- Enterprise codebases
-- Microservice architectures
-- Complex dependencies
-
-## Tips
-
-- Best for pure code completion (not chat-heavy workflows)
-- Pairs well with agentic tools (use Supermaven for speed, Claude Code for complex tasks)
-- Use it when completion speed matters more than agent autonomy
-- Treat Supermaven as a specialized speed tool, not a general-purpose agent platform
+See [Cursor](/ai-coding-primer/tools/ides/cursor/) for the vendor's intended migration direction.

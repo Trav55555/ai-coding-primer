@@ -1,125 +1,44 @@
 ---
 title: OpenCode
-description: Open-source BYOK terminal agent.
+description: Open-source terminal coding agent with configurable providers.
 sidebar:
   order: 3
 ---
 
 :::note[Freshness metadata]
-Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+Reviewed: August 2026. Volatile fields: provider integrations, configuration, installation, and hosted services. Verify the [current OpenCode documentation](https://opencode.ai/docs/).
 :::
 
+[OpenCode](https://opencode.ai) is an open-source terminal coding agent that can connect to hosted or local model providers.
 
-[OpenCode](https://github.com/sst/opencode) is an open-source terminal coding agent with BYOK (Bring Your Own Key).
+## Workflow Fit
 
-## Overview
+OpenCode fits developers who want a terminal agent with provider choice, session management, tool integration, and configurable project instructions.
 
-| | |
-|---|---|
-| **Type** | CLI |
-| **Open Source** | Yes |
-| **Best For** | BYOK, customization, self-hosting |
+## Provider Boundary
 
-## Key Features
+“Bring your own key” does not mean that no data leaves the machine. Prompts, repository context, and tool results go wherever the selected provider and configured tools send them.
 
-- **BYOK** — Use any API provider
-- **Agentic** — File editing, terminal commands
-- **MCP Support** — External tool integration
-- **Customizable** — Extensive configuration options
-- **Session Management** — Resume conversations
+Before use, verify:
 
-## Installation
+- provider data-use and retention terms
+- where credentials are stored
+- enabled tools and external integrations
+- local session and log storage
+- network and filesystem permissions
 
-```bash
-# npm
-npm install -g opencode
-
-# Or run directly
-npx opencode
-```
-
-## Access Model
-
-OpenCode is open source and BYOK. There is no vendor subscription layer; your access terms come from whichever provider or local runtime you connect.
-
-## Privacy
-
-| Setting | Value |
-|---------|-------|
-| Open Source | Yes (auditable) |
-| Training | None (BYOK) |
-| Data Storage | Local only |
-| Jurisdiction | Your API provider |
-
-:::tip[Maximum Privacy]
-OpenCode sends nothing to any server except your chosen API. Fully auditable source code.
-:::
-
-## Supported Providers
-
-- OpenAI
-- Anthropic
-- Google (Gemini)
-- AWS Bedrock
-- Azure OpenAI
-- Ollama (local)
-- Any OpenAI-compatible endpoint
-
-## Getting Started
-
-```bash
-# Set API key
-export ANTHROPIC_API_KEY=sk-...
-
-# Start in your project
-cd your-project
-opencode
-
-# Or with specific provider
-opencode --provider anthropic --model claude-sonnet-4-5
-```
+OpenCode documents provider configuration and credential storage under [Providers](https://opencode.ai/docs/providers/).
 
 ## Configuration
 
-Create `opencode.config.json`:
+Use the current [`opencode.json` configuration reference](https://opencode.ai/docs/config/) rather than copying old model identifiers or MCP command examples.
 
-```json
-{
-  "provider": "anthropic",
-  "model": "claude-sonnet-4-5-20250514",
-  "mcpServers": {
-    "filesystem": {
-      "command": "npx",
-      "args": ["-y", "@anthropic/mcp-filesystem"]
-    }
-  }
-}
-```
+Keep credentials out of committed files. Treat every configured tool server as an additional security and data boundary.
 
-## MCP Integration
+## Adoption Check
 
-OpenCode supports MCP servers for extended capabilities:
-
-```bash
-# Add GitHub integration
-opencode --mcp github
-
-# Add database access
-opencode --mcp postgres
-```
-
-## Key Commands
-
-| Command | Action |
-|---------|--------|
-| `/clear` | Clear context |
-| `/session list` | Show saved sessions |
-| `/session load <id>` | Resume session |
-| `/compact` | Summarize and compress context |
-
-## Tips
-
-- Use Ollama or another local runtime when you need local, offline model execution
-- Configure MCP servers for extended capabilities
-- Use `/compact` to manage long conversations
-- Session management enables pausing/resuming work
+1. Install through the [official documentation](https://opencode.ai/docs/).
+2. Connect one reviewed provider or local runtime.
+3. Start with workspace-scoped permissions.
+4. Add external tools only when a task requires them.
+5. Inspect commands, diff, tests, and stored session data before broader use.

@@ -1,102 +1,70 @@
 ---
 title: GitHub Copilot
-description: GitHub's AI pair programmer extension.
+description: GitHub coding assistant with editor, command-line, and repository workflows.
 sidebar:
   order: 1
 ---
 
 :::note[Freshness metadata]
-Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+Reviewed: August 2026. Volatile fields: supported models, quotas, data handling, and enterprise controls. Verify [GitHub's current Copilot documentation](https://docs.github.com/en/copilot) before standardizing on this reference.
 :::
 
+[GitHub Copilot](https://github.com/features/copilot) provides coding assistance in supported editors, on GitHub, and through command-line and agent workflows.
 
-[GitHub Copilot](https://github.com/features/copilot) is GitHub's AI coding assistant, available as an extension for VS Code, JetBrains, and other editors.
+## Workflow Fit
 
-## Overview
+Copilot is a practical choice when a team already works in GitHub and supported editors and wants coding assistance tied to repository access and organization policy.
 
-| | |
-|---|---|
-| **Type** | Extension |
-| **Open Source** | No |
-| **Best For** | Existing VS Code/JetBrains users, enterprise |
+Current surfaces include:
 
-## Key Features
+- inline completion
+- chat and multi-file editing
+- repository-aware agent workflows
+- command-line workflows
+- organization and enterprise policy controls
 
-- **Inline Completions** — Tab to accept suggestions
-- **Chat** — Conversational coding assistance
-- **Copilot Edits** — Multi-file editing
-- **Workspace Agent** — `@workspace` for codebase context
-- **CLI Integration** — Terminal command suggestions
+Exact features differ by editor, account, policy, and rollout. Check the [feature documentation](https://docs.github.com/en/copilot/get-started/features) for the surface you intend to use.
 
-## Access Model
+## Access and Governance
 
-Copilot has individual and enterprise-oriented access paths. The durable distinction is not the exact plan table, but whether you need personal convenience or centralized policy, governance, and codebase controls.
+Individual access emphasizes personal workflow. Organization and enterprise access adds centralized assignment and policy controls. Before rollout, verify:
 
-## Privacy
+- which features and models administrators can allow
+- whether agents can create branches, pull requests, or execute workflows
+- repository and content-exclusion policy
+- billing and usage limits
+- audit and review requirements
 
-| Setting | Value |
-|---------|-------|
-| Training | OFF for Business/Enterprise |
-| Telemetry | Configurable |
-| Code Storage | Not retained (Business+) |
-| Jurisdiction | US (Microsoft) |
+GitHub documents current controls under [Copilot policies](https://docs.github.com/en/copilot/concepts/policies).
 
-:::tip[IP Indemnity]
-Business and Enterprise plans include IP indemnity — Microsoft covers legal costs if Copilot output causes IP issues.
-:::
+## Data Boundaries
 
-## Models Available
+Do not infer data handling from the product name or subscription tier alone. It can depend on the selected model, feature, account type, and organization policy.
 
-Model availability is plan-dependent and changes frequently. Common options include:
+GitHub's [model-hosting documentation](https://docs.github.com/en/copilot/reference/ai-models/model-hosting) describes provider arrangements and training or retention boundaries. Recheck it during procurement and whenever enabling a new model or agent surface.
 
-- GPT-5.x family (including Codex variants)
-- Claude Sonnet/Opus 4.6
-- Gemini 3 Pro
+## Repository Instructions
 
-## Installation
-
-**VS Code:**
-```
-1. Extensions → Search "GitHub Copilot"
-2. Install
-3. Sign in with GitHub
-```
-
-**JetBrains:**
-```
-1. Settings → Plugins → Search "GitHub Copilot"
-2. Install
-3. Sign in with GitHub
-```
-
-## Context Files
-
-Copilot uses `.github/copilot-instructions.md`:
+Copilot supports repository instructions in `.github/copilot-instructions.md`. Support varies by environment and feature; use GitHub's [custom-instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support).
 
 ```markdown
-# Copilot Instructions
+# Repository instructions
 
-## Code Style
-- Use TypeScript strict mode
-- Prefer named exports
+## Commands
+- npm test
+- npm run typecheck
 
-## Gotchas
-- Auth tokens in cookies, not localStorage
+## Boundaries
+- Keep authentication tokens in secure cookies.
+- Do not change public API schemas without approval.
 ```
 
-## Workspace Agent
+Keep instructions short and test whether they improve representative tasks. They do not replace tests, policy checks, or review.
 
-Use `@workspace` to give Copilot codebase context:
+## Adoption Check
 
-```
-@workspace How is authentication implemented?
-@workspace Find all API endpoints
-@workspace Explain the data flow for user creation
-```
-
-## Tips
-
-- Use `@workspace` for codebase-aware questions
-- Create `.github/copilot-instructions.md` for project context
-- Tab accepts suggestions, Esc dismisses
-- `Ctrl+Enter` shows multiple suggestions
+1. Select one supported editor or agent workflow.
+2. Apply repository and organization policy before granting broad access.
+3. Test with a bounded task and inspect the diff and executed commands.
+4. Confirm data handling for the selected feature and model.
+5. Measure review and rework before expanding use.

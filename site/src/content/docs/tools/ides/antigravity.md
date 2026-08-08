@@ -1,88 +1,44 @@
 ---
 title: Antigravity
-description: Google's preview agentic IDE with Gemini integration.
+description: Google's agentic IDE and command-line environment.
 sidebar:
   order: 4
 ---
 
 :::note[Freshness metadata]
-Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+Reviewed: August 2026. Volatile fields: product status, models, account access, and security controls. Verify [Google's current Antigravity documentation](https://antigravity.google/docs/).
 :::
 
+[Antigravity](https://antigravity.google) is Google's agentic development environment across IDE and command-line workflows.
 
-[Antigravity](https://antigravity.google) is Google's preview VS Code fork with deep Gemini integration.
+In 2026, Google also began moving individual Gemini CLI users to Antigravity CLI. See the [Gemini CLI transition notice](https://github.com/google-gemini/gemini-cli/discussions/27274).
 
-## Overview
+## Workflow Fit
 
-| | |
-|---|---|
-| **Type** | IDE (VS Code fork) |
-| **Open Source** | No |
-| **Best For** | Gemini-native workflows, visual/UI work |
+Antigravity supports repository editing, command execution, browser interaction, artifacts, and parallel agent work. It is relevant when a workflow needs Google-hosted agent capabilities across terminal, editor, and browser surfaces.
 
-## Key Features
+Do not infer current model support or account eligibility from an older launch announcement. Check the live product documentation.
 
-- **Agent Manager** — Orchestrates multiple agents
-- **Browser Automation** — Built-in Playwright-like control
-- **Terminal Control** — Full shell access
-- **Artifacts System** — Previews, diagrams, prototypes
-- **Gemini Native** — Optimized for Gemini models
+## Permission Controls
 
-## Access Model
+Google documents security presets, scoped permissions, workspace boundaries, and command-line sandbox settings. Review:
 
-Antigravity is a preview product. Access details and plan structure may change quickly, so focus on whether the workflow fits rather than assuming the current launch posture will persist.
+- [features and security presets](https://antigravity.google/docs/features?app=antigravity-ide)
+- [CLI settings](https://antigravity.google/docs/cli/settings?app=antigravity-ide)
+- [CLI sandbox](https://antigravity.google/docs/cli-sandbox)
+- [browser isolation](https://antigravity.google/docs/ide/browser?app=antigravity)
 
-:::note[Preview Status]
-Antigravity is in public preview (launched Nov 2025). Product and policy details may still change.
-:::
+Treat browser and terminal access as separate authority grants.
 
-## Privacy
+## Safe First Workflow
 
-| Setting | Value |
-|---------|-------|
-| Privacy Mode | Yes (GCP terms) |
-| Training | GCP data policies |
-| Jurisdiction | US |
+1. Open a non-sensitive repository.
+2. Keep writes scoped to the workspace.
+3. Require approval for commands that install packages or affect external systems.
+4. Restrict browser domains when browser automation is enabled.
+5. Run repository checks and inspect the diff.
+6. Review telemetry and account data terms before using company code.
 
-## Models Available
+## Migration Check
 
-- Gemini 3 Pro (default)
-- Gemini 3 Flash
-- Gemini Deep Think
-- Claude Sonnet 4.5 / Opus 4.5
-- GPT-OSS-120B (open-source variant)
-
-:::tip[Gemini Advantage]
-Gemini 3 Pro offers large context (up to 1M tokens, though practical limits are lower) and excels at visual/UI work.
-:::
-
-## Getting Started
-
-1. Download from [antigravity.google](https://antigravity.google)
-2. Sign in with Google account
-3. Grant agent permissions (review carefully)
-4. Start with simple tasks to learn agent behavior
-
-## Agent Manager
-
-Antigravity can run multiple agents in parallel:
-
-```
-You: "Research auth patterns AND build the login UI"
-Agent Manager:
-├── Agent 1: Researching auth patterns...
-└── Agent 2: Building login component...
-```
-
-## Security Warning
-
-:::caution[Permission Model]
-Agents get real write/execute permissions. Use Secure Mode for untrusted projects. Review agent actions before approving.
-:::
-
-## Tips
-
-- Use Gemini 3 Pro for larger context needs
-- Enable Secure Mode for cloned/untrusted repos
-- Leverage artifacts for UI prototyping
-- Good fit when you want to experiment with Gemini-native agent workflows
+Teams moving from Gemini CLI should re-evaluate authentication, local instructions, sandbox settings, and model availability rather than assuming configuration transfers unchanged.

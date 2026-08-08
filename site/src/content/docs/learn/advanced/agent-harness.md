@@ -212,7 +212,7 @@ A harness is usually unnecessary for:
 
 - [Anthropic: Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents/)
 - [OpenAI Codex `AGENTS.md` implementation](https://github.com/openai/codex/blob/main/codex-rs/core/src/agents_md.rs)
-- [Cline deep-planning prompt variants](https://github.com/cline/cline/tree/main/apps/vscode/src/core/prompts/commands/deep-planning/variants)
+- [Cline deep-planning release history](https://github.com/cline/cline/blob/main/CHANGELOG.md)
 - [GitHub Spec Kit agent configuration module](https://github.com/github/spec-kit/blob/main/src/specify_cli/_agent_config.py)
 - [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/)
 - [Productivity Research](/ai-coding-primer/research/productivity/)
@@ -222,5 +222,5 @@ A harness is usually unnecessary for:
 - [Anthropic: Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents/)
 - [OpenAI: Harness engineering](https://openai.com/index/harness-engineering/)
 - [OpenAI Codex `AGENTS.md` implementation](https://github.com/openai/codex/blob/main/codex-rs/core/src/agents_md.rs)
-- [Cline deep-planning prompt variants](https://github.com/cline/cline/tree/main/apps/vscode/src/core/prompts/commands/deep-planning/variants)
+- [Cline deep-planning release history](https://github.com/cline/cline/blob/main/CHANGELOG.md)
 - [GitHub Spec Kit agent configuration module](https://github.com/github/spec-kit/blob/main/src/specify_cli/_agent_config.py)

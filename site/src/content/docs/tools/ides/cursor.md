@@ -1,61 +1,64 @@
 ---
 title: Cursor
-description: VS Code fork with integrated AI.
+description: VS Code-based editor with integrated coding-agent workflows.
 sidebar:
   order: 1
 ---
 
 :::note[Freshness metadata]
-Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+Reviewed: August 2026. Volatile fields: models, quotas, retention, and enterprise controls. Verify [Cursor's current documentation](https://docs.cursor.com/).
 :::
 
+[Cursor](https://cursor.com) is a VS Code-based editor with completion, chat, multi-file editing, and agent workflows.
 
-[Cursor](https://cursor.com) is a VS Code fork with AI deeply integrated.
+## Workflow Fit
 
-## Overview
+Cursor fits developers who want coding assistance integrated into an editor rather than operated mainly from a separate terminal client.
 
-| | |
-|---|---|
-| **Type** | IDE (VS Code fork) |
-| **Open Source** | No |
-| **Best For** | Easiest start, most polished experience |
+Current workflow areas include:
 
-## Key Features
+- inline completion
+- repository-aware chat and editing
+- local agent execution
+- remote background agents
+- project and user rules
 
-- **Composer Mode** (`Cmd+I`) — Multi-file editing
-- **Agent Mode** — Autonomous task completion
-- **Tab Completions** — Inline suggestions
-- **Background Agents** — Parallel research
-- **`.cursorrules`** — Project-specific context
+## Data Boundaries
 
-## Access Model
+Cursor's data handling depends on Privacy Mode, workspace policy, selected model, and feature.
 
-Cursor offers hosted access with several account tiers. Specific plan details change often, but the important distinction is between individual use and business or enterprise use with stronger administrative and privacy controls.
+Cursor says standard model requests under Privacy Mode use zero-data-retention arrangements. Background agents are different: they run in remote environments and require temporary retention while a task runs. They also have network access.
 
-## Privacy
+Before using sensitive code, read [Cursor's data-use documentation](https://cursor.com/data-use) and [background-agent documentation](https://docs.cursor.com/background-agent). Verify subprocessors and enterprise controls through the vendor's current trust materials.
 
-Cursor's privacy posture depends on plan, settings, selected model, and current vendor terms.
+## Project Rules
 
-Before using it with sensitive code, verify:
+Current project rules live under `.cursor/rules`. Older `.cursorrules` examples should not be treated as the current default.
 
-- whether privacy mode covers prompts, completions, file contents, embeddings, screenshots, and tool traces
-- current retention and training defaults for your plan
-- subprocessors for the models you enable
-- enterprise controls such as SSO, audit logs, and admin policy
+Use rules for concise repository constraints:
 
-## Models Available
+```markdown
+---
+description: Repository checks and boundaries
+alwaysApply: true
+---
 
-Cursor supports multiple hosted frontier models. The exact model list changes quickly, so check Cursor's live model settings before deciding.
+- Run npm test before reporting completion.
+- Do not change public API schemas without approval.
+```
 
-## Getting Started
+Check the [rules documentation](https://docs.cursor.com/context/rules) because formats and feature support can change.
 
-1. Download from [cursor.com](https://cursor.com)
-2. Import your VS Code settings (optional)
-3. Enable Privacy Mode in settings (recommended)
-4. Create `.cursorrules` in your project root
+## Background-Agent Boundary
 
-## Tips
+A background agent is not merely a longer local chat. Treat it as remote execution:
 
-- Use `Cmd+I` for Composer mode (multi-file editing)
-- Create `.cursorrules` for project-specific context
-- Enable Privacy Mode immediately after install
+1. inspect repository and secret access
+2. restrict branch and deployment permissions
+3. review network assumptions
+4. require tests and a diff
+5. verify retention and deletion behavior
+
+## Adoption Check
+
+Start with a local, bounded edit. Enable background execution only after the team has reviewed remote permissions, data handling, and recovery procedures.
