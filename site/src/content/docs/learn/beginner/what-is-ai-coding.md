@@ -9,19 +9,19 @@ Agentic engineering means using AI tools that can read files, change code, run c
 
 The operational change is that more work moves into intent, context, constraints, and verification. Code generation is only one part of the workflow.
 
-## The Core Loop
+## The Short Version of the Workflow
 
 ```text
-Intent → Plan → Execute → Reflect → Repeat
+Define → Bound → Execute → Verify → Review
 ```
 
-1. **Intent** — state the desired change or question
-2. **Plan** — identify relevant files, constraints, and verification steps
-3. **Execute** — write code, edit files, or run commands
-4. **Reflect** — check tests, lint, types, build output, screenshots, or expected results
-5. **Repeat** — revise based on the verification signal
+1. **Define** the behavior and evidence you need.
+2. **Bound** files, permissions, non-goals, and the stop condition.
+3. Let the tool **execute** only that task.
+4. **Verify** with tests, diagnostics, builds, screenshots, or expected output.
+5. **Review** the diff, assumptions, and remaining risk.
 
-That is what makes the workflow agentic. The tool can act in the environment instead of only suggesting text.
+This is the beginner summary, not a separate procedure. The [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/) expands it for consequential choices, thin slices, saved state, recovery, and later change cost.
 
 ## What Changed
 
@@ -66,10 +66,8 @@ Familiar tasks make errors easier to detect. Once you can identify mistakes on f
 
 ## Next Steps
 
-See how these tools fit into earlier programming practice: [From Human Computers to Agentic Engineering →](/ai-coding-primer/reference/development-practices-timeline/)
+1. Set the data and permission boundary with the [Quick Security Checklist →](/ai-coding-primer/security/checklist/).
+2. [Choose a Workflow and Stack →](/ai-coding-primer/learn/beginner/choose-your-tool/).
+3. Establish feedback and permissions with the [Setup Checklist →](/ai-coding-primer/learn/beginner/setup-checklist/).
 
-Choose a workflow and stack: [Choose a workflow and stack →](/ai-coding-primer/learn/beginner/choose-your-tool/)
-
-Then review the main workflow patterns: [Workflow Archetypes →](/ai-coding-primer/learn/intermediate/workflow-archetypes/)
-
-For a practical bounded-task procedure, use the [Agentic Development Loop →](/ai-coding-primer/learn/intermediate/agentic-development-loop/)
+For historical context, see [From Human Computers to Agentic Engineering](/ai-coding-primer/reference/development-practices-timeline/).

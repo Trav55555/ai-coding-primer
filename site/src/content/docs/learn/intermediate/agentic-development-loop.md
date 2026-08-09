@@ -9,6 +9,10 @@ Use this loop when you want a coding agent to do useful repository work without 
 
 A coding agent can search files, edit code, run commands, inspect failures, and retry. The developer must define the task boundary, reserve consequential choices for human judgment, and check the evidence before accepting the patch.
 
+:::tip[New to the workflow?]
+[Your First Session](/ai-coding-primer/learn/beginner/first-session/) teaches a reduced version of this loop through one test-only task. Complete it first if baselines, scope boundaries, stop conditions, or diff review are unfamiliar.
+:::
+
 :::note[Evidence status]
 This page is editorial workflow guidance. No study has validated this exact eight-step loop as a universal optimum.
 

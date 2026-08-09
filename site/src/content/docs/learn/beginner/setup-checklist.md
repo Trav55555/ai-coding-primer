@@ -1,107 +1,109 @@
 ---
 title: Setup Checklist
-description: Configure project feedback loops before using AI coding tools.
+description: Establish project feedback, permissions, and a clean baseline before an AI-assisted task.
 sidebar:
   order: 4
 ---
 
-Before using an AI coding tool on a project, make sure the project can surface errors quickly. The agent needs the same feedback a developer would use: type errors, lint errors, test failures, and build output.
+Before asking an AI coding tool to change a project, establish how the project reports errors and what the tool may access.
 
-## Required Feedback Signals
+The goal is not a perfect development environment. You need one clean starting point, one relevant check, and boundaries that prevent a small task from becoming an uncontrolled one.
 
-| Tool | Purpose | Verification signal |
-|---|---|---|
-| **Language Server (LSP)** | Real-time type checking and symbol information | inline errors, hover types, go-to-definition |
-| **Linter** | Style issues and common bugs | repeatable lint command |
-| **Formatter** | Consistent code style | repeatable format command or editor integration |
-| **Test or build command** | Behavior and integration checks | command that exits non-zero on failure |
+## 1. Start From a Known Working State
 
-## Language Server Setup
+Use version control or another reversible snapshot. Before the session:
 
-Install or enable the language server for your stack:
+- inspect the current diff
+- separate unrelated work
+- record any pre-existing failures
+- know how to undo the proposed change
 
-| Language | LSP | Install |
-|---|---|---|
-| TypeScript | typescript-language-server | `npm i -g typescript-language-server typescript` |
-| Python | mypy or pyright-compatible tooling | `uv tool install mypy` or install your editor's Python language tooling |
-| Go | gopls | `go install golang.org/x/tools/gopls@latest` |
-| Rust | rust-analyzer | `rustup component add rust-analyzer` |
-| C# | OmniSharp or C# Dev Kit language services | included with common C# editor extensions |
+If the repository already has uncommitted work, do not let the agent assume every changed file belongs to its task.
 
-:::note[Language-specific IDEs]
-JetBrains IDEs and Visual Studio include language intelligence for their primary ecosystems. You may not need a separate LSP install.
-:::
+## 2. Find the Project's Existing Checks
 
-## Linter Setup
+Prefer commands already defined by the repository. Look in its README, contribution guide, package scripts, build files, or continuous-integration configuration.
 
-| Language | Linter | Common config file |
-|---|---|---|
-| TypeScript | ESLint | `eslint.config.js` |
-| Python | Ruff | `pyproject.toml` or `ruff.toml` |
-| Go | golangci-lint | `.golangci.yml` |
-| Rust | Clippy | `clippy.toml` |
-| C# | dotnet format / analyzers | `.editorconfig` |
+Find the narrowest command that checks the area you plan to change:
 
-## Formatter Setup
+- a targeted test
+- a type or compile check
+- a linter
+- a build
+- a manual reproduction with an expected result
 
-| Language | Formatter | Common config file |
-|---|---|---|
-| TypeScript | Prettier | `.prettierrc` |
-| Python | Ruff / Black | `pyproject.toml` |
-| Go | gofmt | built in |
-| Rust | rustfmt | `rustfmt.toml` |
-| C# | dotnet format | `.editorconfig` |
-
-## Baseline Verification Commands
-
-Run the relevant commands before starting an AI session. If the baseline is already failing, record or fix that first. Otherwise the agent may spend time on pre-existing failures rather than the change you asked for.
-
-```bash
-# TypeScript
-npm run lint && npm run typecheck
-
-# Python
-uv run ruff check . && uv run mypy .
-
-# Go
-go vet ./... && golangci-lint run
-
-# Rust
-cargo clippy
-
-# C#
-dotnet build
-```
-
-Use the commands your project actually supports. The examples above are starting points, not universal requirements.
-
-## Failure Conditions
-
-Do not start an implementation task until you know:
-
-- which command checks the changed area
-- whether that command currently passes
-- which files already have known errors
-- whether generated or vendored files should be excluded
-
-If the baseline is not clean, include that fact in the prompt:
+Run it before the task. A failing baseline makes later results ambiguous.
 
 ```text
-Baseline note: `npm run lint` currently fails in legacy/admin.ts.
-Do not edit that file. For this task, verify with `npm test -- user-form.test.ts`.
+Baseline:
+- `npm test -- parser.test.ts` passes.
+- `npm run typecheck` passes.
+- Working tree is clean.
 ```
 
-## Quick Checklist
+Use the commands the project actually supports. Do not install unrelated global tools merely to reproduce a generic checklist.
 
-Before your first AI session:
+## 3. Confirm Local Feedback
 
-- [ ] Language intelligence is installed and showing local errors.
-- [ ] Linter is configured and you know the command to run.
-- [ ] Formatter is configured or intentionally omitted.
-- [ ] Relevant test/build command is known.
-- [ ] Pre-existing failures are fixed or documented.
-- [ ] Sensitive files are excluded from tool access where needed.
+A useful setup normally has:
 
-## Next Steps
+| Signal | What it catches |
+|---|---|
+| Language or compiler diagnostics | syntax, type, and symbol errors |
+| Targeted test or reproduction | incorrect behavior in the changed area |
+| Linter or static analysis | project rules and common defects |
+| Diff | accidental scope growth |
 
-Environment configured? Start with a small verified task: [Your First Session →](/ai-coding-primer/learn/beginner/first-session/)
+Not every project has every signal. Record what is missing and reduce task scope when verification is weak.
+
+## 4. Bound Permissions
+
+Decide what the tool may do before it starts:
+
+- files or directories it may edit
+- commands it may run
+- whether network access is needed
+- whether it may install dependencies
+- which actions require approval
+
+For a first session, keep writes inside one test file and require approval for package installation, network access, or changes outside the repository.
+
+## 5. Remove Sensitive Authority
+
+Use scoped, non-production credentials only when the task requires them. Prefer no credentials for a first session.
+
+Check for:
+
+- environment files and secrets
+- cloud or database credentials inherited by the shell
+- package-registry tokens
+- deployment commands
+- browser sessions connected to sensitive systems
+
+Ignore files reduce accidental context, but they are not a security boundary. Verify actual tool permissions and network behavior.
+
+## 6. Record the Task Baseline
+
+Give the agent facts, not assumptions:
+
+```text
+Baseline:
+- Working tree is clean.
+- The allowed file is `tests/parser.test.ts`.
+- `npm test -- parser.test.ts` passes.
+- No network access or credentials are required.
+- Stop before changing production code or installing packages.
+```
+
+## Ready Check
+
+Start only when you can answer yes:
+
+- [ ] Can I identify the existing diff or confirm it is clean?
+- [ ] Do I know the narrowest relevant verification command?
+- [ ] Have I run that command once?
+- [ ] Do I know which files the task may change?
+- [ ] Are credentials and external actions absent or explicitly constrained?
+- [ ] Can I undo the change?
+
+Ready? Run one bounded task in [Your First Session →](/ai-coding-primer/learn/beginner/first-session/).

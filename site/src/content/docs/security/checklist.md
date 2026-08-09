@@ -1,75 +1,90 @@
 ---
 title: Quick Security Checklist
-description: Essential security steps for AI coding tools.
+description: Set data, credential, permission, and external-action boundaries before using an AI coding tool.
 sidebar:
   order: 1
 ---
 
-Before using any AI coding tool with real code, complete this checklist.
+Before using an AI coding tool with real code, decide what data and authority the task requires.
 
-## Before You Start
+## Classify the Work
 
-- [ ] **Review data-use settings** for the exact account and feature
-- [ ] **Restrict tool access** to the files and services the task needs
-- [ ] **Test exclusion rules** instead of assuming every agent surface honors them
-- [ ] **Disable optional telemetry** where policy requires it
-- [ ] **Use scoped, non-production credentials**
-- [ ] **Review current terms** for training, retention, and subprocessors
-- [ ] **Verify jurisdiction** is acceptable
+Ask:
+
+- Is the repository public, internal, confidential, regulated, or covered by a client agreement?
+- Can prompts, code, logs, screenshots, or embeddings leave the environment?
+- Does the task need network access, credentials, or external services?
+- Which account, organization policy, and contract apply to the selected feature?
+
+If you cannot answer these questions, do not use sensitive code yet.
+
+## Data-Use Check
+
+- [ ] Review current training, retention, abuse-monitoring, and subprocessor terms.
+- [ ] Check the exact account, model, and feature; background agents may differ from local chat.
+- [ ] Disable optional telemetry where policy requires it.
+- [ ] Confirm where repository indexes, prompts, logs, and tool traces are stored.
+- [ ] Verify cross-border and sector requirements with qualified legal or security reviewers.
+
+A setting called “privacy mode” or “zero retention” is not enough by itself. Determine which data and product surfaces it covers.
+
+## Permission Check
+
+Give the tool only the authority the task needs:
+
+- workspace files rather than the entire home directory
+- targeted commands rather than unrestricted shell access
+- no package installation unless approved
+- no network access unless required
+- no deployment, messaging, billing, or destructive actions without confirmation
+
+For a first session, use one repository, one file, no credentials, and no external side effects.
+
+## Credential Check
+
+- [ ] Remove production credentials from the environment.
+- [ ] Use short-lived, scoped credentials when access is necessary.
+- [ ] Check inherited shell variables, cloud profiles, browser sessions, and package-registry tokens.
+- [ ] Rotate any credential exposed to an unapproved service or log.
+
+Do not paste secrets into prompts. Do not assume redaction will catch every secret format.
 
 ## File Exclusions
 
-Create `.cursorignore`, `.aiderignore`, or equivalent:
+Ignore or exclusion files can reduce accidental context:
 
-```
-# Secrets
+```text
 .env*
 *.pem
 *.key
 secrets/
-credentials/
-
-# Client code
-clients/*/
-
-# Sensitive data
 data/production/
 ```
 
-## Tool-Specific Settings
+They are not access controls. Agent surfaces may interpret them differently, and shell commands may bypass them. Test the selected tool's behavior and enforce sensitive boundaries outside the prompt when possible.
 
-Use these as examples, not evergreen vendor facts. Exact setting names and plan behavior change frequently.
+## Deployment Shape
 
-### Integrated IDEs
-1. Enable privacy or zero-retention mode if available.
-2. Create the tool's exclusion file for secrets and sensitive paths.
-3. Disable telemetry where possible.
-4. Verify whether consumer and business tiers have different retention or training defaults.
-
-### BYOK or Local Workflows
-1. Use your own API keys when provider terms matter.
-2. Use local models when code cannot leave your environment.
-3. Remember that BYOK changes provider terms, not necessarily every tool-side log.
-
-## Red Flags
-
-| Warning Sign | Risk |
-|--------------|------|
-| No privacy policy | Unknown data handling |
-| Training "enabled by default" | Your code used for training |
-| No exclusion mechanism | Can't protect sensitive files |
-| China jurisdiction | Different legal protections |
-
-## Quick Privacy Tiers
-
-| Setup | Typical privacy posture |
+| Setup | Boundary to verify |
 |---|---|
-| Local model, local tool execution | strongest boundary, highest operations burden |
-| BYOK through an inspectable client | depends on provider terms and client logs |
-| Enterprise managed hosted tool | depends on contract, admin controls, retention, and subprocessors |
-| Consumer hosted tool | highest uncertainty; verify training and retention defaults |
+| Local model and local tools | telemetry, updates, external tools, and logs remain local |
+| Inspectable client with provider key | client logs plus provider training, retention, and subprocessors |
+| Enterprise hosted service | contract, identity, policy, audit, retention, and model-provider path |
+| Consumer hosted service | account defaults, feature-specific data use, and limited administration |
 
-## Next Steps
+These are questions, not privacy rankings. The correct choice depends on the workload and complete data path.
 
-- [Privacy Comparison](/ai-coding-primer/security/privacy-comparison/) — detailed tool comparison
-- [Privacy Deep Dive](/ai-coding-primer/security/deep-dive/) — technical details
+## Stop Conditions
+
+Do not continue when:
+
+- the repository classification conflicts with vendor or organization terms
+- required credentials are broader than the task
+- the tool needs unexplained filesystem or network access
+- you cannot identify how to revoke access or undo an external action
+
+## Next Step
+
+With security boundaries defined, [Choose a Workflow and Stack →](/ai-coding-primer/learn/beginner/choose-your-tool/).
+
+For deeper review, use [Privacy Comparison](/ai-coding-primer/security/privacy-comparison/) and [Privacy Deep Dive](/ai-coding-primer/security/deep-dive/).

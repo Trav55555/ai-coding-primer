@@ -24,6 +24,7 @@ export default defineConfig({
 						{ label: 'Introduction', slug: 'learn/beginner/introduction' },
 						{ label: 'Agentic Engineering', slug: 'learn/beginner/what-is-ai-coding' },
 						{ label: 'Quick Security Checklist', slug: 'security/checklist' },
+						{ label: 'Choose a Workflow and Stack', slug: 'learn/beginner/choose-your-tool' },
 						{ label: 'Setup Checklist', slug: 'learn/beginner/setup-checklist' },
 						{ label: 'Your First Session', slug: 'learn/beginner/first-session' },
 					],
@@ -41,9 +42,8 @@ export default defineConfig({
 					],
 				},
 				{
-					label: 'Choose a Workflow and Stack',
+					label: 'Choose a Stack',
 					items: [
-						{ label: 'Choose a Workflow and Stack', slug: 'learn/beginner/choose-your-tool' },
 						{ label: 'Workflow and Stack Criteria', slug: 'tools/comparison' },
 						{ label: 'Models vs Providers', slug: 'models/overview' },
 						{ label: 'Capability Patterns', slug: 'models/capabilities' },

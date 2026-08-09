@@ -5,9 +5,9 @@ sidebar:
   order: 3
 ---
 
-Most people make this harder than it needs to be.
+This decision is easier when you start with workflow shape instead of vendor rankings.
 
-Do not start with vendor rankings. Start with how you want to work. Once the workflow shape is right, the stack choice gets much easier.
+Start with how you want to work. Once the workflow shape is right, the stack choice becomes narrower.
 
 ## Quick Decision Tree
 
@@ -134,6 +134,8 @@ For volatile details like benchmark movement, vendor snapshots, and privacy comp
 
 ## Next Steps
 
-- [Setup Checklist](/ai-coding-primer/learn/beginner/setup-checklist/)
-- [Your First Session](/ai-coding-primer/learn/beginner/first-session/)
-- [Workflow and Stack Criteria](/ai-coding-primer/tools/comparison/)
+1. Use the [Workflow and Stack Criteria](/ai-coding-primer/tools/comparison/) only if two workflow shapes still fit.
+2. Configure the chosen workflow with the [Setup Checklist →](/ai-coding-primer/learn/beginner/setup-checklist/).
+3. Run one bounded task in [Your First Session →](/ai-coding-primer/learn/beginner/first-session/).
+
+If you have not classified the code or account boundary, return to the [Quick Security Checklist](/ai-coding-primer/security/checklist/) before connecting a repository.

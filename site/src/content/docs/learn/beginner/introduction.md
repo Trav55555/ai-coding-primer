@@ -1,77 +1,60 @@
 ---
 title: Introduction
-description: How to use this guide and where to start based on the task.
+description: How to use the primer and follow the beginner path.
 sidebar:
   order: 1
 ---
 
-This is a technical guide to AI-assisted engineering.
+This is a technical guide to AI-assisted engineering. It teaches how to bound work, control access, verify results, and preserve your understanding of the code.
 
-It covers:
-
-- safe setup
-- workflow and stack selection
-- verifiable AI-assisted workflows
-- learning practices that preserve debugging skill
-
-This is not a live market guide. Vendor details, benchmark snapshots, and product claims change quickly. The core material is workflow, verification, context control, and judgment.
+It is not a live market guide. Vendor details and model rankings change quickly; the core curriculum is workflow, verification, context control, security, and judgment.
 
 ## Who This Is For
 
-- **Developers new to AI coding** who need a safe first workflow
-- **Practicing engineers** who already use AI and need better verification habits
-- **Tech leads** evaluating how AI coding tools should fit into team practice
+- developers running their first AI-assisted coding task
+- practicing engineers improving verification and recovery habits
+- technical leads defining team permissions and rollout criteria
 
-## Start Here Based on What You Need
+## Beginner Path
 
-**If you're new to AI coding:**
-Start with [Agentic Engineering](/ai-coding-primer/learn/beginner/what-is-ai-coding/).
+Follow these pages in order for a first session:
 
-Then read [Choose a Workflow and Stack](/ai-coding-primer/learn/beginner/choose-your-tool/), [Setup Checklist](/ai-coding-primer/learn/beginner/setup-checklist/), and [Your First Session](/ai-coding-primer/learn/beginner/first-session/).
+1. **[Agentic Engineering](/ai-coding-primer/learn/beginner/what-is-ai-coding/)** — understand what changes when a tool can read, edit, and execute.
+2. **[Quick Security Checklist](/ai-coding-primer/security/checklist/)** — classify the code and restrict data, credentials, and actions.
+3. **[Choose a Workflow and Stack](/ai-coding-primer/learn/beginner/choose-your-tool/)** — choose an editor, extension, or terminal workflow without starting from rankings.
+4. **[Setup Checklist](/ai-coding-primer/learn/beginner/setup-checklist/)** — establish a clean baseline, relevant check, and permission boundary.
+5. **[Your First Session](/ai-coding-primer/learn/beginner/first-session/)** — add one bounded test and review the evidence.
+6. **[Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/)** — apply the same controls to larger repository work.
+7. **[Scenario - Fix a Bug](/ai-coding-primer/learn/intermediate/scenario-bug-fix/)** — use the loop on a reproducible failure.
 
-Read [Learning with AI](/ai-coding-primer/learn/intermediate/learning-with-ai/) early. It explains how to use AI assistance without skipping the practice needed for debugging and code comprehension.
+Do not skip directly to a large feature. The first task is intentionally small enough to review without trusting the agent's judgment.
 
-**If you're already using AI tools:**
-Start with [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/).
+## Other Entry Points
 
-Then use [Scenario - Fix a Bug](/ai-coding-primer/learn/intermediate/scenario-bug-fix/) or [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) depending on the task.
+### Already using coding agents
 
-**If you're evaluating for a team:**
+Start with [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/) and the [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/). Use [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) when retrieval or persistent instructions become the limiting factor.
+
+### Evaluating for a team
+
 Start with [Governance and Rollout](/ai-coding-primer/team/governance/), [Security Risks](/ai-coding-primer/team/security-risks/), and [Workflow and Stack Criteria](/ai-coding-primer/tools/comparison/).
 
-Use reference material after the workflow and policy constraints are clear.
+### Learning a new concept
 
-## How to Use This Guide
-
-1. **Start Safely** to set the environment, feedback loops, and security baseline.
-2. **Choose a Workflow and Stack** if you still need a setup that fits how you work.
-3. **Work Reliably** for bug fixes, features, refactors, verification, and recovery.
-4. **Control Context** when tool output depends on better project context.
-5. **Learn Without Dependency** to preserve debugging skill and code comprehension.
-6. **Use Reference** for volatile details such as vendor pages, privacy comparisons, or benchmark snapshots.
+Read [Learning with AI](/ai-coding-primer/learn/intermediate/learning-with-ai/) before delegating unfamiliar exercises. Verification is weaker when you cannot recognize a plausible but incorrect answer.
 
 ## Operating Assumptions
 
-- unverified output is not evidence
-- workflow fit matters more than feature volume
-- smaller accurate context usually beats giant prompt dumps
-- a smaller accurate guide is better than a broader stale one
-- code you cannot review or explain is not ready to ship
+- Unverified output is not evidence.
+- Tool access should match the task, not the tool's maximum capability.
+- Smaller, accurate context is usually easier to inspect than a large prompt dump.
+- Changes should remain small enough for a human to explain and maintain.
+- When expected behavior is unclear, stop and resolve it before implementation.
 
-## What Belongs in Reference
+## Stable and Perishable Material
 
-Use the reference layer for:
-
-- vendor-specific tool pages
-- privacy and retention comparisons
-- benchmark snapshots
-- template downloads
-- research backstops
-
-Those pages support decisions. They are not the center of the curriculum.
+Core workflow pages are designed to age slowly. Vendor, privacy, and benchmark pages live in the reference layer and carry freshness warnings. Use those pages after the workflow and policy constraints are clear.
 
 ## Contributing
 
-Found something outdated? See an error? This guide is open source.
-
-[Edit this page on GitHub](https://github.com/Trav55555/ai-coding-primer) or [open an issue](https://github.com/Trav55555/ai-coding-primer/issues).
+Found something outdated or incorrect? [Open an issue](https://github.com/Trav55555/ai-coding-primer/issues) or use the page edit link.
