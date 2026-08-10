@@ -231,7 +231,7 @@ TypeScript + React + Express. Tests with Vitest.
 
 ## Next Steps
 
-- [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/) — procedures for verifiable work
+- [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/) — prevention and verification tactics inside the canonical loop
 - [Project Context Files](/ai-coding-primer/learn/advanced/project-context-files/) — context-file examples
 - [Agent Harness](/ai-coding-primer/learn/advanced/agent-harness/) — persistent state for long-running tasks
 

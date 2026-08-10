@@ -5,7 +5,24 @@ sidebar:
   order: 4
 ---
 
-Use these tactics inside the [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/). This is a lookup page, not another task sequence.
+Use these prevention signals and tactics inside the [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/). This is a lookup page, not another task sequence. If a session is already producing repeated errors, broad diffs, or weaker evidence, switch to [When It's Not Working](/ai-coding-primer/learn/intermediate/troubleshooting/).
+
+## Catch Weak Setup Early
+
+| Signal | Preventive move |
+|---|---|
+| You cannot explain or review the task | Investigate entry points, data flow, terms, and candidate checks before implementation |
+| The agent responds to old logs or unrelated files | Reduce context to current evidence and retrieval targets |
+| Checks fail before the change | Record the known baseline and the exact signal this task should change |
+| Tools or permissions exceed the task | Remove integrations and authority without a concrete need |
+| The same approach returns without better evidence | Stop appending corrections and use the recovery procedure |
+| One session accumulates unrelated goals | Split the tasks, non-goals, and done signals |
+| Acceptance depends on confidence or passing checks alone | Review assumptions, risk, observable behavior, and the complete diff |
+| Generated tests mirror generated code | Review test intent independently against the requirement |
+
+Before edits, name at least one source of truth: a failing example or expected output, an existing contract or acceptance criterion, a reviewer who owns the behavior, or a check that would expose a wrong result. If none exists, keep the next task read-only and investigate.
+
+Use the [Setup Checklist](/ai-coding-primer/learn/beginner/setup-checklist/) to establish the baseline and permissions. Each MCP server, plugin, retrieval source, and broad permission adds state and failure modes; add one only for a concrete limitation after checking its data and authority boundaries. Record worthwhile discoveries as follow-up tasks rather than silently expanding the current one.
 
 ## Choose the Verification Signal First
 

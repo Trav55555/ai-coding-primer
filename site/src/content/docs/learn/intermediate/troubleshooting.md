@@ -7,7 +7,7 @@ sidebar:
 
 Use this page when an AI-assisted coding session is producing repeated errors, broad diffs, weak evidence, or output you cannot review. The goal is not to keep trying until a fixed number of attempts has passed. Stop when evidence is not improving or the same failed approach recurs.
 
-This page is the recovery page. For prevention patterns, see [Common Mistakes](/ai-coding-primer/learn/intermediate/common-mistakes/) and [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/).
+This page is the recovery page. Use it after a session is already producing repeated errors, broad diffs, weak evidence, or output you cannot review. For prevention habits before or during normal work, see [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/#catch-weak-setup-early) and [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/).
 
 ## Match the Symptom to an Action
 
@@ -158,7 +158,6 @@ What could go wrong with this approach? List the failure modes and the checks th
 
 After recovery, prevent recurrence by tightening the next task pack:
 
-- [Common Mistakes](/ai-coding-primer/learn/intermediate/common-mistakes/) — recognition and prevention of recurring failure modes
+- [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/#catch-weak-setup-early) — early warnings, verification, and bounded-task tactics
 - [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) — relevant context, tools, and constraints
-- [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/) — verification and bounded-task patterns
 - [Project Context Files](/ai-coding-primer/learn/advanced/project-context-files/) — short persistent rules for local conventions

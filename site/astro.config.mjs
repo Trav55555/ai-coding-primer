@@ -7,6 +7,7 @@ export default defineConfig({
 	base: '/ai-coding-primer',
 	redirects: {
 		'/models/selection-guide': '/ai-coding-primer/models/capabilities/',
+		'/learn/intermediate/common-mistakes': '/ai-coding-primer/learn/intermediate/effective-patterns/',
 		'/tools/comparison': '/ai-coding-primer/learn/beginner/choose-your-tool/',
 		'/templates/claude-md-bun': '/ai-coding-primer/templates/backend-context-files/',
 		'/templates/claude-md-csharp': '/ai-coding-primer/templates/backend-context-files/',
