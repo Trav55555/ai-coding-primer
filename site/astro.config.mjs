@@ -66,14 +66,14 @@ export default defineConfig({
 					items: [
 						{ label: 'Learning with AI', slug: 'learn/intermediate/learning-with-ai' },
 						{ label: 'Common Mistakes', slug: 'learn/intermediate/common-mistakes' },
-						{ label: 'The Five Levels (Optional Lens)', slug: 'learn/intermediate/five-levels' },
+						{ label: 'Autonomy Modes (Optional Lens)', slug: 'learn/intermediate/five-levels' },
 					],
 				},
 				{
 					label: 'Team Adoption',
 					items: [
 						{ label: 'Governance and Rollout', slug: 'team/governance' },
-						{ label: 'Security Risks', slug: 'team/security-risks' },
+						{ label: 'Team Threat Model', slug: 'team/security-risks' },
 						{ label: 'Adoption & Trends', slug: 'research/adoption-trends' },
 						{ label: 'Code Quality & Security', slug: 'research/code-quality-security' },
 					],
@@ -96,7 +96,7 @@ export default defineConfig({
 							label: 'Security, Privacy, and Benchmarks',
 							items: [
 								{ label: 'Privacy Comparison', slug: 'security/privacy-comparison' },
-								{ label: 'Privacy Deep Dive', slug: 'security/deep-dive' },
+								{ label: 'Technical Security and Data Paths', slug: 'security/deep-dive' },
 								{ label: 'Benchmarks That Matter', slug: 'models/benchmarks' },
 							],
 						},

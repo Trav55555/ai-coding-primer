@@ -1,99 +1,120 @@
 ---
-title: The Five Levels of AI Coding
-description: Understanding where you are helps you know what to learn next.
+title: Choose an Autonomy Mode
+description: Match agent authority and human review to task risk, feedback quality, and recovery.
 sidebar:
   order: 2
 ---
 
-This model adapts Dan Shapiro's January 2026 framework. It is a simple way to judge how much of the coding loop the AI is carrying.
+Autonomy is a task setting, not a developer rank. The same team may use suggestion-only assistance for an authentication change and bounded automation for generated documentation.
 
-## The Levels
+This page replaces a numbered maturity ladder with five descriptive modes. Moving toward more autonomous modes is not progress by itself.
 
-| Level | Name | Description | Your Role |
-|-------|------|-------------|-----------|
-| **0** | Spicy Autocomplete | Copy-paste from ChatGPT, basic tab completion | Write most code yourself |
-| **1** | The Coding Intern | AI writes boilerplate and unimportant snippets | Full review of every line |
-| **2** | The Junior Developer | Pair programming with AI, real-time collaboration | Review every line, guide direction |
-| **3** | The Developer | Most code is AI-generated, you're a full-time reviewer | Code review, architecture decisions |
-| **4** | The Engineering Team | You're the PM or manager. Specs and plans drive the work. | Define specs, review outcomes |
-| **5** | The Dark Factory | No human code review. Only system verification. | Design verification systems |
+:::note[Evidence status]
+This is an editorial decision framework. It adapts common descriptions of AI coding autonomy, but no study has validated these five modes as a universal taxonomy.
+:::
 
-## Level Details
+## Decide on Five Conditions
 
-### Level 0: Spicy Autocomplete
-- Copy code snippets from ChatGPT
-- Use basic tab completion
-- Manually integrate everything
-- **Prerequisites:** None
+Before choosing a mode, assess:
 
-### Level 1: The Coding Intern
-- AI writes boilerplate, tests, repetitive code
-- You review every line
-- You make all decisions
-- **Prerequisites:** Basic prompting skills
+| Condition | Question |
+|---|---|
+| Consequence | What happens if the change is wrong? |
+| Feedback | Which fast, relevant checks can detect a bad change? |
+| Permissions | Which files, commands, credentials, and services can the agent access? |
+| Reversibility | Can the change and any external action be undone? |
+| Observability | Can a reviewer reconstruct what the agent read, changed, ran, and reported? |
 
-### Level 2: The Junior Developer
-- Real-time pair programming
-- AI suggests, you guide
-- Interactive back-and-forth
-- **Prerequisites:** Good prompts, context files
+Weak feedback, broad permissions, or irreversible effects call for less autonomy even when the tool is capable of more.
 
-### Level 3: The Developer
-- Most code is AI-generated
-- You're a full-time code reviewer
-- You make architecture decisions
-- **Prerequisites:** Strong verification skills, TDD mindset
+## Five Modes
 
-### Level 4: The Engineering Team
-- You write specs, AI writes code
-- Multiple agents working in parallel
-- You're the PM/tech lead
-- **Prerequisites:** Robust test suites, CI/CD, monitoring
+### Suggestion Only
 
-### Level 5: The Dark Factory
-> "Nobody reviews AI-produced code, ever. They don't even look at it. The goal of the system is to prove that the system works." — Simon Willison
+The tool explains, completes, or proposes code. A developer integrates each change manually.
 
-- No human code review
-- Only system verification
-- Trusting tests, not code
-- **Prerequisites:** Comprehensive conformance suites, 20+ years experience to design verification
+Use when:
 
-## Where to Start
+- expected behavior is still being learned
+- verification is weak
+- the change affects security, public contracts, or irreversible data
 
-**If you're new to AI coding:** start at Level 1 or 2. Use AI for tasks you already know how to solve. That is how you learn when it is right and when it is not.
+### Bounded Edit
 
-**If you're experienced:** most professionals still live around Level 2 or 3. Level 4 and beyond needs real infrastructure.
+The agent may edit an explicit file set. The developer reviews the complete diff and runs or checks the required verification.
 
-**Most readers should aim for Level 3** with strong verification practices.
+Use when:
 
-## Level 5 Warning
+- scope is small and reviewable
+- the repository has a relevant check
+- no external side effect is required
 
-Level 5 is real but rare. It requires:
+This is a sensible default for many normal coding tasks.
 
-- Comprehensive conformance test suites
-- Continuous verification systems
-- Deep engineering experience to design the verification
-- Acceptance that you're trusting the tests, not the code
+### Verified Task
 
-Don't aim for Level 5 until you've mastered Levels 2-4.
+The agent may inspect, edit, and run approved commands until a stated stop condition. The developer reviews assumptions, evidence, and the final patch.
 
-## Progression Path
+Use when:
 
-```
-Level 1 → Level 2
-  └── Learn prompting, add context files
+- behavior and non-goals are clear
+- checks are fast enough to guide retries
+- commands and network access are bounded
+- failed attempts can be reverted
 
-Level 2 → Level 3
-  └── Add TDD, strong verification, trust your review skills
+The [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/) describes this mode in detail.
 
-Level 3 → Level 4
-  └── Build robust CI/CD, test suites, learn spec-driven development
+### Isolated Parallel Work
 
-Level 4 → Level 5
-  └── Build conformance suites, design verification systems
-```
+Several agents handle independent research, review, or isolated worktrees. A human or independent validator integrates the results.
+
+Use when:
+
+- tasks do not share files or unresolved architectural decisions
+- each worker has a narrow handoff contract
+- coordination cost is smaller than the expected time saved
+
+Do not use this mode to let multiple agents race on the same design.
+
+### Outcome-Verified Automation
+
+A narrowly defined process runs without line-by-line human review and is accepted from conformance checks, observable outcomes, and rollback controls.
+
+Use only when:
+
+- the output contract is stronger than code inspection for that task
+- the environment and permissions are tightly constrained
+- failures are detectable and reversible
+- the organization explicitly accepts the residual risk
+
+Examples may include regenerating derived files or applying a proven mechanical transformation. This mode is not appropriate merely because a test suite exists.
+
+## Choose Per Task
+
+| Task | Likely starting mode | Reason |
+|---|---|---|
+| Learn an unfamiliar concurrency API | Suggestion Only | The developer needs to form the mental model |
+| Add one test to an existing suite | Bounded Edit | Narrow file scope and direct evidence |
+| Fix a reproducible application bug | Verified Task | The agent can iterate against a failing check |
+| Research independent migration options | Isolated Parallel Work | Outputs can be compared without shared edits |
+| Regenerate checked-in API clients | Outcome-Verified Automation | Generated output can have a strict contract and rollback |
+
+These are starting points. Raise or lower autonomy when the actual repository, permissions, or consequences differ.
+
+## Reassess During the Task
+
+Reduce autonomy when:
+
+- the agent leaves the allowed scope
+- checks become slow, flaky, or irrelevant
+- credentials or network access become necessary
+- expected behavior turns out to be ambiguous
+- retries accumulate without a better diagnosis
+
+Do not compensate for weak evidence by granting more authority.
 
 ## Next Steps
 
-- [Learn Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/): the key skill for Level 2+
-- [Study Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/): what works at each level
+- [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/) — run a verified task
+- [Subagent Architectures](/ai-coding-primer/learn/advanced/subagents/) — isolate parallel work
+- [Governance and Rollout](/ai-coding-primer/team/governance/) — define team permission and approval policy

@@ -102,11 +102,11 @@ Use this check before giving agents write access, terminal access, or long-runni
 
 A repository can be ready for one workflow and not another. Documentation edits may need little infrastructure; auth changes, migrations, and deployment automation need stronger controls.
 
-## Autonomy Ladder
+## Autonomy Policy by Task Risk
 
 Describe autonomy by allowed action and required control, not by team status.
 
-| Level | Allowed actions | Required controls |
+| Mode | Allowed actions | Required controls |
 |---|---|---|
 | Read-only assistance | explain code, summarize docs, draft plans | data boundary, no file writes, cited sources or file paths |
 | Local draft edits | edit project files in a developer workspace | human diff review, focused tests or build where available |
@@ -115,7 +115,7 @@ Describe autonomy by allowed action and required control, not by team status.
 | High-permission operations | package installs, networked tools, MCP/browser automation, deployment-adjacent changes | explicit approval, sandboxing, audit trail, rollback plan, security or owner review |
 | Irreversible or production-impacting actions | migrations, data modification, secret/config changes, production deployment | human approval at the action point, change record, monitoring and rollback/restore plan |
 
-Teams may choose a lower level permanently for sensitive systems. That is a policy decision, not a failure to advance.
+Teams may permanently require stricter modes for sensitive systems. That is a policy decision, not a failure to advance.
 
 ## Minimal Approval Matrix
 
@@ -246,7 +246,7 @@ Adapt the scope and risk tiers to your organization. The important requirement i
 ## Related Pages
 
 - [Workflow and Stack Criteria](/ai-coding-primer/tools/comparison/) — use after workflow and risk boundaries are clear
-- [Security Risks](/ai-coding-primer/team/security-risks/) — threat patterns behind the controls
+- [Team Threat Model](/ai-coding-primer/team/security-risks/) — threat patterns behind the controls
 - [Adoption & Trends](/ai-coding-primer/research/adoption-trends/) — adoption evidence and caveats
 - [Code Quality & Security](/ai-coding-primer/research/code-quality-security/) — quality and security findings
 

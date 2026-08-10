@@ -77,7 +77,7 @@ This distinction matters for enterprise use because privacy, compliance, and pro
 
 ## Next Steps
 
-- [Understand the Five Levels](/ai-coding-primer/learn/intermediate/five-levels/) — optional workflow maturity lens
+- [Choose an Autonomy Mode](/ai-coding-primer/learn/intermediate/five-levels/) — optional task-risk and authority lens
 - [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) — choosing task context
 - [MCP Deep Dive](/ai-coding-primer/learn/advanced/mcp-deep-dive/) — external tool connectivity
 - [Skills Deep Dive](/ai-coding-primer/learn/advanced/skills/) — reusable instructions and procedures
