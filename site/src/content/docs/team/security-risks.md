@@ -3,7 +3,7 @@ title: Team Threat Model
 description: Choose permissions, isolation, and review controls for AI-assisted engineering workflows.
 ---
 
-A team threat model should start with the workflow's data and authority, not the product name. Use this page to decide which workflows are acceptable, which controls they require, and which should remain prohibited.
+A team threat model should start with the workflow's data and authority, not the product name. Use this page to identify threats and the controls a workflow requires. [Governance and Rollout](/ai-coding-primer/team/governance/) owns the policy decision to approve, constrain, or prohibit it.
 
 For technical inspection and containment procedures, use [Technical Security and Data Paths](/ai-coding-primer/security/deep-dive/). For policy and rollout structure, use [Governance and Rollout](/ai-coding-primer/team/governance/).
 
@@ -56,9 +56,9 @@ Long-running agents can reuse stale approvals, accumulate poisoned memory, or ac
 
 Team rule: isolate client and personal contexts, review persistent state writes, use dedicated service identities, and provide a tested disable path.
 
-## Minimum Policy Baseline
+## Minimum Control Baseline
 
-This page owns the policy decision: which controls a workflow requires. [Technical Security and Data Paths](/ai-coding-primer/security/deep-dive/) owns inspection and containment procedures.
+This page owns threat and control analysis. [Governance and Rollout](/ai-coding-primer/team/governance/) owns policy and approval; [Technical Security and Data Paths](/ai-coding-primer/security/deep-dive/) owns inspection and containment procedures.
 
 A practical baseline for team use:
 

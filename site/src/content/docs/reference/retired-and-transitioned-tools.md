@@ -85,5 +85,5 @@ If the tool can read private code, retain prompts, run commands, install package
 - [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/) for matching the replacement to bug fixes, features, refactors, or exploration
 - [Quick Security Checklist](/ai-coding-primer/security/checklist/) for data, credential, and permission boundaries
 - [Team Threat Model](/ai-coding-primer/team/security-risks/) for authority, egress, unattended work, and incident ownership
-- [Privacy Comparison](/ai-coding-primer/security/privacy-comparison/) for live vendor data-handling checks
+- [Privacy Review Framework](/ai-coding-primer/security/privacy-comparison/) for live vendor data-handling checks
 - [Fast-Changing Information](/ai-coding-primer/reference/fast-changing-info/) for maintenance rules on stale vendor facts

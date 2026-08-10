@@ -37,7 +37,7 @@ Start with [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-a
 
 ### Evaluating for a team
 
-Start with [Governance and Rollout](/ai-coding-primer/team/governance/), [Security Risks](/ai-coding-primer/team/security-risks/), and [Workflow and Stack Criteria](/ai-coding-primer/tools/comparison/).
+Start with [Governance and Rollout](/ai-coding-primer/team/governance/), [Team Threat Model](/ai-coding-primer/team/security-risks/), and [Workflow and Stack Criteria](/ai-coding-primer/tools/comparison/).
 
 ### Learning a new concept
 

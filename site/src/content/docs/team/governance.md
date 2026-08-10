@@ -5,7 +5,7 @@ description: Define policy, permissions, and verification for team AI coding wor
 
 Team adoption needs policy before broad tool access. The important decisions are workflow shape, data boundary, permissions, and verification requirements.
 
-This page provides a compact governance model for team AI coding use.
+This page provides a compact governance model for team AI coding use. Governance owns policy, approvals, pilot decisions, and expansion decisions. The [Team Threat Model](/ai-coding-primer/team/security-risks/) owns the workflow threat and control analysis that informs those decisions.
 
 ## What Governance Should Define
 
@@ -16,6 +16,7 @@ A useful policy defines:
 - which repositories or data classes are in scope
 - what permissions agents can receive
 - what verification is required before merge
+- who approves pilots, exceptions, expansion, and stop decisions
 - how exceptions are approved and reviewed
 - how the rollout can be reversed or narrowed
 
@@ -132,59 +133,62 @@ Use a matrix like this before broad rollout.
 
 The exact rows vary by organization. Approval should depend on repository risk, data exposure, and agent permissions.
 
+## Minimum Governed Pilot
+
+A pilot should be small enough that the team can stop it without disrupting delivery. Choose the review date, task cap, owners, workflow, repository boundary, and stop conditions before launch.
+
+The following example instantiates the policy template later on this page.
+
+### Scope and workflow
+
+Use one internal documentation or test-support repository that passes the readiness check and [Team Threat Model](/ai-coding-primer/team/security-risks/). Allow attended sessions for small documentation fixes, test updates, and tooling bugs only when they do not touch authentication, customer data, production services, deployment, billing, or other excluded boundaries. Also exclude regulated data, production configuration, migrations, dependency changes, cross-repository work, and releases.
+
+### Permissions and verification
+
+Set each boundary separately:
+
+- **Read:** project files required to understand the named task.
+- **Write:** only files or directories listed in the task.
+- **Commands:** existing focused checks plus approved build, type, or lint commands.
+- **Network and extensions:** disabled; package installation, MCP or plugin use, browser automation, and external service calls end the pilot task and require a separate decision under the approval matrix.
+- **Credentials:** no production credentials, cloud profiles, publishing tokens, or persistent browser sessions.
+
+Apply normal pull-request review, branch protection, and repository-native checks. Reviewers may reject a diff they cannot explain or audit.
+
+### Owners and evidence
+
+Name four roles before launch:
+
+- a pilot owner who can change or stop the pilot
+- a human change owner who remains accountable for each submitted diff and its verification evidence
+- the normal repository reviewer
+- a security or incident owner connected to the organization's response process
+
+Before launch, record any available baseline from comparable tasks and define what findings would block expansion. During the pilot, record active developer time, reviewer time, review rounds, rework, failed checks, defects, security findings, policy exceptions, and developer or reviewer friction. Do not use generated lines of code or prompt count as success measures.
+
+### Stop and incident rules
+
+Define a retry budget before launch. Stop an individual task when authority must expand, prohibited credentials or external actions become necessary, unrelated files change, that budget is exhausted without better evidence, or the human owner cannot explain the diff.
+
+Pause or narrow the whole pilot after suspected data exposure, malicious or unexplained tool behavior, repeated exceptions, unauditable changes, increased defects, or review cost that outweighs observed benefit. Activate the organization's incident process and use the containment checklist in [Technical Security and Data Paths](/ai-coding-primer/security/deep-dive/#if-you-suspect-compromise) to stop triggers, isolate the environment, preserve evidence, revoke credentials, audit effects, and restore from a known state.
+
+### Review decision
+
+Choose a review date and task cap before launch. For example, review after four weeks or 20 completed tasks, whichever comes first. Scale the cap down when repository risk or incident blast radius is higher. At review, use defect and rework findings, review cost, policy exceptions, security findings, and reviewer confidence to choose one outcome:
+
+- **Expand:** add a named task or repository class only when the evidence and controls support it.
+- **Modify:** narrow tasks, permissions, tools, or verification and run another capped pilot.
+- **Stop:** end the workflow when measured cost, defects, security findings, or control failures outweigh the benefit.
+
+The sample numbers are pilot parameters, not a maturity target or default. The same structure can govern an editor assistant, terminal agent, or hosted workflow once its data path and authority are recorded.
+
 ## Rollout Pattern
 
-### Phase 1: Bounded pilot
-
-- choose one or two workflow shapes
-- use low-to-medium risk repositories
-- define mandatory verification checks
-- review outcomes after a short period
-
-### Phase 2: Standardize the baseline
-
-- publish approved workflow shapes
-- publish allowed deployment boundaries
-- publish minimum review and verification rules
-- provide starter context files and setup guidance
-
-### Phase 3: Expand by risk tier
-
-- add repositories only after pilot evidence and readiness are reviewed
-- separate low-risk and high-risk usage patterns
-- add stronger controls before granting broader permissions
-
-### Phase 4: Review on a cadence
-
-- revisit tool policy quarterly
-- revisit privacy and retention assumptions on a fixed schedule
-- remove stale internal guidance
-- review exceptions and permission expansions
-
-## Default Team Rules
-
-These defaults are suitable for many teams:
-
-- AI-generated code is not exempt from review.
-- Non-trivial changes require verification before merge.
-- Sensitive repositories require tighter deployment and permission boundaries.
-- Vendor claims are not policy; current contracts and live docs are.
-- Broad agent permissions require explicit approval.
-- Reversible edits and irreversible actions need different gates.
-- Package installs, MCP servers, plugins, and browser tools are supply-chain events.
-- Long-running or high-permission agents need action logs and stop budgets.
-
-## What Belongs in Team Policy
-
-Keep the policy short enough to use. It should cover:
-
-- approved workflow shapes
-- approved deployment models
-- repository and data risk tiers
-- verification requirements
-- permission boundaries
-- security escalation path
-- review cadence for tools and provider assumptions
+1. Approve a bounded pilot with named owners, controls, measures, stop rules, and a review point.
+2. Review evidence before standardizing; do not expand because the tool merely felt faster.
+3. Publish approved workflow shapes, deployment boundaries, permission rules, and verification requirements.
+4. Add repositories only after readiness and threat controls are reviewed. Higher-risk repositories may keep stricter gates permanently.
+5. Revisit terms, exceptions, permissions, and internal guidance on a fixed cadence.
 
 ## Minimal Team Rollout Policy Template
 
@@ -245,11 +249,9 @@ Adapt the scope and risk tiers to your organization. The important requirement i
 
 ## Related Pages
 
+- [Privacy Review Framework](/ai-coding-primer/security/privacy-comparison/) — vendor terms, data handling, and procurement review
+- [Team Threat Model](/ai-coding-primer/team/security-risks/) — workflow threats and required controls
+- [Technical Security and Data Paths](/ai-coding-primer/security/deep-dive/) — technical inspection and containment
 - [Workflow and Stack Criteria](/ai-coding-primer/tools/comparison/) — use after workflow and risk boundaries are clear
-- [Team Threat Model](/ai-coding-primer/team/security-risks/) — threat patterns behind the controls
 - [Adoption & Trends](/ai-coding-primer/research/adoption-trends/) — adoption evidence and caveats
 - [Code Quality & Security](/ai-coding-primer/research/code-quality-security/) — quality and security findings
-
-## Summary
-
-Team AI coding policy should define allowed workflows, data boundaries, permissions, verification, repository readiness, autonomy gates, and review cadence. Tool selection comes after those constraints are known.

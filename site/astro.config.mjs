@@ -134,7 +134,7 @@ export default defineConfig({
 						{
 							label: 'Security, Privacy, and Benchmarks',
 							items: [
-								{ label: 'Privacy Comparison', slug: 'security/privacy-comparison' },
+								{ label: 'Privacy Review Framework', slug: 'security/privacy-comparison' },
 								{ label: 'Technical Security and Data Paths', slug: 'security/deep-dive' },
 								{ label: 'Benchmarks That Matter', slug: 'models/benchmarks' },
 							],

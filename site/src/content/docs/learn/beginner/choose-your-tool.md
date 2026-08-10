@@ -154,7 +154,7 @@ These pages should support the workflow decision, not replace it.
 
 This page helps you choose a working setup. It does not maintain a giant live market matrix.
 
-For volatile details like benchmark movement, vendor snapshots, and privacy comparisons, use the [Reference Appendix](/ai-coding-primer/reference/appendix/).
+For volatile details like benchmark movement, vendor snapshots, and privacy terms, use the [Reference Appendix](/ai-coding-primer/reference/appendix/).
 
 ## Next Steps
 

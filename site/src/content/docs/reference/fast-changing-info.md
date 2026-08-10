@@ -18,7 +18,7 @@ Use these pages for decision shape, vocabulary, and what to verify. Do not treat
 | Exact prices | vendors change plans, discounts, bundles, and token rates | [Billing Models](/ai-coding-primer/models/pricing/) plus official pricing pages |
 | Model rankings | benchmarks move after every model release | [Benchmarks That Matter](/ai-coding-primer/models/benchmarks/) plus live leaderboards |
 | Tool capabilities | IDEs and CLIs ship features weekly | tool reference pages plus official docs |
-| Privacy posture | data-retention and enterprise terms vary by plan | [Privacy Comparison](/ai-coding-primer/security/privacy-comparison/) plus vendor policy docs |
+| Privacy posture | data-retention and enterprise terms vary by plan | [Privacy Review Framework](/ai-coding-primer/security/privacy-comparison/) plus vendor policy docs |
 | Quotas and rate limits | request caps and fair-use rules change often | official plan docs |
 | Enterprise controls | SSO, audit, admin, and policy features vary by tier | official enterprise docs and procurement review |
 

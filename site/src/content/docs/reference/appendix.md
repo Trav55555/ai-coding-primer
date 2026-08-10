@@ -29,4 +29,4 @@ If you are deciding how to work, start with the workflow pages first. Use this a
 - [Agent Platform Boundaries](/ai-coding-primer/reference/agent-platform-boundaries/) — inspect triggers, persistence, execution, and external effects
 - [Benchmarks That Matter](/ai-coding-primer/models/benchmarks/) — interpret benchmark claims
 - [Billing Models](/ai-coding-primer/models/pricing/) — understand access and billing mechanisms
-- [Privacy Comparison](/ai-coding-primer/security/privacy-comparison/) — run the current procurement review
+- [Privacy Review Framework](/ai-coding-primer/security/privacy-comparison/) — run the current procurement review

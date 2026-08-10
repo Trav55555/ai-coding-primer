@@ -87,4 +87,4 @@ Do not continue when:
 
 With security boundaries defined, [Choose a Workflow and Stack →](/ai-coding-primer/learn/beginner/choose-your-tool/).
 
-For deeper review, use [Privacy Comparison](/ai-coding-primer/security/privacy-comparison/) and [Technical Security and Data Paths](/ai-coding-primer/security/deep-dive/).
+For deeper review, use [Privacy Review Framework](/ai-coding-primer/security/privacy-comparison/) and [Technical Security and Data Paths](/ai-coding-primer/security/deep-dive/).

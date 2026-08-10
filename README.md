@@ -15,7 +15,7 @@ A practical guide to AI-assisted engineering workflows, tool boundaries, context
 | [Getting Started](https://trav55555.github.io/ai-coding-primer/learn/beginner/introduction/) | First steps with AI coding tools |
 | [Choose a Workflow and Stack](https://trav55555.github.io/ai-coding-primer/learn/beginner/choose-your-tool/) | Pick an initial workflow shape without turning it into a vendor ranking |
 | [Effective Patterns](https://trav55555.github.io/ai-coding-primer/learn/intermediate/effective-patterns/) | Verification, context, and review patterns |
-| [Security Risks](https://trav55555.github.io/ai-coding-primer/team/security-risks/) | Prompt injection, supply chain, permissions, and autonomous-agent risks |
+| [Team Threat Model](https://trav55555.github.io/ai-coding-primer/team/security-risks/) | Prompt injection, supply chain, permissions, and autonomous-agent risks |
 | [Templates](https://trav55555.github.io/ai-coding-primer/templates/) | Reusable project context files |
 
 ### Terminal Tools

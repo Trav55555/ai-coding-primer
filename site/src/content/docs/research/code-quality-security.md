@@ -29,7 +29,7 @@ Artificial intelligence (AI)-assisted code still needs normal engineering contro
 ## Next Steps
 
 - [Governance and Rollout](/ai-coding-primer/team/governance/) - turn these findings into review policy and rollout rules
-- [Security Risks](/ai-coding-primer/team/security-risks/) - understand the failure modes behind the guardrails
+- [Team Threat Model](/ai-coding-primer/team/security-risks/) - understand the failure modes behind the guardrails
 
 ## Sources
 
