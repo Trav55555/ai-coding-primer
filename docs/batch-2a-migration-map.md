@@ -5,7 +5,7 @@ tags:
   - editorial
   - migration
 type: plan
-status: active
+status: completed
 created: '2026-08-09'
 ---
 
@@ -136,4 +136,14 @@ Validated: August 9, 2026.
 - External link check covered 141 URLs with no 404s; four existing sources returned bot-blocking HTTP `403` responses.
 - Responsive, keyboard, and independent migration/editorial reviews passed.
 
-Production verification remains required after commit and deployment.
+## Batch 2B Production Evidence
+
+Verified after deployment of commit `45fe09d` on August 9, 2026.
+
+- GitHub Actions run `31346857622` completed successfully.
+- All 24 trailing-slash routes serve the expected base-prefixed static redirect page.
+- All 24 no-slash routes return GitHub Pages HTTP `301` canonicalization to the trailing-slash route, which then serves the static redirect.
+- Browser checks followed representative frontend, backend, hypermedia, editor-rule, retired-tool, and agent-platform routes to the correct destination: 6 of 6 passed.
+- All four maintained downloadable assets return HTTP `200`.
+
+Batch 2 route migration is complete.
