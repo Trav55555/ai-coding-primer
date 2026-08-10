@@ -99,4 +99,22 @@ Reviewed: August 9, 2026.
 - Pagefind omits the old Gemini article text.
 - Astro documents that static builds emit HTML meta-refresh files when no redirect-capable adapter is present: [Configured Redirects](https://docs.astro.build/en/guides/routing/#configured-redirects).
 
-Production behavior remains the final gate after deployment.
+## Production Redirect Evidence
+
+Verified after deployment of commit `dfd83ff` on August 9, 2026.
+
+- GitHub Pages returned HTTP `200` for both slash and no-slash forms of the old Gemini route.
+- The served redirect file retained the base-prefixed refresh and canonical destination.
+- A headless browser followed the refresh and rendered the Retired and Transitioned Tools heading and title.
+- Both reference destinations, the examples hub, and all four example destinations returned HTTP `200`.
+- GitHub Actions run `31345120592` completed successfully.
+
+## Batch 2B Decision
+
+Use Astro's configured static redirects for the remaining merged routes, with these constraints:
+
+1. Create and validate the destination before deleting a source page.
+2. Use an explicit `/ai-coding-primer/` prefix in each redirect destination; Astro did not add the configured base automatically in the first local spike.
+3. Inspect the generated `index.html`, canonical URL, sitemap, and Pagefind output before deployment.
+4. Verify slash and no-slash forms plus browser navigation after deployment.
+5. Treat the result as route preservation through an HTML refresh, not an HTTP `301`. Use a one-release tombstone instead if a route needs visible migration context or the redirect fails live validation.
