@@ -389,7 +389,7 @@ The rewrite should preserve decision elements while varying structure according 
 
 ## Completion Record
 
-**Editorial audit status:** completed locally on August 9, 2026. Batches 1–5 are deployed; Batch 6 awaits commit, push, and production smoke approval.
+**Editorial audit status:** completed and deployed. Batch 6 was published in commit `972c8e7` through GitHub Actions run `31356186430` on August 10, 2026.
 
 The final local pass covered 63 retained source pages and 25 static redirects. It found no P0 evidence issue or contradictory canonical owner. Targeted P1 corrections:
 
@@ -409,4 +409,4 @@ Residual maintenance:
 
 - four external sources return bot-blocking HTTP 403 responses but remain valid in browser use
 - issue `#8` owns September's perishable-reference sweep
-- production deployment and route smoke remain the final publication check for Batch 6
+- production smoke checks passed for the homepage, Adoption Signals, beginner document/OCR guidance, reasoning-effort guidance, and the retained Selection Guide redirect
