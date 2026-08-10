@@ -16,7 +16,7 @@ Complete the [Quick Security Checklist](/ai-coding-primer/security/checklist/) a
 You need:
 
 - a repository with version control
-- an existing pure function with nearby tests
+- an existing pure function with nearby tests — the same input produces the same output without database, network, filesystem, or time-dependent effects
 - a clean or understood working tree
 - the narrowest command that runs those tests
 - no production credentials or external actions
@@ -25,7 +25,7 @@ If the project has no tests, choose a small documentation correction with a buil
 
 ## 1. Establish the Baseline
 
-Run the existing targeted test before asking the agent to edit anything.
+Run the existing targeted test before asking the agent to edit anything. Baseline evidence is captured before edits; acceptance evidence is captured afterward and compared with that baseline.
 
 ```text
 Baseline:

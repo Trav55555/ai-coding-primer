@@ -91,7 +91,7 @@ The primer should be the best resource for moving from casual prompting to relia
 - Perishable pages have explicit review cadence metadata.
 
 **Core ownership note:**
-- Keep durable governance criteria (privacy, jurisdiction, deployment boundaries) in `site/src/content/docs/tools/comparison.md` and `site/src/content/docs/models/overview.md`, even as vendor-specific pages move to appendix.
+- Keep workflow and stack criteria in `site/src/content/docs/learn/beginner/choose-your-tool.md`, procurement and data-use review in `site/src/content/docs/security/privacy-comparison.md`, model/provider boundaries in `site/src/content/docs/models/overview.md`, and persistent-platform authority in `site/src/content/docs/reference/agent-platform-boundaries.md`.
 
 ## Ongoing Monthly Cadence
 

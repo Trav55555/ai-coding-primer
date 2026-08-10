@@ -75,8 +75,10 @@ Use for perishable vendor snapshots and implementation specifics that are useful
 
 To prevent coverage gaps while moving vendor pages to appendix:
 
-- `site/src/content/docs/tools/comparison.md` owns durable tool-level governance guidance (privacy posture, deployment boundary options, and operational fit).
-- `site/src/content/docs/models/overview.md` owns durable model/provider governance guidance (provider boundary differences, jurisdiction, and access-model implications).
+- `site/src/content/docs/learn/beginner/choose-your-tool.md` owns durable workflow shape, access-model, input/action-surface, switching-cost, and stack-evaluation guidance.
+- `site/src/content/docs/security/privacy-comparison.md` owns procurement and data-use review, including privacy posture and jurisdiction checks.
+- `site/src/content/docs/models/overview.md` owns durable model/provider boundary guidance; `site/src/content/docs/models/capabilities.md` owns capability-class selection.
+- `site/src/content/docs/reference/agent-platform-boundaries.md` owns persistent-platform authority and operational-fit inspection.
 
 Vendor-specific pages may reference these criteria, but should not become the canonical source for them.
 

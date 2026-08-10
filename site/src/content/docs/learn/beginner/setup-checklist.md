@@ -66,6 +66,8 @@ Decide what the tool may do before it starts:
 - whether it may install dependencies
 - which actions require approval
 
+Prompt boundaries are task instructions, not access controls. Enforce sensitive file, network, credential, and command boundaries in the tool, shell, repository, or environment where possible.
+
 For a first session, keep writes inside one test file and require approval for package installation, network access, or changes outside the repository.
 
 ## 5. Remove Sensitive Authority
