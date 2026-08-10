@@ -6,7 +6,7 @@ sidebar:
 ---
 
 :::note[Freshness metadata]
-Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+Reviewed: August 2026. Volatile fields: protocol revisions, client and server support, registries, authentication, and transport behavior. Verify the current protocol and server documentation before enabling an integration.
 :::
 
 MCP (Model Context Protocol) lets AI tools connect to external services such as databases, APIs, browsers, and documentation systems.
@@ -63,17 +63,11 @@ Examples:
 
 The connection alone is not sufficient. The workflow around it still determines safety and quality.
 
-## Token Cost
+## Context Cost
 
-MCP tools can add large amounts of context:
+MCP tools can return screenshots, document trees, logs, or query results that consume much more context than the task needs. The cost depends on the client, serialization, model tokenizer, image settings, and result size; there is no durable “typical” token count.
 
-| MCP tool output | Typical cost |
-|---|---|
-| Playwright screenshot | 15,000+ tokens |
-| Full DOM snapshot | 10,000-50,000 tokens |
-| Database query result | variable |
-
-Large tool outputs can crowd out task-relevant context.
+Large outputs can crowd out task-relevant context or increase usage without improving the decision.
 
 Mitigations:
 
@@ -95,13 +89,9 @@ Minimum checks:
 - run untrusted servers in containers or sandboxes
 - limit filesystem and network access
 - review command logs for high-permission workflows
+- verify that the claimed sandbox actually constrains mounts, credentials, and network access
 
-Example sandboxing shape:
-
-```bash
-# Sandboxed execution for untrusted servers
-docker run --rm -it mcp/playwright
-```
+Do not copy an unpinned container or package command from a registry page. Inspect the server source and run the reviewed version inside an isolation boundary that the team controls.
 
 ## Registries
 

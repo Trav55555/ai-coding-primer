@@ -202,7 +202,6 @@ The reviewer should know exactly what behavior-preserving move happened.
 
 This concrete gating workflow is editorial guidance based on those patterns and the canonical [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/).
 
-## Next Scenario
+## Choose the Next Path
 
-- [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/)
-- [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/)
+Return to the [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/) for the general procedure. If the next task type is unclear, use [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/) as the selector.

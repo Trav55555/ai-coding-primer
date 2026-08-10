@@ -76,6 +76,48 @@ Open weights do not establish a local or private boundary by themselves. Verify 
 | Large codebase exploration | Long-context | Breadth helps when paired with context hygiene |
 | Work that prohibits hosted inference | Locally operated | Deployment boundaries determine which models are eligible |
 
+## What Reasoning Effort Means
+
+Some model APIs and tools expose a thinking, reasoning, or effort level. The setting usually changes how much inference time or reasoning budget the model can use before answering. Exact behavior and labels differ by provider and model, so `low` in one system is not directly comparable with `low` in another.
+
+Reasoning effort is not:
+
+- a guarantee of correctness
+- the model's context-window size or stored memory
+- permission to read files, use tools, or take actions
+- the agent's autonomy level
+
+A high-effort answer can still start from a bad scan, missing file, wrong requirement, or unsafe tool boundary.
+
+### Low or minimal effort
+
+Start here for clear, easily checked work:
+
+- classification, formatting, and structured extraction after OCR
+- autocomplete, boilerplate, and small mechanical edits
+- short summaries of clean source material
+- routine questions with an objective answer
+
+### Medium effort
+
+Use more effort when the task has several steps or requires comparison:
+
+- comparing documents or reconciling several requirements
+- explaining unfamiliar code with relevant files supplied
+- bounded bug fixes with a reproducible failure
+- planning a small feature with known constraints
+
+### High effort
+
+Reserve higher effort for ambiguity or costly mistakes:
+
+- root-cause analysis across interacting systems
+- architecture, migration, or security trade-offs
+- conflicting evidence or incomplete requirements
+- recovery after a simpler attempt failed for a reasoning-related cause
+
+Start with the lowest level that reliably meets the acceptance check. Raise it when the model misses relationships despite having the right input and tools. Do not raise it to compensate for unreadable documents, missing context, or permissions. Lower it when extra latency or usage produces no measurable improvement.
+
 ## Evaluate the Fit
 
 Do not choose from the class description alone. Test one or two representative tasks from the intended workflow:
@@ -107,6 +149,12 @@ Advertised context is not the same thing as reliable context. Once the prompt ge
 - keep core rules pushed into project context files and retrieve the rest on demand
 
 See [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) for the workflow implications.
+
+## Input Capabilities Are Separate
+
+Reasoning effort does not add an input type that the model or product does not support. Document processing may require text extraction, OCR, layout parsing, or image input. Voice may come from dictation, a real-time audio model, or the surrounding application. Computer use requires an agent surface with browser or desktop tools and explicit permissions.
+
+Choose those input and action paths first in [Choose a Workflow and Stack](/ai-coding-primer/learn/beginner/choose-your-tool/#match-the-input-and-action-surface), then evaluate the model on representative tasks.
 
 ## What This Page Intentionally Does Not Do
 

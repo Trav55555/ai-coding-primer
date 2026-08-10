@@ -253,5 +253,5 @@ Adapt the scope and risk tiers to your organization. The important requirement i
 - [Team Threat Model](/ai-coding-primer/team/security-risks/) — workflow threats and required controls
 - [Technical Security and Data Paths](/ai-coding-primer/security/deep-dive/) — technical inspection and containment
 - [Stack Evaluation Criteria](/ai-coding-primer/tools/comparison/) — use after workflow and risk boundaries are clear
-- [Adoption & Trends](/ai-coding-primer/research/adoption-trends/) — adoption evidence and caveats
+- [Adoption Signals](/ai-coding-primer/research/adoption-trends/) — adoption evidence and caveats
 - [Code Quality & Security](/ai-coding-primer/research/code-quality-security/) — quality and security findings

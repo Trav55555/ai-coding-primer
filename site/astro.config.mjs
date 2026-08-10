@@ -99,7 +99,7 @@ export default defineConfig({
 					items: [
 						{ label: 'Governance and Rollout', slug: 'team/governance' },
 						{ label: 'Team Threat Model', slug: 'team/security-risks' },
-						{ label: 'Adoption & Trends', slug: 'research/adoption-trends' },
+						{ label: 'Adoption Signals', slug: 'research/adoption-trends' },
 						{ label: 'Code Quality & Security', slug: 'research/code-quality-security' },
 					],
 				},

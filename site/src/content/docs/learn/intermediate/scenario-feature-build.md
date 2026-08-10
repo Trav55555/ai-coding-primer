@@ -192,7 +192,6 @@ Each commit should pass its relevant checks. Do not wait until the entire featur
 
 This slice sequence and gating pattern are editorial guidance based on those patterns and the canonical [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/).
 
-## Next Scenario
+## Choose the Next Path
 
-- [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/)
-- [Scenario - Safe Refactor](/ai-coding-primer/learn/intermediate/scenario-safe-refactor/)
+Return to the [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/) for the general procedure. If the next task should change structure without changing behavior, use [Scenario - Safe Refactor](/ai-coding-primer/learn/intermediate/scenario-safe-refactor/).

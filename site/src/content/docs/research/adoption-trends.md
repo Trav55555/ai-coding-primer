@@ -1,37 +1,71 @@
 ---
-title: Adoption & Trends
-description: Usage patterns, trust signals, and ecosystem movement.
+title: Adoption Signals
+description: Use adoption, trust, and integration signals without mistaking them for evidence of benefit.
 ---
 
-Adoption evidence shows usage and sentiment. It does not, by itself, show causal productivity benefit.
+:::note[Freshness metadata]
+Reviewed: August 2026. Surveys, product availability, and integration support change quickly. Verify current primary sources before using a signal in policy or procurement.
+:::
 
-## Observed Trends
+Adoption evidence answers questions about use, sentiment, and availability. It does not show that a workflow improves productivity, quality, learning, or delivery.
 
-- **Organizational report evidence — DORA 2025:** The DevOps Research and Assessment (DORA) program reports AI as an organizational amplifier. Adoption is more likely to help when teams already have fast feedback, clear ownership, and reliable delivery practices; it can also magnify weak process and quality controls.
-- **Vendor survey evidence — Sonar 2026:** Sonar's survey of 1,100+ professional developers is useful as a self-reported adoption signal. It should not be read as an independent causal estimate of productivity, quality, or delivery performance.
-- Trust in output quality remains uneven, especially for high-risk changes and unfamiliar code.
+Use this page to decide what a team should investigate or measure next—not whether it should adopt a product.
 
-## Ecosystem Signals
+## Signals to Use Carefully
 
-- IDEs and CLIs increasingly include chat, edit, and agent-style workflows, but product availability is not evidence that a workflow improves outcomes.
-- Model Context Protocol (MCP) adoption is expanding across vendors and open-source tooling. Treat this as an integration signal, not a quality guarantee.
-- Product pricing, model behavior, and availability change quickly; static tables age fast.
+### Organizational research
 
-## What This Means for Teams
+The 2025 DevOps Research and Assessment (DORA) report describes artificial intelligence as an amplifier of an organization's existing strengths and weaknesses. This supports reviewing the surrounding delivery system rather than treating tool access as the intervention.
 
-- Separate adoption metrics from outcome metrics. Count usage if needed, but measure delivery, quality, review load, and developer experience separately.
-- The bottleneck often shifts from producing code to validating changes.
-- Tool/model policies should be reviewed on a fixed cadence because capabilities, defaults, and data-handling terms change.
+DORA is an organizational research program run by Google Cloud. Its report can inform hypotheses about team systems; it does not establish the result of your repository, task mix, controls, or rollout.
+
+### Vendor survey
+
+Sonar's 2026 State of Code Developer Survey covers more than 1,100 professional developers. Respondents reported broad use, uneven trust, and substantial verification work.
+
+This is self-reported evidence published by a code-quality vendor. It can identify questions for a pilot, but it is not an independent causal estimate of productivity or defects. Do not transfer its percentages to a different organization without local measurement.
+
+### Integration availability
+
+The Model Context Protocol (MCP) documents broad support across assistants, development tools, data sources, and tool servers. That is evidence that a connection pattern is available. It is not evidence that a particular server is safe, useful, maintained, or appropriate for a repository.
+
+Treat product and protocol availability as a reason to inspect data and authority paths, not as a reason to enable them.
+
+## What to Measure Locally
+
+Separate usage from outcomes:
+
+- **Usage:** which task types, repositories, and workflow modes people actually use
+- **Verification load:** review time, review rounds, failed checks, and unauditable changes
+- **Delivery:** active task time, rework, completion rate, and blocked work
+- **Quality:** escaped defects, security findings, rollback, and maintainability concerns
+- **Control health:** policy exceptions, permission expansions, incidents, and disabled safeguards
+- **Experience:** where developers and reviewers report useful help or additional friction
+
+Segment results by task type and risk. An aggregate usage rate can hide a workflow that helps documentation tasks and harms ambiguous refactors.
+
+## How Signals Affect a Rollout
+
+Use an external signal to form a question, then test it in a bounded pilot.
+
+| Signal | Question for the team | Evidence needed before expansion |
+|---|---|---|
+| usage is increasing | Which tasks are people delegating, including unapproved use? | task-level usage plus policy exceptions |
+| reviewers report low trust | Which outputs require the most rework or cannot be audited? | review time, failed checks, defects, reviewer notes |
+| a new integration is available | What data and actions does it add to the workflow? | threat model, permission map, provenance, revocation test |
+| a vendor reports productivity gains | Does the same outcome appear in our task mix? | baseline, comparable pilot tasks, verification and quality results |
+
+Do not expand because a signal is popular or because a survey reports confidence. Use the pilot decision in [Governance and Rollout](/ai-coding-primer/team/governance/) to expand, modify, or stop based on observed evidence.
+
+## Sources and Limits
+
+- [DORA 2025 report](https://dora.dev/dora-report-2025/) — organizational research; useful for system-level hypotheses, not a guarantee for one team
+- [Sonar 2026 State of Code Developer Survey](https://www.sonarsource.com/blog/state-of-code-developer-survey-report-the-current-reality-of-ai-coding/) — vendor-published, self-reported survey of more than 1,100 professional developers
+- [Model Context Protocol documentation](https://modelcontextprotocol.io/) — protocol capabilities and support, not independent outcome or security evidence
 
 ## Next Steps
 
-- [Development Practices Timeline](/ai-coding-primer/reference/development-practices-timeline/) - place current agentic workflows in the longer history of programming work
-- [Governance and Rollout](/ai-coding-primer/team/governance/) - turn these trends into policy and rollout choices
-- [Team Threat Model](/ai-coding-primer/team/security-risks/) - understand the threat model behind the controls
-- [Stack Evaluation Criteria](/ai-coding-primer/tools/comparison/) - evaluate workflows after your constraints are clear
-
-## Sources
-
-- DORA 2025 report: https://dora.dev/dora-report-2025/
-- Sonar vendor survey summary: https://www.sonarsource.com/blog/state-of-code-developer-survey-report-the-current-reality-of-ai-coding/
-- MCP documentation: https://modelcontextprotocol.io/
+- [Governance and Rollout](/ai-coding-primer/team/governance/) — run and evaluate a bounded pilot
+- [Productivity Research](/ai-coding-primer/research/productivity/) — interpret causal and observational productivity evidence
+- [Code Quality & Security](/ai-coding-primer/research/code-quality-security/) — review quality and security findings
+- [Team Threat Model](/ai-coding-primer/team/security-risks/) — map new integrations and authority before approval

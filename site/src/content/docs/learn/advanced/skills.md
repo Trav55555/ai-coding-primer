@@ -6,28 +6,29 @@ sidebar:
 ---
 
 :::note[Freshness metadata]
-Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+Reviewed: August 2026. Volatile fields: skill discovery paths, package formats, tool support, and installation behavior. Verify the current tool and skill-format documentation before installing or standardizing.
 :::
 
 Skills are reusable instructions for recurring work. They describe how an agent should approach a class of tasks.
 
 ## What a Skill Is
 
-A skill is usually one of these:
+In tools that support the Agent Skills pattern, a skill is usually a directory containing `SKILL.md` plus optional scripts, references, or assets. Other products use “skill” more loosely, so verify the format the target tool actually discovers.
 
-- a `SKILL.md` file that packages a repeatable workflow
-- a project instruction file such as `AGENTS.md`, `CLAUDE.md`, or `.cursorrules`
-- a command pack or slash command for a recurring task
-- a procedure that describes how to use tools in a specific domain
+A project instruction file, slash command, and skill can all influence recurring work, but they are different artifacts:
 
-The common property is reuse. A skill should change behavior on recurring tasks.
+- project instructions provide repository-wide context and constraints
+- commands provide a named entry point
+- skills package a task-specific procedure that can be discovered or loaded when needed
+
+Keep those boundaries explicit so a short project file does not grow into a library of unrelated procedures.
 
 ## Skills vs MCP
 
 | Concept | What it gives the agent | Typical artifact | Example |
 |---|---|---|---|
 | MCP | access to data or external actions | server config, tool schema | GitHub MCP server, Playwright MCP, Context7 |
-| Skill | a repeatable way to do work | `SKILL.md`, `AGENTS.md`, `.cursorrules`, command pack | code-review checklist, release workflow, debugging procedure |
+| Skill | a repeatable way to do work | `SKILL.md` plus reviewed resources | code-review checklist, release workflow, debugging procedure |
 
 MCP answers: **What can the agent connect to?**
 
@@ -55,17 +56,11 @@ Examples:
 - release prep
 - evidence-led research
 
-## Project Instruction Files
+## Project Instructions Are Related but Distinct
 
-`AGENTS.md`, `CLAUDE.md`, and `.cursorrules` are the simplest skills for many teams.
+`AGENTS.md`, `CLAUDE.md`, and current tool-specific rule files provide repository context. They are useful for commands, gotchas, non-obvious conventions, boundaries, and verification requirements that apply across tasks.
 
-They are useful for:
-
-- commands the agent should run
-- project gotchas
-- code style rules that are not obvious from the code
-- boundaries such as `never touch generated files`
-- verification requirements
+Use a skill when a particular recurring task needs its own inputs, procedure, output shape, or stop conditions. See [Project Context Files](/ai-coding-primer/learn/advanced/project-context-files/) for the context-file boundary.
 
 ## Task-Specific Skills
 
@@ -138,15 +133,9 @@ When that happens more than once, write the smallest skill that prevents the rep
 
 ## Where Skills Live
 
-Different tools package skills differently:
+Discovery paths differ by tool. A tool may load skills from a dedicated project or user directory, a package, or an explicitly configured path. Check the current documentation before choosing a shared location.
 
-- project root instruction files
-- tool-specific rules files
-- dedicated `skills/` directories
-- slash command configs
-- internal docs the agent is told to consult
-
-The packaging matters less than the behavior. If it changes how the agent performs a recurring task, it is functioning as a skill.
+Keep the reviewed source in one controlled directory or repository when possible. Tool-specific installs can point to that source instead of creating several copies that drift.
 
 ## Installing Third-Party Skills
 
@@ -167,10 +156,14 @@ For teams, maintain an approved skills directory or private registry. Do not let
 
 ## Examples
 
-- OpenAI Codex discovers `AGENTS.md` files from the repo and uses them as project instructions.
-- Cline uses planning prompts and command workflows to standardize deeper tasks.
-- LangChain's skills model frames skills as reusable instructions loaded only when needed.
-- Microsoft's agent framework treats skills as portable expertise packages rather than raw tool access.
+Good candidates include:
+
+- a pull-request review procedure with severity and evidence requirements
+- a release check that gathers version, changelog, tests, and rollback evidence
+- a database-migration review with explicit prohibited actions
+- a source-audit procedure that records claim, source, date, and limitation
+
+Each example has a trigger, a repeatable procedure, and a reviewable output. A collection of general tips does not need to become a skill.
 
 ## Common Mistakes
 
@@ -195,8 +188,5 @@ Create one when the work is recurring, error-prone, and important enough to stan
 
 ## Bibliography
 
-- [LangChain: Skills](https://blog.langchain.com/langchain-skills/)
-- [Microsoft Agent Framework Overview](https://learn.microsoft.com/en-us/agent-framework/overview/)
-- [llms.txt](https://llmstxt.org/)
-- [Stripe llms.txt](https://docs.stripe.com/llms.txt)
-- [OpenAI Codex `AGENTS.md` implementation](https://github.com/openai/codex/blob/main/codex-rs/core/src/agents_md.rs)
+- [Agent Skills specification](https://agentskills.io/)
+- [Project Context Files](/ai-coding-primer/learn/advanced/project-context-files/)

@@ -76,7 +76,7 @@ Explore the local project before relying on external documentation. External exa
 
 ### 2. Persistent Instructions
 
-Persistent instructions are project-specific rules loaded across tasks, such as `AGENTS.md`, `CLAUDE.md`, or `.cursorrules`.
+Persistent instructions are project-specific rules loaded across tasks, such as `AGENTS.md`, `CLAUDE.md`, or a tool's current project-rule format.
 
 Useful persistent instructions include:
 
@@ -88,7 +88,7 @@ Useful persistent instructions include:
 
 Keep these files short. For each line, ask whether removing it would cause a likely mistake on representative tasks. If not, remove it.
 
-Evidence is mixed. Brain-2's summary of arXiv 2602.11988 reports that generated repository instruction files failed to improve, or slightly reduced, task success while raising cost by roughly 20–23 percent. Concise human-written instructions produced a small gain in that study, also at higher cost. Other practitioner reports find benefits from persistent rules. The practical default is: write short human rules for non-obvious constraints, avoid generated directory tours, and test whether the file helps your tasks.
+**Early / uncertain evidence — preprint:** arXiv 2602.11988 reports that generated repository instruction files failed to improve, or slightly reduced, task success in its coding-agent evaluation while raising cost by roughly 20–23 percent. Concise human-written instructions produced a small gain in that setting, also at higher cost. This does not establish the result for every harness or repository. The practical default is to write short human rules for non-obvious constraints, avoid generated directory tours, and test whether the file helps representative tasks.
 
 ### 3. Saved Task State
 
@@ -104,7 +104,7 @@ Most tools do not provide reliable project memory by default. You can simulate i
 
 ## Push and Pull Context
 
-Push-based project guidance means core rules are loaded automatically, such as with `AGENTS.md`, `CLAUDE.md`, or `.cursorrules`.
+Push-based project guidance means core rules are loaded automatically, such as with `AGENTS.md`, `CLAUDE.md`, or current tool-specific project rules.
 
 Pull-based context means the model retrieves information when needed, such as by searching the repo, reading docs, querying an index, or inspecting tool output.
 

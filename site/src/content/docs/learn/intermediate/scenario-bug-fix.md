@@ -168,7 +168,6 @@ fix: reject invalid user email payloads
 
 The exact wording and sequence in this scenario are editorial guidance based on those patterns and the canonical [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/).
 
-## Next Scenario
+## Choose the Next Path
 
-- [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/)
-- [Scenario - Add a Feature](/ai-coding-primer/learn/intermediate/scenario-feature-build/)
+Return to the [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/) for the general procedure. If the next task adds behavior rather than restoring expected behavior, use [Scenario - Add a Feature](/ai-coding-primer/learn/intermediate/scenario-feature-build/).

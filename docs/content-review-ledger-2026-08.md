@@ -6,7 +6,7 @@ tags:
   - content-audit
   - information-architecture
 type: audit
-status: proposed
+status: completed
 created: '2026-08-09'
 ---
 
@@ -386,3 +386,27 @@ The rewrite should preserve decision elements while varying structure according 
 - Vendor snapshots are visibly perishable and secondary.
 - Redirects preserve removed routes.
 - Build, search, sitemap, links, responsive layout, keyboard navigation, and live deployment pass.
+
+## Completion Record
+
+**Editorial audit status:** completed locally on August 9, 2026. Batches 1–5 are deployed; Batch 6 awaits commit, push, and production smoke approval.
+
+The final local pass covered 63 retained source pages and 25 static redirects. It found no P0 evidence issue or contradictory canonical owner. Targeted P1 corrections:
+
+- replaced market-trend framing with Adoption Signals and explicit survey/report limits
+- separated project context files, skills, commands, MCP access, and agent authority
+- removed unsupported MCP token estimates and an unpinned container example
+- narrowed the research overview to named evidence and editorial synthesis
+- attributed the context-file preprint directly and preserved its setting limits
+- replaced a stale Cursor rule default and unsupported universal context-file length thresholds
+- made scenario endings decision-specific rather than repeating one page mold
+- added beginner guidance for document/OCR, voice, computer-use, everyday tasks, and reasoning effort
+- removed unreferenced model and tool YAML catalogs that duplicated stale market data
+
+Local gates passed: build, dependency audit, all-page writing lint, internal routes and anchors, 139 external links, 25 redirect artifacts, Pagefind, sitemap, heading order, duplicate IDs, image alternatives, positive-tabindex scan, all-page mobile overflow scan, representative visual review, keyboard smoke, and independent editorial review.
+
+Residual maintenance:
+
+- four external sources return bot-blocking HTTP 403 responses but remain valid in browser use
+- issue `#8` owns September's perishable-reference sweep
+- production deployment and route smoke remain the final publication check for Batch 6

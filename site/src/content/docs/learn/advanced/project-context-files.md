@@ -1,6 +1,6 @@
 ---
 title: Project Context Files
-description: How to write CLAUDE.md, .cursorrules, and AGENTS.md files.
+description: How to write concise project instruction and rule files for coding agents.
 sidebar:
   order: 1
 ---
@@ -12,7 +12,7 @@ AI coding tools can read project instruction files to learn local commands, conv
 | Tool | Context file | Notes |
 |---|---|---|
 | Claude Code | `CLAUDE.md` | official convention |
-| Cursor | `.cursorrules` | or `.cursor/rules/*.mdc` |
+| Cursor | `.cursor/rules/*.mdc` | current rule format; verify live documentation |
 | Zed | `AGENTS.md` | also reads `CLAUDE.md` |
 | Continue.dev | `AGENTS.md` | also reads `CLAUDE.md` |
 | Copilot | `.github/copilot-instructions.md` | GitHub convention |
@@ -20,15 +20,11 @@ AI coding tools can read project instruction files to learn local commands, conv
 
 ## Length Rule
 
-> "Overly verbose files can lead to Claude ignoring instructions if deemed irrelevant. Aim for under 300 lines." — Anthropic
+There is no universal useful line count. Start with the smallest file that records non-obvious commands, boundaries, and recurring mistakes. The maintenance example below starts at 10 to 20 lines; that is a starting point, not a hard limit.
 
-Suggested length:
+For each line, ask whether removing it would likely cause an implementation mistake on a representative task. If not, remove it. Split long reference material into files the agent can retrieve when needed instead of loading it for every task.
 
-- **Preferred:** under 100 lines
-- **Upper bound:** under 300 lines
-- **If longer:** split into smaller linked files
-
-For each line, ask whether removing it would likely cause an implementation mistake. If not, remove it.
+Older Cursor repositories may contain `.cursorrules`. Do not copy that legacy format into a new project without checking current Cursor documentation.
 
 ## What to Include
 

@@ -48,13 +48,11 @@ npm run build    # Build for production
 
 ```text
 ai-coding-primer/
-├── site/                    # Astro Starlight documentation site
-│   └── src/content/docs/    # All documentation pages
-├── templates/               # Downloadable project context templates
-│   ├── claude-md/           # CLAUDE.md by stack
-│   └── cursorrules/         # .cursorrules by stack
-├── data/                    # Model/tool reference data (YAML)
-└── docs/legacy/             # Archived original README
+├── site/                         # Astro Starlight documentation site
+│   ├── src/content/docs/         # Documentation source pages
+│   └── public/examples/          # Maintained downloadable examples
+├── docs/                         # Editorial policy, plans, and review records
+└── docs/legacy/                  # Archived original README
 ```
 
 ## License

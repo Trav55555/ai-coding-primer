@@ -93,6 +93,43 @@ Now filter the workflow shape through your real constraints:
 
 These are filters, not separate workflow shapes.
 
+## Match the Input and Action Surface
+
+Some “which is best?” questions are really about the surrounding product, not only the model.
+
+### Documents and OCR
+
+First identify the document path:
+
+- For born-digital PDF or office files, prefer direct text and structure extraction over optical character recognition (OCR).
+- For scans and photographs, require OCR or image input and test rotation, handwriting, poor contrast, tables, and multi-column layouts.
+- For high-volume forms or invoices, a dedicated document parser may produce more stable fields and coordinates than a general chat workflow.
+- For interpretation across text, tables, and images, use a multimodal model after the extraction path is tested.
+
+Evaluate with representative documents and compare exact fields, page references, table structure, omissions, and unreadable regions. A fluent summary can still hide recognition errors.
+
+### Voice
+
+“Voice support” can mean three different things:
+
+- **dictation:** speech becomes text in an editor or prompt box
+- **voice conversation:** the system listens and responds while preserving conversational state
+- **spoken output:** text responses are read aloud
+
+Choose the surface you need. Test code symbols, filenames, interruption, transcript editing, latency, background noise, and where audio or transcripts are stored. A strong text model does not guarantee a good voice interface.
+
+### Browser or computer use
+
+Computer-use agents can operate a browser or desktop interface rather than only return instructions. They are useful for repetitive, observable, reversible tasks such as collecting information from approved sites, entering test data, or following a documented internal procedure.
+
+Start with browser-only or application-specific access. Require confirmation before sending messages, publishing, purchasing, deleting, changing account settings, or handling credentials. Avoid broad desktop authority when an API, script, or narrower tool can perform the same job more predictably.
+
+### Everyday assistance
+
+For explanation, drafting, summarization, planning, and short questions, prioritize low friction, acceptable data terms, and easy correction. For actions on files, accounts, or websites, prioritize permission controls, logs, and reversibility over conversational polish.
+
+Use [Capability Patterns](/ai-coding-primer/models/capabilities/) to select model capabilities and reasoning effort after the input and action surface is clear.
+
 ## Step 4: Pick a Stack Bundle
 
 Here are the only bundles most readers need to consider first:

@@ -15,20 +15,47 @@ Use it to separate measured results from adoption surveys, vendor signals, and p
 - Look at task type, participant skill, and workflow setup before copying a headline number.
 - Validate important claims with your own pilot metrics.
 
-## Claim → Confidence → Evidence Map
+## Claim and Evidence Map
 
-| Claim | Confidence | Evidence | Applies To | Practical takeaway |
-|---|---|---|---|---|
-| AI coding productivity is context-dependent, not automatic | High | METR early-2025 RCT: 16 experienced OSS developers, 246 real tasks, 19% slower with early-2025 tools; DORA 2025 | expert workflows, brownfield work, team adoption | Run pilots on your own codebase; measure active time, review, rework, defects, and satisfaction by task type |
-| Newer tools may improve outcomes, but evidence is still noisy | Low-medium | METR 2026 update: 57 developers, 143 repositories, 800+ tasks; selection, concurrency, and time-measurement limits | newer tool generations, real repository tasks | Treat newer-tool gains as plausible, not settled; validate locally |
-| Verification loops are the strongest reliability lever | High | METR caveats; Veracode security findings; practitioner convergence | bug fixes, features, refactors, agent workflows | Give agents tests, typechecks, builds, screenshots, or explicit expected output |
-| AI-assisted output can increase review burden | Medium-high | Sonar vendor survey; DORA 2025; code quality/security reports | teams with high AI adoption | Budget review time; do not treat generated code as cheaper to merge |
-| AI-generated code can introduce security issues | Medium-high | Veracode GenAI report; OWASP LLM guidance; agent security preprints | production code, dependencies, agent tools | Add security scanning and human review to the default loop |
-| Heavy delegation can reduce learning and debugging skill | Medium-high | Anthropic coding-learning RCT; education meta-analyses; cognitive offloading studies | learners, juniors, unfamiliar domains | Use AI as tutor and reviewer, not only as code generator |
-| Tool/model choice matters less than workflow fit | Medium | mixed productivity studies; practitioner reports; rapid vendor churn | stack selection | Choose workflow shape and constraints first, then verify current tool details |
-| Long context is not automatically better context | Medium | practitioner evidence; agent harness guidance; observed failure modes | large repos, subagents, long-running tasks | Prefer selective context, tool use, compaction, and persistent artifacts |
-| Team governance is a common adoption bottleneck | Medium | DORA 2025; Sonar vendor survey; enterprise rollout patterns | teams and organizations | Define allowed workflows, data boundaries, permissions, verification, and review cadence |
-| Current model rankings are useful but perishable | High | benchmark leaderboards update frequently; release cadence | model selection | Use benchmarks to understand task fit, then check live leaderboards before deciding |
+### Productivity depends on the task and workflow
+
+**Evidence status:** Research-backed, with strong setting limits.
+
+METR's early-2025 randomized study found slower completion in one cohort of experienced open-source developers and repositories. Its 2026 update could not produce a reliable newer-tool estimate because selection, concurrency, and time-measurement problems changed the comparison. See [Productivity Research](/ai-coding-primer/research/productivity/) for samples, outcomes, and limitations.
+
+**Use:** pilot representative tasks and measure active time, review, rework, defects, and experience by task type.
+
+### Generated output still requires verification
+
+**Evidence status:** Editorial synthesis supported by quality, security, and workflow evidence.
+
+Studies and reports identify review burden, insecure output, and setting-dependent results. They do not establish that one verification control is universally strongest. See [Code Quality & Security](/ai-coding-primer/research/code-quality-security/).
+
+**Use:** require evidence appropriate to the change: tests, types, builds, screenshots, security checks, or explicit expected output.
+
+### Heavy delegation may reduce immediate mastery in some learning settings
+
+**Evidence status:** Early / uncertain.
+
+A 2026 Anthropic vendor-led preprint studied one unfamiliar Python task and an immediate quiz. Peer-reviewed and working-paper studies in other educational settings measured different learners, interventions, and outcomes. See [Learning Impacts](/ai-coding-primer/research/learning-impacts/) rather than combining those effects.
+
+**Use:** ask for explanation, prediction, and independent attempts when learning is part of the goal.
+
+### Adoption and availability do not establish benefit
+
+**Evidence status:** Organizational report and vendor-survey evidence.
+
+DORA's 2025 organizational report, Sonar's 2026 self-reported survey, and current integration documentation can identify questions about rollout, review, and authority. They do not prove causal productivity or quality for a team. See [Adoption Signals](/ai-coding-primer/research/adoption-trends/).
+
+**Use:** separate usage from delivery, quality, verification load, control health, and developer experience.
+
+### Context and model taxonomies are practical syntheses
+
+**Evidence status:** Editorial and practitioner synthesis, with limited early studies.
+
+Selective context, capability classes, and workflow-first selection are decision frameworks in this guide, not settled scientific taxonomies. Where a page cites a preprint or benchmark, apply its specific task and harness limits.
+
+**Use:** test the context, model class, and tool path on representative work instead of treating a label or context-window size as proof.
 
 ## Evidence Categories Used in the Guide
 
@@ -47,7 +74,7 @@ Use it to separate measured results from adoption surveys, vendor signals, and p
 - [Development Practices Timeline](/ai-coding-primer/reference/development-practices-timeline/): the historical path from human computation to coding agents
 - [Productivity Research](/ai-coding-primer/research/productivity/): mixed results and context-dependent gains
 - [Code Quality & Security](/ai-coding-primer/research/code-quality-security/): defect and vulnerability patterns
-- [Adoption & Trends](/ai-coding-primer/research/adoption-trends/): usage, trust, and workflow changes
+- [Adoption Signals](/ai-coding-primer/research/adoption-trends/): usage, trust, and workflow changes
 - [Learning Impacts](/ai-coding-primer/research/learning-impacts/): skill development, cognitive effects, and the performance-learning paradox
 
 ## Scope Note
