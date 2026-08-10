@@ -58,12 +58,13 @@ export default defineConfig({
 				{
 					label: 'Work Reliably',
 					items: [
-						{ label: 'Workflow Archetypes', slug: 'learn/intermediate/workflow-archetypes' },
 						{ label: 'Agentic Development Loop', slug: 'learn/intermediate/agentic-development-loop' },
+						{ label: 'Workflow Archetypes', slug: 'learn/intermediate/workflow-archetypes' },
 						{ label: 'Scenario - Fix a Bug', slug: 'learn/intermediate/scenario-bug-fix' },
 						{ label: 'Scenario - Add a Feature', slug: 'learn/intermediate/scenario-feature-build' },
 						{ label: 'Scenario - Safe Refactor', slug: 'learn/intermediate/scenario-safe-refactor' },
 						{ label: 'Effective Patterns', slug: 'learn/intermediate/effective-patterns' },
+						{ label: 'Common Mistakes', slug: 'learn/intermediate/common-mistakes' },
 						{ label: "When It's Not Working", slug: 'learn/intermediate/troubleshooting' },
 					],
 				},
@@ -91,7 +92,6 @@ export default defineConfig({
 					label: 'Learn Without Dependency',
 					items: [
 						{ label: 'Learning with AI', slug: 'learn/intermediate/learning-with-ai' },
-						{ label: 'Common Mistakes', slug: 'learn/intermediate/common-mistakes' },
 						{ label: 'Autonomy Modes (Optional Lens)', slug: 'learn/intermediate/five-levels' },
 					],
 				},

@@ -1,154 +1,84 @@
 ---
 title: Common Mistakes
-description: Pitfalls to avoid in AI-assisted development.
+description: Recognition and prevention guide for recurring AI-assisted development failure modes.
 sidebar:
   order: 5
 ---
 
-These mistakes waste time and produce poor results. Learn to recognize and avoid them.
+Use this page to catch a weak setup before it becomes a failed session. If work is already producing repeated errors or broad diffs, switch to [When It's Not Working](/ai-coding-primer/learn/intermediate/troubleshooting/).
 
-## Mistake 1: Using AI as a Safety Net
+## Early Signals
 
-**The mistake:** Only using AI when you're completely stuck and have exhausted all options.
+- You cannot explain or review the task: investigate before implementation.
+- The agent responds to old logs or unrelated files: reduce context to current evidence and retrieval targets.
+- Checks fail before the change: document the baseline first.
+- Tools and permissions exceed the task: remove integrations that lack a concrete need.
+- The same approach returns without better evidence: stop appending corrections and use the recovery procedure.
+- One session accumulates unrelated goals: separate the tasks and their done signals.
+- Acceptance depends on confidence or passing checks alone: review assumptions, diff, risk, and behavior.
+- Generated tests mirror generated code: review test intent against the requirement.
 
-**Why it fails:** If you don't understand the problem, you can't give good context or verify the output.
+## Start With a Problem You Can Evaluate
 
-**The fix:** Use AI to speed up tasks you *already know how to solve*. This builds intuition for its capabilities and limitations.
+AI can help explore an unfamiliar area, but implementation becomes risky when you cannot state the expected behavior or recognize a wrong answer. In that situation, ask for entry points, data flow, terminology, and candidate checks first. Keep the first pass read-only.
 
----
+Before allowing edits, you should be able to name at least one of these:
 
-## Mistake 2: Context Rot (Information Overload)
+- a failing example or expected output
+- an existing contract or acceptance criterion
+- a reviewer who owns the affected behavior
+- a check that would expose a wrong result
 
-**The mistake:** Dumping entire codebases into context, thinking "more info = better results."
+If none is available, the next task is investigation, not implementation.
 
-**Why it fails:** Too much context increases distraction. The model gets confused and quality drops.
+## Keep Context Relevant
 
-**The fix:**
-- Give the model *search tools* instead of pre-loaded code
-- Provide only relevant files
-- Treat hard context percentages as heuristics, not laws
-- Keep context selective and clear stale work aggressively
+Large context can hide the evidence that matters. Whole directories, long logs, stale conversation history, and broad architecture notes often compete with the current failure signal and constraints.
 
----
+Provide the task, relevant paths or search targets, allowed scope, and done signal. Let the agent retrieve secondary files as needed. If a failed attempt established a useful fact, retain that fact; discard the surrounding transcript.
 
-## Mistake 3: Broken Environments
+The same rule applies to integrations. Each MCP server, plugin, retrieval source, and broad permission adds state and failure modes. Add one only after a concrete limitation appears and its data and authority boundaries are acceptable.
 
-**The mistake:** Trying to prompt-engineer around a broken dev environment (pre-existing type errors, misconfigured linters).
+## Establish the Baseline Before Asking for Change
 
-**Why it fails:** Agents have no long-term memory. They rediscover the "ghost error" every session, try to fix it, fail, and get confused.
+A pre-existing failure makes later results ambiguous. The agent may chase unrelated errors, weaken a check, or modify extra files merely to quiet noisy output.
 
-**The fix:** Fix your environment first. If `typecheck` or `lint` fails before you start, the agent will struggle too.
+Run the narrowest relevant test, build, type check, lint command, or reproduction before the task. If the repository is already failing, record the exact known failures and state which signal this task should change. Keep unrelated work out of the task diff.
 
----
+Use the [Setup Checklist](/ai-coding-primer/learn/beginner/setup-checklist/) for the complete preparation procedure.
 
-## Mistake 4: MCP Hell (Over-Configuration)
+## Keep One Task Boundary
 
-**The mistake:** Loading dozens of MCP servers, complex plugins, and massive rule files.
+A bug fix, refactor, dependency cleanup, and feature idea need different context and evidence. Combining them makes the diff harder to review and lets decisions from one task leak into another.
 
-**Why it fails:** Adds complexity and failure points without solving the core issue (bad context/prompting).
+State non-goals and allowed files. Record follow-up work separately instead of letting the agent continue opportunistically. A task is not complete merely because the agent found another improvement.
 
-**The fix:** Keep it simple. Stock configurations often outperform "tool maximalist" setups. Start with zero plugins. Add only what you need after hitting a specific limitation.
+## Stop When Corrections Stop Improving Evidence
 
----
+Repeated “fix it” prompts can preserve the same bad assumptions while adding failed patches and contradictory instructions to the context. Watch the evidence, not the number of attempts.
 
-## Mistake 5: The Append Trap
+Continue only when the next action tests a new hypothesis or produces a stronger signal. If the same failed approach recurs or the evidence stops improving, preserve the useful findings and use the reset procedure in [When It's Not Working](/ai-coding-primer/learn/intermediate/troubleshooting/).
 
-**The mistake:** When AI fails, repeatedly asking "fix it" and appending to the conversation history.
+## Review More Than the Check Result
 
-**Why it fails:** The context now contains bad instructions and broken code. Each failed attempt pollutes the context further.
+A passing test or build establishes only what that check measures. It may not reveal a weakened permission boundary, accidental API change, unrelated diff, or maintenance problem.
 
-> "Correcting Over and Over: Failed approaches accumulate. Solution: After 2 corrections, `/clear` and rewrite prompt." — Anthropic
+Before accepting a patch:
 
-**The fix:**
+- inspect the assumptions the implementation depends on
+- read the complete diff
+- run the relevant focused and broader checks
+- compare observable behavior with the requirement
+- involve the owner of any affected security, data, API, or operational boundary
 
-1. **Clear context** (`/clear`, new chat, or `Cmd+K`)
-2. **Revert changes** (`git checkout .` or undo)
-3. **Rewrite your prompt** with better context
-4. If same failure happens **3+ times**, stop and rethink entirely
+The [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/) owns the full review sequence.
 
----
+## Review Generated Tests Independently
 
-## Mistake 6: The Kitchen Sink
-
-**The mistake:** Mixing unrelated tasks in one session.
-
-**Why it fails:** Context gets polluted with irrelevant information from previous tasks.
-
-**The fix:** Clear context between unrelated tasks:
-
-```
-Task 1: Fix the auth bug
-/clear
-Task 2: Add the export feature
-/clear
-Task 3: Refactor the database layer
-```
-
----
-
-## Mistake 7: Trusting Without Verifying
-
-**The mistake:** Accepting AI output without review because "it looks right."
-
-**Why it fails:** AI produces plausible-looking code that may be subtly wrong.
-
-**The fix:**
-- 100% of AI-generated code gets human review
-- Never merge without running tests
-- If you don't understand it, don't ship it
-
----
-
-## Mistake 8: Lazy Testing
-
-**The mistake:** Having AI write both the code AND the tests, then assuming passing tests = working code.
-
-**Why it fails:** AI-generated tests often:
-- Test the implementation, not the requirements (tautological tests)
-- Miss edge cases the AI also missed in the code
-- Assert what the code *does*, not what it *should* do
-- Have the same blind spots as the code they're testing
-
-> "If the same AI writes the code and the tests, and neither understands the requirements correctly, you have two artifacts that agree with each other but not with reality."
-
-**The fix:**
-- Write tests FIRST (or have AI write them), then commit before writing code
-- Review AI-generated tests as critically as AI-generated code
-- Ask: "Would this test fail if the code had [specific bug]?"
-- Tests should encode YOUR understanding of requirements, not the AI's
-
-:::caution[The Circular Validation Trap]
-AI writes code → AI writes tests → Tests pass → You feel confident. But you've only validated that the AI is consistent with itself, not that it solved your actual problem.
-:::
-
-:::caution[Coverage is not correctness]
-100% test coverage means nothing if tests aren't connected to ground truth. AI can generate tests that exercise every line of code while verifying nothing meaningful. Coverage measures execution, not validation.
-:::
-
----
-
-## When to Clear Context
-
-- Switching to an unrelated task
-- After 2+ failed fix attempts
-- When the AI starts "forgetting" earlier instructions
-- When responses become repetitive or circular
-
-## Quick Reference
-
-| Mistake | Signal | Fix |
-|---------|--------|-----|
-| Safety net use | Only ask when stuck | Start with familiar tasks |
-| Context rot | AI seems confused | Reduce context, use tools |
-| Broken environment | Same error every session | Fix linter/types first |
-| MCP hell | Too many plugins | Strip to defaults |
-| Append trap | Repeated "fix it" | Clear and rewrite |
-| Kitchen sink | Mixing tasks | Clear between tasks |
-| Blind trust | No review | Always read diffs |
-| Lazy testing | AI writes code + tests | Write tests first, review critically |
+AI may draft tests, but code and tests generated from the same mistaken assumption can agree and still be wrong. Review the expected behavior independently before using a generated test as evidence. The checklist in [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/#review-ai-drafted-tests-against-the-requirement) covers requirement fit, weakened expectations, edge cases, and implementation coupling.
 
 ## Next Steps
 
-- [When It's Not Working](/ai-coding-primer/learn/intermediate/troubleshooting/) — recovery strategies
-- [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/) — what to do instead
-- [Research Overview](/ai-coding-primer/research/overview/) — data behind common failure modes
+- [When It's Not Working](/ai-coding-primer/learn/intermediate/troubleshooting/) — recover when evidence stops improving
+- [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/) — reusable tactics inside the canonical loop
+- [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) — select files, tools, and instructions for the task

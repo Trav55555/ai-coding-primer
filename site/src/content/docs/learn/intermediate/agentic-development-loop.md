@@ -261,30 +261,9 @@ Warning signs:
 
 When that happens, stop adding features and pay down the design problem. The evidence is not a slogan about architecture; it is the observed cost of the next change.
 
-## Recover From Polluted Context
+## When the Loop Stops Producing Evidence
 
-Long sessions can accumulate failed patches, stale assumptions, and contradictions. When the agent repeats the same failed fix or starts arguing with old context, stop the session instead of adding another correction.
-
-Recovery prompt for a fresh session:
-
-```text
-We are restarting after polluted context. Do not rely on previous chat.
-
-Task:
-- Implement the saved issue-filter save-and-reload slice.
-
-Current facts:
-- The approved behavior, non-goals, and constraints are in `spec.md`.
-- Attempt 1 wrongly added shared filters; reverted.
-- Attempt 2 changed issue query URL semantics; reverted.
-- The remaining likely files are `src/issues/Filters.tsx`, `src/issues/filterActions.ts`, and `tests/issues-filter.test.ts`.
-- Required checks: `npm test -- issues-filter` and `npm run typecheck`.
-
-First read the spec and those files. Then propose a narrow plan.
-Do not edit until the plan is approved.
-```
-
-Keep only facts that change the next attempt. Do not paste the whole failed transcript.
+Stop when the same failed approach recurs or checks are no longer improving. Preserve confirmed findings and the current state from step 7, then use the reset procedure in [When It's Not Working](/ai-coding-primer/learn/intermediate/troubleshooting/). Do not paste the full failed transcript into another attempt.
 
 ## How This Connects to the Scenario Pages
 

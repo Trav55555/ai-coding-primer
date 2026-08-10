@@ -1,250 +1,148 @@
 ---
 title: Effective Patterns
-description: Procedures for verifiable AI-assisted development.
+description: Reusable tactics for verifiable AI-assisted development.
 sidebar:
   order: 4
 ---
 
-These patterns are reusable moves inside the [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/). Use them to improve verification, context control, and diff review without restating the full loop on every task.
+This page is a compact index of tactics to use inside the [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/). It does not replace the loop or the scenario pages. Use the loop for the full task sequence, and use the scenarios for complete worked workflows:
 
-:::note[Evidence guide]
-Not every pattern here has the same evidence level.
+- [Scenario - Fix a Bug](/ai-coding-primer/learn/intermediate/scenario-bug-fix/)
+- [Scenario - Add a Feature](/ai-coding-primer/learn/intermediate/scenario-feature-build/)
+- [Scenario - Safe Refactor](/ai-coding-primer/learn/intermediate/scenario-safe-refactor/)
 
-- `Research-backed principle` - [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/) and [Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/) support verification and review discipline.
-- `Practitioner-backed workflow` - [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/), [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/), and [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) show how those principles become practice.
+## Choose the Verification Signal First
 
-The exact pattern framing is editorial guidance drawn from those sources and practitioner convergence.
-:::
+Use this when the task has a concrete success condition: a bug, feature slice, refactor, migration, CLI output, or UI change.
 
-## Require Verification
-
-AI output should be checked against an observable signal.
-
-Useful verification signals include:
-
-| Method | Example | Best for |
-|---|---|---|
-| **Tests** | `pytest`, `npm test`, `cargo test` | behavior and logic |
-| **Type checker** | `mypy`, `tsc`, `cargo check` | type and interface errors |
-| **Linter** | `eslint`, `ruff`, `clippy` | common bugs and style rules |
-| **Build** | `npm run build`, `cargo build` | compilation and bundling |
-| **Screenshot** | browser screenshot after UI change | visual UI checks |
-| **Expected output** | command output equals a known value | CLIs and data transforms |
-
-A useful prompt names the check:
+Name the check before implementation. Good signals include a focused test, typecheck, lint rule, build, screenshot, DOM assertion, contract test, migration dry run, or exact command output. Start with the narrowest signal that proves the requested behavior, then run broader checks for the touched area.
 
 ```text
-Make the smallest change that fixes this bug.
-After editing, run `npm test -- user-validation.test.ts` and report the result.
+Fix the invalid-email bug. The done signal is:
+1. `npm test -- user-validation.test.ts`
+2. the nearest related route test
+3. `npm run typecheck`
+
+Do not change unrelated routes.
 ```
 
-### Test-first loop
+A verification signal is not the whole review. Passing tests can miss a weakened permission check, a changed public contract, or a bad abstraction. Pair the signal with diff review from the loop's [review step](/ai-coding-primer/learn/intermediate/agentic-development-loop/#6-review-assumptions-risk-diff-and-behavior).
 
-One reliable test-first sequence is:
+## Review AI-Drafted Tests Against the Requirement
 
-```text
-1. Write or confirm the failing test.
-2. Keep the test fixed unless the requirement is wrong.
-3. Ask the agent to make the test pass.
-4. Run the targeted test and then a broader related check.
-5. Review the diff before accepting the change.
-```
+Use this when the agent writes or updates tests. Agent-written tests are useful only if they encode the desired behavior rather than the implementation the agent happened to write.
 
-If the agent writes the test, review the test before using it as the done signal.
+Before treating a new test as the done signal, read it as a requirement statement:
 
-:::caution[AI-generated tests]
-Ask whether the test encodes the requirement or only the agent's assumption.
+- Does it fail on the old bug or missing behavior?
+- Does it assert user-visible or contract-level behavior, not private implementation details unless those details are the contract?
+- Did the agent weaken an existing expectation to make the patch pass?
+- Are edge cases from the task still represented?
+- Does the test follow nearby project style and helpers?
 
-Tests should specify what the code should do. They should not merely describe the current implementation. See [Lazy Testing](/ai-coding-primer/learn/intermediate/common-mistakes/#mistake-8-lazy-testing).
-:::
+If the test is wrong, fix the test or clarify the requirement before asking for implementation. Do not let the agent change the expected behavior just because the current patch cannot satisfy it.
 
-## Worked Example: Bug Fix With Verification
-
-### Situation
-
-A settings form saves successfully, but the updated value disappears after refresh. You have a failing test command and one likely UI file.
-
-### 1. Start with a narrow diagnosis
-
-```text
-We are fixing one bug: the settings page appears to save timezone changes,
-but after refresh the old timezone returns.
-
-Known signal:
-- `npm test -- settings-timezone.test.ts` fails with:
-  Expected "Europe/Paris", received "UTC"
-
-Relevant files:
-- src/settings/SettingsForm.tsx
-- src/settings/settingsApi.ts
-- tests/settings-timezone.test.ts
-
-First explain the likely root cause from these files. Do not edit yet.
-```
-
-A useful diagnosis names a specific boundary: form state, API payload, persistence response, or reload path. If the explanation is generic, ask for narrower file-level evidence before editing.
-
-### 2. Ask for the smallest patch
-
-```text
-Implement the smallest fix for that root cause.
-
-Constraints:
-- Do not redesign the settings page.
-- Do not change unrelated settings fields.
-- Do not update the test expectation unless the test is clearly wrong.
-
-After edits, run:
-1. `npm test -- settings-timezone.test.ts`
-2. the nearest related settings test if different
-
-Then report changed files, test results, and the exact behavior fixed.
-```
-
-### 3. Review the diff
-
-Check whether the diff matches the diagnosis:
-
-- Did it change the persistence path that caused the bug?
-- Did it leave unrelated settings fields alone?
-- Did it preserve or add regression coverage?
-- Can you explain the fix in one paragraph?
-
-A concise handoff should look like this:
-
-```text
-Root cause: the form updated local state but sent `timezoneLabel` instead of
-`timezone` to the API. The server ignored the unknown field, so refresh loaded
-the old value. The patch sends the expected key and keeps the existing response
-shape. The regression test now passes.
-```
-
-### 4. Recover if the loop degrades
-
-| Symptom | Recovery step |
-|---|---|
-| Agent edits unrelated settings | Re-anchor on allowed files and revert unrelated diff |
-| Agent changes the failing test first | Restore the test; it is the done signal |
-| Root cause is still vague | Ask for file-level evidence before code |
-| The fix requires API/schema change | Pause and write the decision into a small spec |
-| Failed attempts pollute the session | Start fresh with findings, failed fixes, and remaining signal in five bullets |
-
-This example is the bug-fix version of the canonical loop: define the failure, bound the task, run checks, review the diff, and reset context if the session degrades.
-
-## Close the Verification Loop
-
-Set the workflow up so the agent can observe failure and success:
-
-- have it run tests, not only write tests
-- use linters and type checkers that produce immediate errors
-- provide expected output for commands or data transformations
-- use screenshots or DOM checks for UI work
+This tactic is especially important in the bug-fix and feature scenarios, where regression and acceptance tests are often the strongest evidence.
 
 ## Discuss Before Implementation
 
-Use discussion before code when the design is still ambiguous.
+Use this when the next code change would settle an expensive decision: schema shape, API contract, authentication behavior, permission boundary, migration path, dependency choice, concurrency rule, or user-visible behavior.
+
+Ask for options, affected files, reversal cost, and the smallest safe choice. Then choose explicitly before edits begin.
 
 ```text
-Before implementing, explain the viable authentication approaches for this app.
-List tradeoffs, required files, and the smallest implementation path.
+Before editing, identify the consequential decisions in this feature.
+For each decision, list the options, affected files, reversal cost, and the smallest safe default.
+Do not implement until I approve the decisions.
 ```
 
-This separates design choices from implementation. It also exposes assumptions before they become code.
-
-## Use Small Iterations
-
-Avoid asking for an entire feature in one prompt. Break the work into verifiable slices with a stop point and a validation command. Prefer a thin end-to-end slice when it can test the real behavior; use a foundation-first slice only when a migration, contract, or safety boundary must be settled before user-visible work.
-
-See [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/#3-choose-a-thin-vertical-slice) for the full slicing rule.
-
-## Limit Context to the Task
-
-Large context is not automatically useful context.
-
-- Provide relevant files and failure signals.
-- Give the agent search tools for secondary files.
-- Exclude unrelated logs, history, and documents.
-
-See [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) for evidence and caveats.
+Do not use long discussion for a small mechanical edit with an obvious check. Extra planning can add noise. The decision rule is whether the code would otherwise make a choice that a reviewer or product owner should own.
 
 ## Provide Examples When Style Matters
 
-If output needs to match a project style, provide a nearby example or ask the agent to inspect one.
+Use this when correctness includes fitting local conventions: test structure, form components, error handling, naming, data access patterns, accessibility markup, or documentation style.
+
+Point the agent to one or two nearby examples and ask it to match the relevant pattern.
 
 ```text
-Look at how tests are structured in tests/settings/*.test.ts.
-Write the new test using the same style and helper functions.
+Inspect `tests/settings/*.test.ts` for helper usage and assertion style.
+Add the new test using the same structure. Do not introduce a new test helper unless the existing pattern cannot express the case.
 ```
 
-Use examples for:
-
-- test patterns
-- library conventions
-- naming style
-- error handling
-- file organization
+Examples should be local when possible. External examples can conflict with repository conventions. If no good example exists, ask the agent to state the new convention before applying it broadly.
 
 ## Isolate Research From Implementation
 
-Research-heavy tasks can pollute the implementation context. Use a separate session or subagent for exploration.
+Use this when discovery would flood the implementation context: unfamiliar codebase areas, external library behavior, multiple possible entry points, security review, or large pattern searches.
+
+Run research in a separate session or subagent, and keep it read-only unless there is a specific reason to allow edits. Ask for file paths, commands, observed conventions, open questions, and a recommended next workflow.
 
 ```text
-Investigate how authentication is implemented in this codebase.
-Report back with file paths, patterns, and open questions.
+Research how authentication is implemented in this repository.
+Return entry points, relevant files, existing test patterns, risks, and open questions.
 Do not modify files.
 ```
 
-Useful outputs from research sessions:
+Bring only the findings needed for the next implementation slice into the main context. Subagents add coordination cost, so skip them for small edits where the relevant files are already known. See [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/#isolate-research-from-implementation) and [Subagent Architectures](/ai-coding-primer/learn/advanced/subagents/) for the fuller boundary.
 
-- entry points
-- relevant files
-- observed conventions
-- risks and unknowns
-- recommended next workflow
+## Write a Short Spec for Larger Work
 
-## Start Larger Work With a Spec
+Use this when the task spans more than one prompt, touches several boundaries, or has non-goals that the agent might otherwise invent away.
 
-Loose prompts are acceptable for tiny changes. Larger tasks need a short source of truth.
+A useful spec is short. Include behavior, acceptance criteria, non-goals, constraints, likely checks, and any decision already made. Ask the agent to restate the spec and identify open questions before implementation.
 
-A useful spec includes:
+```md
+## Behavior
+Users can save one private issue filter and reload it later.
 
-- requirements
-- acceptance criteria
-- out-of-scope items
-- constraints and non-negotiables
-- verification commands
+## Acceptance criteria
+- Save current status and assignee filters under a name.
+- Reload the page and select the saved filter.
+- Existing issue query URLs keep working.
 
-Ask the model to read the spec and discuss the plan before writing code.
+## Non-goals
+- No sharing.
+- No folders.
+- No analytics.
 
-## Use a Harness for Long Tasks
+## Checks
+- `npm test -- issues-filter`
+- `npm run typecheck`
+```
 
-When work spans multiple sessions, keep a small set of persistent artifacts:
+Do not turn the spec into a large design document for a tiny change. The spec should reduce ambiguity for the next slice, not become a parallel source of stale requirements. The feature scenario shows this tactic in a complete workflow.
 
-- `PLAN.md` — remaining work
-- `STATE.md` — current status and decisions
-- `spec.md` or equivalent — source of truth for intent
+## Save State Outside the Chat for Long Tasks
 
-These artifacts preserve task state when conversation context is compacted or cleared.
+Use this when work may continue after compaction, reset, handoff, or multiple verification attempts.
 
-## Anti-Patterns
+Keep small persistent artifacts such as `PLAN.md`, `STATE.md`, a spec, and a command log. Record decisions, touched files, checks run, failed attempts that matter, remaining work, and stop conditions. This lets a fresh session resume from evidence instead of a long transcript.
 
-| Anti-pattern | Problem | Correction |
-|---|---|---|
-| **No verification** | Result cannot be checked | Include a test, lint, build, screenshot, or expected output |
-| **Giant prompts** | Irrelevant context reduces output quality | Break work into bounded asks with explicit stop points |
-| **Repeated `fix it` loops** | Failed attempts pollute context | Start fresh with facts, failed attempts, and remaining evidence |
-| **Skipping review** | Code may be wrong or unmaintainable | Review assumptions, risk, diff, and behavior before accepting |
+```md
+## State
+Done:
+- Added regression test for expired-token refresh.
+
+Decisions:
+- Refresh happens in auth middleware, not route handlers.
+
+Checks:
+- `npm test -- auth` currently fails: middleware does not retry after refresh.
+
+Next:
+- Implement retry path without changing login response shape.
+```
+
+Persistent state has the same context-budget problem as prompts. Keep it factual and prune obsolete attempts. For the full long-running setup, use [Agent Harness](/ai-coding-primer/learn/advanced/agent-harness/).
+
+## Reset When the Session Degrades
+
+When evidence stops improving, use the reset procedure in [When It's Not Working](/ai-coding-primer/learn/intermediate/troubleshooting/). Carry forward confirmed facts, not the full failed transcript.
 
 ## Next Steps
 
-- [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/): canonical bounded-task procedure
-- [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/): common end-to-end workflows
-- [Common Mistakes](/ai-coding-primer/learn/intermediate/common-mistakes/): failure modes to avoid
-- [Troubleshooting](/ai-coding-primer/learn/intermediate/troubleshooting/): recovery steps
-- [Research Overview](/ai-coding-primer/research/overview/): empirical studies and caveats
-
-## Bibliography
-
-- [METR uplift update](https://metr.org/blog/2026-02-24-uplift-update/)
-- [Veracode GenAI Code Security Report](https://www.veracode.com/blog/genai-code-security-report/)
-- [DORA 2025 report](https://dora.dev/research/2025/dora-report/)
+- [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/) — canonical bounded-task procedure
+- [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) — context selection and isolation
+- [Subagent Architectures](/ai-coding-primer/learn/advanced/subagents/) — separate research and review sessions
+- [Agent Harness](/ai-coding-primer/learn/advanced/agent-harness/) — persistent state for long-running work
+- [When It's Not Working](/ai-coding-primer/learn/intermediate/troubleshooting/) — canonical recovery procedure

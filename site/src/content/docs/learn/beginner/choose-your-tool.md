@@ -58,7 +58,31 @@ Good fit:
 - you want explicit control
 - you want long-running or research-heavy agent workflows
 
-## Step 2: Apply Your Operating Constraints
+## Step 2: Use a Minimum Viable Setup Shape
+
+After you choose the workflow shape, aim for one safe working setup before comparing extras:
+
+- a local, version-controlled repository
+- an AI coding tool scoped to that repository
+- no production credentials in the tool's environment
+- approval required for network access, package installation, and other external actions
+- one existing targeted check you can run before and after the change
+- one bounded first task in one file or one small area
+
+For example:
+
+```text
+Repository: local checkout with a clean Git diff
+Tool access: read the repository; write only `tests/parser.test.ts`
+Credentials: none
+Approval required: network access, package installation, or other file changes
+Baseline and done signal: `npm test -- parser.test.ts`
+First task: add one missing test case; stop before production-code edits
+```
+
+This is the shape, not the procedure. Replace the command and file with repository-native equivalents. Use the [Setup Checklist](/ai-coding-primer/learn/beginner/setup-checklist/) to establish the baseline, permissions, and verification command.
+
+## Step 3: Apply Your Operating Constraints
 
 Now filter the workflow shape through your real constraints:
 
@@ -69,7 +93,7 @@ Now filter the workflow shape through your real constraints:
 
 These are filters, not separate workflow shapes.
 
-## Step 3: Pick a Stack Bundle
+## Step 4: Pick a Stack Bundle
 
 Here are the only bundles most readers need to consider first:
 
@@ -81,7 +105,7 @@ Here are the only bundles most readers need to consider first:
 
 The goal is not to find the perfect product. The goal is to pick a setup you can actually operate well.
 
-## Step 4: Compare the Criteria That Matter
+## Step 5: Compare the Criteria That Matter
 
 Before you commit, compare your short list on:
 

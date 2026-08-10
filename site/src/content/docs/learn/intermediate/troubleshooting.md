@@ -5,125 +5,133 @@ sidebar:
   order: 6
 ---
 
-Use this page when the agent is producing repeated errors, broad diffs, or output you cannot verify.
+Use this page when an AI-assisted coding session is producing repeated errors, broad diffs, weak evidence, or output you cannot review. The goal is not to keep trying until a fixed number of attempts has passed. Stop when evidence is not improving or the same failed approach recurs.
 
-## Warning Signs
+This page is the recovery page. For prevention patterns, see [Common Mistakes](/ai-coding-primer/learn/intermediate/common-mistakes/) and [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/).
 
-| Signal | Likely cause | Recovery step |
-|---|---|---|
-| Same error appears three or more times | Context contains failed attempts | Revert changes and restart with a shorter task summary |
-| Agent repeatedly says it will try another approach | Context or evidence is insufficient | Stop and provide a smaller task or stronger evidence |
-| Unrelated files are changed | Scope is unclear | State allowed files and non-goals explicitly |
-| Output looks plausible but fails checks | Hallucinated behavior, API, or assumption | Run the verification signal and inspect the diff |
-| Simple task takes many iterations | Wrong tool, wrong framing, or insufficient context | Do it manually or restart with a narrower task |
+## Match the Symptom to an Action
 
-## Recovery Pattern
+- **The same failed approach returns:** stop the session, preserve confirmed evidence, and restart with a smaller task.
+- **Checks fail differently after each retry:** revert unrelated changes and require diagnosis before more edits.
+- **Unrelated files are modified:** reject the diff and restate allowed files and non-goals in a fresh context.
+- **Tests change before the requirement is established:** restore the prior expectation and review intended behavior before continuing.
+- **Generated tests pass but behavior remains uncertain:** return to requirement-level evidence and use the test-review checklist in [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/#review-ai-drafted-tests-against-the-requirement).
+- **The agent invents APIs, packages, or flags:** inspect installed types, local examples, lockfiles, and current official documentation.
+- **A small task produces broad abstractions:** ask for the smallest patch and reject unjustified dependencies or layers.
+- **The baseline was already noisy:** document known failures and the exact signal expected to change.
+- **You cannot explain the proposed fix:** pause implementation for a file-level explanation or switch to manual work.
+- **Credentials, permissions, migration, or deployment appear unexpectedly:** stop and require a human decision before further edits.
 
-When the session degrades, reset the state before continuing:
+## One Reset Procedure
 
-```bash
-# Preserve work if needed
-git status --short
-git diff > /tmp/ai-attempt.diff
+Use this when the session is no longer producing better evidence.
 
-# Then revert unwanted changes using your normal git workflow
-```
+1. **Stop edits.** Do not add another correction to the same degraded context.
+2. **Inspect and preserve evidence.** Save only what helps the next attempt: changed files, failing command, relevant error, and any confirmed finding.
+3. **Return to a known state.** Revert unwanted changes using your normal version-control or editor workflow. Keep intentional work only if you understand and can review it.
+4. **Write a fresh task pack.** Include the task, expected behavior, relevant files or search target, constraints, allowed files, known failed approaches, and verification command.
+5. **Restart smaller.** Ask for diagnosis or a narrow plan before implementation. If the same approach recurs, switch to manual fallback or change the task framing.
 
-Then restart with a smaller prompt:
+Example restart prompt:
 
 ```text
-Current task:
+We are restarting after a failed attempt. Do not rely on the previous chat.
+
+Task:
 Expected behavior:
-Relevant files:
-Known failure signal:
+Current evidence:
+Known failed approaches:
+Relevant files or search target:
 Allowed files:
 Do not change:
 Verification command:
+
+First explain the likely root cause from the files. Do not edit until the plan is clear.
 ```
 
-## When to Switch to Manual Work
+## Specific Diagnostics
+
+### Broken Baseline
+
+Run or identify the check that establishes the starting state before evaluating the agent's change.
+
+Look for:
+
+- tests, type checks, linters, or builds that failed before the task
+- uncommitted changes unrelated to the task
+- missing dependencies, environment variables, services, or migrations
+- generated files that are out of date
+
+If the baseline cannot be made clean, record the known failures and the exact signal expected to improve.
+
+### Scope Drift
+
+Inspect the diff before allowing more edits.
+
+Ask:
+
+- Which files changed?
+- Which changes are unrelated to the requested behavior?
+- Did the agent alter public contracts, tests, generated files, dependencies, or configuration?
+- Can the task be reduced to fewer files or one behavior?
+
+Reject broad diffs when the task did not require them.
+
+### Weak or Circular Evidence
+
+If generated tests and code share the same assumption, passing results may not establish the requirement. Return to the expected behavior, restore any weakened assertion, and find an independent signal such as an existing regression test, manual reproduction, contract check, screenshot, log, or command output. Use the full test-review checklist in [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/#review-ai-drafted-tests-against-the-requirement).
+
+### Hallucinated API or Dependency
+
+Before installing or coding against a suggested API, verify it.
+
+Check:
+
+- installed package version and lockfile
+- local examples in the repository
+- type definitions, generated clients, or official documentation
+- package provenance and security policy before adding dependencies
+
+Do not let the agent solve a missing API by inventing an adapter, weakening types, or adding an unreviewed package.
+
+### Misread Local Convention
+
+When the agent contradicts project style or architecture, provide evidence from the repository rather than a vague correction.
+
+Use:
+
+- one nearby file that shows the desired pattern
+- the relevant project context file rule, if one exists
+- the specific boundary being preserved, such as routing, data access, auth, generated code, or server/client separation
+
+If the same local convention is missed repeatedly, update the appropriate project context file after the task, keeping the rule short and specific.
+
+### Consequential Boundary Triggered
+
+Stop implementation when the diff touches:
+
+- authentication, authorization, secrets, or tenant isolation
+- irreversible data migration or deletion
+- public API, CLI, event, or configuration contract
+- billing, deployment, messaging, or external side effects
+- concurrency, retries, locking, ordering, or idempotency
+
+Write the decision and review requirement before continuing. Do not let the agent resolve these choices implicitly by writing code.
+
+## Manual Fallback
+
+Manual work is the right recovery path when it produces a clearer result with less review risk.
 
 Switch to manual implementation when:
 
-- the same constraint has been explained repeatedly without improvement
-- a small manual fix is taking longer through the agent
+- you can make the fix faster than reviewing another broad attempt
+- the same approach recurs without better evidence
 - the agent keeps changing working code outside the task boundary
-- you cannot understand or maintain the proposed solution
+- the proposed solution relies on APIs or requirements you cannot verify
+- a consequential boundary requires judgment or verification the current workflow cannot provide
+- you cannot explain or maintain the resulting code
 
-Manual work is the correct fallback when it gives a clearer result with less review risk.
-
-## Specific Situations
-
-### Agent Breaks Working Code
-
-**Symptoms:** Each attempted fix introduces new failures. Tests that previously passed now fail.
-
-**Likely cause:** The agent does not have enough dependency or interface context.
-
-**Recovery:**
-
-1. Revert to the last working state.
-2. Identify the public interfaces and dependent tests.
-3. Add constraints such as:
-   - `Do not change the function signature.`
-   - `These tests must still pass: ...`
-   - `Only modify these files: ...`
-4. Ask for a smaller patch.
-
-### Agent Hallucinates APIs or Packages
-
-**Symptoms:** Suggested packages do not exist, or API methods are not available in the installed version.
-
-**Likely cause:** Training data is stale, documentation is missing from context, or similar libraries are being confused.
-
-**Recovery:**
-
-1. Provide current official documentation or local type definitions.
-2. Show a real example from the project or dependency docs.
-3. Require a verification step such as typecheck, build, or package-resolution check.
-4. Do not install suggested packages until their provenance is verified.
-
-### Agent Produces Over-Engineered Code
-
-**Symptoms:** A small request produces unnecessary factories, interfaces, abstractions, or broad rewrites.
-
-**Likely cause:** The task is underspecified or the agent is optimizing for generality.
-
-**Recovery:**
-
-1. State the smallest acceptable change.
-2. Provide a nearby example of the desired style.
-3. Add constraints:
-   - `No new abstractions.`
-   - `No new dependencies.`
-   - `Preserve public API.`
-4. Reject diffs that exceed the stated scope.
-
-### Agent Misreads the Codebase
-
-**Symptoms:** The change contradicts existing architecture, naming, or data flow.
-
-**Likely cause:** Local conventions were not visible enough.
-
-**Recovery:**
-
-1. Point to specific files that show the pattern.
-2. State the relevant architecture rule.
-3. Ask the agent to restate the pattern before editing.
-4. Add stable rules to `CLAUDE.md`, `AGENTS.md`, `.cursorrules`, or the equivalent context file when the same issue recurs.
-
-### Agent Repeats a Failed Approach
-
-**Symptoms:** The same suggestion returns after correction.
-
-**Likely cause:** The context is saturated with failed attempts.
-
-**Recovery:**
-
-1. Clear or restart the session.
-2. Revert failed edits.
-3. Summarize what was tried and why it failed.
-4. Ask for a different framing or solve the task manually.
+Manual fallback does not mean abandoning AI entirely. You can still use it to summarize files, explain an error, draft a checklist, or propose test cases while you make and review the actual change.
 
 ## Diagnostic Prompts
 
@@ -132,33 +140,25 @@ Use these before allowing more edits:
 ```text
 Before making changes, explain:
 1. What the current code does.
-2. What change I am asking for.
-3. Which files need to change.
+2. What behavior I am asking for.
+3. Which files need to change and why.
 4. Which files should not change.
-5. How you will verify the result.
+5. What evidence will show the task is complete.
 ```
 
 ```text
-List the assumptions you are making. Mark each assumption as verified or unverified.
+List the assumptions you are making. Mark each one as verified or unverified, and name the file, command, or source that verifies it.
 ```
 
 ```text
 What could go wrong with this approach? List the failure modes and the checks that would catch them.
 ```
 
-## Prevention Checklist
+## Prevention Link
 
-Before starting any significant task:
+After recovery, prevent recurrence by tightening the next task pack:
 
-- [ ] Baseline environment is clean or known failures are documented.
-- [ ] Context file is current and short.
-- [ ] Task is small enough to verify.
-- [ ] Success is tied to a test, build, screenshot, expected output, or review checklist.
-- [ ] You understand the code well enough to review the diff.
-- [ ] Allowed files and non-goals are explicit.
-
-## Next Steps
-
-- [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/) — procedures for verifiable work
-- [Common Mistakes](/ai-coding-primer/learn/intermediate/common-mistakes/) — recurring failure modes
-- [Project Context Files](/ai-coding-primer/learn/advanced/project-context-files/) — stable rules and local conventions
+- [Common Mistakes](/ai-coding-primer/learn/intermediate/common-mistakes/) — recognition and prevention of recurring failure modes
+- [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) — relevant context, tools, and constraints
+- [Effective Patterns](/ai-coding-primer/learn/intermediate/effective-patterns/) — verification and bounded-task patterns
+- [Project Context Files](/ai-coding-primer/learn/advanced/project-context-files/) — short persistent rules for local conventions

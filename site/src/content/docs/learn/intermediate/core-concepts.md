@@ -1,83 +1,44 @@
 ---
 title: Core Concepts
-description: Essential terminology for AI-assisted development.
+description: Shared glossary for AI-assisted development terms used in the primer.
 sidebar:
   order: 1
 ---
 
-This page defines terms used throughout the primer.
+This glossary defines terms used across the core curriculum. Follow the links for procedures and longer explanations.
 
-## Key Terms
+## Systems and Access
 
-| Term | Meaning |
-|---|---|
-| **Model** | The AI system that generates text, code, plans, or tool calls. Model choice affects reasoning ability, latency, cost, and supported inputs. |
-| **Provider** | The service or platform that hosts model access. Provider choice affects pricing, privacy terms, jurisdiction, quotas, and enterprise controls. |
-| **Agentic** | A workflow where the AI can take actions such as reading files, editing code, running commands, and iterating on errors. |
-| **Context window** | The amount of text and tool output the model can consider at once, measured in tokens. More context is not automatically better. |
-| **BYOK** | Bring Your Own Key. A setup where you provide model-provider credentials instead of using a bundled subscription. |
-| **MCP** | Model Context Protocol. A protocol for connecting AI tools to external services and data sources. |
-| **Skill** | A reusable instruction set, procedure, or convention that helps an agent perform a class of tasks consistently. |
+- **Model** — The AI system that generates text, code, plans, or tool calls. See [Models vs Providers](/ai-coding-primer/models/overview/).
+- **Provider** — The service or platform that supplies model access and sets operating terms such as privacy, jurisdiction, quotas, and billing. See [Models vs Providers](/ai-coding-primer/models/overview/).
+- **AI coding tool** — An editor, extension, terminal agent, or hosted environment that connects a model to code-editing workflows. See [Choose a Workflow and Stack](/ai-coding-primer/learn/beginner/choose-your-tool/).
+- **BYOK** — Bring Your Own Key: a setup where you provide model-provider credentials instead of using a bundled subscription. See [Billing Models](/ai-coding-primer/models/pricing/).
+- **Credential** — A secret, token, key, cookie, or account session that grants access to a system. Prefer no credentials for first tasks. See [Quick Security Checklist](/ai-coding-primer/security/checklist/).
+- **Network access** — Permission for the tool or its commands to reach external systems. Require approval unless the task explicitly needs it. See the [Setup Checklist](/ai-coding-primer/learn/beginner/setup-checklist/).
 
-## Context Terms
+## Workflow and Evidence
 
-| Term | Meaning |
-|---|---|
-| **Context engineering** | Designing what information, tools, and instructions the model receives for a task. |
-| **Context rot** | Degraded output caused by irrelevant, stale, contradictory, or excessive context. |
-| **Context budget** | A practical limit on how much information to load before attention and output quality degrade. |
-| **Subagent** | A separate AI session or agent used for investigation, summarization, or isolated work. |
+- **Agentic workflow** — A workflow where the AI can read files, edit code, run commands, observe results, and continue. The [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/) defines the canonical procedure.
+- **Autonomy** — How much the tool can do without another decision from a person.
+- **Authority** — What the tool is allowed to read, change, execute, or access. Bound autonomy and authority by task risk. See [Choose an Autonomy Mode](/ai-coding-primer/learn/intermediate/five-levels/).
+- **Prompt** — The instruction, question, or task description given to the AI.
+- **Verification** — Evidence that checks the result, such as a test, type check, lint command, build, screenshot, manual reproduction, or diff review.
+- **Baseline** — The known state before a task: current diff, existing failures, relevant checks, and allowed scope. Establish it with the [Setup Checklist](/ai-coding-primer/learn/beginner/setup-checklist/).
+- **Diff** — The exact set of file changes under review. Inspect it for scope growth and unintended edits.
+- **Permission boundary** — The files, commands, services, and actions the tool may use without further approval.
 
-## Workflow Terms
+## Context and Extensions
 
-| Term | Meaning |
-|---|---|
-| **Composer / agent mode** | A multi-file editing mode, distinct from single-line or single-file autocomplete. |
-| **Prompt** | The instruction, question, or task description given to the AI. |
-| **Verification** | A check that can falsify or confirm the result, such as a test, type check, lint command, build, screenshot, or expected output. |
-| **Close the loop** | Design the workflow so the agent can run or observe verification results and revise based on them. |
-
-## Context Budget
-
-There is no strong primary-source basis for a universal context threshold such as `40%`. Treat hard percentages as heuristics, not laws.
-
-The more defensible claim is narrower: output quality can degrade before the context window is full, especially when context is noisy. Use selective retrieval, compaction, and project context files instead of putting everything into one prompt.
-
-A practical context budget depends on:
-
-- model behavior
-- task complexity
-- relevance of loaded files
-- length and quality of tool output
-- amount of stale conversation history
-
-## Models vs Providers
-
-A model and a provider are separate decisions.
-
-**Model choice** affects:
-
-- reasoning ability
-- code-generation quality
-- supported modalities
-- latency
-- cost profile
-
-**Provider choice** affects:
-
-- data-retention terms
-- training exclusions
-- legal jurisdiction
-- enterprise controls
-- quota and billing model
-
-The same model may be available through multiple providers. For example, a model can be offered directly by its creator and also through cloud platforms such as AWS, Azure, or Google Cloud.
-
-This distinction matters for enterprise use because privacy, compliance, and procurement depend on provider terms, not only on model capability.
+- **Context** — The task instructions, files, tool output, rules, and conversation history the model can use for a response.
+- **Context window** — The maximum amount of context the model can consider at once. A larger window does not make irrelevant context useful. See [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/).
+- **Project context file** — A repository-scoped instruction file, such as `AGENTS.md`, `CLAUDE.md`, or tool-specific project rules, that records local commands, gotchas, and boundaries. See [Project Context Files](/ai-coding-primer/learn/advanced/project-context-files/).
+- **MCP** — Model Context Protocol, a way to expose external tools and data sources to AI applications. It can grant access; it does not define a safe workflow. See [MCP Deep Dive](/ai-coding-primer/learn/advanced/mcp-deep-dive/).
+- **Skill** — A reusable instruction set or procedure for recurring agent work. See [Skills Deep Dive](/ai-coding-primer/learn/advanced/skills/).
+- **Subagent** — A separate AI session or agent assigned to scoped research, review, or isolated work. See [Subagent Architectures](/ai-coding-primer/learn/advanced/subagents/).
+- **Harness** — The files, checks, saved state, permissions, and approval rules that keep long-running agent work recoverable. See [Agent Harness](/ai-coding-primer/learn/advanced/agent-harness/).
 
 ## Next Steps
 
-- [Choose an Autonomy Mode](/ai-coding-primer/learn/intermediate/five-levels/) — optional task-risk and authority lens
-- [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/) — choosing task context
-- [MCP Deep Dive](/ai-coding-primer/learn/advanced/mcp-deep-dive/) — external tool connectivity
-- [Skills Deep Dive](/ai-coding-primer/learn/advanced/skills/) — reusable instructions and procedures
+- If you are new, [choose a workflow and stack](/ai-coding-primer/learn/beginner/choose-your-tool/), then establish a baseline with the [Setup Checklist](/ai-coding-primer/learn/beginner/setup-checklist/).
+- For consequential repository work, use the [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/).
+- When context becomes the limiting factor, use [Context Engineering](/ai-coding-primer/learn/intermediate/context-engineering/).
