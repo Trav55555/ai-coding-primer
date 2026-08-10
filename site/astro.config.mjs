@@ -6,6 +6,7 @@ export default defineConfig({
 	site: 'https://trav55555.github.io',
 	base: '/ai-coding-primer',
 	redirects: {
+		'/models/selection-guide': '/ai-coding-primer/models/capabilities/',
 		'/templates/claude-md-bun': '/ai-coding-primer/templates/backend-context-files/',
 		'/templates/claude-md-csharp': '/ai-coding-primer/templates/backend-context-files/',
 		'/templates/claude-md-elixir': '/ai-coding-primer/templates/backend-context-files/',
@@ -69,13 +70,11 @@ export default defineConfig({
 					],
 				},
 				{
-					label: 'Choose a Stack',
+					label: 'Stack Reference',
 					items: [
-						{ label: 'Workflow and Stack Criteria', slug: 'tools/comparison' },
+						{ label: 'Stack Evaluation Criteria', slug: 'tools/comparison' },
 						{ label: 'Models vs Providers', slug: 'models/overview' },
 						{ label: 'Capability Patterns', slug: 'models/capabilities' },
-						{ label: 'Billing Models', slug: 'models/pricing' },
-						{ label: 'Selection Guide', slug: 'models/selection-guide' },
 					],
 				},
 				{
@@ -109,6 +108,7 @@ export default defineConfig({
 					items: [
 						{ label: 'Development Practices Timeline', slug: 'reference/development-practices-timeline' },
 						{ label: 'Reference Appendix', slug: 'reference/appendix' },
+						{ label: 'Billing Models', slug: 'models/pricing' },
 						{ label: 'Fast-Changing Information', slug: 'reference/fast-changing-info' },
 						{
 							label: 'Migration and Platform References',

@@ -99,5 +99,4 @@ Local models still require capable hardware. Treat hardware requirements as part
 
 ## Next Steps
 
-- [Capabilities Matrix](/ai-coding-primer/models/capabilities/): compare capability classes
-- [Selection Guide](/ai-coding-primer/models/selection-guide/): choose by workflow, privacy, and capability
+- [Capability Patterns](/ai-coding-primer/models/capabilities/): compare and evaluate capability classes for the task

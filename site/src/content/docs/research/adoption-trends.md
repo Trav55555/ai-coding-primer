@@ -28,7 +28,7 @@ Adoption evidence shows usage and sentiment. It does not, by itself, show causal
 - [Development Practices Timeline](/ai-coding-primer/reference/development-practices-timeline/) - place current agentic workflows in the longer history of programming work
 - [Governance and Rollout](/ai-coding-primer/team/governance/) - turn these trends into policy and rollout choices
 - [Team Threat Model](/ai-coding-primer/team/security-risks/) - understand the threat model behind the controls
-- [Workflow and Stack Criteria](/ai-coding-primer/tools/comparison/) - evaluate workflows after your constraints are clear
+- [Stack Evaluation Criteria](/ai-coding-primer/tools/comparison/) - evaluate workflows after your constraints are clear
 
 ## Sources
 

@@ -179,9 +179,9 @@ Platform engineering then addressed a consequence of this expansion: asking ever
 
 GitHub Copilot brought large-language-model completion into mainstream editors. Chat interfaces added explanation, debugging, test generation, and design discussion. Repository-aware agents can now search files, edit code, run commands, inspect failures, and prepare patches.
 
-The Software Engineering Benchmark (SWE-bench) improved evaluation by using real repository issues and tests. It still measures a bounded task. A passing patch does not show whether reviewers understand it, whether it is secure, or whether the next change will be easy.
+Benchmarks such as the Software Engineering Benchmark (SWE-bench) made repository-level tasks more visible. They remain bounded measurements rather than proof of maintainability, security, or team readiness. See [Benchmarks That Matter](/ai-coding-primer/models/benchmarks/) for interpretation guidance.
 
-Current agentic practice therefore relies on earlier engineering controls:
+Agentic workflows therefore inherit earlier engineering controls:
 
 - acceptance criteria and small changes
 - repositories and reversible history
@@ -190,11 +190,11 @@ Current agentic practice therefore relies on earlier engineering controls:
 - saved plans, checkpoints, and handoffs
 - production observability and human review
 
-Evidence on productivity remains conditional. The research nonprofit METR found that experienced open-source developers using the early-2025 tools in its study took 19% longer. Its 2026 update found weak signs of improvement but could not produce a reliable estimate because task selection and concurrent agents complicated the comparison. The 2025 report from the DevOps Research and Assessment (DORA) program found that AI magnifies strengths and weaknesses in the surrounding delivery system.
+For current evidence about productivity and organizational outcomes, use [Productivity Research](/ai-coding-primer/research/productivity/) and the [Research Overview](/ai-coding-primer/research/overview/).
 
 Coding agents can perform more of the execution. People and organizations still choose the goal, grant access, accept the change, operate the system, and answer for harm.
 
-**What appears durable:** delegated tool use, faster generation, and executable feedback inside the development environment.
+**What appears durable:** delegated tool use, machine-generated drafts, and executable feedback inside the development environment.
 
 **What remains unresolved:** maintainability, review burden, skill formation, security, provenance, liability, and labor displacement.
 
@@ -240,10 +240,6 @@ For practical guidance, continue with [Workflow Archetypes](/ai-coding-primer/le
 - [CNCF Platforms whitepaper](https://tag-app-delivery.cncf.io/whitepapers/platforms/)
 - [NIST Secure Software Development Framework](https://csrc.nist.gov/publications/detail/sp/800-218/final)
 
-### Agentic development evidence
+### Agentic development and benchmark context
 
 - [SWE-bench](https://arxiv.org/abs/2310.06770)
-- [METR early-2025 developer productivity study](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/)
-- [METR 2026 experiment update](https://metr.org/blog/2026-02-24-uplift-update/)
-- [DORA 2025 report](https://dora.dev/dora-report-2025/)
-- [Coding-agent context-files study](https://arxiv.org/abs/2602.11988)

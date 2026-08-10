@@ -145,7 +145,6 @@ Once you know your workflow shape, use these pages to narrow the stack:
 
 - [Models vs Providers](/ai-coding-primer/models/overview/)
 - [Capability Patterns](/ai-coding-primer/models/capabilities/)
-- [Selection Guide](/ai-coding-primer/models/selection-guide/)
 - [Billing Models](/ai-coding-primer/models/pricing/)
 
 These pages should support the workflow decision, not replace it.
@@ -158,7 +157,7 @@ For volatile details like benchmark movement, vendor snapshots, and privacy term
 
 ## Next Steps
 
-1. Use the [Workflow and Stack Criteria](/ai-coding-primer/tools/comparison/) only if two workflow shapes still fit.
+1. Use the [Stack Evaluation Criteria](/ai-coding-primer/tools/comparison/) only if two workflow shapes still fit.
 2. Configure the chosen workflow with the [Setup Checklist →](/ai-coding-primer/learn/beginner/setup-checklist/).
 3. Run one bounded task in [Your First Session →](/ai-coding-primer/learn/beginner/first-session/).
 

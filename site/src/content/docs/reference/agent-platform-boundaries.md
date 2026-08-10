@@ -96,7 +96,7 @@ Before installing or approving an agent platform, write down the answers.
 ## Decision Procedure
 
 1. **State the concrete job.** Example: "run a daily dependency triage and draft a pull request," not "deploy an agent platform."
-2. **Check whether a narrower workflow works.** Use [Workflow and Stack Criteria](/ai-coding-primer/tools/comparison/) before accepting platform complexity.
+2. **Check whether a narrower workflow works.** Use [Stack Evaluation Criteria](/ai-coding-primer/tools/comparison/) before accepting platform complexity.
 3. **Map triggers, data, authority, persistence, execution, and operations.** If one area is unknown, do not grant broad access.
 4. **Start in the lowest-risk environment.** Use test repositories, synthetic data, no production credentials, and no public inbound triggers.
 5. **Pin and inspect the supply chain.** Review repository, installer, package metadata, optional extras, plugins, skills, MCP servers, and lifecycle scripts.
@@ -150,6 +150,6 @@ Vendor security features can reduce risk, but they do not choose the correct aut
 - [Quick Security Checklist](/ai-coding-primer/security/checklist/) for basic data, credential, and permission controls
 - [Team Threat Model](/ai-coding-primer/team/security-risks/) for prompt injection, excessive agency, supply chain, persistent state, and incident ownership
 - [Technical Security and Data Paths](/ai-coding-primer/security/deep-dive/) for deeper inspection and containment work
-- [Workflow and Stack Criteria](/ai-coding-primer/tools/comparison/) for deciding whether an agent platform is necessary
+- [Stack Evaluation Criteria](/ai-coding-primer/tools/comparison/) for deciding whether an agent platform is necessary
 - [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/) for using narrower workflows when they fit
 - [Fast-Changing Information](/ai-coding-primer/reference/fast-changing-info/) for freshness rules on vendor claims

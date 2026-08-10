@@ -1,5 +1,5 @@
 ---
-title: Workflow and Stack Criteria
+title: Stack Evaluation Criteria
 description: Compare a short list of workflow shapes and stack options without turning the decision into a shopping spiral.
 ---
 
@@ -73,12 +73,26 @@ If the job is simply to edit and verify code in a repo, start with a narrower ID
 Before you commit, compare your shortlist on:
 
 1. **verification ergonomics** - is it easy to review diffs, run tests, and keep the loop honest?
-2. **privacy boundary** - where can code go, and under whose terms?
-3. **setup burden** - how much configuration is required before the workflow is productive?
-4. **switching cost** - how reversible is the decision if the tool stops fitting?
-5. **team rollout friction** - how well does it support policy, identity, and onboarding?
+2. **task shape** - does the work need deep reasoning, low latency, visual input, or long-running tool use?
+3. **privacy boundary** - where can code go, through which provider, and under whose terms?
+4. **setup burden** - how much configuration is required before the workflow is productive?
+5. **switching cost** - how reversible is the tool, provider, and model choice?
+6. **team rollout friction** - how well does it support policy, identity, and onboarding?
+7. **usage exposure** - can long context, retries, or background work create unpredictable quotas or cost?
 
 If a tool is impressive but makes verification awkward, it is the wrong fit for serious work.
+
+## Inspect Switching Cost
+
+Model switching is a property of the whole stack, not just a model picker. Check:
+
+- whether provider choice is fixed, account-managed, or configurable
+- whether switching requires UI selection, configuration changes, or a different client
+- which repository rules, tools, and context survive the switch
+- whether data terms and billing change with the selected provider or feature
+- whether the team can reverse the decision without rewriting its workflow
+
+Prefer a reversible setup during evaluation. Standardize only after representative tasks show that the additional configuration is worth maintaining.
 
 ## Good Decisions Usually Look Like This
 
@@ -104,7 +118,6 @@ Once you know your workflow shape, use these pages to narrow the stack:
 - [Models vs Providers](/ai-coding-primer/models/overview/)
 - [Capability Patterns](/ai-coding-primer/models/capabilities/)
 - [Billing Models](/ai-coding-primer/models/pricing/)
-- [Selection Guide](/ai-coding-primer/models/selection-guide/)
 
 Those pages should support the workflow decision, not replace it.
 

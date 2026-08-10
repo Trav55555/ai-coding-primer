@@ -53,15 +53,17 @@ Best for:
 Tradeoff:
 - large context windows help only when context is selective and well-structured
 
-### Local or open-weight models
+### Locally operated models
 
 Best for:
-- sensitive code
+- workflows that require local inference
 - offline or air-gapped environments
-- teams that prioritize control over frontier performance
+- teams prepared to operate model infrastructure
 
 Tradeoff:
-- capability may lag top hosted models, especially on hard agentic tasks
+- hardware, serving, and maintenance constraints can limit model choice and task performance
+
+Open weights do not establish a local or private boundary by themselves. Verify where inference, tools, logs, and supporting services run.
 
 ## How to Choose by Workflow
 
@@ -72,7 +74,29 @@ Tradeoff:
 | UI build from design references | Multimodal | Visual understanding changes the result |
 | Tight edit loop | Fast iteration | Lower latency keeps the workflow moving |
 | Large codebase exploration | Long-context | Breadth helps when paired with context hygiene |
-| Sensitive or regulated work | Local or open-weight | Operational boundaries may matter more than peak capability |
+| Work that prohibits hosted inference | Locally operated | Deployment boundaries determine which models are eligible |
+
+## Evaluate the Fit
+
+Do not choose from the class description alone. Test one or two representative tasks from the intended workflow:
+
+1. Give each candidate the same starting state, task boundary, and acceptance evidence.
+2. Keep permissions and external tools equivalent.
+3. Record whether the result meets the requirement, passes the relevant checks, and stays within scope.
+4. Record human review time, rework, failed attempts, latency, and usage consumption.
+5. Prefer the least costly capability class that repeatedly clears the task's quality and control requirements.
+
+A single successful demonstration is not enough for a team standard. Use more than one task, and include a failure or ambiguous requirement when recovery matters.
+
+## Combine Classes by Role
+
+One model does not need to serve every part of a workflow:
+
+- use a deeper reasoning class for ambiguous debugging, planning, or recovery
+- use a fast iteration class for completion and bounded edits
+- use a locally operated or otherwise approved path when the data boundary dominates the decision
+
+Use multiple classes only when the switching and configuration cost is lower than the measured benefit.
 
 ## Context Reality
 
@@ -94,13 +118,10 @@ For time-sensitive benchmark details, use [Benchmarks That Matter](/ai-coding-pr
 
 ## Evidence Status
 
-- `Research-backed principle`: verification, selective context, and review costs affect outcomes more reliably than leaderboard rank alone.
-- `Practitioner-backed taxonomy`: these capability classes are a workflow-first simplification used for everyday model selection.
-
-The taxonomy is not one benchmark's official ontology.
+`Synthesis`: these classes organize recurring workflow requirements. They are not one benchmark's official ontology, and the page does not claim that one class will outperform another on every repository.
 
 ## Next Steps
 
-- [Billing Models](/ai-coding-primer/models/pricing/): subscription, token, request, compute, and enterprise billing shapes
-- [Selection Guide](/ai-coding-primer/models/selection-guide/): practical decision heuristics
-- [Benchmarks That Matter](/ai-coding-primer/models/benchmarks/): appendix-style benchmark interpretation
+- [Stack Evaluation Criteria](/ai-coding-primer/tools/comparison/): choose the workflow, access model, and operating boundary
+- [Billing Models](/ai-coding-primer/models/pricing/): understand subscription, usage, request, compute, and contract billing
+- [Benchmarks That Matter](/ai-coding-primer/models/benchmarks/): interpret time-sensitive benchmark evidence
