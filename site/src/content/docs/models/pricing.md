@@ -83,6 +83,6 @@ Check the official product or API pricing page, account administration documenta
 
 ## Next Steps
 
-- [Stack Evaluation Criteria](/ai-coding-primer/tools/comparison/) — choose the workflow and access model first
+- [Choose a Workflow and Stack](/ai-coding-primer/learn/beginner/choose-your-tool/) — choose the workflow and access model first
 - [Capability Patterns](/ai-coding-primer/models/capabilities/) — test the least costly capability class that meets the task requirements
 - [Fast-Changing Information](/ai-coding-primer/reference/fast-changing-info/) — maintain volatile prices, quotas, and plan details

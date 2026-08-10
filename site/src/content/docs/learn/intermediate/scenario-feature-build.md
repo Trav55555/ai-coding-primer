@@ -1,197 +1,111 @@
 ---
 title: Scenario - Add a Feature
-description: A worked workflow for shipping new behavior with spec-first prompts and staged verification.
+description: A worked example of specification, consequential decisions, and thin-slice delivery.
 sidebar:
   order: 7
 ---
 
-Use this workflow when you are adding new behavior and want predictable delivery instead of one-shot generation. It is the feature-specific version of the [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/).
+This example adapts the [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/) to new behavior. The task-specific lesson is to settle expensive choices, then prove the design with the smallest useful end-to-end slice.
 
-## Outcome
+## Situation and Outcome
 
-Ship new functionality that meets explicit acceptance criteria and passes staged verification.
+Users need to opt in or out of product-update emails from an existing settings page. The change may touch storage, API behavior, UI, tests, and documentation.
 
-## Example Situation
+The outcome is one working preference that meets explicit acceptance criteria without expanding into a notification platform.
 
-You are adding email notification preferences to an existing app. Users should be able to opt in or out of product updates from the settings page. The feature touches schema, API, UI, tests, and docs.
-
-The mistake to avoid is asking for the whole feature at once. The safe workflow is spec → consequential decisions → thin slice or foundation step → verification gates.
-
-## Inputs You Need
-
-- a short spec (`spec.md` or equivalent)
-- acceptance criteria and non-goals
-- constraints: performance, privacy, compatibility, migration rules
-- examples of nearby patterns in the codebase
-- commands for tests, typecheck, lint, and build
-
-## Step 1: Write the Smallest Useful Spec
+## 1. Write the Smallest Useful Spec
 
 ```md
 # Email notification preferences
 
-## Goal
-Users can opt in or out of product update emails from settings.
-
 ## Acceptance criteria
-- Settings page shows a product updates toggle.
-- Current preference loads from the API.
+- Settings shows a product-updates toggle.
+- The current preference loads from the API.
 - Saving persists the preference.
-- Invalid preference values are rejected.
+- Invalid values are rejected.
 - Existing users default to opted out.
 
 ## Non-goals
-- No marketing campaign tooling.
-- No email delivery implementation.
-- No redesign of the settings page.
+- No campaign tooling or email delivery.
+- No additional notification categories.
+- No settings-page redesign.
 
 ## Constraints
-- Preserve existing settings API shape where possible.
-- Add migration safely for existing users.
-- Include tests for API validation and UI save behavior.
+- Preserve the existing settings API where possible.
+- Handle migration safely for existing users.
+- Test API validation and UI save behavior.
 ```
 
-This spec is not bureaucracy. It prevents the agent from inventing scope.
+Ask the agent to restate requirements, constraints, non-goals, and open questions. Resolve anything that could change schema, public API, permissions, migration, or user-visible behavior before code makes the choice for you.
 
-## Step 2: Ask for Requirements Restatement and Questions
+## 2. Choose the First Proof
 
-```text
-Read `spec.md` and restate:
-1. requirements
-2. constraints
-3. non-goals
-4. open questions
+Default to the smallest end-to-end behavior: one signed-in user can load, change, save, and reload the product-updates preference through the real path.
 
-Do not implement yet.
-Flag any ambiguity that could change database schema, API shape, or user-visible behavior.
-```
+Ask the plan to name:
 
-Answer the open questions before implementation. If you skip this step, the model will answer them for you in code.
-
-## Step 3: Ask for a Slice Plan
-
-```text
-Propose an implementation plan in small verifiable slices.
-
-Default preference:
-- choose the smallest end-to-end behavior that proves the design, such as one setting loading, saving, and reloading through the real path.
-
-Use a foundation-first slice only if a migration, public contract, permission rule, or other hard-to-reverse decision must be reviewed before behavior can safely use it.
-
-For each slice, list:
-- user-visible or system behavior proved by the slice
-- files likely touched
+- behavior proved by each slice
+- likely files
 - validation command
 - risk or rollback note
 - explicit stop point
 
-Do not edit yet.
-```
-
-Good plans name concrete files, checks, and the behavior each slice proves. Weak plans say "update backend" or "add frontend" without naming boundaries or evidence.
-
-## Step 4: Implement One Slice at a Time
-
-### Slice 1: One End-to-End Preference
-
-```text
-Implement only slice 1: one end-to-end product-updates preference.
-
-Behavior to prove:
-- A signed-in user can load the current product-updates preference.
-- The user can change it from the existing settings page.
-- After save and reload, the chosen value remains.
-
-Constraints:
-- Use existing settings endpoint and form patterns where possible.
-- Do not add email delivery, campaign tooling, or notification categories.
-- Do not change unrelated settings fields.
-
-After edits, run the test command from the plan and `npm run typecheck`.
-Stop after this slice and report changed files, assumptions, and results.
-```
-
-Review the diff before continuing. The first slice may still touch storage, server logic, and UI, but only enough to prove one real behavior.
+A plan such as “update backend, then frontend” names layers but proves no behavior.
 
 ### Foundation-first exception
 
-If the plan identifies an irreversible migration or public contract decision, split that foundation out first:
+Start with a foundation only when an irreversible migration, public contract, or permission boundary must be reviewed before behavior can safely depend on it. For example, approve and test the storage default and rollback assumptions before exposing it through the API. Then return to the smallest end-to-end slice.
+
+## 3. Implement One Slice
 
 ```text
-Implement only the approved foundation step: add the notification preference storage default.
+Implement only one product-updates preference.
 
-Constraints:
-- Include migration/default handling for existing users.
-- Add the migration or model test from the plan.
-- Do not expose UI or API behavior yet.
+Prove that a signed-in user can load it, change it on the existing settings page,
+and see the value persist after reload.
 
-Stop after the migration check and report rollback assumptions.
+Use existing endpoint and form patterns.
+Do not add delivery, campaigns, categories, or unrelated settings changes.
+Run the slice tests and typecheck, then stop.
+Report changed files, assumptions, results, and rollback risk.
 ```
 
-Then return to the smallest end-to-end behavior slice.
+Review the slice before continuing. Touching storage, server logic, and UI is acceptable when each change is necessary to prove this one behavior.
 
-## Step 5: Final Integration Pass
+## 4. Integrate Against the Spec
 
-```text
-Now perform a final integration review.
+After approved slices are complete, check every acceptance criterion and non-goal. Run focused checks first, then the broader checks for affected areas. Review human-owned decisions, unexpected files, documentation needs, and rollback—not only green tests.
 
-Check:
-- every acceptance criterion in `spec.md`
-- non-goals were not touched
-- tests cover persistence, API validation, and UI save behavior
-- no unrelated files changed
-- docs or release notes are updated if needed
+The gates are:
 
-Run final checks and produce a handoff summary with changed files and verification results.
-```
+1. **Spec:** requirements, non-goals, and open questions are explicit.
+2. **Plan:** each slice names behavior, files, evidence, and a stop point.
+3. **Slice:** focused checks pass and the diff proves only the intended behavior.
+4. **Integration:** all acceptance criteria and affected-area checks pass.
+5. **Review:** a human accepts assumptions, contracts, permissions, and rollback.
 
-## Verification Gates
+## If the Attempt Fails
 
-| Gate | What to check | When |
-|---|---|---|
-| Spec gate | requirements, non-goals, open questions | before code |
-| Plan gate | files, slices, commands, risks | before code |
-| Slice gate | behavior proved, local tests, focused diff, stop point honored | after each slice |
-| Integration gate | acceptance criteria and full checks | before handoff |
-| Review gate | human diff review and rollback path | before merge |
-
-## If the Agent Gets Stuck
-
-| Symptom | Recovery move |
+| Symptom | Next move |
 |---|---|
-| It starts building extra features | Re-anchor on non-goals and revert unrelated files |
-| It changes architecture too early | Ask for the smallest slice that fits existing patterns |
-| It cannot decide schema/API shape | Stop and write the decision explicitly into the spec |
-| Tests are added only after implementation | Ask for acceptance tests before continuing to next slice |
-| The conversation gets noisy | Compact into `STATE.md`: decisions, files changed, checks passed, remaining slices |
+| Extra features appear | Re-anchor on non-goals and revert unrelated files |
+| Architecture changes before behavior is proved | Ask for the smallest slice that fits existing patterns |
+| Schema or API shape remains ambiguous | Stop and record the decision in the spec |
+| Tests appear only after implementation | Add acceptance evidence before starting the next slice |
+| Context becomes noisy | Save decisions, files, checks, and the next slice; restart from that state |
 
-## Commit Checkpoints
+Use [When It's Not Working](/ai-coding-primer/learn/intermediate/troubleshooting/) when evidence stops improving. If checkpointing, align commits with independently verified slices rather than waiting until the entire feature is complete.
 
-For larger features, prefer small commits:
+## Done Check
 
-1. `test:` or `feat:` persistence and defaults
-2. `feat:` API/core behavior
-3. `feat:` UI integration
-4. `docs:` release note or usage docs if needed
+You should be able to show:
 
-Each commit should pass its relevant checks. Do not wait until the entire feature is done to discover the first slice was wrong.
+- which slice first proved the design
+- how each acceptance criterion was verified
+- that non-goals remain untouched
+- where the implementation deviated from the plan and why
+- how the change can be reversed
 
-## Done Criteria
+**Evidence status:** verification and human review are research-backed controls; this spec-and-slice teaching sequence is practitioner-backed editorial guidance.
 
-- all acceptance criteria are satisfied
-- non-goals remain untouched
-- checks pass at slice level and final integration level
-- spec and implementation are aligned
-- changed files match the approved plan or deviations are explained
-- rollback path is clear
-
-## Evidence Status
-
-- **Research-backed principle:** verification and human review loops improve downstream quality.
-- **Practitioner-backed workflow:** spec-first implementation reduces ambiguity and drift on larger tasks.
-
-This slice sequence and gating pattern are editorial guidance based on those patterns and the canonical [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/).
-
-## Choose the Next Path
-
-Return to the [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/) for the general procedure. If the next task should change structure without changing behavior, use [Scenario - Safe Refactor](/ai-coding-primer/learn/intermediate/scenario-safe-refactor/).
+For structural work that should preserve behavior, continue with [Scenario - Safe Refactor](/ai-coding-primer/learn/intermediate/scenario-safe-refactor/).

@@ -1,201 +1,112 @@
 ---
 title: Choose a Workflow and Stack
-description: Pick a setup that matches how you work, then narrow to current stack options without turning the decision into a shopping spiral.
+description: Pick a workflow, input surface, access model, and stack without starting from vendor rankings.
 sidebar:
   order: 3
 ---
 
-This decision is easier when you start with workflow shape instead of vendor rankings.
+Choose the way you want to work before comparing products. The right stack is the lightest one that fits the task, data boundary, and verification loop.
 
-Start with how you want to work. Once the workflow shape is right, the stack choice becomes narrower.
+By the end of this page, you should be able to name:
 
-## Quick Decision Tree
+- the workflow shape you need
+- the input and action surfaces the task requires
+- the acceptable access model
+- the checks that would make a tool usable in practice
 
-Use this before reading any vendor page:
+## Start With the Workflow Shape
 
-| If this describes you | Start with | Why |
+| If this describes the work | Start with | Main trade-off |
 |---|---|---|
-| "I want the simplest path and do most work in one editor" | integrated AI IDE | lowest setup burden and easiest navigation/edit loop |
-| "I already like my editor and do not want to migrate" | AI extension in your current editor | preserves existing habits while adding assistance |
-| "I think in tests, scripts, diffs, and terminal commands" | terminal agent workflow | strongest fit for explicit verification and long-running tasks |
-| "Code cannot leave a controlled boundary" | private/local version of the workflow above | deployment boundary is a filter on the workflow, not a separate goal |
-| "This is for a team" | governed pilot with one or two approved workflow shapes | policy, review, identity, and auditability matter before feature volume |
+| Most work happens in one editor | Integrated AI IDE | low setup burden; more opinionated environment |
+| You want to keep your current editor | AI extension | preserves habits; workflow can feel fragmented |
+| You work through tests, scripts, diffs, and commands | Terminal agent | explicit control; steeper terminal learning curve |
+| Work must continue in the background or arrive through chat/mobile | Agent platform or gateway | persistent operation; much larger security and operations surface |
+| Code cannot leave a controlled boundary | Local or controlled version of one of the above | stronger boundary; hardware or operational cost |
+| A team will standardize the workflow | Governed pilot of one or two shapes | policy and review work before broad access |
 
-Then pressure-test the choice with three questions:
+This table chooses the operating surface. To classify the work itself as a bug fix, feature, refactor, or exploration, use [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/).
 
-1. Can I easily review diffs and run verification?
-2. Do the privacy and deployment boundaries fit this codebase?
-3. Is the setup light enough that I will actually use it consistently?
+Use an agent platform only when the job needs scheduled work, persistent memory, multiple communication channels, or coordination beyond one repository. For ordinary repository editing, a narrower editor or terminal workflow is easier to audit. See [Agent Platform Boundaries](/ai-coding-primer/reference/agent-platform-boundaries/) for the larger threat and operations model.
 
-If the answer to any question is no, switch workflow shape before comparing tools.
+## Match the Input and Action Surface
 
-## Step 1: Choose Your Workflow Shape
+Some “which is best?” questions concern the surrounding product rather than only the model.
 
-### Integrated AI IDE
+### Documents and OCR
 
-Best when you want navigation, editing, and AI help in one place.
+- For born-digital PDF or office files, prefer direct text and structure extraction over optical character recognition (OCR).
+- For scans and photographs, require OCR or image input and test rotation, handwriting, poor contrast, tables, and multi-column layouts.
+- For high-volume forms or invoices, a dedicated document parser may produce more stable fields and coordinates than a general chat workflow.
+- For interpretation across text, tables, and images, use a multimodal model after testing the extraction path.
 
-Good fit:
-- you want one environment
-- you do frequent multi-file work
-- you value ease of use over maximum flexibility
+Evaluate representative documents. Check exact fields, page references, table structure, omissions, and unreadable regions. A fluent summary can hide recognition errors.
 
-### AI Extension in Your Current Editor
+### Voice
 
-Best when you already like your editor and want AI without changing your whole environment.
+“Voice support” can mean dictation, a live voice conversation, or spoken output. Test the surface you need for code symbols, filenames, interruption, transcript editing, latency, background noise, and audio retention. A strong text model does not guarantee a good voice interface.
 
-Good fit:
-- you want gradual adoption
-- you care about portability
-- you want flexibility in model or provider setup
+### Browser or computer use
 
-### Terminal Agent Workflow
+Computer-use agents suit repetitive, observable, reversible tasks such as collecting information from approved sites, entering test data, or following a documented internal procedure.
 
-Best when you think in commands, diffs, plans, and verification loops.
+Prefer browser-only or application-specific access. Require confirmation before sending, publishing, purchasing, deleting, changing account settings, or handling credentials. Use an API, script, or narrower tool when it can perform the same job more predictably.
 
-Good fit:
-- you already work in the terminal
-- you want explicit control
-- you want long-running or research-heavy agent workflows
+### Everyday assistance
 
-## Step 2: Use a Minimum Viable Setup Shape
+For explanation, drafting, summarization, planning, and short questions, prioritize low friction, acceptable data terms, and easy correction. For actions on files, accounts, or websites, prioritize permission controls, logs, and reversibility over conversational polish.
 
-After you choose the workflow shape, aim for one safe working setup before comparing extras:
+Use [Capability Patterns](/ai-coding-primer/models/capabilities/) to choose model capabilities and reasoning effort after the input and action surface is clear.
 
-- a local, version-controlled repository
-- an AI coding tool scoped to that repository
-- no production credentials in the tool's environment
-- approval required for network access, package installation, and other external actions
-- one existing targeted check you can run before and after the change
-- one bounded first task in one file or one small area
+## Choose the Access Model
 
-For example:
+| Access model | What changes | Main caveat |
+|---|---|---|
+| Hosted account | the product manages model access | less control over provider and retention boundaries |
+| Bring your own key (BYOK) | you choose provider credentials | more setup; provider terms still apply |
+| Local | inference runs on your infrastructure | hardware and capability constraints |
+| Self-hosted enterprise | the organization controls deployment | operational and procurement burden |
+
+A local model does not make every tool, index, log, or extension local. Map the complete data path.
+
+## Pressure-Test the Shortlist
+
+Compare no more than a few candidates on:
+
+1. **Verification ergonomics:** Can you inspect diffs and run the checks that matter?
+2. **Privacy boundary:** Where can code, prompts, tool output, audio, or documents go?
+3. **Permission control:** Can you restrict files, commands, network access, and external actions?
+4. **Setup burden:** Will the workflow remain understandable after configuration?
+5. **Switching cost:** Can you change the tool, provider, or model without rebuilding the workflow?
+6. **Usage exposure:** Can context, retries, or background work create unpredictable quotas or cost?
+7. **Team fit:** Does it support the required identity, policy, review, and audit path?
+
+Model switching is a property of the full stack. Check what happens to project rules, tools, context, billing, and data terms when the selected provider changes.
+
+## Establish a Minimum Safe Setup
+
+Before comparing optional features, prove one bounded workflow:
 
 ```text
 Repository: local checkout with a clean Git diff
 Tool access: read the repository; write only `tests/parser.test.ts`
 Credentials: none
 Approval required: network access, package installation, or other file changes
-Baseline and done signal: `npm test -- parser.test.ts`
+Done signal: `npm test -- parser.test.ts`
 First task: add one missing test case; stop before production-code edits
 ```
 
-This is the shape, not the procedure. Replace the command and file with repository-native equivalents. Use the [Setup Checklist](/ai-coding-primer/learn/beginner/setup-checklist/) to establish the baseline, permissions, and verification command.
+Replace the file and command with repository-native equivalents. If a product makes this boundary or verification awkward, remove it from the shortlist.
 
-## Step 3: Apply Your Operating Constraints
+## What to Check Live
 
-Now filter the workflow shape through your real constraints:
-
-- Do you need local or private execution?
-- Do you need enterprise identity, policy, or audit controls?
-- Do you need screenshots or other multimodal input?
-- Do you need easy model switching?
-
-These are filters, not separate workflow shapes.
-
-## Match the Input and Action Surface
-
-Some “which is best?” questions are really about the surrounding product, not only the model.
-
-### Documents and OCR
-
-First identify the document path:
-
-- For born-digital PDF or office files, prefer direct text and structure extraction over optical character recognition (OCR).
-- For scans and photographs, require OCR or image input and test rotation, handwriting, poor contrast, tables, and multi-column layouts.
-- For high-volume forms or invoices, a dedicated document parser may produce more stable fields and coordinates than a general chat workflow.
-- For interpretation across text, tables, and images, use a multimodal model after the extraction path is tested.
-
-Evaluate with representative documents and compare exact fields, page references, table structure, omissions, and unreadable regions. A fluent summary can still hide recognition errors.
-
-### Voice
-
-“Voice support” can mean three different things:
-
-- **dictation:** speech becomes text in an editor or prompt box
-- **voice conversation:** the system listens and responds while preserving conversational state
-- **spoken output:** text responses are read aloud
-
-Choose the surface you need. Test code symbols, filenames, interruption, transcript editing, latency, background noise, and where audio or transcripts are stored. A strong text model does not guarantee a good voice interface.
-
-### Browser or computer use
-
-Computer-use agents can operate a browser or desktop interface rather than only return instructions. They are useful for repetitive, observable, reversible tasks such as collecting information from approved sites, entering test data, or following a documented internal procedure.
-
-Start with browser-only or application-specific access. Require confirmation before sending messages, publishing, purchasing, deleting, changing account settings, or handling credentials. Avoid broad desktop authority when an API, script, or narrower tool can perform the same job more predictably.
-
-### Everyday assistance
-
-For explanation, drafting, summarization, planning, and short questions, prioritize low friction, acceptable data terms, and easy correction. For actions on files, accounts, or websites, prioritize permission controls, logs, and reversibility over conversational polish.
-
-Use [Capability Patterns](/ai-coding-primer/models/capabilities/) to select model capabilities and reasoning effort after the input and action surface is clear.
-
-## Step 4: Pick a Stack Bundle
-
-Here are the only bundles most readers need to consider first:
-
-- integrated AI IDE stack
-- current-editor plus AI extension stack
-- terminal agent stack
-- private or local version of one of the above
-- enterprise-managed version of one of the above
-
-The goal is not to find the perfect product. The goal is to pick a setup you can actually operate well.
-
-## Step 5: Compare the Criteria That Matter
-
-Before you commit, compare your short list on:
-
-- verification ergonomics
-- privacy and deployment boundary
-- setup burden
-- switching cost
-- team rollout friction
-
-If a tool is impressive but makes verification awkward, it is the wrong fit for serious work.
-
-## Opinionated Defaults
-
-### If you are new
-
-Start with the lightest workflow that fits your existing habits.
-
-### If you are editor-first
-
-Start with an integrated IDE or an extension in the editor you already trust.
-
-### If you are terminal-first
-
-Start with a terminal agent stack and optimize for explicit diffs, tests, and control.
-
-### If privacy is the main constraint
-
-Choose the workflow shape first, then pick the local or tightly controlled version of it.
-
-### If you are evaluating for a team
-
-Prioritize deployment boundary, identity, auditability, and verification ergonomics before feature volume.
-
-## Where Models and Providers Fit
-
-Once you know your workflow shape, use these pages to narrow the stack:
-
-- [Models vs Providers](/ai-coding-primer/models/overview/)
-- [Capability Patterns](/ai-coding-primer/models/capabilities/)
-- [Billing Models](/ai-coding-primer/models/pricing/)
-
-These pages should support the workflow decision, not replace it.
-
-## What This Page Does Not Do
-
-This page helps you choose a working setup. It does not maintain a giant live market matrix.
-
-For volatile details like benchmark movement, vendor snapshots, and privacy terms, use the [Reference Appendix](/ai-coding-primer/reference/appendix/).
+Vendor features, models, quotas, prices, privacy terms, and enterprise controls change. Use product pages only as current lookup material after the workflow and boundaries are known. The [Reference Appendix](/ai-coding-primer/reference/appendix/) explains where those snapshots live and what must be rechecked.
 
 ## Next Steps
 
-1. Use the [Stack Evaluation Criteria](/ai-coding-primer/tools/comparison/) only if two workflow shapes still fit.
-2. Configure the chosen workflow with the [Setup Checklist →](/ai-coding-primer/learn/beginner/setup-checklist/).
-3. Run one bounded task in [Your First Session →](/ai-coding-primer/learn/beginner/first-session/).
+1. Establish permissions and baseline checks with the [Setup Checklist](/ai-coding-primer/learn/beginner/setup-checklist/).
+2. Run one bounded task in [Your First Session](/ai-coding-primer/learn/beginner/first-session/).
+3. Apply the stack to a task type through [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/) and one worked scenario.
+4. For team use, apply [Governance and Rollout](/ai-coding-primer/team/governance/) before standardizing.
 
-If you have not classified the code or account boundary, return to the [Quick Security Checklist](/ai-coding-primer/security/checklist/) before connecting a repository.
+If you cannot classify the code or account boundary, return to the [Quick Security Checklist](/ai-coding-primer/security/checklist/) before connecting a repository.

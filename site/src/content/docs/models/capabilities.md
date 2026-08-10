@@ -170,6 +170,6 @@ For time-sensitive benchmark details, use [Benchmarks That Matter](/ai-coding-pr
 
 ## Next Steps
 
-- [Stack Evaluation Criteria](/ai-coding-primer/tools/comparison/): choose the workflow, access model, and operating boundary
+- [Choose a Workflow and Stack](/ai-coding-primer/learn/beginner/choose-your-tool/): choose the workflow, access model, and operating boundary
 - [Billing Models](/ai-coding-primer/models/pricing/): understand subscription, usage, request, compute, and contract billing
 - [Benchmarks That Matter](/ai-coding-primer/models/benchmarks/): interpret time-sensitive benchmark evidence

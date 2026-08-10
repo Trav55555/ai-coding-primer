@@ -81,7 +81,7 @@ If the tool can read private code, retain prompts, run commands, install package
 
 ## Continue the Review
 
-- [Stack Evaluation Criteria](/ai-coding-primer/tools/comparison/) for choosing the lightest workflow shape that fits the job
+- [Choose a Workflow and Stack](/ai-coding-primer/learn/beginner/choose-your-tool/) for choosing the lightest workflow shape that fits the job
 - [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/) for matching the replacement to bug fixes, features, refactors, or exploration
 - [Quick Security Checklist](/ai-coding-primer/security/checklist/) for data, credential, and permission boundaries
 - [Team Threat Model](/ai-coding-primer/team/security-risks/) for authority, egress, unattended work, and incident ownership

@@ -13,6 +13,14 @@ This appendix holds useful but fast-aging reference material: vendor-specific to
 - retired-product migration notes and broader agent-platform boundary examples
 - billing, access-model, and product details that may change faster than workflow guidance
 
+## Tool Snapshots
+
+These pages are current lookup notes, not recommended-product rankings:
+
+- **IDEs:** [Antigravity](/ai-coding-primer/tools/ides/antigravity/), [Cursor](/ai-coding-primer/tools/ides/cursor/), [Kiro](/ai-coding-primer/tools/ides/kiro/), [Devin Desktop](/ai-coding-primer/tools/ides/windsurf/), [Zed](/ai-coding-primer/tools/ides/zed/)
+- **Extensions:** [Amazon Q Developer](/ai-coding-primer/tools/extensions/amazon-q/), [Cody](/ai-coding-primer/tools/extensions/cody/), [Continue](/ai-coding-primer/tools/extensions/continue-dev/), [GitHub Copilot](/ai-coding-primer/tools/extensions/copilot/), [Tabnine](/ai-coding-primer/tools/extensions/tabnine/)
+- **Terminal tools:** [Aider](/ai-coding-primer/tools/cli/aider/), [Claude Code](/ai-coding-primer/tools/cli/claude-code/), [Codex CLI](/ai-coding-primer/tools/cli/codex-cli/), [OpenCode](/ai-coding-primer/tools/cli/opencode/), [Pi](/ai-coding-primer/tools/cli/pi/)
+
 ## Review Cadence
 
 Appendix content is reviewed monthly or trimmed aggressively when it stops being worth maintaining.

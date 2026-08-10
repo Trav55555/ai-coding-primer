@@ -1,207 +1,101 @@
 ---
 title: Scenario - Safe Refactor
-description: A worked workflow for improving structure while preserving behavior.
+description: A worked example of characterization tests and seam-by-seam structural change.
 sidebar:
   order: 8
 ---
 
-Use this workflow when code quality is poor but functional behavior should remain stable. It is the refactor version of the [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/).
+This example adapts the [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/) to structural work. The task-specific lesson is to preserve observed behavior while changing one reviewable seam at a time.
 
-## Outcome
+## Situation and Outcome
 
-Improve maintainability with behavior-preserving changes and low review risk.
+A 250-line invoice function validates input, queries data, applies business rules, and formats a response. It works, but changes are risky.
 
-## Example Situation
+The outcome is clearer structure under characterization tests, without feature work, contract changes, opportunistic bug fixes, or broad formatting churn.
 
-A service has one 250-line function that validates input, queries the database, applies business rules, and formats a response. It works, but every change is risky. You want to extract seams and improve names without changing behavior.
-
-The workflow is not "make this cleaner." The workflow is characterize → choose seam → refactor one step → verify → repeat.
-
-## Inputs You Need
-
-- characterization tests for current behavior
-- explicit non-goals: no feature work, no behavior changes, no opportunistic bug fixes
-- target seam or module to improve
-- examples of nearby clean code patterns
-- baseline test command
-
-## Step 1: Declare Non-Goals
+## 1. Declare the Boundary
 
 ```text
 This is a behavior-preserving refactor.
 
-Non-goals:
-- no feature additions
-- no public API changes
-- no schema changes
-- no opportunistic bug fixes
-- no broad formatting-only churn outside touched code
-
-Target seam:
+Target:
 - src/billing/calculateInvoice.ts
 
 Goal:
-Extract validation and formatting helpers so the core calculation is easier to read.
+- Extract validation and response formatting so the calculation is easier to read.
+
+Non-goals:
+- no feature, API, schema, or behavior changes
+- no opportunistic bug fixes
+- no unrelated formatting churn
 ```
 
-This matters because AI agents often "improve" behavior while refactoring. That turns a reviewable cleanup into an unreviewable mixed change.
+“Make this cleaner” gives the agent permission to mix design, behavior, and style. A named seam and explicit non-goals keep the change reviewable.
 
-## Step 2: Establish a Baseline
+## 2. Characterize Current Behavior
 
-Run existing tests first.
+Run the existing focused tests and typecheck. If coverage is weak, add characterization cases before structural edits:
 
-```bash
-npm test -- billing
-npm run typecheck
-```
-
-If coverage is weak, add characterization tests before refactoring.
-
-```text
-Before refactoring, inspect current behavior and propose characterization tests for:
 - valid invoice with discount
 - invalid line item
 - tax-exempt customer
-- rounding behavior
+- current rounding behavior
 
-Do not change implementation yet.
-```
+Characterization tests do not claim that existing behavior is ideal. They establish the behavior this refactor must preserve.
 
-Characterization tests do not prove the behavior is ideal. They prove the refactor preserves the behavior you currently have.
+## 3. Plan Mechanical Steps
 
-## Step 3: Ask for a Refactor Plan With Seams
+Ask for three to five small steps. Each step should name the exact move, why it preserves behavior, files touched, and the check to run.
 
-```text
-Inspect `src/billing/calculateInvoice.ts` and nearby tests.
+A useful plan looks like:
 
-Propose a behavior-preserving refactor plan with 3-5 small steps.
-For each step, list:
-- exact change
-- why it is behavior-preserving
-- files touched
-- test command to run
+1. extract `validateLineItems()` without logic changes
+2. extract `applyDiscount()` while preserving rounding
+3. extract `formatInvoiceResponse()` while preserving output shape
+4. rename local variables inside the seam
 
-Do not edit yet.
-```
+“Modernize the billing module,” “improve architecture,” and “fix edge cases” are not behavior-preserving steps.
 
-A good plan says:
-
-1. extract `validateLineItems()` with no logic changes
-2. extract `applyDiscount()` preserving current rounding
-3. extract `formatInvoiceResponse()` preserving output shape
-4. rename local variables for clarity
-
-A bad plan says:
-
-- "modernize billing module"
-- "improve architecture"
-- "fix edge cases"
-
-Those may be useful later, but they are not a safe refactor plan.
-
-## Step 4: Execute One Mechanical Step
+## 4. Change One Seam at a Time
 
 ```text
-Perform only step 1: extract `validateLineItems()`.
-
-Rules:
-- preserve behavior exactly
-- do not change public exports except adding the helper if necessary
-- do not modify tests unless the move requires import path updates
-- run `npm test -- billing` afterward
-- stop after this step and report the diff summary
+Perform only step 1: extract validateLineItems().
+Preserve behavior and public exports.
+Do not change test expectations.
+Run `npm test -- billing` and stop with a diff summary.
 ```
 
-After the step:
+After each step:
 
-- inspect the diff
-- check that code moved more than it changed
-- confirm tests passed
-- decide whether to continue
+1. inspect whether code moved more than it changed
+2. compare the diff with the declared seam
+3. re-run the same baseline
+4. checkpoint only if the move is independently reviewable; name the move precisely, such as `refactor: extract invoice line item validation`
 
-## Step 5: Repeat With Diff Discipline
+If the agent discovers a bug, record a follow-up instead of repairing it inside the refactor. Mixing a real behavior change with structural movement destroys the evidence that the refactor preserved behavior.
 
-For each next step, keep the prompt narrow:
+## If the Attempt Fails
 
-```text
-Perform only step 2 from the approved plan.
-Preserve behavior exactly.
-Run the same baseline tests afterward.
-Stop after reporting results.
-```
-
-If the agent discovers a real bug during refactor, do not let it fix it inline. Capture it as a follow-up.
-
-```text
-Potential existing bug discovered: tax-exempt customers with discounts appear to round differently.
-Do not fix in this refactor. Add a TODO or create a follow-up issue after the behavior-preserving change is merged.
-```
-
-## Verification Loop
-
-1. Establish baseline tests.
-2. Add characterization tests if coverage is weak.
-3. Apply one structural change.
-4. Re-run tests.
-5. Inspect diff for behavior changes.
-6. Commit or checkpoint.
-7. Repeat until the target seam is cleaner.
-
-## Review Checklist
-
-Before merge, ask:
-
-- Did public behavior change?
-- Did test expectations change? If yes, why?
-- Are there unrelated formatting changes?
-- Are renamed symbols local to the seam?
-- Can the reviewer understand the refactor step-by-step?
-- Were bug fixes or feature changes split into follow-ups?
-
-## If the Agent Gets Stuck
-
-| Symptom | Recovery move |
+| Symptom | Next move |
 |---|---|
-| It rewrites the whole module | Revert and ask for one extract-method step only |
-| It changes tests to match new behavior | Revert test changes and restate preservation rule |
-| It finds a bug | Log follow-up; do not mix with refactor |
-| The diff is too big to review | Split by seam or helper extraction |
-| It keeps arguing for architecture changes | Ask for local readability improvements only |
+| The whole module is rewritten | Revert and request one extract-method step |
+| Tests change to match new behavior | Restore the characterization boundary |
+| A bug appears | Record a separate bug task; do not mix it into this diff |
+| The diff is hard to review | Split by seam or helper extraction |
+| The agent argues for a new architecture | Return to local readability and the approved target |
 
-## Commit Checkpoints
+Use [When It's Not Working](/ai-coding-primer/learn/intermediate/troubleshooting/) when a smaller restart is required.
 
-Use commits that preserve reviewability:
+## Done Check
 
-```text
-refactor: extract invoice line item validation
-refactor: isolate invoice discount calculation
-refactor: separate invoice response formatting
-```
+You should be able to show:
 
-Avoid:
+- the before-and-after seam
+- the characterization evidence that stayed stable
+- that public behavior and test expectations did not change
+- that feature and bug work moved to follow-ups
+- that each step is understandable without trusting the agent
 
-```text
-refactor: improve billing
-```
+**Evidence status:** smaller diffs reduce review and rework risk; characterization testing and seam-by-seam refactoring are practitioner-backed guidance rather than a universally validated sequence.
 
-The reviewer should know exactly what behavior-preserving move happened.
-
-## Done Criteria
-
-- behavior remains unchanged under tests
-- characterization tests cover important current behavior
-- complexity or readability measurably improves
-- diff remains focused on the declared seam
-- feature work and bug fixes are separated clearly
-- reviewer can follow the sequence without trusting the agent
-
-## Evidence Status
-
-- **Research-backed principle:** review burden and rework costs increase when change scope balloons.
-- **Practitioner-backed workflow:** characterization tests and seam-by-seam refactoring keep AI edits controllable.
-
-This concrete gating workflow is editorial guidance based on those patterns and the canonical [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/).
-
-## Choose the Next Path
-
-Return to the [Agentic Development Loop](/ai-coding-primer/learn/intermediate/agentic-development-loop/) for the general procedure. If the next task type is unclear, use [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/) as the selector.
+If the next task type is unclear, use [Workflow Archetypes](/ai-coding-primer/learn/intermediate/workflow-archetypes/) as the selector.

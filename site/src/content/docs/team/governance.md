@@ -252,6 +252,6 @@ Adapt the scope and risk tiers to your organization. The important requirement i
 - [Privacy Review Framework](/ai-coding-primer/security/privacy-comparison/) — vendor terms, data handling, and procurement review
 - [Team Threat Model](/ai-coding-primer/team/security-risks/) — workflow threats and required controls
 - [Technical Security and Data Paths](/ai-coding-primer/security/deep-dive/) — technical inspection and containment
-- [Stack Evaluation Criteria](/ai-coding-primer/tools/comparison/) — use after workflow and risk boundaries are clear
+- [Choose a Workflow and Stack](/ai-coding-primer/learn/beginner/choose-your-tool/) — use after workflow and risk boundaries are clear
 - [Adoption Signals](/ai-coding-primer/research/adoption-trends/) — adoption evidence and caveats
 - [Code Quality & Security](/ai-coding-primer/research/code-quality-security/) — quality and security findings
