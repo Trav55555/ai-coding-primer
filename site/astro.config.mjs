@@ -5,6 +5,9 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
 	site: 'https://trav55555.github.io',
 	base: '/ai-coding-primer',
+	redirects: {
+		'/tools/cli/gemini-cli': '/ai-coding-primer/reference/retired-and-transitioned-tools/',
+	},
 	integrations: [
 		starlight({
 			customCss: ['/src/styles/custom.css'],
@@ -85,6 +88,19 @@ export default defineConfig({
 						{ label: 'Reference Appendix', slug: 'reference/appendix' },
 						{ label: 'Fast-Changing Information', slug: 'reference/fast-changing-info' },
 						{
+							label: 'Migration and Platform References',
+							items: [
+								{
+									label: 'Retired and Transitioned Tools',
+									slug: 'reference/retired-and-transitioned-tools',
+								},
+								{
+									label: 'Agent Platform Boundaries',
+									slug: 'reference/agent-platform-boundaries',
+								},
+							],
+						},
+						{
 							label: 'Research and Evidence',
 							items: [
 								{ label: 'Research Overview', slug: 'research/overview' },
@@ -117,7 +133,16 @@ export default defineConfig({
 							label: 'Agent Platform References',
 							items: [{ autogenerate: { directory: 'tools/agents' } }],
 						},
-						{ label: 'Templates', items: [{ autogenerate: { directory: 'templates' } }] },
+						{
+							label: 'Examples',
+							items: [
+								{ label: 'Context-File Examples', slug: 'templates' },
+								{ label: 'Frontend Context File', slug: 'templates/frontend-context-file' },
+								{ label: 'Backend Context Files', slug: 'templates/backend-context-files' },
+								{ label: 'Hypermedia Context File', slug: 'templates/hypermedia-context-file' },
+								{ label: 'Editor Project Rules', slug: 'templates/editor-project-rules' },
+							],
+						},
 					],
 				},
 			],

@@ -1,67 +1,44 @@
 ---
-title: Templates Overview
-description: Starter CLAUDE.md and .cursorrules examples for common tech stacks.
+title: Context-File Examples
+description: Four examples that teach distinct project-instruction patterns without becoming a framework catalog.
 sidebar:
   order: 0
 ---
 
+Use an example after you understand the durable guidance in [Project Context Files](/ai-coding-primer/learn/advanced/project-context-files/). Choose by the boundary the agent must preserve, not by searching for an exact framework name.
+
 :::note[Freshness metadata]
-Reviewed: May 2026. Volatile fields: exact feature support, pricing, quotas, privacy terms, and enterprise controls. Verify live vendor docs before choosing or standardizing on this reference.
+Reviewed: August 2026. Editor-specific file formats and stack commands can change. Verify exact commands in the repository and exact rule formats in current tool documentation.
 :::
 
+## Choose an Example
 
-Use these as starter examples, not as a configuration catalog to copy blindly. Each template is designed to be minimal—under 35 lines—following the [best practices](/ai-coding-primer/learn/advanced/project-context-files/) for context files.
+| Example | Use it when the agent needs to preserve |
+|---|---|
+| [Frontend Context File](/ai-coding-primer/templates/frontend-context-file/) | browser/server boundaries, routing, UI architecture, accessibility checks, and production builds |
+| [Backend Context Files](/ai-coding-primer/templates/backend-context-files/) | service layers, database safety, migrations, generated files, and operational verification |
+| [Hypermedia Context File](/ai-coding-primer/templates/hypermedia-context-file/) | server-rendered HTML, fragment responses, progressive enhancement, and the absence of an SPA |
+| [Editor Project Rules](/ai-coding-primer/templates/editor-project-rules/) | path- or task-scoped instructions in an editor's current rule format |
 
-If your stack is not listed, adapt the closest example. The important pattern is not the stack name; it is short commands, local gotchas, verification rules, and boundaries the agent would otherwise miss.
+These examples are deliberately not organized as one page per language or framework. Most projects need the same small set of information:
 
-## Template Growth Rule
+- commands that actually run in the repository
+- non-obvious architecture boundaries
+- repeated local mistakes
+- security or data constraints
+- checks that show whether the work is correct
 
-Do not add a new template just because a framework exists. Add one only when it teaches a meaningfully different context-file pattern.
+## Adapt, Do Not Copy
 
-Prefer improving the canonical [Project Context Files](/ai-coding-primer/learn/advanced/project-context-files/) guide over expanding this list. A smaller set of accurate examples is better than a broad catalog that quietly goes stale.
+1. Start with the example whose boundary matches the project.
+2. Replace every placeholder with a real path, command, or policy.
+3. Delete sections that do not prevent a likely mistake.
+4. Keep the file short enough to review with code changes.
+5. Run every safe command named in the file.
+6. Add a rule only after evidence of a repeated failure.
 
-## CLAUDE.md Templates
+A context file is not an access control or a substitute for tests. Use [Quick Security Checklist](/ai-coding-primer/security/checklist/) for permissions and data boundaries, and use the repository's normal build, test, review, and rollback process.
 
-For Claude Code, Zed, Continue.dev, and tools that read `CLAUDE.md`:
-
-| Stack | Lines | Download |
-|-------|-------|----------|
-| [Node.js/Express](/ai-coding-primer/templates/claude-md-nodejs/) | 34 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/claude-md/nodejs.md) |
-| [Python/FastAPI](/ai-coding-primer/templates/claude-md-python/) | 33 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/claude-md/python.md) |
-| [TypeScript/React](/ai-coding-primer/templates/claude-md-typescript-react/) | 33 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/claude-md/typescript-react.md) |
-| [Next.js](/ai-coding-primer/templates/claude-md-nextjs/) | 27 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/claude-md/nextjs.md) |
-| [C#/.NET](/ai-coding-primer/templates/claude-md-csharp/) | 28 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/claude-md/csharp.md) |
-| [Go](/ai-coding-primer/templates/claude-md-go/) | 34 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/claude-md/go.md) |
-| [Rust](/ai-coding-primer/templates/claude-md-rust/) | 34 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/claude-md/rust.md) |
-
-## .cursorrules Templates
-
-For Cursor IDE (save as `.cursorrules` in project root):
-
-| Stack | Lines | Download |
-|-------|-------|----------|
-| [TypeScript](/ai-coding-primer/templates/cursorrules-typescript/) | 27 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/cursorrules/typescript.mdc) |
-| [Python](/ai-coding-primer/templates/cursorrules-python/) | 28 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/cursorrules/python.mdc) |
-| [Node.js](/ai-coding-primer/templates/cursorrules-nodejs/) | 27 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/cursorrules/nodejs.mdc) |
-| [Next.js](/ai-coding-primer/templates/cursorrules-nextjs/) | 26 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/cursorrules/nextjs.mdc) |
-| [C#/.NET](/ai-coding-primer/templates/cursorrules-csharp/) | 27 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/cursorrules/csharp.mdc) |
-| [Go](/ai-coding-primer/templates/cursorrules-go/) | 27 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/cursorrules/go.mdc) |
-| [Rust](/ai-coding-primer/templates/cursorrules-rust/) | 27 | [Raw](https://raw.githubusercontent.com/Trav55555/ai-coding-primer/main/templates/cursorrules/rust.mdc) |
-
-## How to Use
-
-1. **Choose** the closest example for your workflow and stack
-2. **Rename** to `CLAUDE.md` (or `.cursorrules` for Cursor)
-3. **Delete irrelevant lines** before adding anything new
-4. **Customize** the `[placeholders]` with your project details
-5. **Add gotchas** only after you see the AI make repeatable mistakes
-
-## Template Philosophy
-
-These templates follow three principles:
-
-1. **Minimal** — Under 35 lines. Only include what causes mistakes.
-2. **Actionable** — Commands, gotchas, and conventions. Not documentation.
-3. **Evolvable** — Start small, add when the AI makes mistakes, remove when redundant.
-
-See [Project Context Files](/ai-coding-primer/learn/advanced/project-context-files/) for the full best practices guide.
+:::caution[Route migration]
+Older stack-specific examples remain available at their existing URLs while route-preservation behavior is tested. They are no longer the recommended entry point and may become redirects or short tombstones in a later batch.
+:::

@@ -26,7 +26,7 @@ A practical guide to AI-assisted engineering workflows, tool boundaries, context
 | [OpenCode](https://trav55555.github.io/ai-coding-primer/tools/cli/opencode/) | BYOK terminal agent |
 | [Claude Code](https://trav55555.github.io/ai-coding-primer/tools/cli/claude-code/) | Anthropic terminal agent |
 | [Aider](https://trav55555.github.io/ai-coding-primer/tools/cli/aider/) | Git-oriented pair-programming CLI |
-| [Gemini CLI](https://trav55555.github.io/ai-coding-primer/tools/cli/gemini-cli/) | Deprecated/perishable reference; verify Google's replacement path |
+| [Retired and Transitioned Tools](https://trav55555.github.io/ai-coding-primer/reference/retired-and-transitioned-tools/) | Migration checks for changed or sunset tool workflows |
 | [Pi Coding Agent](https://trav55555.github.io/ai-coding-primer/tools/cli/pi/) | Minimal extensible harness with skills, extensions, and packages |
 
 ### Agent Platforms

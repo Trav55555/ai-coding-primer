@@ -10,6 +10,7 @@ This appendix holds useful but fast-aging reference material: vendor-specific to
 - [fast-changing information](/ai-coding-primer/reference/fast-changing-info/) that needs a review cadence
 - benchmark interpretation and snapshot-heavy model references
 - vendor-specific IDE, extension, and CLI pages
+- retired-product migration notes and broader agent-platform boundary examples
 - billing, access-model, and product details that may change faster than workflow guidance
 
 ## Review Cadence
@@ -22,7 +23,10 @@ If you are deciding how to work, start with the workflow pages first. Use this a
 
 ## Start Here
 
-- [Fast-Changing Information](/ai-coding-primer/reference/fast-changing-info/)
-- [Benchmarks That Matter](/ai-coding-primer/models/benchmarks/)
-- [Billing Models](/ai-coding-primer/models/pricing/)
-- [Privacy Comparison](/ai-coding-primer/security/privacy-comparison/)
+- [Fast-Changing Information](/ai-coding-primer/reference/fast-changing-info/) — maintenance rules for perishable claims
+- [Context-File Examples](/ai-coding-primer/templates/) — four instructional patterns rather than a stack catalog
+- [Retired and Transitioned Tools](/ai-coding-primer/reference/retired-and-transitioned-tools/) — preserve workflows and recheck authority during migration
+- [Agent Platform Boundaries](/ai-coding-primer/reference/agent-platform-boundaries/) — inspect triggers, persistence, execution, and external effects
+- [Benchmarks That Matter](/ai-coding-primer/models/benchmarks/) — interpret benchmark claims
+- [Billing Models](/ai-coding-primer/models/pricing/) — understand access and billing mechanisms
+- [Privacy Comparison](/ai-coding-primer/security/privacy-comparison/) — run the current procurement review

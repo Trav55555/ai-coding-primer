@@ -119,46 +119,24 @@ Start small. Add only the rules that prevent repeated mistakes.
 | **Listing every file or folder** | the agent can explore; describe only non-obvious structure |
 | **Verbose style guides** | keep only the rules that affect common edits |
 
-## Example: Minimal TypeScript/React
-
-```markdown
-# Project Rules
-
-## Commands
-- `npm run dev` - Start dev server
-- `npm test` - Run tests
-- `npm run lint` - Lint and typecheck
-
-## Gotchas
-- Auth tokens in cookies, not localStorage
-- Use `date-fns`, not moment
-- Database schema in `/prisma/schema.prisma`
-
-## Code Style
-- Named exports only
-- Prefer arrow functions for components
-```
-
-This example is short because most project information is already visible in code and tests.
-
-## Example: Minimal Python
+## Example: Minimal Project Context
 
 ```markdown
 # Project Context
 
 ## Commands
-- `uv run uvicorn app.main:app --reload` - Dev server
-- `uv run pytest` - Run tests
-- `uv run alembic upgrade head` - Migrations
+- `[focused test command]` - Verify the affected behavior
+- `[broader check command]` - Run before treating the change as complete
+
+## Boundaries
+- Edit `[source path]`; do not edit generated output in `[generated path]`
+- Ask before package installs, networked commands, or data migrations
 
 ## Gotchas
-- Model artifacts in `/models/` - do not commit; use DVC
-- Legacy `/v1/score` uses old schema - do not modify
-
-## Code Style
-- Type hints on all functions
-- Async for I/O, sync for CPU-bound
+- `[legacy path]` follows an older contract; preserve it unless the task includes migration
 ```
+
+This example is short because most project information is already visible in code and tests. Applied frontend, backend, hypermedia, and editor-rule patterns belong in the examples below.
 
 ## Maintenance
 
@@ -169,12 +147,11 @@ Update context files when repeated behavior shows a missing rule:
 3. **Remove redundant rules:** if the tool infers something reliably, stop spending context on it.
 4. **Version control changes:** revert context edits that make output worse.
 
-## Downloadable Templates
+## Adapt an Example
 
-Starter examples for common stacks:
+Choose by the boundary the agent must preserve, not by framework name:
 
-- [Node.js/Express](/ai-coding-primer/templates/claude-md-nodejs/)
-- [Python/FastAPI](/ai-coding-primer/templates/claude-md-python/)
-- [TypeScript/React](/ai-coding-primer/templates/claude-md-typescript-react/)
-- [Go](/ai-coding-primer/templates/claude-md-go/)
-- [Rust](/ai-coding-primer/templates/claude-md-rust/)
+- [Frontend Context File](/ai-coding-primer/templates/frontend-context-file/) — browser, routing, and server/client boundaries
+- [Backend Context Files](/ai-coding-primer/templates/backend-context-files/) — service, data, migration, and operational boundaries
+- [Hypermedia Context File](/ai-coding-primer/templates/hypermedia-context-file/) — server-rendered HTML and fragment-response boundaries
+- [Editor Project Rules](/ai-coding-primer/templates/editor-project-rules/) — path- or task-scoped instructions in a perishable editor format
