@@ -17,39 +17,39 @@ Record each consolidation source, destination, and route-preservation state befo
 
 ## Template Routes
 
-| Existing route | Destination | Batch 2A route state |
+| Existing route | Destination | Batch 2B state |
 |---|---|---|
-| `/templates/claude-md-typescript-react/` | `/templates/frontend-context-file/` | retained |
-| `/templates/claude-md-nextjs/` | `/templates/frontend-context-file/` | retained |
-| `/templates/claude-md-nodejs/` | `/templates/backend-context-files/` | retained |
-| `/templates/claude-md-python/` | `/templates/backend-context-files/` | retained |
-| `/templates/claude-md-go/` | `/templates/backend-context-files/` | retained |
-| `/templates/claude-md-rust/` | `/templates/backend-context-files/` | retained |
-| `/templates/claude-md-csharp/` | `/templates/backend-context-files/` | retained |
-| `/templates/claude-md-elixir/` | `/templates/backend-context-files/` | retained |
-| `/templates/claude-md-bun/` | `/templates/backend-context-files/` | retained |
-| `/templates/claude-md-hypermedia/` | `/templates/hypermedia-context-file/` | retained |
-| `/templates/cursorrules-typescript/` | `/templates/editor-project-rules/` | retained |
-| `/templates/cursorrules-nextjs/` | `/templates/editor-project-rules/` | retained |
-| `/templates/cursorrules-nodejs/` | `/templates/editor-project-rules/` | retained |
-| `/templates/cursorrules-python/` | `/templates/editor-project-rules/` | retained |
-| `/templates/cursorrules-go/` | `/templates/editor-project-rules/` | retained |
-| `/templates/cursorrules-rust/` | `/templates/editor-project-rules/` | retained |
-| `/templates/cursorrules-csharp/` | `/templates/editor-project-rules/` | retained |
-| `/templates/cursorrules-elixir/` | `/templates/editor-project-rules/` | retained |
-| `/templates/cursorrules-bun/` | `/templates/editor-project-rules/` | retained |
-| `/templates/cursorrules-hypermedia/` | `/templates/editor-project-rules/` | retained |
+| `/templates/claude-md-typescript-react/` | `/templates/frontend-context-file/` | redirect configured |
+| `/templates/claude-md-nextjs/` | `/templates/frontend-context-file/` | redirect configured |
+| `/templates/claude-md-nodejs/` | `/templates/backend-context-files/` | redirect configured |
+| `/templates/claude-md-python/` | `/templates/backend-context-files/` | redirect configured |
+| `/templates/claude-md-go/` | `/templates/backend-context-files/` | redirect configured |
+| `/templates/claude-md-rust/` | `/templates/backend-context-files/` | redirect configured |
+| `/templates/claude-md-csharp/` | `/templates/backend-context-files/` | redirect configured |
+| `/templates/claude-md-elixir/` | `/templates/backend-context-files/` | redirect configured |
+| `/templates/claude-md-bun/` | `/templates/backend-context-files/` | redirect configured |
+| `/templates/claude-md-hypermedia/` | `/templates/hypermedia-context-file/` | redirect configured |
+| `/templates/cursorrules-typescript/` | `/templates/editor-project-rules/` | redirect configured |
+| `/templates/cursorrules-nextjs/` | `/templates/editor-project-rules/` | redirect configured |
+| `/templates/cursorrules-nodejs/` | `/templates/editor-project-rules/` | redirect configured |
+| `/templates/cursorrules-python/` | `/templates/editor-project-rules/` | redirect configured |
+| `/templates/cursorrules-go/` | `/templates/editor-project-rules/` | redirect configured |
+| `/templates/cursorrules-rust/` | `/templates/editor-project-rules/` | redirect configured |
+| `/templates/cursorrules-csharp/` | `/templates/editor-project-rules/` | redirect configured |
+| `/templates/cursorrules-elixir/` | `/templates/editor-project-rules/` | redirect configured |
+| `/templates/cursorrules-bun/` | `/templates/editor-project-rules/` | redirect configured |
+| `/templates/cursorrules-hypermedia/` | `/templates/editor-project-rules/` | redirect configured |
 
 The `/templates/` route remains in place as the examples hub.
 
 ## Tool Routes
 
-| Existing route | Destination | Batch 2A route state |
+| Existing route | Destination | Batch 2B state |
 |---|---|---|
-| `/tools/cli/gemini-cli/` | `/reference/retired-and-transitioned-tools/` | production redirect spike |
-| `/tools/extensions/supermaven/` | `/reference/retired-and-transitioned-tools/` | retained |
-| `/tools/agents/hermes-agent/` | `/reference/agent-platform-boundaries/` | retained |
-| `/tools/agents/openclaw/` | `/reference/agent-platform-boundaries/` | retained |
+| `/tools/cli/gemini-cli/` | `/reference/retired-and-transitioned-tools/` | production redirect verified |
+| `/tools/extensions/supermaven/` | `/reference/retired-and-transitioned-tools/` | redirect configured |
+| `/tools/agents/hermes-agent/` | `/reference/agent-platform-boundaries/` | redirect configured |
+| `/tools/agents/openclaw/` | `/reference/agent-platform-boundaries/` | redirect configured |
 
 If the Gemini redirect fails locally or on GitHub Pages, restore its source page as a one-release tombstone linking to the destination.
 
@@ -64,14 +64,14 @@ Batch 2A repoints both pages to the four destinations. Repository references in 
 
 ## Raw Artifacts
 
-The repository contains 14 downloadable files under `templates/claude-md/` and `templates/cursorrules/`. Batch 2A keeps them unchanged but removes them from the recommended examples hub. They do not have independent public site routes.
+Batch 2B replaces the 14 stack-specific downloads with four maintained site assets under `site/public/examples/`:
 
-Batch 2B should choose one of two outcomes after the consolidated examples are reviewed:
+- `frontend-context.md`
+- `backend-context.md`
+- `hypermedia-context.md`
+- `editor-project-rule.mdc`
 
-1. replace them with four representative raw artifacts matching the new destinations; or
-2. retain selected files as historical examples with explicit maintenance ownership.
-
-Do not leave the 14-file collection as an unowned second catalog.
+Each consolidated public example links to its raw asset under `/ai-coding-primer/examples/`. The old raw GitHub URLs cannot use Astro redirects because they are repository-file URLs rather than site routes; removing them is an intentional end to the unowned second catalog.
 
 ## Redirect Evidence to Record
 
@@ -118,3 +118,22 @@ Use Astro's configured static redirects for the remaining merged routes, with th
 3. Inspect the generated `index.html`, canonical URL, sitemap, and Pagefind output before deployment.
 4. Verify slash and no-slash forms plus browser navigation after deployment.
 5. Treat the result as route preservation through an HTML refresh, not an HTTP `301`. Use a one-release tombstone instead if a route needs visible migration context or the redirect fails live validation.
+
+## Batch 2B Local Evidence
+
+Validated: August 9, 2026.
+
+- All 24 configured routes generate redirect `index.html` files with base-prefixed refresh and canonical destinations.
+- Local preview serves both slash and no-slash forms for all routes: 48 of 48 checks passed.
+- Browser checks covered frontend, backend, hypermedia, editor-rule, retired-tool, and agent-platform destinations.
+- The sitemap omits every migrated source route.
+- Pagefind omits the retired source articles and indexes the canonical destinations.
+- The sidebar exposes one collapsed Tool Snapshots group and four maintained examples; old stack and agent-platform source groups are absent.
+- Four downloadable assets exist under `/ai-coding-primer/examples/` and are linked from their maintained pages.
+- The build generates 65 content pages and 89 HTML files including redirects, without warnings.
+- `npm audit --omit=dev` reports zero vulnerabilities.
+- Internal page, redirect, and asset checks pass.
+- External link check covered 141 URLs with no 404s; four existing sources returned bot-blocking HTTP `403` responses.
+- Responsive, keyboard, and independent migration/editorial reviews passed.
+
+Production verification remains required after commit and deployment.

@@ -48,7 +48,7 @@ A good decision usually comes from one workflow shape plus one or two filters.
 
 Do not evaluate broader agent platforms with the same checklist as a local editor extension.
 
-Tools such as [OpenClaw](/ai-coding-primer/tools/agents/openclaw/) and [Hermes Agent](/ai-coding-primer/tools/agents/hermes-agent/) can involve messaging gateways, scheduled execution, persistent memory, skills/plugins, or multiple execution backends. Those features can be useful, but they also add trigger surfaces and state that live beyond a single coding session.
+Broader [agent platforms](/ai-coding-primer/reference/agent-platform-boundaries/) can involve messaging gateways, scheduled execution, persistent memory, skills or plugins, and multiple execution backends. Those features can be useful, but they also add trigger surfaces and state that live beyond a single coding session.
 
 Use an agent platform when the workflow requires one of these properties:
 

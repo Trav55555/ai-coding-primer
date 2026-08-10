@@ -33,8 +33,7 @@ A practical guide to AI-assisted engineering workflows, tool boundaries, context
 
 | Tool | Description |
 |------|-------------|
-| [OpenClaw](https://trav55555.github.io/ai-coding-primer/tools/agents/openclaw/) | Multi-channel personal assistant gateway; formerly ClawdBot/Moltbot |
-| [Hermes Agent](https://trav55555.github.io/ai-coding-primer/tools/agents/hermes-agent/) | Nous Research agent platform with memory, skills, scheduled tasks, and gateways |
+| [Agent Platform Boundaries](https://trav55555.github.io/ai-coding-primer/reference/agent-platform-boundaries/) | Evaluate gateways, memory, skills, schedules, and execution authority |
 
 ## Local Development
 

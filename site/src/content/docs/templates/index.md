@@ -39,6 +39,6 @@ These examples are deliberately not organized as one page per language or framew
 
 A context file is not an access control or a substitute for tests. Use [Quick Security Checklist](/ai-coding-primer/security/checklist/) for permissions and data boundaries, and use the repository's normal build, test, review, and rollback process.
 
-:::caution[Route migration]
-Older stack-specific examples remain available at their existing URLs while route-preservation behavior is tested. They are no longer the recommended entry point and may become redirects or short tombstones in a later batch.
+:::note[Legacy links]
+Older stack-specific example URLs are preserved as redirects to these four patterns. The consolidated pages, not the old framework variants, are the maintained sources.
 :::

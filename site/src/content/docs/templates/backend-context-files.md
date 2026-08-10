@@ -13,7 +13,7 @@ A useful backend context file stops predictable mistakes: putting business logic
 
 ## Starter Template
 
-Save this as `CLAUDE.md`, `AGENTS.md`, or the instruction-file name supported by your tool.
+Use the example below or [download the raw backend context file](/ai-coding-primer/examples/backend-context.md). Save it as `CLAUDE.md`, `AGENTS.md`, or the instruction-file name supported by your tool.
 
 ```markdown
 # Backend Project Context

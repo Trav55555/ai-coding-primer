@@ -18,7 +18,7 @@ The instruction file needs to answer:
 
 ## Starter Template
 
-Save this as `CLAUDE.md`, `AGENTS.md`, or the project instruction file supported by your tool.
+Use the example below or [download the raw hypermedia context file](/ai-coding-primer/examples/hypermedia-context.md). Save it as `CLAUDE.md`, `AGENTS.md`, or the project instruction file supported by your tool.
 
 ```markdown
 # Hypermedia Project Context

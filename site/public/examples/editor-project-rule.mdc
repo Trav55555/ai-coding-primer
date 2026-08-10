@@ -1,0 +1,20 @@
+---
+description: [Area] conventions, boundaries, and verification
+alwaysApply: false
+globs:
+  - "[path pattern]"
+---
+
+# [Area] Project Rule
+
+## Rule
+- Follow [specific project convention]
+- Keep changes inside [specific architecture or authority boundary]
+- Do not edit [generated, sensitive, or separately owned path]
+
+## Verification
+- Run `[focused command]` after matching changes
+- Run `[broader command]` before treating the work as complete
+
+## Failure Limit
+- Stop and ask before [destructive, broad, security-sensitive, or ambiguous action]

@@ -72,6 +72,8 @@ Do not infer matching behavior from these examples. Check the current Cursor doc
 
 ## Starter Rule Pattern
 
+Use the generic structure below or [download the raw `.mdc` example](/ai-coding-primer/examples/editor-project-rule.mdc). Adapt its frontmatter to the current editor format before relying on it.
+
 ```markdown
 # [Area] Project Rule
 

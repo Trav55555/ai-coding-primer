@@ -19,7 +19,7 @@ A useful frontend context file answers:
 
 ## Starter Template
 
-Save this as the context-file format your tool reads, such as `CLAUDE.md`, `AGENTS.md`, or another project instruction file supported by your editor.
+Use the example below or [download the raw frontend context file](/ai-coding-primer/examples/frontend-context.md). Save it as the context-file format your tool reads, such as `CLAUDE.md`, `AGENTS.md`, or another project instruction file supported by your editor.
 
 ```markdown
 # Frontend Project Context

@@ -24,6 +24,8 @@ The named projects below are examples of platform shapes. Their exact features c
 
 The durable guidance is not that either project is better or worse. The durable guidance is that memory, skills, gateways, scheduled execution, plugins, and multiple backends add boundaries you must inspect before granting authority.
 
+Project identity is part of that review. The canonical Hermes project is `NousResearch/hermes-agent` and its documented Python package path; do not assume a similarly named package in another registry is equivalent. Older OpenClaw references may use names such as ClawdBot or Moltbot. For either project, verify the repository owner, package metadata, lifecycle scripts, and install path before execution.
+
 ## First Decision: Is This Actually Needed?
 
 Use a narrow editor, extension, or terminal agent when the job is:
