@@ -77,6 +77,16 @@ Task-specific skills should specify:
 
 A command pack is a stable entry point for common work. Slash commands or command packs are appropriate when the task is common enough that people should not rewrite the prompt each time.
 
+## Load Detail Progressively
+
+A skill should expose only what the agent needs at each stage:
+
+1. **Discovery metadata:** name and description explain what the skill does and when to use it.
+2. **Core instructions:** `SKILL.md` contains the procedure needed by every branch.
+3. **Conditional resources:** detailed references, scripts, and examples load only when a specific branch needs them.
+
+Keep rare safety constraints in the core when the agent might not recognize the condition that should trigger a deferred read. Progressive loading reduces context cost; it does not guarantee that the correct resource will be selected.
+
 ## Skill Contents
 
 A useful skill is short, specific, and operational.
@@ -117,6 +127,18 @@ Use this when reviewing a medium or large code change.
 ```
 
 The goal is consistency on recurring work, not a complete operating manual.
+
+## Test Routing and Outcomes
+
+Before standardizing a skill, compare it with the current no-skill workflow on realistic tasks in fresh sessions. Test:
+
+- prompts that should select the skill
+- near-miss prompts that should not select it
+- task correctness after selection
+- unnecessary tool calls, latency, and context cost
+- safety or general-task regressions
+
+One successful run is not evidence that the skill helped. Routing can succeed while the procedure still produces worse work.
 
 ## How Skills Evolve
 

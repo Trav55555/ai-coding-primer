@@ -155,6 +155,8 @@ Set each boundary separately:
 
 Apply normal pull-request review, branch protection, and repository-native checks. Reviewers may reject a diff they cannot explain or audit.
 
+The human change owner must read, run, and understand agent-produced work before requesting review. Otherwise the workflow has transferred verification effort to collaborators rather than saved team time. Review AI-drafted pull-request descriptions as claims, and include the actual checks or manual observations used to verify the change.
+
 ### Owners and evidence
 
 Name four roles before launch:

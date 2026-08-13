@@ -1,11 +1,11 @@
 ---
-title: Project Context Files
-description: How to write concise project instruction and rule files for coding agents.
+title: AGENTS.md and Project Instructions
+description: How to write concise repository instruction and rule files for coding agents.
 sidebar:
   order: 1
 ---
 
-AI coding tools can read project instruction files to learn local commands, conventions, and constraints. These files should be short and specific.
+AI coding tools can read repository instruction files such as `AGENTS.md`, `CLAUDE.md`, and editor rules. Use them for stable, non-obvious commands, conventions, and constraints that apply across tasks. They are advisory context, not access controls or a substitute for tests.
 
 ## Which File to Use
 
@@ -20,7 +20,9 @@ AI coding tools can read project instruction files to learn local commands, conv
 
 ## Length Rule
 
-There is no universal useful line count. Start with the smallest file that records non-obvious commands, boundaries, and recurring mistakes. The maintenance example below starts at 10 to 20 lines; that is a starting point, not a hard limit.
+There is no universal useful line count. Start with the smallest file that records non-obvious commands, boundaries, and recurring mistakes.
+
+Empirical results are mixed. In [arXiv:2602.11988](https://arxiv.org/abs/2602.11988), broad repository context files generally increased agent cost and did not reliably improve task success; developer-written files showed only limited gains in that setting. Treat each line as a local hypothesis, not a universal improvement. The maintenance example below starts at 10 to 20 lines; that is a starting point, not a hard limit.
 
 For each line, ask whether removing it would likely cause an implementation mistake on a representative task. If not, remove it. Split long reference material into files the agent can retrieve when needed instead of loading it for every task.
 

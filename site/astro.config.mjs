@@ -48,9 +48,9 @@ export default defineConfig({
 			},
 			sidebar: [
 				{
-					label: 'Start',
+					label: 'Module 1: Start Safely',
 					items: [
-						{ label: 'Introduction', slug: 'learn/beginner/introduction' },
+						{ label: 'Curriculum', slug: 'learn/beginner/introduction' },
 						{ label: 'Agentic Engineering', slug: 'learn/beginner/what-is-ai-coding' },
 						{ label: 'Quick Security Checklist', slug: 'security/checklist' },
 						{ label: 'Choose a Workflow and Stack', slug: 'learn/beginner/choose-your-tool' },
@@ -59,7 +59,7 @@ export default defineConfig({
 					],
 				},
 				{
-					label: 'Work Reliably',
+					label: 'Module 2: Work Reliably',
 					items: [
 						{ label: 'Agentic Development Loop', slug: 'learn/intermediate/agentic-development-loop' },
 						{ label: 'Workflow Archetypes', slug: 'learn/intermediate/workflow-archetypes' },
@@ -71,11 +71,11 @@ export default defineConfig({
 					],
 				},
 				{
-					label: 'Context and Control',
+					label: 'Module 3: Context and Autonomy',
 					items: [
 						{ label: 'Core Concepts', slug: 'learn/intermediate/core-concepts' },
 						{ label: 'Context Engineering', slug: 'learn/intermediate/context-engineering' },
-						{ label: 'Project Context Files', slug: 'learn/advanced/project-context-files' },
+						{ label: 'AGENTS.md and Project Instructions', slug: 'learn/advanced/project-context-files' },
 						{ label: 'Subagent Architectures', slug: 'learn/advanced/subagents' },
 						{ label: 'Agent Harness', slug: 'learn/advanced/agent-harness' },
 						{ label: 'Learning with AI', slug: 'learn/intermediate/learning-with-ai' },
@@ -83,7 +83,7 @@ export default defineConfig({
 					],
 				},
 				{
-					label: 'Teams and Security',
+					label: 'Module 4: Team Governance',
 					items: [
 						{ label: 'Governance and Rollout', slug: 'team/governance' },
 						{ label: 'Team Threat Model', slug: 'team/security-risks' },

@@ -39,6 +39,8 @@ Do not change unrelated routes.
 
 Run broader checks after the focused signal passes. Then review the diff: a passing test may still hide a weakened permission check, changed contract, or poor abstraction.
 
+When the request is vague or taste-bearing—such as “improve the feel,” “make it polished,” or “clean up the architecture”—create an inspectable artifact before implementation. Use a failing example, reproduction, screenshot with acceptance criteria, small prototype, fixture, benchmark, or concrete before-and-after target. If a human cannot evaluate the result by running or inspecting something specific, keep the task in exploration.
+
 ## Review AI-Drafted Tests Against the Requirement
 
 Treat a generated test as a proposed requirement, not independent evidence. Before accepting it, ask:
