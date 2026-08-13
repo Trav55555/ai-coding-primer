@@ -96,6 +96,7 @@ export default defineConfig({
 					items: [
 						{ label: 'Research Overview', slug: 'research/overview' },
 						{ label: 'Models vs Providers', slug: 'models/overview' },
+						{ label: 'Current Tool Landscape', slug: 'reference/state-of-tools' },
 						{ label: 'Capability Patterns', slug: 'models/capabilities' },
 						{ label: 'Billing Models', slug: 'models/pricing' },
 						{ label: 'Benchmarks That Matter', slug: 'models/benchmarks' },

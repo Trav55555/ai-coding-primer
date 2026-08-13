@@ -162,7 +162,7 @@ Choose those input and action paths first in [Choose a Workflow and Stack](/ai-c
 - promise a single "best model"
 - freeze benchmark snapshots into durable guidance
 
-For time-sensitive benchmark details, use [Benchmarks That Matter](/ai-coding-primer/models/benchmarks/) and confirm current data before making team-level decisions.
+For time-sensitive benchmark details, use [Benchmarks That Matter](/ai-coding-primer/models/benchmarks/) and confirm current data before making team-level decisions. [State of the Tools](/ai-coding-primer/reference/state-of-tools/#model-capability-and-price) explains how to combine live Artificial Analysis comparisons with completed-task cost and local evaluation.
 
 ## Evidence Status
 

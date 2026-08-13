@@ -1,0 +1,313 @@
+---
+title: State of the Tools
+description: A current guide to AI coding surfaces, terminal orchestration, model trade-offs, and engineering feedback tools.
+---
+
+:::note[Freshness metadata]
+Reviewed: August 2026. Product capabilities, model availability, pricing, operating-system support, and commercial terms change quickly. Verify current primary sources before installing, buying, or standardizing.
+:::
+
+This page maps the current tool landscape by **workflow role**. It is not a ranking. A useful stack combines an operating surface, repository feedback, and the narrowest orchestration needed for the work.
+
+## The Stack in One View
+
+```text
+Human interface       IDE / desktop app / terminal agent
+        ↓
+Session control       one process / tmux / Herdr / worktree manager
+        ↓
+Agent capability      model + tools + context + permissions
+        ↓
+Engineering feedback  tests + compiler + linter + debugger + static analysis
+        ↓
+Review and recovery   diff + logs + rollback + human judgment
+```
+
+Adding another AI surface does not compensate for weak tests, missing diagnostics, or unclear requirements. Improve the feedback layer before adding orchestration.
+
+## Operating Surfaces
+
+| Surface | Strong fit | Main advantages | Main costs |
+|---|---|---|---|
+| Terminal or TUI agent | command-, test-, and diff-driven repository work | scriptable; remote-friendly; composes with shell tools; low interface overhead | terminal fluency required; visual review and multi-session awareness may be weaker |
+| Desktop agent app | supervising several tasks, worktrees, previews, or scheduled jobs | visual thread management; integrated diffs and previews; easier oversight | product-specific workflow; higher resource use; automation may be less transparent |
+| AI IDE | editing and debugging in one primary environment | code navigation, diagnostics, debugger, terminal, and AI share context | editor lock-in; more background indexing and extensions; agent activity can compete with direct editing |
+| Editor extension | adding AI without replacing the editor | lower migration cost; keeps existing debugger and language tooling | fragmented permissions and context; capability varies by host editor |
+| Headless or background agent | queued, scheduled, or CI-triggered work | unattended throughput and repeatability | largest containment, identity, observability, cost, and recovery burden |
+
+### Terminal and TUI workflows
+
+**Pros**
+
+- Work naturally with repository-native commands, scripts, SSH, containers, and CI.
+- Make command output and process boundaries visible.
+- Compose with Git, search tools, test watchers, multiplexers, and shell automation.
+- Keep the same operating model across local and remote environments.
+
+**Cons**
+
+- Require comfort with shell state, paths, process ownership, and terminal keybindings.
+- Make screenshots, browser state, rich diffs, and multi-project status harder to inspect without companion tools.
+- Can hide which session is blocked when several agents run concurrently.
+- Dangerous commands remain dangerous; a text interface is not a sandbox.
+
+Start with one terminal agent and ordinary shell tabs. Add a multiplexer only after session persistence or parallel work becomes a real problem.
+
+### Desktop AI apps
+
+Current desktop agent apps increasingly combine isolated worktrees, parallel sessions, visual diff review, terminals, previews, and scheduled tasks. Official OpenAI Codex and Claude Code desktop documentation illustrates this direction.
+
+**Pros**
+
+- Easier visual supervision of multiple tasks and repositories.
+- Integrated diffs, file previews, terminals, and application previews.
+- Worktree isolation can reduce collisions between parallel tasks.
+- Better discovery for users who do not want to manage terminal sessions directly.
+
+**Cons**
+
+- Isolation and scheduling semantics differ by product and project type.
+- Background work expands data, credential, network, and cost exposure.
+- Product UI can obscure the exact commands, environment, or state transitions underneath.
+- Shared history and convenience features increase dependence on one vendor's workflow.
+
+Use a desktop app when visual supervision is the bottleneck. Keep repository checks and recovery independent of the app.
+
+### AI IDEs and extensions
+
+IDEs remain strongest when direct editing, language intelligence, debugging, and agent work happen in the same task. Extensions are the lower-migration option when the existing editor already fits.
+
+**Pros**
+
+- Language Server Protocol (LSP) diagnostics, navigation, refactoring, and completion are close to the edit.
+- Debug Adapter Protocol (DAP) integrations provide breakpoints, stack frames, variables, watches, and stepping.
+- Visual diffs and source control make scope review easier.
+- Existing project tasks and test integrations can become agent feedback.
+
+**Cons**
+
+- Extensions add supply-chain, telemetry, indexing, and permission surfaces.
+- Several assistants may duplicate indexing, shortcuts, context rules, and model billing.
+- IDE-integrated success can be hard to reproduce in CI or a clean shell.
+- Rich interfaces can make broad agent edits feel safer than they are.
+
+Prefer one primary AI integration. Keep the build and verification path runnable outside the editor.
+
+## Session Multiplexers: tmux and Herdr
+
+### tmux
+
+[tmux](https://github.com/tmux/tmux) is a general terminal multiplexer. It creates sessions containing windows and panes, continues running after detachment or SSH disconnection, and can be controlled interactively or through its textual control mode.
+
+**Use it when:** you need persistent shells, remote reattachment, repeatable pane layouts, or a simple agent/test/log workspace.
+
+**Advantages:** mature, general-purpose, scriptable, widely available, and independent of any coding agent.
+
+**Costs:** it does not understand whether an agent is working, blocked, idle, or complete; the operator owns naming, status, notifications, worktrees, and cleanup.
+
+### Herdr
+
+[Herdr](https://github.com/herdrdev/herdr) is an agent-oriented terminal runtime and multiplexer. Its project documentation describes persistent terminal sessions, agent state such as working or blocked, keyboard and mouse operation, CLI/socket automation, plugins, and integrations with existing coding-agent CLIs. It owns their terminals rather than replacing the agents.
+
+**Use it when:** ordinary tmux sessions no longer make several coding agents legible enough to supervise.
+
+**Advantages:** agent-aware state, persistent background sessions, automation interfaces, and one place to find blocked work.
+
+**Costs:** a newer orchestration dependency, another plugin and configuration surface, and more machinery than a single-agent workflow needs. Its feature and platform claims are project-authored, not independently benchmarked.
+
+:::caution[Install review]
+Herdr's README offers remote shell installers. For a real environment, inspect the repository, release artifact, installer, configuration, plugins, socket access, and update path before execution. Prefer a pinned release and test it in a low-risk workspace.
+:::
+
+### Which one?
+
+| Need | Start with |
+|---|---|
+| One or two persistent terminals | shell tabs or tmux |
+| Remote reattachment and custom layouts | tmux |
+| Several agents whose blocked/idle state is hard to track | Herdr evaluation |
+| Strong visual worktree and diff supervision | desktop agent app |
+| Reproducible unattended jobs | CI or a reviewed agent harness, not a pane layout alone |
+
+## Engineering Feedback Tools
+
+AI changes the producer of a patch, not the kinds of evidence software needs.
+
+### Compiler, type checker, and language server
+
+Use the repository's compiler and type checker as the canonical signal. LSP diagnostics improve the edit loop but may use different settings from CI. Keep the command-line check available.
+
+**Good for:** syntax, symbols, types, imports, and some control/data-flow mistakes.
+
+**Cannot prove:** product behavior, security, performance, accessibility, or correct requirements.
+
+### Tests and executable examples
+
+Run the narrowest relevant test first, then broaden according to blast radius. Characterization tests are useful before refactoring; a failing reproduction is useful before bug repair.
+
+**Good for:** specified behavior under represented conditions.
+
+**Cannot prove:** behavior not covered by the oracle, independent test intent, or maintainability.
+
+### Debuggers
+
+A debugger exposes runtime state through breakpoints, stepping, call stacks, variables, watches, and evaluation. VS Code and other IDEs commonly use DAP-compatible adapters for language-specific debugging.
+
+Use one when logs cannot distinguish hypotheses, control flow is misunderstood, or state changes across several calls. Predict the next state before stepping when the task is also a learning exercise.
+
+**Good for:** causal diagnosis of a reproducible runtime path.
+
+**Cannot prove:** that a patch generalizes beyond the observed execution.
+
+### Linters and formatters
+
+Examples include repository-configured ESLint, Ruff, Clippy, `go vet`, and language formatters.
+
+**Good for:** deterministic project rules, suspicious constructs, style consistency, and cheap local feedback.
+
+**Cannot prove:** semantic correctness. Do not weaken a rule merely to accept generated code.
+
+### Static and security analysis
+
+- [Semgrep](https://github.com/semgrep/semgrep) provides pattern- and data-flow-oriented static analysis across many languages and can run locally, in editors, pre-commit, and CI. Its community and commercial engines have different analysis boundaries.
+- [CodeQL](https://codeql.github.com/) builds a database from supported code and runs queries for vulnerabilities and errors. GitHub documents a fixed supported-language set and warns that unsupported languages may produce incomplete analysis.
+- Language-specific analyzers such as `clang-tidy`, Clippy, `go vet`, and compiler warnings often provide the lowest-friction first layer.
+
+**Good for:** known rule classes and analyzable code paths at scale.
+
+**Cannot prove:** absence of vulnerabilities. Coverage depends on language, framework models, rules, configuration, build fidelity, and scan scope.
+
+### Profilers and observability
+
+Use CPU, memory, allocation, query, browser, or distributed tracing tools when the claim concerns performance or production behavior. Measure before optimizing; do not ask a model to infer a bottleneck from code shape alone.
+
+**Good for:** observed cost and behavior in a specified environment.
+
+**Cannot prove:** behavior under unmeasured workloads or future traffic.
+
+## Model Capability and Price
+
+Model choice has at least four independent dimensions:
+
+1. task capability, including coding and agentic tool use
+2. input and output price
+3. latency and output speed
+4. product boundary: tools, context, permissions, privacy, and availability
+
+A higher benchmark score does not guarantee a better result in your repository or harness. A cheaper token does not guarantee a cheaper completed task.
+
+### Cost / intelligence quadrant
+
+The chart below is a decision frame, not a model leaderboard. No model points are copied from Artificial Analysis.
+
+<svg class="quadrant-chart" viewBox="0 0 820 520" role="img" aria-labelledby="quadrant-title quadrant-desc">
+  <title id="quadrant-title">Model cost and intelligence decision quadrant</title>
+  <desc id="quadrant-desc">A four-quadrant chart with intelligence increasing upward and task cost increasing rightward. The preferred quadrant is high measured capability and low completed-task cost.</desc>
+  <line class="quadrant-axis" x1="92" y1="450" x2="770" y2="450" />
+  <line class="quadrant-axis" x1="92" y1="450" x2="92" y2="42" />
+  <line class="quadrant-rule" x1="431" y1="450" x2="431" y2="42" />
+  <line class="quadrant-rule" x1="92" y1="246" x2="770" y2="246" />
+  <rect class="quadrant-preferred" x="94" y="44" width="335" height="200" rx="12" />
+  <text class="quadrant-heading" x="120" y="82">High capability / lower cost</text>
+  <text class="quadrant-copy" x="120" y="112">Preferred shortlist</text>
+  <text class="quadrant-copy" x="120" y="138">Verify on representative tasks</text>
+  <text class="quadrant-heading" x="462" y="82">High capability / higher cost</text>
+  <text class="quadrant-copy" x="462" y="112">Reserve for hard or risky work</text>
+  <text class="quadrant-copy" x="462" y="138">Require measured benefit</text>
+  <text class="quadrant-heading" x="120" y="286">Lower capability / lower cost</text>
+  <text class="quadrant-copy" x="120" y="316">Mechanical and easily checked work</text>
+  <text class="quadrant-copy" x="120" y="342">Useful fast-path candidate</text>
+  <text class="quadrant-heading" x="462" y="286">Lower capability / higher cost</text>
+  <text class="quadrant-copy" x="462" y="316">Remove unless another constraint wins</text>
+  <text class="quadrant-copy" x="462" y="342">Check latency, privacy, or locality</text>
+  <text class="quadrant-label" x="350" y="500">Completed-task cost →</text>
+  <text class="quadrant-label" transform="translate(28 330) rotate(-90)">Measured task capability →</text>
+</svg>
+
+| Quadrant | Interpretation |
+|---|---|
+| High measured capability, lower completed-task cost | Preferred shortlist; verify on representative tasks |
+| High measured capability, higher completed-task cost | Reserve for difficult or risky work and require measured benefit |
+| Lower measured capability, lower completed-task cost | Candidate for mechanical, fast, easily checked work |
+| Lower measured capability, higher completed-task cost | Remove unless another constraint such as privacy, locality, or latency wins |
+
+Evaluate **completed-task cost**, not token price alone:
+
+```text
+model usage
++ retries and failed approaches
++ tool and sandbox charges
++ developer supervision
++ reviewer time and rework
++ defects or rollback
+```
+
+### Artificial Analysis source
+
+[Artificial Analysis](https://artificialanalysis.ai/models/) publishes continuously updated model intelligence, coding, agentic, price, speed, and latency comparisons. Its current Intelligence Index methodology combines nine evaluations and is weighted toward agents, coding, scientific reasoning, and general capability. The suite is text-only and English-language; several evaluations use agent harnesses or model judges, and the composite may not match your task.
+
+Use its live model view to identify candidates, then validate them on repository tasks with identical context, tools, permissions, and acceptance evidence.
+
+:::note[Data and chart rights]
+Artificial Analysis requires attribution for its free API. Its published access terms describe free API data as internal-use only and reserve redistribution rights for commercial packages. This primer therefore links to the live analysis and methodology but does not republish current model scores, prices, or derived model points. If redistribution rights are obtained, populate this chart from the API with a visible retrieval date, index version, price definition, and attribution.
+:::
+
+For model classes and reasoning effort, use [Capability Patterns](/ai-coding-primer/models/capabilities/). For subscriptions, usage meters, credits, compute, and enterprise contracts, use [Billing Models](/ai-coding-primer/models/pricing/).
+
+## Practical Stack Recipes
+
+### One attended repository task
+
+- existing editor or terminal
+- one AI assistant or agent
+- Git diff
+- focused test/type/build command
+- debugger only when diagnosis needs runtime state
+
+### Terminal-heavy engineering
+
+- terminal agent
+- tmux only if persistence or pane layout helps
+- editor or diff TUI for review
+- test watcher, compiler, linter, and debugger commands
+
+### Several parallel agents
+
+- isolated worktree or workspace per task
+- tmux for generic persistence, or evaluate Herdr when agent-state tracking is the bottleneck
+- explicit task IDs, owners, budgets, and stop conditions
+- consolidated diff and verification review before integration
+
+### Team-standard workflow
+
+- one or two approved operating surfaces
+- repository-native checks in local use and CI
+- reviewed static/security analysis appropriate to the language
+- scoped credentials, sandbox/network policy, logs, and rollback
+- model/provider shortlist tested on representative tasks
+
+## Selection Rule
+
+Choose the smallest stack that answers these questions clearly:
+
+1. Where does the task run?
+2. What can the agent read, change, and call?
+3. How is each session or worktree isolated and recovered?
+4. Which executable signals establish the result?
+5. How will a human inspect the diff, assumptions, and residual risk?
+6. What is the completed-task cost rather than the advertised unit price?
+
+If a new tool does not improve one of those answers enough to justify its setup, security, and maintenance cost, do not add it.
+
+## Primary Sources
+
+- [Artificial Analysis model comparison](https://artificialanalysis.ai/models/)
+- [Artificial Analysis Intelligence Index methodology](https://artificialanalysis.ai/methodology/intelligence-benchmarking)
+- [Artificial Analysis Data API and access terms](https://artificialanalysis.ai/data-api)
+- [tmux manual](https://man7.org/linux/man-pages/man1/tmux.1.html)
+- [Herdr repository](https://github.com/herdrdev/herdr)
+- [OpenAI Codex worktree documentation](https://developers.openai.com/codex/app/worktrees)
+- [Claude Code desktop documentation](https://code.claude.com/docs/en/desktop)
+- [VS Code debugging documentation](https://code.visualstudio.com/docs/debugtest/debugging)
+- [Semgrep repository and documentation](https://github.com/semgrep/semgrep)
+- [GitHub CodeQL documentation](https://docs.github.com/en/code-security/code-scanning/introduction-to-code-scanning/about-code-scanning-with-codeql)

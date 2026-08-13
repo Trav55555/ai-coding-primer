@@ -100,7 +100,7 @@ Replace the file and command with repository-native equivalents. If a product ma
 
 ## What to Check Live
 
-Vendor features, models, quotas, prices, privacy terms, and enterprise controls change. Use product pages only as current lookup material after the workflow and boundaries are known. The [Reference Appendix](/ai-coding-primer/reference/appendix/) explains where those snapshots live and what must be rechecked.
+Vendor features, models, quotas, prices, privacy terms, and enterprise controls change. Use product pages only as current lookup material after the workflow and boundaries are known. [State of the Tools](/ai-coding-primer/reference/state-of-tools/) compares current operating surfaces and supporting engineering tools; the [Reference Appendix](/ai-coding-primer/reference/appendix/) links to vendor snapshots and explains what must be rechecked.
 
 ## Next Steps
 

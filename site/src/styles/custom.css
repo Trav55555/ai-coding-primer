@@ -130,6 +130,51 @@
 	color: oklch(42% 0.15 28);
 }
 
+.quadrant-chart {
+	width: min(100%, 52rem);
+	height: auto;
+	margin-block: 1.5rem;
+	border: 1px solid var(--primer-rule);
+	border-radius: 0.875rem;
+	background: var(--primer-surface-warm);
+}
+
+.quadrant-axis {
+	stroke: var(--primer-ink);
+	stroke-width: 2;
+}
+
+.quadrant-rule {
+	stroke: var(--primer-rule);
+	stroke-width: 1.5;
+	stroke-dasharray: 8 7;
+}
+
+.quadrant-preferred {
+	fill: color-mix(in oklch, var(--sl-color-accent) 12%, transparent);
+}
+
+.quadrant-heading,
+.quadrant-copy,
+.quadrant-label {
+	fill: var(--primer-ink);
+	font-family: var(--sl-font);
+}
+
+.quadrant-heading {
+	font-size: 18px;
+	font-weight: 720;
+}
+
+.quadrant-copy {
+	font-size: 15px;
+}
+
+.quadrant-label {
+	font-size: 16px;
+	font-weight: 650;
+}
+
 @media (prefers-reduced-motion: no-preference) {
 	.sl-markdown-content a,
 	button,
